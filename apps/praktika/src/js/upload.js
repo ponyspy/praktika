@@ -88,23 +88,11 @@ $(function() {
 			var image = $('<div />', {'class': 'image_upload_preview', 'style': 'background-image:url(' + response + ')'});
 			var image_delete = $('<div />', {'class': 'image_delete', 'text': '×'});
 
-			var image_main = $('<div />', {'class': 'image_main'});
-			var main_label = $('<span />', { 'class': 'label', 'text': '◦'});
-			var main_form = $('<input />', {'class': 'main_form', 'type': 'hidden', 'name': 'images[main][]', 'value': 'false'});
-
-			var image_gallery = $('<div />', {'class': 'image_gallery'});
-			var gallery_label = $('<span />', { 'class': 'label', 'text': '---'});
-			var gallery_form = $('<input />', {'class': 'gallery_form', 'type': 'hidden', 'name': 'images[gallery][]', 'value': 'false'});
-
-			var image_size = $('<div />', {'class': 'image_size'});
-			var size_label = $('<span />', { 'class': 'label', 'text': '2x'});
-			var size_form = $('<input />', {'class': 'size_form', 'type': 'hidden', 'name': 'images[size][]', 'value': '2x'});
-
 			var image_description = $('<div />', {'class': 'image_description'});
 			var desc_ru = $('<textarea />', {'class': 'image_description_input ru_img', 'name': 'images[description][ru][]', 'placeholder':'Описание'});
 			var desc_en = $('<textarea />', {'class': 'image_description_input en_img', 'name': 'images[description][en][]', 'disabled':'disabled', 'placeholder':'Description'});
 			var image_form = $('<input />', {'class': 'image_form', 'type': 'hidden', 'name': 'images[path][]', 'value': response});
-			$('.images_upload_preview').append(image.append(image_delete, image_size.append(size_label, size_form), image_gallery.append(gallery_label, gallery_form), image_main.append(main_label, main_form), image_form, image_description.append(desc_ru, desc_en)));
+			$('.images_upload_preview').append(image.append(image_delete, image_form, image_description.append(desc_ru, desc_en)));
 		},
 		progressUpdated: function(i, file, progress) {
 

@@ -94,9 +94,6 @@ module.exports.images = function(obj, base_path, hold, upload_images, callback) 
 			async.eachOfSeries(upload_images.path, function(item, i, callback) {
 				images[i] = { path: null, description: [] };
 				images[i].path = upload_images.path[i];
-				images[i].size = upload_images.size[i];
-				images[i].gallery = upload_images.gallery[i];
-				images[i].main = upload_images.main[i];
 
 				images[i].description.push({ lg: 'ru', value: upload_images.description.ru[i] });
 				if (upload_images.description.en) {
@@ -117,8 +114,8 @@ module.exports.images = function(obj, base_path, hold, upload_images, callback) 
 					gm(public_path + image.path).write(public_path + original_path, function(err) {
 						gm(public_path + image.path).resize(420, false).quality(80).write(public_path + preview_path, function(err) {
 							gm(public_path + image.path).size({ bufferStream: true }, function(err, size) {
-								this.resize(size.width > 1280 ? 1280 : false, false);
-								this.quality(size.width > 1280 ? 80 : 100);
+								this.resize(size.width > 1920 ? 1920 : false, false);
+								this.quality(size.width > 1920 ? 80 : 100);
 								this.write(public_path + thumb_path, function(err) {
 									var obj_img = {};
 
@@ -127,9 +124,6 @@ module.exports.images = function(obj, base_path, hold, upload_images, callback) 
 									obj_img.preview = preview_path;
 
 									obj_img.description = image.description;
-									obj_img.size = image.size;
-									obj_img.gallery = image.gallery;
-									obj_img.main = image.main;
 
 									obj.images.push(obj_img);
 
