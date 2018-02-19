@@ -1,0 +1,40 @@
+doctype html
+html
+	head
+		include header
+	body(class=menu_active)
+		.main_block
+			.title_block
+				.menu_block
+					span: a(href='/', class=menu_active == 'main' ? 'active' : '')= __('KOSMOS')
+					span: a.hidden(href='/office', class=menu_active == 'office' ? 'active' : '')= __('OFFICE')
+					span: a.hidden(href='/projects', class=menu_active == 'project' ? 'active' : '')= __('PROJECTS')
+					span: a.hidden(href='/research', class=menu_active == 'research' ? 'active' : '')= __('RESEARCH')
+					//- info@k-s-m-s.com
+					span.mail: a.hidden(href='mailto:kosmos.arch@gmail.com') kosmos.arch@gmail.com
+				.menu_drop
+					each span in new Array(4)
+						span
+				if (session && session.user_id)
+					.stargazer_block
+							a(href='/auth') stargazer
+							span= ' | '
+							a(href='/auth/logout') выход
+			.content_block
+				block content
+			.footer_block
+				.logo: span!= '&copy;K-S-M-S ' + new Date().getFullYear()
+				.language
+					a(href='/lang/ru', class=locale == 'ru' ? 'active': ''): span RUS
+					a(href='/lang/en', class=locale == 'en' ? 'active': ''): span ENG
+				.contacts
+					//- info@k-s-m-s.com
+					a(href='mailto:kosmos.arch@gmail.com')
+						span e-mail
+					a(href='https://www.facebook.com/kosmosarchitects', target='_blank')
+						span facebook
+						img(src='/stuff/' + __app_name +'/icons/social/' + (menu_active =='research' ? 'f_icon_w.svg' : 'f_icon.svg'))
+					a(href='https://www.instagram.com/kosmos_architects', target='_blank')
+						span instagram
+						img(src='/stuff/' + __app_name +'/icons/social/' + (menu_active =='research' ? 'i_icon_w.svg' : 'i_icon.svg'))
+		include counters

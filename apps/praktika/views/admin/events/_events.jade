@@ -1,0 +1,26 @@
+mixin items(events)
+	each event in events
+		.list_item
+			a.item_rm.event(href='#', id=event._id) -- удалить
+			a.item_title(href='/admin/events/edit/' + event._id, class=event.status)= (event.i18n.title.get('ru') || '!!! ПУСТОЕ ПОЛЕ !!!')
+			span.item_preview
+				span= ' --> '
+				a(href='/' + (event.type == 'project' ? 'projects' : 'research') + '/' + (event.sym ? event.sym : event._short_id), target='_blank') превью
+
+mixin counters(count, skip)
+	a.list_back(href='#'): b назад
+	span= ' - '
+	select.list_select
+		- var i = 0;
+		while i < count
+			option(value=i selected= (i == skip / 10) )= i+1
+			- i++
+	span= ' - '
+	a.list_next(href='#'): b вперед
+
+
+if load_list
+	.list_items
+		+items(events)
+	.list_counter
+		+counters(count, skip)

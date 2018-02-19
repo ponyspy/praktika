@@ -1,0 +1,77 @@
+extends layout
+
+block header_meta
+	- var content_title= __('KOSMOS') + ' | ' + __(work.type == 'project' ? 'PROJECTS' : 'RESEARCH') + (work.i18n.title.get(locale) ? ' | ' + work.i18n.title.get(locale).toUpperCase() : '')
+	- var content_description = work.i18n.s_title.get(locale)
+	- var content_images = [work.poster]
+	- var menu_active = work.type
+
+block header_include
+	- var include_libs_css = ['swiper.min.css']
+	- var include_css = ['work.css']
+	- var include_libs_js = ['swiper.jquery.min.js']
+	- var include_js = ['work.js']
+
+block content
+	.work_header
+		h1.work_title= work.i18n.title.get(locale)
+		h2.work_s_title= work.i18n.s_title.get(locale)
+
+	.work_columns
+		.work_column.left
+			.work_meta
+				if work.year
+					.meta_column
+						.meta_title= __('Year')
+						.meta_data= work.year
+				if work.i18n.client.get(locale) != ''
+					.meta_column
+						.meta_title= __('Client')
+						.meta_data= work.i18n.client.get(locale)
+				if work.i18n.area.get(locale) != ''
+					.meta_column
+						.meta_title= __('Area')
+						.meta_data= work.i18n.area.get(locale)
+				if (work.categorys.length > 0 && work.categorys.some(function(category) { return category.status == 'base' }))
+					.meta_column
+						.meta_title= __('Tags')
+						.meta_data
+							each category, i in work.categorys
+								if (category.status == 'base')
+									a.category(href='/' + (type == 'project' ? 'projects' : 'research') + '#' + category.sym)= category.i18n.title.get(locale)
+				if work.files.length > 0
+					.meta_column
+						.meta_title= __('Files')
+						.meta_data
+							each file, i in work.files
+								- var description = file.description.filter(function(lang) { return lang.lg == locale })
+								a.file(href=file.path)= (description.length && description[0].value != '') ? description[0].value : __('file') + ' ' + i
+			img.work_poster(src=work.poster_column ? work.poster_column : work.poster)
+		.work_column.right
+			.work_description!= work.i18n.description.get(locale)
+
+	.work_images
+		each item in images
+			if item.length
+				- var g_size = 'g_3x'
+				if item.every(function(item) { return item.size == '2x' })
+					- g_size = 'g_2x'
+				else if item.every(function(item) { return item.size == '1x' })
+					- g_size = 'g_1x'
+				.gallery-block(class=g_size)
+					.swiper-button-next(class='swiper-button-' + (work.type == 'project' ? 'black' : 'white'))
+					.swiper-button-prev(class='swiper-button-' + (work.type == 'project' ? 'black' : 'white'))
+					.swiper-container: .swiper-wrapper
+						each image in item
+							.swiper-slide
+								//- img.slide_image(src=image.thumb)
+								img.swiper-lazy.slide_image(data-src=image.thumb)
+								//- .swiper-lazy-preloader.swiper-lazy-preloader-white
+								- var description = image.description.filter(function(lang) { return lang.lg == locale })
+								.slide_description= description.length ? description[0].value : ''
+			else
+				- var sizes = ['size_1x', 'size_2x', 'size_3x' ]
+				.image_item(class=sizes[sizes.indexOf('size_' + item.size)])
+					img.image(data-src=item.thumb)
+					- var description = item.description.filter(function(lang) { return lang.lg == locale })
+					.image_description= description.length ? description[0].value : ''

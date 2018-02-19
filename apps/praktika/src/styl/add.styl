@@ -1,0 +1,322 @@
+@media screen and (max-width: 1240px) {
+	.sub_menu_block.fixed {
+		position absolute!important
+		top 52px!important
+		border none!important
+	}
+}
+
+body
+	margin 0
+	padding 0
+	font 12pt/16pt Times
+
+a
+	color black
+	text-decoration none
+	&:hover
+		color red!important
+
+.main_block
+	width 1240px
+	padding-left 20px
+	padding-right 20px
+	box-sizing border-box
+	margin 0px auto
+
+.header_block
+	padding-top 20px
+
+.content_block
+	margin-top 60px
+	padding-bottom 60px
+
+.menu_block
+	margin 0 auto
+	user-select none
+	border-bottom 1px dashed black
+	overflow hidden
+	padding-bottom 10px
+	.logo
+		margin-right 60px
+		display inline-block
+		span
+			margin-left 3px
+			margin-right 3px
+		a
+			margin-right 0
+	a
+		margin-right 20px
+		display inline-block
+
+.sub_menu_block
+	z-index 9999999999
+	background-color white
+	top 52px
+	width 1200px
+	padding-top 10px
+	padding-bottom 5px
+	user-select none
+	height 25px
+	margin-bottom 20px
+	position absolute
+	&.fixed
+		top 0
+		position fixed
+		border-bottom 1px dashed black
+	.back_link:before
+		content '➔'
+		display inline-block
+		transform rotate(180deg)
+		margin-right 4px
+		top -2px
+		position relative
+	.separator
+		margin-right 10px
+	.sub_item
+		cursor pointer
+		margin-right 15px
+		&:hover
+			color red
+	.sub_right_block
+		float right
+		.form_submit
+			margin-left 5px
+		.sub_search
+			display inline-block
+			margin-top -1px
+			margin-left 15px
+			border none
+			outline none
+			padding 1px
+			border-bottom 1px dotted black
+			height 20px
+		.sub_drop
+			position relative
+			display inline-block
+			vertical-align top
+			white-space nowrap
+			margin-left 15px
+			.drop_title
+				position relative
+				cursor default
+				z-index 999
+			.drop_inner
+				position absolute
+				margin-top -4px
+				padding-top 23px
+				padding-left 5px
+				padding-right 5px
+				margin-left -5px
+				background-color white
+				box-sizing border-box
+				top 0
+				left 0
+				vertical-align top
+				display none
+				border 1px dotted black
+			&:hover .drop_inner
+				display block
+			.drop_item
+				cursor pointer
+				&:hover
+				&.select
+					color red
+
+.list_items
+	margin-bottom 5px
+	.item_title
+		&.special
+			color blue
+		&.hidden
+			color darkgrey
+	.arrow:after
+		padding-left 8px
+		padding-right 8px
+		content '➔'
+	border-top 1px dotted black
+	.list_item
+		padding-top 8px
+		padding-bottom 8px
+		border-bottom 1px dotted black
+		.item_preview
+			display none
+			&.show
+				display inline
+		.item_pull
+		.item_rm
+			display none
+			&.show
+				display inline
+			&:after
+				content '|'
+				margin-left 5px
+				margin-right 5px
+				color black
+		&:hover
+			background-color rgb(240, 237, 242)
+
+.add
+	font-weight bold
+	cursor pointer
+	&:hover
+	&.selected
+		color red
+
+.form_block
+	position relative
+
+input, textarea, select
+	font-size 12pt
+	outline none
+
+.ru
+	box-sizing border-box
+	margin 0
+	width 590px
+	display inline-block
+	&.input
+		width auto
+
+.en
+	box-sizing border-box
+	margin 0
+	width 590px
+	display none
+	margin-left 20px
+	&.input
+		width auto
+
+.en_img
+	display none
+
+.ru_file, .en_file
+	width 200px!important
+	float none!important
+	margin-left 18px
+
+.en_file
+	display none
+
+.editor
+	width 588px
+	float left
+	margin-right 20px
+	margin-bottom 20px
+	border-radius 0px
+	.wysiwyg-editor a
+		text-decoration underline!important
+		cursor pointer!important
+	&.wysiwyg-active
+		box-shadow none
+		border 1px solid #ccc
+	&.en
+		margin 0
+
+.title
+	margin-top 20px
+	font-size 20pt
+	line-height 24pt
+
+.form_title
+	margin-top 20px
+	margin-bottom 10px
+	font-size 14pt
+	line-height 16pt
+	clear both
+
+.footer_block
+	display none
+
+.spacer
+	display inline-block
+	width 10px
+	text-align center
+	margin-right 5px
+
+.form_images_upload
+	position relative
+	.upload_placeholder
+		position absolute
+		width 590px
+		height 100%
+		background-color rgba(0, 0, 0, 0.4)
+		z-index 9999
+		cursor pointer
+		box-sizing border-box
+		&:hover
+			border 3px solid red
+	.images_upload_preview
+		box-sizing border-box
+		width 590px
+		min-height 205px
+		padding-top 10px
+		overflow hidden
+		border 1px solid red
+		.placeholder
+			width 180px
+			height 180px
+			margin-bottom 10px
+			margin-left 10px
+			float left
+			background-color lightgrey
+			border 1px solid red
+		.image_upload_preview
+			width 180px
+			height 180px
+			margin-bottom 10px
+			margin-left 10px
+			float left
+			background-size cover
+			background-position center
+			border 1px solid red
+			&:hover
+				outline 1px solid red
+				.image_delete
+					display block
+			.image_gallery
+			.image_size
+			.image_main
+				user-select none
+				position relative
+				float right
+				padding 0px 8px 2px 8px
+				background-color red
+				color white
+				cursor default
+				&:hover
+					background-color black
+					color white
+			.image_delete
+				display none
+				position relative
+				float left
+				padding 0px 8px 2px 8px
+				background-color red
+				color white
+				cursor default
+				&:hover
+					background-color black
+					color white
+			.image_description
+				position absolute
+				width 610px
+				left 610px
+				top 0
+				bottom 0
+				display none
+				&.show
+					display block
+				.image_description_input
+					box-sizing border-box
+					display block
+					float left
+					width 285px
+					height 100%
+					border 1px solid #ccc
+					margin-right 20px
+					resize none
+					&:last-child
+						margin-right 0px
+					&.en_img
+						display none

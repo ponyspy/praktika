@@ -1,0 +1,98 @@
+extends layout
+
+block header_meta
+	- var content_title= __('KOSMOS') + ' | ' + __('OFFICE')
+	- var content_description = cv
+	- var menu_active = 'office'
+
+block header_include
+	- var include_css = ['office.css']
+	- var include_js = ['office.js']
+
+block content
+	.cv_block
+		.contacts_block
+			//- info@k-s-m-s.com
+			a.contacts_email(href='mailto:kosmos.arch@gmail.com') kosmos.arch@gmail.com
+			.contacts_adress!= adress
+			.contacts_body
+				.cv!= cv
+				.description.hidden!= desc
+				.block_cut: span=  __('More') + '...'
+
+
+		.peoples_block(id='team')
+			.block_title: a(href='#team')= __('Team')
+			.block_items
+				.items_master
+					each people in peoples
+						if people.type == 'master'
+							if (people.attach_cv || people.link)
+								a.block_item.open(href='/cv/' + people._short_id, target='_blank')
+									.item_photo(style='background-image: url(' + people.photo + ')')
+									.item_name= people.i18n.name.get(locale)
+									.item_open= __('Open CV')
+							else
+								.block_item
+									.item_photo(style='background-image: url(' + people.photo + ')')
+									.item_name= people.i18n.name.get(locale)
+				.items_slave
+					each people in peoples
+						if people.type == 'slave'
+							if (people.attach_cv || people.link)
+								a.item_name(href='/cv/' + people._short_id, target='_blank')= people.i18n.name.get(locale)
+							else
+								.item_name= people.i18n.name.get(locale)
+
+
+	//- img.block_poster(src='/stuff/kosmos/backgrounds/about.png')
+
+
+	if press.length > 0
+		.press_block(id='press')
+			.block_title: a(href='#press')= __('Press')
+			.block_items
+				each item, i in press
+					- var link = item.attach ? item.attach : item.link
+					a.block_item(href=link, rel='nofollow', class= (i >= 12) ? 'hidden' : '', class= !link ? 'no_link' : '',  target='_blank', onclick= !link ? 'return false;' : '')
+						.item_poster(style='background-image: url(' + item.poster + ')')
+						.item_title= item.i18n.title.get(locale)
+						.item_s_title= item.i18n.s_title.get(locale)
+						.item_year= item.year
+			if (press.length >= 12)
+				.block_cut: span=  __('More') + ' ' +  __('Press') + '...'
+
+
+	if awards.length > 0
+		.awards_block(id='awards')
+			.block_title: a(href='#awards')= __('Awards')
+			.block_items
+				each award, i in awards
+					.block_item(class= (i >= 9) ? 'hidden' : '')
+						.item_title= award.i18n.title.get(locale)
+						.item_s_title= award.i18n.s_title.get(locale)
+						.item_place= award.i18n.place.get(locale)
+						.item_year= award.year
+			if (awards.length >= 9)
+				.block_cut: span=  __('More') + ' ' +  __('Awards') + '...'
+
+
+	if events.length > 0
+		.events_block(id='events')
+			.block_title: a(href='#events')= __('Events')
+			.block_items
+				each event, i in events
+					a.block_item(href=event.link, rel='nofollow', target='_blank', class=event.link ? 'active' : '', class= (i >= 9) ? 'hidden' : '')
+						.item_title= event.i18n.title.get(locale)
+						.item_s_title= event.i18n.s_title.get(locale)
+						.item_place= event.i18n.place.get(locale)
+						.item_year= event.year
+			if (events.length >= 9)
+				.block_cut: span= __('More') + ' ' +  __('Events') + '...'
+
+
+	//- img.block_poster(src='/stuff/kosmos/backgrounds/about.png')
+
+
+	.portfolio_block
+		a.link(href='/cv', target='_blank', rel='nofollow'): span= __('You can download our full portfolio as PDF here.')

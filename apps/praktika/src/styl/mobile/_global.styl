@@ -1,0 +1,57 @@
+.title_block, .content_block, .footer_block
+	padding-left 20px!important
+	padding-right 20px!important
+
+.title_block
+	height 40px!important
+
+.stargazer_block
+	display none!important
+
+.menu_block
+	flex-direction column
+	justify-content flex-start!important
+	font 20pt/22pt 'MinionPro Semibold'!important
+	top 0
+	left 0
+	width 100%
+	padding-left 20px
+	padding-top 20px
+	position fixed
+	background-color white
+	z-index 99999
+	a
+		display inline-block!important
+		margin-bottom 10px
+		&.hidden
+			display none!important
+	.mail
+		display inline!important
+
+.menu_drop
+	display block!important
+
+.menu_open
+	overflow hidden
+	.menu_block
+		height 100%
+		a
+			margin-bottom 40px!important
+			&.hidden
+				display inline-block!important
+		.mail
+			margin-top 40px
+
+.footer_block
+	padding-top 0px!important
+	.logo
+		display none
+	.contacts
+		a
+			margin-left 5px
+			border-bottom 1px solid transparent!important
+		span
+			display none!important
+		img
+			display inline!important
+			width 20px

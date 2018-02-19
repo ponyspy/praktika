@@ -1,0 +1,35 @@
+extends ../layout
+include _medias
+
+block header_meta
+	- var content_title= 'КОНТЕНТ'
+
+block header_include
+	- var include_css = ['add.css']
+	- var include_js = ['lists.js']
+
+block sub_menu
+	a.sub_item.back_link(href='/') Назад
+	span.sub_item.toggle_rm Удалить
+	.sub_right_block
+
+		.sub_drop.status(style='z-index: 2;')
+			.drop_title Статус
+			.drop_inner
+				.drop_item(class='all').select Все
+				.drop_item(class='base') Обычный
+				.drop_item(class='hidden') Скрытый
+
+		input.sub_search(type='text', placeholder='Поиск...')
+
+block content
+	.title= content_title
+	br
+	a.add(href='/admin/medias/add') + Добавить контент
+	br
+	br
+	.lists_block
+		.list_items
+			+items(medias)
+		.list_counter
+			+counters(count)

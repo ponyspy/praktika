@@ -1,0 +1,29 @@
+extends ../layout
+
+block header_meta
+	- var content_title= 'ДОБАВИТЬ ПОЛЬЗОВАТЕЛЯ'
+
+block header_include
+	- var include_css = ['add.css']
+	- var include_js = ['add.js']
+
+block sub_menu
+	a.sub_item.back_link(href='/admin/users') Назад
+	.sub_right_block
+		input.form_cancel(type='submit', value='Отменить')
+		input.form_submit(type='submit', value='Добавить')
+
+block content
+	.form_block
+		.title= content_title
+		form(action="", method="post", autocomplete='off')
+			.form_title Логин:
+			input(type='text', name='login', autocomplete='off')
+			.form_title E-mail:
+			input(type='text', name='email', autocomplete='off')
+			.form_title Пароль:
+			input(type='password', name='password', autocomplete='off')
+			.form_title Роль:
+			select(name='status')
+				option(value='User') Пользователь
+				option(value='Admin') Администратор

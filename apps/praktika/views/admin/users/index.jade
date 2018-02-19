@@ -1,0 +1,34 @@
+extends ../layout
+
+block header_meta
+	- var content_title= 'ПОЛЬЗОВАТЕЛИ'
+
+block header_include
+	- var include_css = ['add.css']
+	- var include_js = ['lists.js']
+
+block sub_menu
+	a.sub_item.back_link(href='/admin') Назад
+	span.sub_item.toggle_rm Удалить
+	.sub_right_block
+		input.sub_search.local(type='text', placeholder='Поиск...')
+
+block content
+	.title= content_title
+	br
+	if (session.status == 'Admin')
+		a.add(href='/admin/users/add') + Добавить пользователя
+		br
+		br
+	.lists_block: .list_items
+		each user in users
+			if user.status == 'Admin'
+				- var status = '●●'
+			else if user.status == 'User'
+				- var status = '●'
+			else
+				- var status = '○'
+			.list_item
+				a.item_rm.user(href='#', id=user._id) -- удалить
+				a.item_title(href='/admin/users/edit/' + user._id)= (user.login || '!!! ПУСТОЕ ПОЛЕ !!!')
+				span.item_status= ' ' + status

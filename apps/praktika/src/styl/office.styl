@@ -1,0 +1,254 @@
+@media screen and (max-width: 680px)
+	@import 'mobile/_office.styl'
+
+.block_title
+	font 26pt/28pt 'MinionPro Medium'
+	padding-top 80px
+	margin-top 20px
+	margin-bottom 60px
+	letter-spacing 2px
+	a
+		text-decoration none
+		border-bottom 1px solid transparent
+		&:hover
+			border-bottom 1px solid black
+
+.block_poster
+	width 100%
+	display block
+
+.contacts_block
+	overflow hidden
+	.contacts_email
+		font 26pt/28pt 'MinionPro Semibold'
+		text-decoration none
+		display inline-block
+		float left
+		letter-spacing 2px
+		border-bottom 1px solid transparent
+		&:hover
+			border-bottom 1px solid black
+	.contacts_adress
+		clear both
+		margin-top 80px
+		width 40%
+		float left
+		padding-right 20px
+		box-sizing border-box
+		font 26pt/28pt 'MinionPro Semibold'
+		letter-spacing 2px
+		margin-bottom 80px
+		&:empty
+			display none
+	.contacts_body
+		margin-top 80px
+		width 60%
+		float right
+		padding-left 20px
+		box-sizing border-box
+		hyphens auto
+		font 16pt/22pt 'MinionPro Medium'
+		a
+			text-decoration none
+			border-bottom 1px solid black
+		.hidden
+			display none
+
+
+.peoples_block
+	overflow hidden
+	padding-top 80px
+	margin-top 20px
+	.block_title
+		float left
+		width 40%
+		margin-top 0
+		padding-top 0
+	.block_items
+		width 60%
+		float right
+		overflow hidden
+		.items_master
+			display flex
+			flex-direction row
+			flex-wrap wrap
+			justify-content space-between
+		.items_slave
+			font 16pt/22pt 'MinionPro Medium'
+			padding-left 20px
+			margin-top 20px
+			a.item_name
+				text-decoration none
+				border-bottom 1px solid black
+			.item_name
+				display inline
+				&:after
+					content ', '
+				&:last-child:after
+					content '.'
+		.block_item
+			text-decoration none
+			margin-left 20px
+			margin-bottom 20px
+			width 140px
+			.item_photo
+				width 140px
+				height 180px
+				margin 0 auto
+				margin-bottom 10px
+				background-position top
+				background-repeat no-repeat
+				background-size cover
+				transition .3s opacity linear
+			.item_name
+				text-align center
+				font 16pt/22pt 'MinionPro Medium'
+				padding-left 15px
+				padding-right 15px
+				box-sizing border-box
+			.item_open
+				opacity 0
+				text-align center
+				font 12pt/22pt 'MinionPro Medium'
+				text-transform uppercase
+				letter-spacing 2px
+			&.open:hover
+				.item_open
+					opacity 1
+				.item_photo
+					transition .3s linear
+					opacity .5
+
+.press_block
+	position relative
+	.block_cut
+		margin-top 40px
+		text-align center
+	.block_items
+		display flex
+		flex-direction row
+		flex-wrap wrap
+		justify-content space-between
+		margin-left -40px
+		margin-top -60px
+		&:after
+			content ''
+			display block
+			width 240px
+			height 0
+			margin-left 40px
+		.block_item
+			position relative
+			width 240px
+			height 240px
+			display block
+			text-decoration none
+			margin-top 60px
+			margin-left 40px
+			&.hidden
+				display none
+			&.no_link
+				cursor default
+			.item_title
+				margin-top 20px
+			.item_year
+				margin-top 20px
+			.item_poster
+				opacity 1
+				transition .3s linear
+				position absolute
+				z-index 9999
+				width 100%
+				height 100%
+				background-position top
+				background-size cover
+				background-repeat no-repeat
+			&:hover
+				.item_poster
+					transition .3s linear
+					filter: opacity(.3) blur(2px)
+				.item_title, .item_s_title, .item_year
+					opacity 1
+			.item_title
+				opacity 0
+				font 26pt/28pt 'MinionPro Medium'
+				margin-bottom 20px
+			.item_s_title
+				opacity 0
+				font 16pt/22pt 'MinionPro Medium'
+			.item_year
+				opacity 0
+				font 16pt/22pt 'MinionPro Medium'
+
+.events_block
+	margin-bottom 100px
+	.block_item.active
+		text-decoration none
+		transition .2s linear
+		&:hover
+			color grey
+			transition .2s linear
+
+.events_block, .awards_block
+	.block_items
+		width 100%
+		display table
+		border-collapse collapse
+		.block_item
+			display table-row
+			overflow hidden
+			border-bottom 1px solid black
+			&.hidden
+				display none
+			.item_title
+				padding-top 12px
+				padding-bottom 10px
+				width 40%
+				display table-cell
+				font 16pt/22pt 'MinionPro Semibold'
+				padding-right 80px
+				box-sizing border-box
+			.item_s_title
+				padding-top 12px
+				padding-bottom 10px
+				width 30%
+				display table-cell
+				font 16pt/22pt 'MinionPro MediumIt'
+				padding-right 40px
+				box-sizing border-box
+			.item_place
+				padding-top 12px
+				padding-bottom 10px
+				width 25%
+				display table-cell
+				font 14pt/22pt 'MinionPro Medium'
+				padding-right 40px
+				box-sizing border-box
+			.item_year
+				padding-top 12px
+				padding-bottom 10px
+				width 5%
+				display table-cell
+				text-align right
+				font 14pt/22pt 'MinionPro Medium'
+
+.portfolio_block
+	.link
+		display inline-block
+		font 26pt/28pt 'MinionPro Semibold'
+		margin-top 40px
+		text-decoration none
+		span
+			border-bottom 1px solid transparent
+		&:hover span
+			border-bottom 1px solid black
+
+.block_cut
+	font 12pt/14pt 'MinionPro Medium'
+	text-transform uppercase
+	letter-spacing 2px
+	margin-top 15px
+	span
+		cursor pointer
+		&:hover
+			border-bottom 1px solid black

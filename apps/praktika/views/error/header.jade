@@ -1,0 +1,49 @@
+- var version = '1.0'
+
+meta(charset='utf-8')
+meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+link(rel='shortcut icon', href='/stuff/' + __app_name + '/icons/favicon.ico', type='image/x-icon')
+
+
+block header_meta
+
+
+if content_title
+	title= content_title
+if content_description
+	meta(name='description', content=content_description)
+each image in content_images || []
+	meta(property='og:image' content='http://' + host + image)
+
+
+block header_include
+
+
+//- styles
+
+
+- var global_libs_css = []
+- var global_css = []
+
+- global_libs_css.push.apply(global_libs_css, include_libs_css || [])
+each item in global_libs_css
+	link(rel='stylesheet', type='text/css', href='/libs/css/' + item + '?ver=' + version)
+
+- global_css.push.apply(global_css, include_css || [])
+each item in global_css
+	link(rel='stylesheet', type='text/css', href='/build/' + __app_name +  '/css/' + item + '?ver=' + version)
+
+
+//- scripts
+
+
+- var global_libs_js = []
+- var global_js = []
+
+- global_libs_js.push.apply(global_libs_js, include_libs_js || [])
+each item in global_libs_js
+	script(type='text/javascript', src='/libs/js/' + item + '?ver=' + version)
+
+- global_js.push.apply(global_js, include_js || [])
+each item in global_js
+	script(type='text/javascript', src='/build/' + __app_name +  '/js/' + item + '?ver=' + version)

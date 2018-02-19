@@ -1,0 +1,15 @@
+extends layout
+
+block header_meta
+	- var content_title= __('KOSMOS') + ' | ' + __(type == 'project' ? 'PROJECTS' : 'RESEARCH')
+	- var menu_active = type
+	if type != 'project'
+		- var content_description = __('This is a collection of different projects we do besides and parallel to architecture: our research, art, academic publications, studies on the city and more.')
+
+block header_include
+	- var include_css = ['works.css']
+	- var include_js = ['works.js']
+
+block content
+	.works_block
+	.works_loader: span= __('More') + ' ' +  __(type == 'project' ? 'PROJECTS' : 'RESEARCH') + '...'

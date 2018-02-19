@@ -1,0 +1,23 @@
+mixin items(slides)
+	each slide in slides
+		.list_item
+			a.item_rm.slide(href='#', id=slide._id) -- удалить
+			a.item_title(href='/admin/slides/edit/' + slide._id, class=slide.status =='hidden' ? 'hidden': '')= (slide.i18n.title.get('ru') || '!!! ПУСТОЕ ПОЛЕ !!!')
+
+mixin counters(count, skip)
+	a.list_back(href='#'): b назад
+	span= ' - '
+	select.list_select
+		- var i = 0;
+		while i < count
+			option(value=i selected= (i == skip / 10) )= i+1
+			- i++
+	span= ' - '
+	a.list_next(href='#'): b вперед
+
+
+if load_list
+	.list_items
+		+items(slides)
+	.list_counter
+		+counters(count, skip)

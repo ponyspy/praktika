@@ -1,0 +1,11 @@
+extends layout
+
+block header_meta
+	- var content_title= 'Error' + ' / ' + status
+
+block header_include
+	- var include_css = ['error.css']
+
+block content
+	.error_title= 'Error' + ' ' + status
+	.error_message: pre(style='font-size: 11pt; line-height: 14pt;')= stack ? stack : message

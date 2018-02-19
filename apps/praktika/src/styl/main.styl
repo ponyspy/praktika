@@ -1,0 +1,31 @@
+@media screen and (max-width: 680px)
+	@import 'mobile/_main.styl'
+
+html, body, .main_block
+	height 100%
+
+.posters_block
+	.poster_item
+		display block
+		max-width 75%
+		max-height 75%
+		position absolute
+		top 0
+		left 0
+		right 0
+		bottom 0
+		margin auto
+		cursor pointer
+		visibility hidden
+		opacity 0
+		transition visibility 0s linear 0.5s, opacity 0.5s linear
+		&.active
+			visibility visible
+			opacity 1
+			transition-delay 0s
+
+.footer_block
+	bottom 20px
+	width 100%
+	position absolute
+	padding-top 50px

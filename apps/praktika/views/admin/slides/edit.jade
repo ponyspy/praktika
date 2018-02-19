@@ -1,0 +1,37 @@
+extends ../layout
+include ../_forms.jade
+
+block header_meta
+	- var content_title= 'РЕДАКТИРОВАТЬ СЛАЙД'
+
+block header_include
+	- var include_libs_css = ['pickmeup.min.css', 'font-awesome.css', 'wysiwyg-editor.min.css']
+	- var include_css = ['add.css']
+	- var include_libs_js = ['jquery.pickmeup.min.js', 'wysiwyg.min.js', 'wysiwyg-editor.min.js']
+	- var include_js = ['editor.js', 'add.js', 'a_events.js']
+
+block sub_menu
+	a.sub_item.back_link(href='/admin/slides') Назад
+	span.sub_item.toggle_eng Перевод
+	.sub_right_block
+		input.form_cancel(type='submit', value='Отменить')
+		input.form_submit(type='submit', value='Сохранить')
+
+block content
+	.form_block
+		.title= content_title
+		form(action="", method="post", enctype="multipart/form-data")
+			.form_title Название:
+			+form_text_single('title', slide)
+			.form_title Описание:
+			+form_text_multi('description', slide)
+			.form_title Обложка:
+			+form_single_file('poster', slide)(accept='image/jpeg,image/png,image/gif')
+			.form_title Видео MP4:
+			+form_multiple_files('video', slide)(accept='video/mp4')
+			.form_title Статус:
+			select(name='status')
+				option(value='base') Обычный
+				option(value='hidden', selected= slide.status == 'hidden' && 'hidden') Скрытый
+			.form_title Дата публикации:
+			+form_date('date', slide.date)

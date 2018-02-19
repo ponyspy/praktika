@@ -1,0 +1,42 @@
+extends ../layout
+include _members.jade
+
+block header_meta
+	- var content_title= 'КОМАНДА'
+
+block header_include
+	- var include_css = ['add.css']
+	- var include_js = ['lists.js']
+
+block sub_menu
+	a.sub_item.back_link(href='/admin') Назад
+	span.sub_item.toggle_rm Удалить
+	.sub_right_block
+
+		.sub_drop.type(style='z-index: 2;')
+			.drop_title Тип
+			.drop_inner
+				.drop_item(class='all').select Все
+				.drop_item(class='actor') Актер
+				.drop_item(class='director') Режиссер
+
+		.sub_drop.status(style='z-index: 1;')
+			.drop_title Статус
+			.drop_inner
+				.drop_item(class='all').select Все
+				.drop_item(class='base') Обычный
+				.drop_item(class='hidden') Скрытый
+
+		input.sub_search(type='text', placeholder='Поиск...')
+
+block content
+	.title= content_title
+	br
+	a.add(href='/admin/members/add') + Добавить участника
+	br
+	br
+	.lists_block
+		.list_items
+			+items(members)
+		.list_counter
+			+counters(count)
