@@ -24,8 +24,12 @@ block content
 		form(action="", method="post")
 			.form_title Название:
 			+form_text_single('title', announce)
+			.form_title Описание:
+			+form_text_multi('description', announce)
 			.form_title Статус:
 			select(name='status')
 				option(value='base') Обычный
 				option(value='hidden', selected= announce.status == 'hidden' && 'hidden') Скрытый
 				option(value='special', selected= announce.status == 'special' && 'special') Особый
+			.form_title Дата публикации:
+			+form_date('date', announce.date)

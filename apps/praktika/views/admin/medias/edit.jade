@@ -29,9 +29,10 @@ block content
 			.form_title Обложка:
 			+form_single_file('poster', media)(accept='image/jpeg,image/png,image/gif')
 			.form_title Видео MP4:
-			+form_multiple_files('video', media)(accept='video/mp4')
+			+form_single_file('video', media)(accept='video/mp4')
 			.form_title Статус:
 			select(name='status')
 				option(value='base') Обычный
 				option(value='hidden', selected= media.status == 'hidden' && 'hidden') Скрытый
-				option(value='special', selected= media.status == 'special' && 'special') Особый
+			.form_title Дата публикации:
+			+form_date('date', media.date)
