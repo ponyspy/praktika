@@ -25,7 +25,7 @@ module.exports = (function() {
 		.get(members.add.index)
 		.post(members.add.form);
 
-	router.route('/edit/:people_id')
+	router.route('/edit/:member_id')
 		.get(members.edit.index)
 		.post(members.edit.form);
 

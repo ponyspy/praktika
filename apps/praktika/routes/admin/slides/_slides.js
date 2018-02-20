@@ -25,7 +25,7 @@ module.exports = (function() {
 		.get(slides.add.index)
 		.post(slides.add.form);
 
-	router.route('/edit/:publication_id')
+	router.route('/edit/:slide_id')
 		.get(slides.edit.index)
 		.post(slides.edit.form);
 

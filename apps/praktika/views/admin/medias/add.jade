@@ -24,6 +24,12 @@ block content
 		form(action="", method="post", enctype="multipart/form-data")
 			.form_title Название:
 			+form_text_single('title')
+			.form_title Описание:
+			+form_text_multi('description')
+			.form_title Стиль:
+			select(name='style')
+				option(value='black') Черный
+				option(value='white') Белый
 			.form_title Обложка:
 			+form_single_file('poster')(accept='image/jpeg,image/png,image/gif')
 			.form_title Видео MP4:

@@ -26,6 +26,10 @@ block content
 			+form_text_single('title', media)
 			.form_title Описание:
 			+form_text_multi('description', media)
+			.form_title Стиль:
+			select(name='style')
+				option(value='black') Черный
+				option(value='white', selected= media.style == 'white' && 'white') Белый
 			.form_title Обложка:
 			+form_single_file('poster', media)(accept='image/jpeg,image/png,image/gif')
 			.form_title Видео MP4:

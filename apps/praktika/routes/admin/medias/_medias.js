@@ -25,7 +25,7 @@ module.exports = (function() {
 		.get(medias.add.index)
 		.post(medias.add.form);
 
-	router.route('/edit/:publication_id')
+	router.route('/edit/:media_id')
 		.get(medias.edit.index)
 		.post(medias.edit.form);
 

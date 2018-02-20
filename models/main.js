@@ -80,6 +80,7 @@ var announceSchema = new Schema({
 
 mediaSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
+	description: { type: String, trim: true, locale: true },
 	poster: String,
 	video: String,
 	style: String, // black / white

@@ -32,6 +32,7 @@ module.exports = function(Model, Params) {
 
 			media.status = post.status;
 			media.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
+			media.style = post.style;
 
 			var locales = post.en ? ['ru', 'en'] : ['ru'];
 

@@ -25,6 +25,7 @@ module.exports = function(Model, Params) {
 		slide._short_id = shortid.generate();
 		slide.status = post.status;
 		slide.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
+		sldie.style = post.style;
 
 		var locales = post.en ? ['ru', 'en'] : ['ru'];
 
