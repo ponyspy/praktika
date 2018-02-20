@@ -25,6 +25,10 @@ block content
 			+form_text_single('name', member)
 			.form_title Описание:
 			+form_text_multi('description', member)
+			.form_title Тип:
+			select(name='type')
+				option(value='actor') Актер
+				option(value='director', selected= member.type == 'director' && 'director') Режиссер
 			.form_title Фото:
 			+form_single_file('photo', member)(accept='image/jpeg,image/png,image/gif')
 			.form_title Статус:
