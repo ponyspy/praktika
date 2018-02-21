@@ -25,6 +25,10 @@ block content
 			+form_text_single('title')
 			.form_title Описание:
 			+form_text_multi('description')
+			.form_title Оглавление:
+			select(name='contents')
+				option(value='true') Вкл.
+				option(value='false') Выкл.
 			.form_title Стиль:
 			select(name='style')
 				option(value='black') Черный

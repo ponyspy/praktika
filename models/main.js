@@ -32,12 +32,11 @@ var eventSchema = new Schema({
 	poster: { type: String },
 	sym: { type: String, trim: true, index: true, unique: true, sparse: true },
 	schedule: [
-		{ date: { type: Date } }
+		{ date: Date, premiere: Boolean }
 	],
 	comments: [{
 		title: { type: String, trim: true, locale: true },
-		photo: { type: String },
-		name: { type: String, trim: true, locale: true },
+		member: { type: ObjectId, ref: 'Member' },
 		description: { type: String, trim: true, locale: true },
 	}],
 	members: [{
@@ -96,6 +95,7 @@ mediaSchema = new Schema({
 slideSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
+	contents: Boolean,
 	poster: String,
 	video: String,
 	style: String, // black / white

@@ -30,6 +30,14 @@ block content
 			input(type='text', name='sym', value=event.sym, placeholder=event._short_id)
 			.form_title Описание:
 			+form_text_multi('description', event)
+			.form_title Продолжительность:
+			+form_text_single('duration', event)
+			.form_title Площадка:
+			+form_text_single('place', event)
+			.form_title Возраст:
+			select(name='age')
+				each age, i in new Array(22)
+					option(value=i, selected=(event.age == i))= i + '+'
 			.form_title Обложка:
 			+form_single_file('poster', event)(accept='image/jpeg,image/png,image/gif')
 			.form_title Изображения:
