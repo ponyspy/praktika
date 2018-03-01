@@ -31,7 +31,7 @@ block content
 			.form_title Описание:
 			+form_text_multi('description', event)
 			.form_title Участники:
-			+form_members()
+			+form_members(event.members)
 			.form_title Продолжительность:
 			+form_text_single('duration', event)
 			.form_title Площадка:
