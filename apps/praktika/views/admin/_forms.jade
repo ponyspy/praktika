@@ -146,13 +146,13 @@ mixin form_images_upload(images)
 //- Members form
 
 mixin form_members(groups)
-	.group_members
+	.block_items
 		if !groups || !groups.length
-			.group_item
+			.block_item.group
 				.group_options
-					input.rm_group(type='button', value='- Удалить группу')
-					input.up_group(type='button', value='▲')
-					input.down_group(type='button', value='▼')
+					input.rm_block(type='button', value='- Удалить группу')
+					input.up_block(type='button', value='▲')
+					input.down_block(type='button', value='▼')
 					span!= '&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;'
 					span показать:
 					select.group_mode
@@ -176,11 +176,11 @@ mixin form_members(groups)
 				br
 		else
 			each group in groups
-				.group_item
+				.block_item.group
 					.group_options
-						input.rm_group(type='button', value='- Удалить группу')
-						input.up_group(type='button', value='▲')
-						input.down_group(type='button', value='▼')
+						input.rm_block(type='button', value='- Удалить группу')
+						input.up_block(type='button', value='▲')
+						input.down_block(type='button', value='▼')
 						span!= '&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;'
 						span показать:
 						select.group_mode
@@ -206,15 +206,15 @@ mixin form_members(groups)
 
 		input.add_group(type='button', value='+ Добавить группу')
 
-//- Members form
+//- Comments form
 
 mixin form_comments(comments)
-	.comments_list
-		.comment_item
+	.block_items
+		.block_item.comment
 			.comment_options
-				input.rm_comment(type='button', value='- Удалить комментарий')
-				input.up_comment(type='button', value='▲')
-				input.down_comment(type='button', value='▼')
+				input.rm_block(type='button', value='- Удалить комментарий')
+				input.up_block(type='button', value='▲')
+				input.down_block(type='button', value='▼')
 			br
 			.comment_title
 				input.ru(type="text")
@@ -228,7 +228,8 @@ mixin form_comments(comments)
 			.comment_description
 				textarea.ru.editor
 				textarea.en.editor(disabled)
-		br(style='clear: both;')
-		div ------------
-		br
+			br(style='clear: both;')
+			div ------------
+			br
+
 		input.add_comment(type='button', value='+ Добавит комментарий')
