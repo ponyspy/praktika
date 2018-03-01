@@ -6,6 +6,7 @@ module.exports = function(Model, Params) {
 	var module = {};
 
 	var Event = Model.Event;
+	var Member = Model.Member;
 
 	var uploadImages = Params.upload.images;
 	var uploadImage = Params.upload.image;
@@ -13,7 +14,9 @@ module.exports = function(Model, Params) {
 
 
 	module.index = function(req, res, next) {
-		res.render('admin/events/add.jade');
+		Member.find().sort('name.value').exec(function(err, members) {
+			res.render('admin/events/add.jade', { members: members });
+		});
 	};
 
 

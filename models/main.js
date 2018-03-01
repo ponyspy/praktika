@@ -41,6 +41,7 @@ var eventSchema = new Schema({
 	}],
 	members: [{
 		title: { type: String, trim: true, locale: true },
+		mode: String,
 		list: [{ type: ObjectId, ref: 'Member' }],
 	}],
 	images: [{

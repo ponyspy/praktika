@@ -142,3 +142,38 @@ mixin form_images_upload(images)
 						.image_description
 							textarea.image_description_input.ru_img(name='images[description][ru][]', placeholder='Описание')= get_locale(image.description, 'ru')
 							textarea.image_description_input.en_img(name='images[description][en][]', placeholder='Description')= get_locale(image.description, 'en')
+
+//- Members form
+
+mixin form_members()
+	.group_members
+		each item in new Array(1)
+			.group_item
+				.group_options
+					input.rm_group(type='button', value='- Удалить группу')
+					input.up_group(type='button', value='▲')
+					input.down_group(type='button', value='▼')
+					span!= '&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;'
+					span показать:
+					select.group_mode
+						option(value='event') в событии
+						option(value='schedule') в расписании
+						option(value='all') везде
+				br
+				.group_title
+					input.ru(type="text")
+					input.en(type="text", disabled)
+				br
+				.group_list
+					each item in new Array(1)
+						.list_item
+							input.rm_member(type='button', value='-')
+							select
+								each member in members
+									option(value=member._id)= member.i18n.name.get('ru')
+					input.add_member(type='button', value='+')
+				br
+				div ------------
+				br
+
+		input.add_group(type='button', value='+ Добавить группу')

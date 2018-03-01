@@ -8,7 +8,7 @@ block header_include
 	- var include_libs_css = ['pickmeup.min.css', 'font-awesome.css', 'wysiwyg-editor.min.css']
 	- var include_css = ['add.css']
 	- var include_libs_js = ['jquery.pickmeup.min.js', 'wysiwyg.min.js', 'wysiwyg-editor.min.js', 'jquery-ui.min.js', 'jquery.filedrop.js']
-	- var include_js = ['upload.js', 'editor.js', 'add.js', 'a_events.js']
+	- var include_js = ['upload.js', 'editor.js', 'add.js', 'a_events.js', 'aa_events.js']
 
 block sub_menu
 	a.sub_item.back_link(href='/admin/events') Назад
@@ -30,6 +30,8 @@ block content
 			input(type='text', name='sym', value=event.sym, placeholder=event._short_id)
 			.form_title Описание:
 			+form_text_multi('description', event)
+			.form_title Участники:
+			+form_members()
 			.form_title Продолжительность:
 			+form_text_single('duration', event)
 			.form_title Площадка:

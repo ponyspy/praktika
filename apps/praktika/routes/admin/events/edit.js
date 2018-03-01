@@ -5,6 +5,7 @@ module.exports = function(Model, Params) {
 	var module = {};
 
 	var Event = Model.Event;
+	var Member = Model.Member;
 
 	var previewImages = Params.upload.preview;
 	var uploadImages = Params.upload.images;
@@ -18,10 +19,14 @@ module.exports = function(Model, Params) {
 		Event.findById(id).exec(function(err, event) {
 			if (err) return next(err);
 
-			previewImages(event.images, function(err, images_preview) {
+			Member.find().sort('name.value').exec(function(err, members) {
 				if (err) return next(err);
 
-				res.render('admin/events/edit.jade', { event: event, images_preview: images_preview });
+				previewImages(event.images, function(err, images_preview) {
+					if (err) return next(err);
+
+					res.render('admin/events/edit.jade', { event: event, members: members, images_preview: images_preview });
+				});
 			});
 		});
 
@@ -35,6 +40,8 @@ module.exports = function(Model, Params) {
 
 		Event.findById(id).exec(function(err, event) {
 			if (err) return next(err);
+
+			console.log(post.members)
 
 			event.status = post.status;
 			event.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
