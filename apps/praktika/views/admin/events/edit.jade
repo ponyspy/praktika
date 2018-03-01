@@ -38,6 +38,8 @@ block content
 			select(name='age')
 				each age, i in new Array(22)
 					option(value=i, selected=(event.age == i))= i + '+'
+			.form_title Расписание:
+			+form_schedule()
 			.form_title Участники:
 			+form_members(event.members)
 			.form_title Комментарии:

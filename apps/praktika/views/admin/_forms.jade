@@ -206,3 +206,24 @@ mixin form_comments(comments)
 				br
 
 		input.add_comment(type='button', value='+ Добавить комментарий')
+
+//- Schedule form
+
+mixin form_schedule(schedule)
+	each date in new Array(5)
+		.date_item
+			input(type='button', value='-')
+			input.date(type='text')
+			span= ' -- '
+			select
+				option(value='12') 12
+			span :
+			select
+				option(value='0') 00
+			span= ' -- '
+			label
+				input(type='checkbox', name='premiere')
+				!= ' премьера'
+			br
+			br
+	input(type='button', value='+ Добавить дату')
