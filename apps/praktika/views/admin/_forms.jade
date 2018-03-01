@@ -205,3 +205,30 @@ mixin form_members(groups)
 					br
 
 		input.add_group(type='button', value='+ Добавить группу')
+
+//- Members form
+
+mixin form_comments(comments)
+	.comments_list
+		.comment_item
+			.comment_options
+				input.rm_comment(type='button', value='- Удалить комментарий')
+				input.up_comment(type='button', value='▲')
+				input.down_comment(type='button', value='▼')
+			br
+			.comment_title
+				input.ru(type="text")
+				input.en(type="text", disabled)
+			br
+			.comment_member
+				select
+					each member in members
+						option(value=member._id, selected=list_item == member._id.toString())= member.i18n.name.get('ru')
+			br
+			.comment_description
+				textarea.ru.editor
+				textarea.en.editor(disabled)
+		br(style='clear: both;')
+		div ------------
+		br
+		input.add_comment(type='button', value='+ Добавит комментарий')

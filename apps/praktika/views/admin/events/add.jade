@@ -29,8 +29,6 @@ block content
 			input(type='text', name='sym')
 			.form_title Описание:
 			+form_text_multi('description')
-			.form_title Участники:
-			+form_members()
 			.form_title Продолжительность:
 			+form_text_single('duration')
 			.form_title Площадка:
@@ -39,6 +37,10 @@ block content
 			select(name='age')
 				each age, i in new Array(22)
 					option(value=i)= i + '+'
+			.form_title Участники:
+			+form_members()
+			.form_title Комментарии:
+			+form_comments()
 			.form_title Обложка:
 			+form_single_file('poster')(accept='image/jpeg,image/png,image/gif')
 			.form_title Изображения:
