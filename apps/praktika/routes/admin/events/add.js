@@ -31,20 +31,20 @@ module.exports = function(Model, Params) {
 		event.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 		event.age = post.age;
 		event.sym = post.sym ? post.sym : undefined;
-		event.members = post.members.map(function(group) {
+		event.members = post.members && post.members.map(function(group) {
 			return {
 				mode: group.mode,
 				title: [{ 'lg':'ru', 'value': group.title.ru }, { 'lg':'en', 'value': group.title.en }],
 				list: group.list
 			};
-		});
-		event.comments = post.comments.map(function(comment) {
+		}) || [];
+		event.comments = post.comments && post.comments.map(function(comment) {
 			return {
 				title: [{ 'lg':'ru', 'value': comment.title.ru }, { 'lg':'en', 'value': comment.title.en }],
 				description: [{ 'lg':'ru', 'value': comment.description.ru }, { 'lg':'en', 'value': comment.description.en }],
 				member: comment.member
 			};
-		});
+		}) || [];
 
 		var locales = post.en ? ['ru', 'en'] : ['ru'];
 

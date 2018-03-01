@@ -3,7 +3,7 @@ $(function() {
 		e.preventDefault();
 
 
-		$('.block_item.group').toArray().forEach(function(group, i) {
+		$('.block_item.group').not('.hidden').toArray().forEach(function(group, i) {
 			$('<input />').attr('type', 'hidden')
 										.attr('name', 'members' + '[' + i + ']' + '[mode]')
 										.attr('value', $(group).find('.group_mode').val())
@@ -28,7 +28,7 @@ $(function() {
 		});
 
 
-		$('.block_item.comment').toArray().forEach(function(comment, i) {
+		$('.block_item.comment').not('.hidden').toArray().forEach(function(comment, i) {
 			$('<input />').attr('type', 'hidden')
 										.attr('name', 'comments' + '[' + i + ']' + '[title][ru]')
 										.attr('value', $(comment).find('.comment_title input.ru').val())
@@ -57,7 +57,6 @@ $(function() {
 		});
 
 
-
 		this.submit();
 	});
 
@@ -72,27 +71,41 @@ $(function() {
 			$block.insertAfter($block.next());
 		})
 		.on('click', '.rm_block', function(e) {
-			if ($(this).closest('.block_items').children('.block_item').size() == 1) return false;
-			$(this).closest('.block_item').remove();
+			if ($(this).closest('.block_items').children('.block_item').size() == 1) {
+				$(this).closest('.block_item').addClass('hidden').hide();
+			} else {
+				$(this).closest('.block_item').remove();
+			}
 		})
 		.on('click', '.add_comment', function(e) {
 			var $block = $(this).closest('.block_items').children('.block_item');
-			$block.first().clone()
-				.find('option').prop('selected', false).end()
-				.find('textarea').val('').end()
-				.find('input[type=text]').val('').end()
-				.insertAfter($block.last());
+
+			if ($block.size() == 1 && $block.hasClass('hidden')) {
+				$block.removeClass('hidden').show();
+			} else {
+				$block.first().clone()
+					.find('option').prop('selected', false).end()
+					.find('textarea').val('').end()
+					.find('input[type=text]').val('').end()
+					.insertAfter($block.last());
+			}
 		})
 		.on('click', '.add_group', function(e) {
 			var $block = $(this).closest('.block_items').children('.block_item');
-			$block.first().clone()
-				.find('.list_item').first().nextAll('.list_item').remove().end().end().end()
-				.find('option').prop('selected', false).end()
-				.find('input[type=text]').val('').end()
-				.insertAfter($block.last());
+
+			if ($block.size() == 1 && $block.hasClass('hidden')) {
+				$block.removeClass('hidden').show();
+			} else {
+				$block.first().clone()
+					.find('.list_item').first().nextAll('.list_item').remove().end().end().end()
+					.find('option').prop('selected', false).end()
+					.find('input[type=text]').val('').end()
+					.insertAfter($block.last());
+			}
 		})
 		.on('click', '.add_member', function(e) {
 			var $members = $(this).closest('.group_list').children('.list_item');
+
 			$members.first().clone()
 				.find('option').prop('selected', false).end()
 				.find('.input').val('').end()

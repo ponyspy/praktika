@@ -147,8 +147,8 @@ mixin form_images_upload(images)
 
 mixin form_members(groups)
 	.block_items
-		each group in groups || [{ mode: 'event', list: [null], title: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ] }]
-			.block_item.group
+		each group in (groups && groups.length) ? groups : [{ hidden: true, mode: 'event', list: [null], title: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ] }]
+			.block_item.group(class= group.hidden ? 'hidden' : '', style=group.hidden ? 'display: none;': '')
 				.group_options
 					input.rm_block(type='button', value='- Удалить группу')
 					input.up_block(type='button', value='▲')
@@ -182,8 +182,8 @@ mixin form_members(groups)
 
 mixin form_comments(comments)
 	.block_items
-		each comment in comments || [{ title: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ], description: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ] }]
-			.block_item.comment
+		each comment in (comments && comments.length) ? comments : [{ hidden: true, title: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ], description: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ] }]
+			.block_item.comment(class= comment.hidden ? 'hidden' : '', style=comment.hidden ? 'display: none;': '')
 				.comment_options
 					input.rm_block(type='button', value='- Удалить комментарий')
 					input.up_block(type='button', value='▲')
@@ -205,4 +205,4 @@ mixin form_comments(comments)
 				div ------------
 				br
 
-		input.add_comment(type='button', value='+ Добавит комментарий')
+		input.add_comment(type='button', value='+ Добавить комментарий')
