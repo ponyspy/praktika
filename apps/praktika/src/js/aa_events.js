@@ -28,6 +28,36 @@ $(function() {
 		});
 
 
+		$('.block_item.comment').toArray().forEach(function(comment, i) {
+			$('<input />').attr('type', 'hidden')
+										.attr('name', 'comments' + '[' + i + ']' + '[title][ru]')
+										.attr('value', $(comment).find('.comment_title input.ru').val())
+										.appendTo('form');
+
+			$('<input />').attr('type', 'hidden')
+										.attr('name', 'comments' + '[' + i + ']' + '[title][en]')
+										.attr('value', $(comment).find('.comment_title input.en').val())
+										.appendTo('form');
+
+			$('<input />').attr('type', 'hidden')
+										.attr('name', 'comments' + '[' + i + ']' + '[description][ru]')
+										.attr('value', $(comment).find('.comment_description textarea.ru').val())
+										.appendTo('form');
+
+			$('<input />').attr('type', 'hidden')
+										.attr('name', 'comments' + '[' + i + ']' + '[description][en]')
+										.attr('value', $(comment).find('.comment_description textarea.en').val())
+										.appendTo('form');
+
+			$('<input />').attr('type', 'hidden')
+										.attr('name', 'comments' + '[' + i + ']' + '[member]')
+										.attr('value', $(comment).find('.comment_member select').val())
+										.appendTo('form');
+
+		});
+
+
+
 		this.submit();
 	});
 

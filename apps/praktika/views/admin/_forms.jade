@@ -147,7 +147,7 @@ mixin form_images_upload(images)
 
 mixin form_members(groups)
 	.block_items
-		if !groups || !groups.length
+		each group in groups || [{ mode: 'event', list: [null], title: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ] }]
 			.block_item.group
 				.group_options
 					input.rm_block(type='button', value='- Удалить группу')
@@ -156,53 +156,25 @@ mixin form_members(groups)
 					span!= '&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;'
 					span показать:
 					select.group_mode
-						option(value='event') в событии
-						option(value='schedule') в расписании
-						option(value='all') везде
+						option(value='event', selected=group.mode == 'event') в событии
+						option(value='schedule', selected=group.mode == 'schedule') в расписании
+						option(value='all', selected=group.mode == 'all') везде
 				br
 				.group_title
-					input.ru(type="text")
-					input.en(type="text", disabled)
+					input.ru(type="text", value=group.title.filter(function(locale) { return locale.lg == 'ru' })[0].value)
+					input.en(type="text", disabled, value=group.title.filter(function(locale) { return locale.lg == 'en' })[0].value)
 				br
 				.group_list
-					.list_item
-						input.rm_member(type='button', value='-')
-						select
-							each member in members
-								option(value=member._id, selected=list_item == member._id.toString())= member.i18n.name.get('ru')
+					each list_item in group.list
+						.list_item
+							input.rm_member(type='button', value='-')
+							select
+								each member in members
+									option(value=member._id, selected=list_item == member._id.toString())= member.i18n.name.get('ru')
 					input.add_member(type='button', value='+')
 				br
 				div ------------
 				br
-		else
-			each group in groups
-				.block_item.group
-					.group_options
-						input.rm_block(type='button', value='- Удалить группу')
-						input.up_block(type='button', value='▲')
-						input.down_block(type='button', value='▼')
-						span!= '&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;'
-						span показать:
-						select.group_mode
-							option(value='event', selected=group.mode == 'event') в событии
-							option(value='schedule', selected=group.mode == 'schedule') в расписании
-							option(value='all', selected=group.mode == 'all') везде
-					br
-					.group_title
-						input.ru(type="text", value=group.title.filter(function(locale) { return locale.lg == 'ru' })[0].value)
-						input.en(type="text", disabled, value=group.title.filter(function(locale) { return locale.lg == 'en' })[0].value)
-					br
-					.group_list
-						each list_item in group.list
-							.list_item
-								input.rm_member(type='button', value='-')
-								select
-									each member in members
-										option(value=member._id, selected=list_item == member._id.toString())= member.i18n.name.get('ru')
-						input.add_member(type='button', value='+')
-					br
-					div ------------
-					br
 
 		input.add_group(type='button', value='+ Добавить группу')
 
@@ -210,26 +182,27 @@ mixin form_members(groups)
 
 mixin form_comments(comments)
 	.block_items
-		.block_item.comment
-			.comment_options
-				input.rm_block(type='button', value='- Удалить комментарий')
-				input.up_block(type='button', value='▲')
-				input.down_block(type='button', value='▼')
-			br
-			.comment_title
-				input.ru(type="text")
-				input.en(type="text", disabled)
-			br
-			.comment_member
-				select
-					each member in members
-						option(value=member._id, selected=list_item == member._id.toString())= member.i18n.name.get('ru')
-			br
-			.comment_description
-				textarea.ru.editor
-				textarea.en.editor(disabled)
-			br(style='clear: both;')
-			div ------------
-			br
+		each comment in comments || [{ title: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ], description: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ] }]
+			.block_item.comment
+				.comment_options
+					input.rm_block(type='button', value='- Удалить комментарий')
+					input.up_block(type='button', value='▲')
+					input.down_block(type='button', value='▼')
+				br
+				.comment_title
+					input.ru(type="text", value=comment.title.filter(function(locale) { return locale.lg == 'ru' })[0].value)
+					input.en(type="text", disabled, value=comment.title.filter(function(locale) { return locale.lg == 'en' })[0].value)
+				br
+				.comment_member
+					select
+						each member in members
+							option(value=member._id, selected=comment.member == member._id.toString())= member.i18n.name.get('ru')
+				br
+				.comment_description
+					textarea.ru.editor(type="text")=comment.description.filter(function(locale) { return locale.lg == 'ru' })[0].value
+					textarea.en.editor(type="text", disabled)=comment.description.filter(function(locale) { return locale.lg == 'en' })[0].value
+				br(style='clear: both;')
+				div ------------
+				br
 
 		input.add_comment(type='button', value='+ Добавит комментарий')
