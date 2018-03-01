@@ -38,6 +38,13 @@ module.exports = function(Model, Params) {
 				list: group.list
 			};
 		});
+		event.comments = post.comments.map(function(comment) {
+			return {
+				title: [{ 'lg':'ru', 'value': comment.title.ru }, { 'lg':'en', 'value': comment.title.en }],
+				description: [{ 'lg':'ru', 'value': comment.description.ru }, { 'lg':'en', 'value': comment.description.en }],
+				member: comment.member
+			};
+		});
 
 		var locales = post.en ? ['ru', 'en'] : ['ru'];
 
