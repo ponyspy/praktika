@@ -1,3 +1,16 @@
+var date_config = {
+	format: 'Y-m-d',
+	hide_on_select: true,
+	mode: 'single',
+	locale: {
+		days: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+		daysShort: ['Вс.', 'Пн.', 'Вт.', 'Ср.', 'Чт.', 'Пт.', 'Сб.', 'Вс.'],
+		daysMin: ['Вс.', 'Пн.', 'Вт.', 'Ср.', 'Чт.', 'Пт.', 'Сб.', 'Вс.'],
+		months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+		monthsShort: ['Янв.', 'Фев.', 'Мар.', 'Апр.', 'Май', 'Июн.', 'Июл.', 'Авг.', 'Сен.', 'Окт.', 'Нояб.', 'Дек.']
+	}
+};
+
 $(function() {
 	$('form').on('submit', function(e) {
 		e.preventDefault();
@@ -86,7 +99,7 @@ $(function() {
 				$block.first().clone()
 					.find('option').prop('selected', false).end()
 					.find('input[type=checkbox]').prop('checked', false).end()
-					.find('input[type=text]').val('').end()
+					.find('input[type=text]').val('').pickmeup(date_config).end()
 					.insertAfter($block.last());
 			}
 		})
