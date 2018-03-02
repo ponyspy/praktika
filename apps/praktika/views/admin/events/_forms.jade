@@ -1,0 +1,117 @@
+//- Members form
+
+mixin form_members(groups)
+	.block_items
+		each group in (groups && groups.length) ? groups : [{ hidden: true, mode: 'event', list: [null], title: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ] }]
+			.block_item.group(class= group.hidden ? 'hidden' : '', style=group.hidden ? 'display: none;': '')
+				.group_options
+					input.rm_block(type='button', value='- Удалить группу')
+					input.up_block(type='button', value='▲')
+					input.down_block(type='button', value='▼')
+					span!= '&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;'
+					span показать:
+					select.group_mode
+						option(value='event', selected=group.mode == 'event') в событии
+						option(value='schedule', selected=group.mode == 'schedule') в расписании
+						option(value='all', selected=group.mode == 'all') везде
+				br
+				.group_title
+					input.ru(type="text", value=group.title.filter(function(locale) { return locale.lg == 'ru' })[0].value)
+					input.en(type="text", disabled, value=group.title.filter(function(locale) { return locale.lg == 'en' })[0].value)
+				br
+				.group_list
+					each list_item in group.list
+						.list_item
+							input.rm_member(type='button', value='-')
+							select
+								each member in members
+									option(value=member._id, selected=list_item == member._id.toString())= member.i18n.name.get('ru')
+					input.add_member(type='button', value='+')
+				br
+				div ------------
+				br
+
+		input.add_group(type='button', value='+ Добавить группу')
+
+//- Comments form
+
+mixin form_comments(comments)
+	.block_items
+		each comment in (comments && comments.length) ? comments : [{ hidden: true, title: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ], description: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ] }]
+			.block_item.comment(class= comment.hidden ? 'hidden' : '', style=comment.hidden ? 'display: none;': '')
+				.comment_options
+					input.rm_block(type='button', value='- Удалить комментарий')
+					input.up_block(type='button', value='▲')
+					input.down_block(type='button', value='▼')
+				br
+				.comment_title
+					input.ru(type="text", value=comment.title.filter(function(locale) { return locale.lg == 'ru' })[0].value)
+					input.en(type="text", disabled, value=comment.title.filter(function(locale) { return locale.lg == 'en' })[0].value)
+				br
+				.comment_member
+					select
+						each member in members
+							option(value=member._id, selected=comment.member == member._id.toString())= member.i18n.name.get('ru')
+				br
+				.comment_description
+					textarea.ru.editor(type="text")=comment.description.filter(function(locale) { return locale.lg == 'ru' })[0].value
+					textarea.en.editor(type="text", disabled)=comment.description.filter(function(locale) { return locale.lg == 'en' })[0].value
+				br(style='clear: both;')
+				div ------------
+				br
+
+		input.add_comment(type='button', value='+ Добавить комментарий')
+
+//- Publications form
+
+mixin form_publications(publications)
+	.block_items
+		each publication in (publications && publications.length) ? publications : [{ hidden: true, link: '', title: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ], description: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ] }]
+			.block_item.publication(class= publication.hidden ? 'hidden' : '', style=publication.hidden ? 'display: none;': '')
+				.publication_options
+					input.rm_block(type='button', value='- Удалить публикацию')
+					input.up_block(type='button', value='▲')
+					input.down_block(type='button', value='▼')
+				br
+				.publication_title
+					input.ru(type="text", value=publication.title.filter(function(locale) { return locale.lg == 'ru' })[0].value)
+					input.en(type="text", disabled, value=publication.title.filter(function(locale) { return locale.lg == 'en' })[0].value)
+				br
+				.publication_link
+					input.link(type="text", value=publication.link, placeholder='https://cnn.com')
+					input.link_open(type='button', value='>')
+				br
+				.publication_description
+					textarea.ru.editor(type="text")=publication.description.filter(function(locale) { return locale.lg == 'ru' })[0].value
+					textarea.en.editor(type="text", disabled)=publication.description.filter(function(locale) { return locale.lg == 'en' })[0].value
+				br(style='clear: both;')
+				div ------------
+				br
+
+		input.add_publication(type='button', value='+ Добавить публикацию')
+
+//- Schedule form
+
+mixin form_schedule(schedule)
+	.block_items
+		each date in (schedule && schedule.length) ? schedule : [{ hidden: true, date: null, premiere: false }]
+			.block_item.schedule(class= date.hidden ? 'hidden' : '', style=date.hidden ? 'display: none;': '')
+				input.rm_block(type='button', value='-')
+				input.date(type='text')
+				span= ' -- '
+				select
+					each hours, i in new Array(24)
+						- var format = ('0' + i).slice(-2)
+						option(value=format)= format
+				span :
+				select
+					each minute, i in new Array(12)
+						- var format = ('0' + (i*5)).slice(-2)
+						option(value=format)= format
+				span= ' -- '
+				label
+					input(type='checkbox', name='premiere')
+					!= ' премьера'
+				br
+				br
+		input.add_date(type='button', value='+ Добавить дату')
