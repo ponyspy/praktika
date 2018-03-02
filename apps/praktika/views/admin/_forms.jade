@@ -211,7 +211,7 @@ mixin form_comments(comments)
 
 mixin form_schedule(schedule)
 	.block_items
-		each date in (schedule && schedule.length) ? schedule : [{ hidden: true, date: new Date(), premiere: false }]
+		each date in (schedule && schedule.length) ? schedule : [{ hidden: true, date: null, premiere: false }]
 			.block_item.schedule(class= date.hidden ? 'hidden' : '', style=date.hidden ? 'display: none;': '')
 				input.rm_block(type='button', value='-')
 				input.date(type='text')
