@@ -5,10 +5,10 @@ block header_meta
 	- var content_title= 'РЕДАКТИРОВАТЬ КОНТЕНТ'
 
 block header_include
-	- var include_libs_css = ['font-awesome.css', 'wysiwyg-editor.min.css']
+	- var include_libs_css = ['pickmeup.min.css']
 	- var include_css = ['add.css']
-	- var include_libs_js = ['wysiwyg.min.js', 'wysiwyg-editor.min.js']
-	- var include_js = ['editor.js', 'add.js']
+	- var include_libs_js = ['jquery.pickmeup.min.js']
+	- var include_js = ['add.js', 'a_events.js']
 
 block sub_menu
 	a.sub_item.back_link(href='/admin/medias') Назад
@@ -24,8 +24,6 @@ block content
 		form(action="", method="post", enctype="multipart/form-data")
 			.form_title Название:
 			+form_text_single('title', media)
-			.form_title Описание:
-			+form_text_multi('description', media)
 			.form_title Стиль:
 			select(name='style')
 				option(value='black') Черный
