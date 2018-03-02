@@ -19,7 +19,7 @@ $(function() {
 		})
 		.on('click', '.down_block', function(e) {
 			var $block = $(this).closest('.block_item');
-			if ($block.next().hasClass('add_group') || $block.next().hasClass('add_comment')) return false;
+			if ($block.next().attr('class').match(/add_comment|add_publication|add_group/)) return false;
 			$block.insertAfter($block.next());
 		})
 		.on('click', '.rm_block', function(e) {
