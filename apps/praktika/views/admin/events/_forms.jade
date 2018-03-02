@@ -99,18 +99,18 @@ mixin form_schedule(schedule)
 				input.rm_block(type='button', value='-')
 				input.date(type='text')
 				span= ' -- '
-				select
+				select.hours
 					each hours, i in new Array(24)
 						- var format = ('0' + i).slice(-2)
 						option(value=format)= format
 				span :
-				select
+				select.minutes
 					each minute, i in new Array(12)
 						- var format = ('0' + (i*5)).slice(-2)
 						option(value=format)= format
 				span= ' -- '
 				label
-					input(type='checkbox', name='premiere')
+					input.premiere(type='checkbox', name='premiere')
 					!= ' премьера'
 				br
 				br

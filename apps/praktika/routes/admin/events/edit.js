@@ -45,20 +45,30 @@ module.exports = function(Model, Params) {
 			event.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 			event.age = post.age;
 			event.sym = post.sym ? post.sym : undefined;
+
+			event.schedule = post.schedule && post.schedule.map(function(schedule) {
+				return {
+					date: moment(schedule.date + 'T' + schedule.time.hours + ':' + schedule.time.minutes),
+					premiere: schedule.premiere
+				};
+			}) || [];
+
 			event.members = post.members && post.members.map(function(group) {
 				return {
 					mode: group.mode,
 					title: [{ 'lg':'ru', 'value': group.title.ru }, { 'lg':'en', 'value': group.title.en }],
 					list: group.list
 				};
-			});
+			}) || [];
+
 			event.comments = post.comments && post.comments.map(function(comment) {
 				return {
 					title: [{ 'lg':'ru', 'value': comment.title.ru }, { 'lg':'en', 'value': comment.title.en }],
 					description: [{ 'lg':'ru', 'value': comment.description.ru }, { 'lg':'en', 'value': comment.description.en }],
 					member: comment.member
 				};
-			});
+			}) || [];
+
 			event.publications = post.publications && post.publications.map(function(publication) {
 				return {
 					title: [{ 'lg':'ru', 'value': publication.title.ru }, { 'lg':'en', 'value': publication.title.en }],
