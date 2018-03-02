@@ -1,0 +1,23 @@
+mixin items(docs)
+	each doc in docs
+		.list_item
+			a.item_rm.doc(href='#', id=doc._id) -- удалить
+			a.item_title(href='/admin/documents/edit/' + doc._id, class=doc.status)= (doc.i18n.title.get('ru') || '!!! ПУСТОЕ ПОЛЕ !!!')
+
+mixin counters(count, skip)
+	a.list_back(href='#'): b назад
+	span= ' - '
+	select.list_select
+		- var i = 0;
+		while i < count
+			option(value=i selected= (i == skip / 10) )= i+1
+			- i++
+	span= ' - '
+	a.list_next(href='#'): b вперед
+
+
+if load_list
+	.list_items
+		+items(docs)
+	.list_counter
+		+counters(count, skip)

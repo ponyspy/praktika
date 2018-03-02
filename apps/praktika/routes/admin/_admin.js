@@ -8,6 +8,7 @@ var admin = {
 	events: require('./events/_events.js'),
 	announces: require('./announces/_announces.js'),
 	medias: require('./medias/_medias.js'),
+	documents: require('./documents/_documents.js'),
 	slides: require('./slides/_slides.js'),
 	members: require('./members/_members.js'),
 	cv: require('./cv.js'),
@@ -32,6 +33,7 @@ module.exports = (function() {
 
 	router.use('/events', checkAuth, upload.fields([ { name: 'poster' } ]), admin.events);
 	router.use('/medias', checkAuth, upload.fields([ { name: 'poster' }, { name: 'video' } ]), admin.medias);
+	router.use('/documents', checkAuth, upload.fields([ { name: 'attach' } ]), admin.documents);
 	router.use('/slides', checkAuth, upload.fields([ { name: 'poster' }, { name: 'video' } ]), admin.slides);
 	router.use('/announces', checkAuth, admin.announces);
 	router.use('/members', checkAuth, upload.fields([ { name: 'photo' } ]), admin.members);

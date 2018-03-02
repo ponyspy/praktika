@@ -26,7 +26,6 @@ module.exports = function(Model, Params) {
 		var post = req.body;
 		var files = req.files;
 		var id = req.params.media_id;
-		console.log(files)
 
 		Media.findById(id).exec(function(err, media) {
 			if (err) return next(err);
