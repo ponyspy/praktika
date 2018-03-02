@@ -65,7 +65,7 @@ var memberSchema = new Schema({
 	name: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
 	photo: { type: String },
-	type: { type: String },  // actor, director...
+	roles: [{ type: String }],  // actor, director...
 	status: String,
 	_short_id: { type: String, unique: true, index: true, sparse: true },
 	date: { type: Date, default: Date.now },

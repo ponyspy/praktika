@@ -30,7 +30,7 @@ module.exports = function(Model, Params) {
 			if (err) return next(err);
 
 			member.status = post.status;
-			member.type = post.type;
+			member.roles = post.roles;
 			member.sym = post.sym ? post.sym : undefined;
 			member.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 

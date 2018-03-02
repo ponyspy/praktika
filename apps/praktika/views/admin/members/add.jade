@@ -25,10 +25,15 @@ block content
 			+form_text_single('name')
 			.form_title Описание:
 			+form_text_multi('description')
-			.form_title Тип:
-			select(name='style')
-				option(value='actor') Актер
-				option(value='director') Режиссер
+			.form_title Роли:
+			.snake_outer
+				span.snake
+					input.back(type="button", value="-")
+					select(name='roles[]', disabled=disable)
+						- var roles = { actor: 'актер', director: 'режиссер' }
+						each role, i in roles
+							option(value=i)= role
+				input.forward(type="button", value="+")
 			.form_title Фото:
 			+form_single_file('photo')(accept='image/jpeg,image/png,image/gif')
 			.form_title Статус:
