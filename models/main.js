@@ -31,12 +31,18 @@ var eventSchema = new Schema({
 	age: Number,
 	poster: { type: String },
 	sym: { type: String, trim: true, index: true, unique: true, sparse: true },
-	schedule: [
-		{ date: Date, premiere: Boolean }
-	],
+	schedule: [{
+		date: Date,
+		premiere: Boolean
+	}],
 	comments: [{
 		title: { type: String, trim: true, locale: true },
 		member: { type: ObjectId, ref: 'Member' },
+		description: { type: String, trim: true, locale: true },
+	}],
+	publications: [{
+		title: { type: String, trim: true, locale: true },
+		link: String,
 		description: { type: String, trim: true, locale: true },
 	}],
 	members: [{
