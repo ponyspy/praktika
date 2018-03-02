@@ -58,7 +58,14 @@ module.exports = function(Model, Params) {
 					description: [{ 'lg':'ru', 'value': comment.description.ru }, { 'lg':'en', 'value': comment.description.en }],
 					member: comment.member
 				};
-			})
+			});
+			event.publications = post.publications && post.publications.map(function(publication) {
+				return {
+					title: [{ 'lg':'ru', 'value': publication.title.ru }, { 'lg':'en', 'value': publication.title.en }],
+					description: [{ 'lg':'ru', 'value': publication.description.ru }, { 'lg':'en', 'value': publication.description.en }],
+					link: publication.link
+				};
+			}) || [];
 
 			var locales = post.en ? ['ru', 'en'] : ['ru'];
 
