@@ -77,6 +77,19 @@ $(function() {
 				$(this).closest('.block_item').remove();
 			}
 		})
+		.on('click', '.add_date', function(e) {
+			var $block = $(this).closest('.block_items').children('.block_item');
+
+			if ($block.size() == 1 && $block.hasClass('hidden')) {
+				$block.removeClass('hidden').show();
+			} else {
+				$block.first().clone()
+					.find('option').prop('selected', false).end()
+					.find('input[type=checkbox]').prop('checked', false).end()
+					.find('input[type=text]').val('').end()
+					.insertAfter($block.last());
+			}
+		})
 		.on('click', '.add_comment', function(e) {
 			var $block = $(this).closest('.block_items').children('.block_item');
 

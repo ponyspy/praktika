@@ -210,20 +210,21 @@ mixin form_comments(comments)
 //- Schedule form
 
 mixin form_schedule(schedule)
-	each date in new Array(5)
-		.date_item
-			input(type='button', value='-')
-			input.date(type='text')
-			span= ' -- '
-			select
-				option(value='12') 12
-			span :
-			select
-				option(value='0') 00
-			span= ' -- '
-			label
-				input(type='checkbox', name='premiere')
-				!= ' премьера'
-			br
-			br
-	input(type='button', value='+ Добавить дату')
+	.block_items
+		each date in (schedule && schedule.length) ? schedule : [{ hidden: true, date: null, premiere: false }]
+			.block_item.schedule(class= date.hidden ? 'hidden' : '', style=date.hidden ? 'display: none;': '')
+				input.rm_block(type='button', value='-')
+				input.date(type='text')
+				span= ' -- '
+				select
+					option(value='12') 12
+				span :
+				select
+					option(value='0') 00
+				span= ' -- '
+				label
+					input(type='checkbox', name='premiere')
+					!= ' премьера'
+				br
+				br
+		input.add_date(type='button', value='+ Добавить дату')
