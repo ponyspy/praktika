@@ -107,7 +107,7 @@ mixin form_schedule(schedule)
 					each hours, i in new Array(24)
 						- var format = ('0' + i).slice(-2)
 						option(value=format, selected=i == hh)= format
-				span :
+				span= ' : '
 				select.minutes
 					each minute, i in new Array(12)
 						- var format = ('0' + (i*5)).slice(-2)
