@@ -1,10 +1,10 @@
 module.exports = function(Model) {
 	var module = {};
 
-	var Media = Model.Media;
+	var Sldie = Model.Slide;
 
 	module.index = function(req, res) {
-		res.render('main/index.jade');
+		res.render('main/about.jade');
 	};
 
 	return module;
