@@ -9,7 +9,7 @@ var main = {
 	docs: require('./docs.js')(Model),
 	about: require('./about.js')(Model),
 	contacts: require('./contacts.js')(),
-	// options: require('./options.js')(Model)
+	options: require('./options.js')(Model)
 };
 
 module.exports = (function() {
@@ -42,8 +42,8 @@ module.exports = (function() {
 		res.redirect('back');
 	});
 
-	// router.route('/sitemap.xml')
-	// 	.get(main.options.sitemap);
+	router.route('/sitemap.xml')
+		.get(main.options.sitemap);
 
 	return router;
 })();

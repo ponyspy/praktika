@@ -1,30 +1,29 @@
 var sitemap = require('sitemap');
 
-module.exports = function(Model, Params) {
+module.exports = function(Model) {
 	var module = {};
 
-	var Work = Model.Work;
+	var Event = Model.Event;
 
 	module.sitemap = function(req, res, next) {
-		Work.where('status').ne('hidden').exec(function(err, works) {
-			var get_tree = function(base, works) {
-				return works.reduce(function(prev, work) {
-					if (base.replace('projects', 'project') == work.type) {
-						prev.push({ url: '/' + base + '/' + work._short_id });
-					}
 
-					return prev;
-				}, [{ url: '/' + base }]);
-			};
+		Event.where('status').ne('hidden').exec(function(err, events) {
+			var arr_events = events.map(function(event) {
+				return {
+					url: '/events/' + (event.sym ? event.sym : event._short_id)
+				};
+			});
 
 			var site_map = sitemap.createSitemap ({
 				hostname: 'https://' + req.hostname,
 				// cacheTime: 600000,
 				urls: [
 					{ url: '/' },
-					{ url: '/office' },
-				].concat(get_tree('projects', works))
-				 .concat(get_tree('research', works))
+					{ url: '/team' },
+					{ url: '/contacts' },
+					{ url: '/about' },
+					{ url: '/docs' },
+				].concat(arr_events)
 			});
 
 			site_map.toXML(function (err, xml) {
