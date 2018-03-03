@@ -29,30 +29,26 @@ $(function() {
 				$(this).closest('.block_item').remove();
 			}
 		})
-		.on('click', '.add_date', function(e) {
+		.on('click', '.add_date, .add_comment, .add_publication, .add_group', function(e) {
 			var $block = $(this).closest('.block_items').children('.block_item');
 
 			if ($block.size() == 1 && $block.hasClass('hidden')) {
-				$block.removeClass('hidden').show();
-			} else {
-				$block.first().clone()
+				$block.removeClass('hidden')
+					.find('.list_item').first().nextAll('.list_item').remove().end().end().end()
 					.find('option').prop('selected', false).end()
+					.find('textarea').val('').end()
+					.find('input[type=text]').val('').end()
 					.find('input[type=checkbox]').prop('checked', false).end()
-					.find('input[type=text]').val('').pickmeup(date_config).end()
-					.insertAfter($block.last());
-			}
-		})
-		.on('click', '.add_comment, .add_publication, .add_group', function(e) {
-			var $block = $(this).closest('.block_items').children('.block_item');
-
-			if ($block.size() == 1 && $block.hasClass('hidden')) {
-				$block.removeClass('hidden').show();
+					.find('.date').val('').pickmeup(date_config).end()
+					.show();
 			} else {
 				$block.first().clone()
 					.find('.list_item').first().nextAll('.list_item').remove().end().end().end()
 					.find('option').prop('selected', false).end()
 					.find('textarea').val('').end()
 					.find('input[type=text]').val('').end()
+					.find('input[type=checkbox]').prop('checked', false).end()
+					.find('.date').val('').pickmeup(date_config).end()
 					.insertAfter($block.last());
 			}
 		})
