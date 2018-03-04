@@ -22,13 +22,13 @@ function initialize() {
 			mapOptions);
 
 	var infowindow = new google.maps.InfoWindow({
-			content: 'Театр практика'
+			content: 'театр практика'
 	});
 
 	var marker = new google.maps.Marker({
 			position: marker_position,
 			map: map,
-			title: 'Театр практика'
+			title: 'театр практика'
 	});
 
 	google.maps.event.addListener(marker, 'click', function() {
