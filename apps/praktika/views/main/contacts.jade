@@ -6,11 +6,12 @@ block header_meta
 
 block header_include
 	- var include_css = ['contacts.css']
-	- var include_js = ['contacts.js']
+	- var include_ext_js = ['https://maps.googleapis.com/maps/api/js?sensor=false']
+	- var include_js = ['contacts.js', 'g_maps.js']
 
 
 block content
-	.map_block
+	.map_block#map-canvas
 	.contacts_block: .contacts_inner
 		.column
 			.title адрес
