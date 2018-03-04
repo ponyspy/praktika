@@ -2,39 +2,42 @@ doctype html
 html
 	head
 		include header
-	body(class=menu_active)
-		.main_block
-			.title_block
-				.menu_block
-					span: a(href='/', class=menu_active == 'main' ? 'active' : '')= __('KOSMOS')
-					span: a.hidden(href='/office', class=menu_active == 'office' ? 'active' : '')= __('OFFICE')
-					span: a.hidden(href='/projects', class=menu_active == 'project' ? 'active' : '')= __('PROJECTS')
-					span: a.hidden(href='/research', class=menu_active == 'research' ? 'active' : '')= __('RESEARCH')
-					//- info@k-s-m-s.com
-					span.mail: a.hidden(href='mailto:kosmos.arch@gmail.com') kosmos.arch@gmail.com
-				.menu_drop
-					each span in new Array(4)
-						span
-				if (session && session.user_id)
-					.stargazer_block
-							a(href='/auth') stargazer
-							span= ' | '
-							a(href='/auth/logout') выход
-			.content_block
-				block content
-			.footer_block
-				.logo: span!= '&copy;K-S-M-S ' + new Date().getFullYear()
-				.language
-					a(href='/lang/ru', class=locale == 'ru' ? 'active': ''): span RUS
-					a(href='/lang/en', class=locale == 'en' ? 'active': ''): span ENG
-				.contacts
-					//- info@k-s-m-s.com
-					a(href='mailto:kosmos.arch@gmail.com')
-						span e-mail
-					a(href='https://www.facebook.com/kosmosarchitects', target='_blank')
-						span facebook
-						img(src='/stuff/' + __app_name +'/icons/social/' + (menu_active =='research' ? 'f_icon_w.svg' : 'f_icon.svg'))
-					a(href='https://www.instagram.com/kosmos_architects', target='_blank')
-						span instagram
-						img(src='/stuff/' + __app_name +'/icons/social/' + (menu_active =='research' ? 'i_icon_w.svg' : 'i_icon.svg'))
+	body
+		.title_block: .title_inner
+			.menu_block
+				.menu_open
+				.menu_items
+					.items_main
+						a(href='/events') репертуар и билеты
+						a(href='/contacts') контакты
+						//- if (session && session.user_id)
+							span.stargazer_block
+								a(href='/auth') stargazer
+								span= ' | '
+								a(href='/auth/logout') выход
+					.items_drop
+						a(href='/team') команда
+						a(href='/about') о театре
+			.nav_block
+				a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
+				a.lang(href='#') eng
+			a(href='/'): img.logo(src='/stuff/praktika/logo/logo_praktika.svg')
+
+		.content_block
+			block content
+
+		.footer_block: .footer_inner
+			a.logo_dep(href='#'): img(src='/stuff/praktika/logo/logo_depcult.svg')
+			.quality_block
+				a(href='#')
+					img(src='/stuff/praktika/logo/likes-01.svg')
+					span Оценка качества услуг учреждений культуры
+				a(href='#')
+					span Результаты независимой оценки качества услуг
+			.social_block
+				a(href='#'): img(src='/stuff/praktika/social/facebook.svg')
+				a(href='#'): img(src='/stuff/praktika/social/instagram.svg')
+				a(href='#'): img(src='/stuff/praktika/social/vk.svg')
+				a(href='#'): img(src='/stuff/praktika/social/telegram.svg')
+
 		include counters

@@ -1,15 +1,21 @@
 extends layout
 
 block header_meta
-	- var content_title= __('KOSMOS')
-	- var content_description= __('Architectural office which collaborates virtually between Moscow, Basel, New York and Bangkok.')
-	- var menu_active = 'main'
+	- var content_title= 'практика'
 
 block header_include
+	- var include_libs_css = ['swiper.min.css']
 	- var include_css = ['main.css']
+	- var include_libs_js = ['swiper.min.js']
 	- var include_js = ['main.js']
 
+
 block content
-	.posters_block
-		each poster in posters
-			img.poster_item(data-src=poster)
+	a.announcement_block(href='/events')
+		.announcement_title обновилось расписание на январь
+		.announcement_desc Успейте купить билеты на детскую новогоднюю программу и любимые спектакли
+	.slider_block.swiper-container
+		.swiper-wrapper
+			each slide, i in new Array(1)
+				.slide_item.swiper-slide(style='background-image: url(/stuff/praktika/main/' + (i+1) + '.jpg)')
+		.swiper-pagination.swiper-pagination-white

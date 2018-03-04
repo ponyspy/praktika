@@ -1,0 +1,46 @@
+extends layout
+
+block header_meta
+	- var content_title= 'практика' + ' : ' + __('репертуар')
+
+block header_include
+	- var include_css = ['events.css']
+	- var include_js = ['events.js']
+
+
+block content
+	include p_db/events.jade
+
+	.timeline_block: .timeline_outer: .timeline_inner
+		each month, i in month_array
+			.month_item(class=(i==0 ? 'selected' : ''), data-month=month)
+				.month_placeholder(class=(i==0 ? 'hide' : ''))
+				.month_days
+					each day, j in week_array
+						.day_item(class=(day == 'сб' || day == 'вс') ? 'weekend': '')
+							.day_date= j+1
+							.day_week= day
+
+	.events_block
+		.events_title
+			.select_month.prev
+			.current_month(data-month='сентябрь') сентябрь
+			.select_month.next
+
+		.events_list
+			each event, i in events
+				.event_item
+					.event_poster(style='background-image: url(/stuff/praktika/events/' + (i+1) + '.jpg)')
+					.event_body
+						.event_head
+							.event_date 3 сентября
+							.event_ticket купить билет
+						.event_title= event.title
+						.event_meta
+							.event_age 18
+							.event_members
+								.members_title режиссёры
+								.members_items
+									each director in event.directors
+										a.item(href='#')= director
+						.event_description= event.desc

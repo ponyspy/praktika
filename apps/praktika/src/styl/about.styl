@@ -1,7 +1,6 @@
 @import '_fonts.styl'
 @media screen and (max-width: 680px)
-	@import 'mobile/_main.styl'
-
+	@import 'mobile/_about.styl'
 
 html, body
 	height 100%
@@ -31,26 +30,20 @@ html, body
 	height 100%
 	background-color black
 
-.announcement_block
-	display block
-	text-decoration none
+.slider_navigate
 	position absolute
-	top 240px
-	left 40px
-	max-width 470px
-	z-index 999999999999
+	bottom 0px
+	bottom 110px
+	font 14pt/14pt 'PT Mono'
 	color white
-	border-left 4px solid transparent
-	padding-left 20px
-	&:hover
-		border-left 4px solid white
-	a
-		color white
-	.announcement_title
-		font 18pt/20pt 'PT Mono Bold'
-	.announcement_desc
-		margin-top 30px
-		font 12pt/14pt 'PT Mono'
+	left 40px
+	z-index 9999999999999
+	.navigate_item
+		float left
+		margin-right 20px
+		cursor pointer
+		&:hover
+			opacity 0.7
 
 .slider_block
 	width 100%
@@ -62,6 +55,22 @@ html, body
 		background-size cover
 		background-position center
 		background-repeat no-repeat
+		color white
+		.slide_body
+			margin-top 160px
+			margin-left 40px
+			.slide_title
+				max-width 720px
+				font 24pt/26pt 'PT Mono Bold'
+			.slide_desc
+				max-width 720px
+				margin-top 40px
+				margin-left 220px
+				font 14pt/18pt 'PT Mono'
+	.swiper-button-next
+		right 40px
+	.swiper-button-prev
+		left 40px
 	.swiper-pagination
 		bottom 110px
 		left auto!important

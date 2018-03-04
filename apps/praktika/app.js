@@ -53,8 +53,8 @@ app.use(session({
 app.use(function(req, res, next) {
 	res.locals.__app_name = __app_name;
 	res.locals.session = req.session;
-	res.locals.locale = req.cookies.locale || 'en';
-	req.locale = req.cookies.locale || 'en';
+	res.locals.locale = req.cookies.locale || 'ru';
+	req.locale = req.cookies.locale || 'ru';
 	res.locals.host = req.hostname;
 	res.locals.url = req.originalUrl;
 	next();

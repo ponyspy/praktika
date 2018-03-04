@@ -1,0 +1,34 @@
+extends layout
+
+block header_meta
+	- var content_title= 'практика' + ' : ' + __('о театре')
+
+block header_include
+	- var include_libs_css = ['swiper.min.css']
+	- var include_css = ['about.css']
+	- var include_libs_js = ['swiper.min.js']
+	- var include_js = ['about.js']
+
+
+block content
+	.slider_block.swiper-container
+		.swiper-wrapper
+			each slide, i in new Array(8)
+				if !(i % 2 == 0)
+					.slide_item.swiper-slide
+						.slide_body
+							.slide_title резиденция
+							.slide_desc
+								p В сентябре 2016 года здесь была создана резиденция для Мастерских театральных ВУЗов, чтобы дать молодым творческим группам возможность реализоваться и поработать с лучшими авторами, режиссёрами и художниками.
+								p Резидентами «Практики» были выбраны Мастерская Дмитрия Брусникина и Мастерская Олега Кудряшова — таким образом, театр стал официальным продюсером постановок Мастерских.
+				else
+					.slide_item.swiper-slide(style='background-image: url(/stuff/praktika/about/' + (i+1) + '.jpg)')
+
+		.swiper-button-next.swiper-button-white
+		.swiper-button-prev.swiper-button-white
+		.swiper-pagination.swiper-pagination-white
+
+	.slider_navigate
+		.navigate_item идея
+		.navigate_item резиденция
+		.navigate_item кафе

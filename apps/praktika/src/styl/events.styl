@@ -1,0 +1,173 @@
+@import '_fonts.styl'
+@media screen and (max-width: 680px)
+	@import 'mobile/_events.styl'
+
+.timeline_block
+	width 100%
+	border-top 1px solid black
+	border-bottom 1px solid black
+	box-sizing border-box
+	background-color white
+	position absolute
+	top 160px
+	z-index 999
+	height 60px
+	overflow hidden
+	user-select none
+	&.fix
+		position fixed
+		top 0
+	.timeline_outer
+		width 100%
+		overflow hidden	// overflow-x scroll
+	.timeline_inner
+		vertical-align top
+		display inline-block
+		white-space nowrap
+		font-size 0
+		.month_item
+			display inline-block
+			white-space nowrap
+			border-right 1px solid black
+			padding-right 40px
+			padding-left 40px
+			position relative
+			opacity .4
+			.month_placeholder
+				position absolute
+				top 0; left 0; right 0; bottom 0;
+				margin auto
+				cursor pointer
+				&.hide
+					display none
+			&:hover
+				opacity 1
+			&.selected
+				opacity 1
+				background-color rgb(247, 247, 247)
+			&.selected .day_item:hover
+				color white
+				background-color black
+			&:last-child
+				border-right none
+				margin-right 0
+				padding-right 0
+				padding-right 40px
+			.day_item
+				display inline-block
+				white-space nowrap
+				margin-right 5px
+				cursor pointer
+				padding-top 10px
+				padding-bottom 10px
+				padding-left 5px
+				padding-right 5px
+				&.weekend
+					color rgb(226, 82, 65)
+				&.selected
+					color white
+					background-color black
+				&:last-child
+					margin-right 0
+				.day_date
+					margin-bottom 6px
+					text-align center
+					font 10pt/12pt 'PT Mono Bold'
+				.day_week
+					font 10pt/12pt 'PT Mono'
+
+
+.events_block
+	max-width 960px
+	padding-left 40px
+	padding-right 40px
+	margin 100px auto
+
+.events_title
+	margin-bottom 80px
+	font 16pt/18pt 'PT Mono Bold'
+	.current_month
+		display inline-block
+	.select_month
+		cursor pointer
+		content ''
+		z-index 0
+		position relative
+		background-image url('/stuff/praktika/icons/arrow_list.svg')
+		width 8px
+		height 8px
+		display inline-block
+		vertical-align middle
+		background-position top
+		background-size contain
+		background-repeat no-repeat
+		&.prev
+			transform rotate(180deg)
+
+.events_list
+	.event_item
+		overflow hidden
+		margin-bottom 80px
+		.event_poster
+			width 50%
+			height 340px
+			background-position center
+			background-repeat no-repeat
+			background-size cover
+			float left
+		.event_body
+			width 50%
+			float left
+			padding-left 70px
+			box-sizing border-box
+			font 12pt/14pt 'PT Mono'
+			.event_head
+			.event_meta
+				overflow hidden
+			.event_date
+				float left
+				font 14pt/16pt 'PT Mono'
+			.event_ticket
+				float right
+				font 14pt/16pt 'PT Mono Bold'
+				cursor pointer
+				&:after
+					content ''
+					z-index 0
+					position relative
+					background-image url('/stuff/praktika/icons/arrow_list.svg')
+					width 8px
+					height 8px
+					margin-left 15px
+					display inline-block
+					transform rotate(90deg)
+					vertical-align middle
+					background-position top
+					background-size contain
+					background-repeat no-repeat
+			.event_title
+				margin-top 20px
+				margin-bottom 40px
+				font 22pt/24pt 'PT Mono Bold'
+			.event_age
+				font 12pt/14pt 'PT Mono Bold'
+				float left
+				&:after
+					content '+'
+			.event_members
+				float left
+				margin-left 60px
+				.members_title
+					font 12pt/14pt 'PT Mono Bold'
+				.item
+					display block
+					text-decoration none
+					color black
+					margin-top 5px
+					&:hover
+						opacity 0.7
+			.event_description
+				hyphens auto
+				font 14pt/22pt 'PT Serif'
+				clear both
+				margin-top 40px

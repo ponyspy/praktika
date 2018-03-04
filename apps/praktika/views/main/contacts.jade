@@ -1,0 +1,40 @@
+extends layout
+
+block header_meta
+	- var content_title= 'практика' + ' : ' + __('контакты')
+	- var content_description= ''
+
+block header_include
+	- var include_css = ['contacts.css']
+	- var include_js = ['contacts.js']
+
+
+block content
+	.map_block
+	.contacts_block: .contacts_inner
+		.column
+			.title адрес
+			.value
+				div Козихинский переулок 30
+				div Метро «Маяковская», «Пушкинская»
+		.column
+			.title заказ билета
+			.value
+				div: a(href='tel:8 (495) 544-55-45') 8 (495) 544-55-45
+		.column
+			.title телефоны для справок
+			.value
+				div: a(href='tel:8 (495) 258-55-65') 8 (495) 258-55-65
+				div: a(href='tel:8 (495) 699-44-92') 8 (495) 699-44-92
+		.column
+			.title руководитель пресс-службы
+			.value
+				div Арина Светлица
+				div: a(href='mailto:as@praktikatheatre.ru') as@praktikatheatre.ru
+				div: a(href='tel:+7 (916) 902-64-61') +7 (916) 902-64-61
+		.column
+			.title менеджер по рекламе
+			.value
+				div Елена Имамова
+				div: a(href='mailto:elenaimamova@gmail.com') elenaimamova@gmail.com
+				div: a(href='tel:+7 (915) 490-25-34') +7 (915) 490-25-34
