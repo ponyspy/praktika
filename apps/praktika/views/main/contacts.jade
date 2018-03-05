@@ -1,7 +1,7 @@
 extends layout
 
 block header_meta
-	- var content_title= 'практика' + ' : ' + __('контакты')
+	- var content_title= __('практика') + ' : ' + __('контакты')
 	- var content_description= ''
 
 block header_include
@@ -11,13 +11,13 @@ block header_include
 
 
 block content
-	.map_block#map-canvas(data-placeholder='Театр ПРАКТИКА, Козихинский переулок 30')
+	.map_block#map-canvas(data-placeholder='Большой Козихинский переулок 30')
 	.contacts_block: .contacts_inner
 		.column
 			.title адрес
 			.value
-				div Козихинский переулок 30
-				div Метро «Маяковская», «Пушкинская»
+				div Большой Козихинский<br>переулок 30, метро:
+				div «Маяковская», «Пушкинская»
 		.column
 			.title заказ билета
 			.value

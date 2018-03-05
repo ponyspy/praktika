@@ -1,7 +1,7 @@
 extends layout
 
 block header_meta
-	- var content_title= 'практика' + ' : ' + event.i18n.title.get(locale)
+	- var content_title= __('практика') + ' : ' + event.i18n.title.get(locale)
 	- var content_description= event.i18n.description.get(locale)
 
 block header_include
