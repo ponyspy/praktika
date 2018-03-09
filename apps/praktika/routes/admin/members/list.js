@@ -27,7 +27,7 @@ module.exports = function(Model) {
 			: Member.find();
 
 		if (post.context.type && post.context.type != 'all') {
-			Query.where('type').equals(post.context.type);
+			Query.where('roles').equals(post.context.type);
 		}
 
 		if (post.context.status && post.context.status != 'all') {
