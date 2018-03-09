@@ -25,6 +25,7 @@ module.exports = function(Model, Params) {
 			if (err) return next(err);
 
 			announce.status = post.status;
+			announce.link = post.link;
 
 			var locales = post.en ? ['ru', 'en'] : ['ru'];
 
@@ -32,8 +33,8 @@ module.exports = function(Model, Params) {
 				checkNested(post, [locale, 'title'])
 					&& announce.setPropertyLocalised('title', post[locale].title, locale);
 
-				checkNested(post, [locale, 'description'])
-					&& announce.setPropertyLocalised('description', post[locale].description, locale);
+				checkNested(post, [locale, 's_title'])
+					&& announce.setPropertyLocalised('s_title', post[locale].s_title, locale);
 			});
 
 			announce.save(function(err, announce) {

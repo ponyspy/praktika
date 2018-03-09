@@ -73,7 +73,7 @@ var memberSchema = new Schema({
 
 var announceSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
-	description: { type: String, trim: true, locale: true },
+	s_title: { type: String, trim: true, locale: true },
 	link: String,
 	interval: {
 		start: Date,
@@ -126,7 +126,7 @@ documentSchema = new Schema({
 eventSchema.index({'schedule.date': -1});
 eventSchema.index({'title.value': 'text', 's_title.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 memberSchema.index({'name.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
-announceSchema.index({'title.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
+announceSchema.index({'title.value': 'text', 's_title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 mediaSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 slideSchema.index({'title.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 documentSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
