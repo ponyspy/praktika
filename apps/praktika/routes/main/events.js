@@ -10,7 +10,9 @@ module.exports = function(Model) {
 	module.event = function(req, res) {
 		var id = req.params.short_id;
 
-		res.render('main/event.jade');
+		Event.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden').exec(function(err, event) {
+			res.render('main/event.jade', { event: event });
+		});
 	};
 
 	return module;
