@@ -21,11 +21,13 @@ mixin form_members(groups)
 				br
 				.group_list
 					each list_item in group.list
-						.list_item
+						.list_item(style='margin-bottom: 5px;')
 							input.rm_member(type='button', value='−')
 							select
 								each member in members
 									option(value=member._id, selected=list_item == member._id.toString())= member.i18n.name.get('ru')
+							input.list_sort_tg(type='button', value='⦿')
+							input.list_sort(type='text', style='display: none; font-size: 9pt;')
 					input.add_member(type='button', value='+')
 				br
 				div ------------
@@ -52,6 +54,8 @@ mixin form_comments(comments)
 					select
 						each member in members
 							option(value=member._id, selected=comment.member == member._id.toString())= member.i18n.name.get('ru')
+					input.list_sort_tg(type='button', value='⦿')
+					input.list_sort(type='text', style='display: none; font-size: 9pt;')
 				br
 				.comment_description
 					textarea.ru.editor(type="text")=comment.description.filter(function(locale) { return locale.lg == 'ru' })[0].value

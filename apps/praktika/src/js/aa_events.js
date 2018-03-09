@@ -11,8 +11,49 @@ var date_config = {
 	}
 };
 
+var search = {
+	val: '', buf: '',
+	checkResult: function() {
+		if (this.buf != this.val) {
+			this.buf = this.val;
+			this.getResult.call(search, this.block, this.val);
+		}
+	},
+	getResult: function(block, search) {
+		var regex = new RegExp(search, 'ig');
+		var $options = block.parent().find('option');
+
+		$options.filter('.hide').unwrap().removeClass('hide');
+
+		$options.each(function() {
+			var $this = $(this);
+
+			if (!regex.test($this.text())) {
+				$this.addClass('hide').wrap('<span/>');
+			}
+		});
+
+		$options.eq(0).prop('selected', true);
+	}
+};
+
 $(function() {
 	$(document)
+		.on('keyup change', '.list_sort', function(e) {
+			search.block = $(this);
+			search.val = $(this).val();
+		})
+		.on('focusin', '.list_sort', function(e) {
+			search.interval = setInterval(function() {
+				search.checkResult.call(search);
+			}, 600);
+		})
+		.on('focusout', '.list_sort', function(e) {
+			clearInterval(search.interval);
+		})
+		.on('click', '.list_sort_tg', function(e) {
+			$(this).parent().children('.list_sort').toggle().focus();
+		})
 		.on('click', '.up_block', function(e) {
 			var $block = $(this).closest('.block_item');
 			$block.insertBefore($block.prev());
@@ -35,7 +76,8 @@ $(function() {
 			if ($block.size() == 1 && $block.hasClass('hidden')) {
 				$block.removeClass('hidden')
 					.find('.list_item').first().nextAll('.list_item').remove().end().end().end()
-					.find('option').prop('selected', false).end()
+					.find('option').prop('selected', false)
+					.filter('.hide').unwrap().removeClass('hide').end().end()
 					.find('textarea').val('').end()
 					.find('input[type=text]').val('').end()
 					.find('input[type=checkbox]').prop('checked', false).end()
@@ -44,7 +86,8 @@ $(function() {
 			} else {
 				$block.first().clone()
 					.find('.list_item').first().nextAll('.list_item').remove().end().end().end()
-					.find('option').prop('selected', false).end()
+					.find('option').prop('selected', false)
+					.filter('.hide').unwrap().removeClass('hide').end().end()
 					.find('textarea').val('').end()
 					.find('input[type=text]').val('').end()
 					.find('input[type=checkbox]').prop('checked', false).end()
@@ -65,8 +108,9 @@ $(function() {
 			var $members = $(this).closest('.group_list').children('.list_item');
 
 			$members.first().clone()
-				.find('option').prop('selected', false).end()
-				.find('.input').val('').end()
+				.find('option').prop('selected', false)
+				.filter('.hide').unwrap().removeClass('hide').end().end()
+				.find('.list_sort').val('').end()
 				.insertAfter($members.last());
 		})
 		.on('click', '.rm_member', function(e) {
