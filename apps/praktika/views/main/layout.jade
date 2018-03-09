@@ -10,13 +10,13 @@ html
 					.items_main
 						a(href='/events') репертуар и билеты
 						a(href='/contacts') контакты
-						//- if (session && session.user_id)
-							span.stargazer_block
-								a(href='/auth') stargazer
-								a(href='/auth/logout') выход
 					.items_drop
 						a(href='/team') команда
 						a(href='/about') о театре
+					if (session && session.user_id)
+						span.stargazer_block
+							a(href='/auth') stargazer
+							a(href='/auth/logout') выход
 			.nav_block
 				a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
 				a.lang(href='#') eng
