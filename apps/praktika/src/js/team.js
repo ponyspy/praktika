@@ -2,9 +2,14 @@ $(function() {
 
 	var $members = $('.member_item').on('click', function(e) {
 		var $current_block = $(this);
-		var $set = $current_block.nextAll('.member_item').addBack(this);
 
-		$set.each(function() {
+		if ($current_block.hasClass('active')) {
+			$('.panel').remove();
+			$current_block.removeClass('active');
+			return false;
+		}
+
+		var $set = $current_block.nextAll('.member_item').addBack(this).each(function() {
 			var $this = $(this);
 			var $members_list = $('.members_list');
 
