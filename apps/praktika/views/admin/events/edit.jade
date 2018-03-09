@@ -28,6 +28,7 @@ block content
 			.form_title Подзаголовок:
 			+form_text_single('s_title', event)
 			.form_title Синоним:
+			span= 'https://' + host + '/events/'
 			input(type='text', name='sym', value=event.sym, placeholder=event._short_id)
 			.form_title Описание:
 			+form_text_multi('description', event)
