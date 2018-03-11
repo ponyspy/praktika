@@ -25,7 +25,7 @@ module.exports = function(Model) {
 					compileDebug: false, debug: false, cache: true, pretty: false
 				};
 
-				res.send(jade.renderFile(__app_root + '/views/main/_get_member.jade', opts));
+				res.send(jade.renderFile(__app_root + '/views/main/_member.jade', opts));
 			});
 		});
 	};

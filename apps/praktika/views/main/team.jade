@@ -15,5 +15,5 @@ block content
 		.members_roles= __('все')
 
 	.members_list
-		each member in members
+		each member in members.reduce(function (res, current, index, array) { return res.concat(array); }, [])
 			.member_item(id=member._short_id, data-name=member.i18n.name.get(locale)): .in(style='background-image: url(' + member.photo + ')')

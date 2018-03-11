@@ -4,7 +4,9 @@ module.exports = function(Model) {
 	var Document = Model.Document;
 
 	module.index = function(req, res) {
-		res.render('main/docs.jade');
+		Document.find().sort('-date').exec(function(err, docs) {
+			res.render('main/docs.jade', { docs: docs });
+		});
 	};
 
 	return module;
