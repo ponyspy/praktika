@@ -87,7 +87,10 @@
 	margin-bottom 80px
 	font 16pt/18pt 'PT Mono Bold'
 	.current_month
+		cursor pointer
 		display inline-block
+		&:hover
+			opacity 0.7
 	.select_month
 		cursor pointer
 		content ''
@@ -101,6 +104,8 @@
 		background-position top
 		background-size contain
 		background-repeat no-repeat
+		&:hover
+			opacity 0.7
 		&.prev
 			transform rotate(180deg)
 

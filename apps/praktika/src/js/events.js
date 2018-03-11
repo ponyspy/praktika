@@ -42,6 +42,10 @@ $(function() {
 			$('.current_month').text($('.current_month').attr('data-month'));
 		});
 
+	$('.current_month').on('click', function(e) {
+		$('.day_item').removeClass('selected');
+	});
+
 	$('.select_month').on('click', function(e) {
 		if ($(this).hasClass('next')) {
 			$('.month_item.selected').next().children('.month_placeholder').trigger('click');
