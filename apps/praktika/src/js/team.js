@@ -1,4 +1,6 @@
 $(function() {
+	var $document = $(document);
+	var $window = $(window);
 
 	var $members = $('.member_item').on('click', function(e) {
 		var $current_block = $(this);
@@ -38,13 +40,13 @@ $(function() {
 			}
 		});
 
-		$('body').animate({
+		$('html, body').animate({
 			'scrollTop': $current_block.offset().top - $('.members_header').height() - 10
 		}, 300);
 
 	});
 
-	$(document)
+	$document
 		.on('mouseenter', '.member_item', function(e) {
 			$('.members_title').text($(this).attr('data-name'));
 		})
@@ -59,6 +61,23 @@ $(function() {
 
 			event.stopPropagation();
 		})
+		.on('scroll.load', function(e) {
+			var viewport = $document.scrollTop() + $window.height();
+
+			$members.not('.show').each(function() {
+				var $this = $(this);
+
+				if ($this.offset().top + $this.height() <= viewport - 50) {
+					$this.children('.in').css('background-image', 'url(' + $this.attr('data-src') + ')').end().addClass('show');
+				}
+			});
+
+			if (viewport >= $document.height()) {
+				$document.off('scroll.load');
+				return false;
+			}
+
+		}).trigger('scroll.load')
 		.on('scroll', function(e) {
 			var $title = $('.title_block');
 			var $members_header = $('.members_header');

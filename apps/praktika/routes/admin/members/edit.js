@@ -44,7 +44,7 @@ module.exports = function(Model, Params) {
 					&& member.setPropertyLocalised('description', post[locale].description, locale);
 			});
 
-			uploadImage(member, 'members', 'photo', 400, files.photo && files.photo[0], post.photo_del, function(err, member) {
+			uploadImage(member, 'members', 'photo', 500, files.photo && files.photo[0], post.photo_del, function(err, member) {
 				if (err) return next(err);
 
 				member.save(function(err, member) {
