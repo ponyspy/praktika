@@ -5,7 +5,10 @@ $(function() {
 	var $members = $('.member_item').on('click', function(e) {
 		var $current_block = $(this);
 
+		location.hash = $current_block.attr('member-id');
+
 		if ($current_block.hasClass('active')) {
+			location.hash = '!';
 			$('.panel').remove();
 			$current_block.removeClass('active');
 			return false;
@@ -16,7 +19,7 @@ $(function() {
 			var $members_list = $('.members_list');
 
 			if ($this.offset().left + $this.width() > $members_list.width() + $members_list.offset().left) {
-				$.post('', { id: $current_block.attr('id') }).done(function(content) {
+				$.post('', { id: $current_block.attr('member-id') }).done(function(content) {
 					$('.panel').remove();
 
 					$members.removeClass('active');
@@ -27,7 +30,7 @@ $(function() {
 
 				return false;
 			} else if ($this.index('.member_item') + 1 == $members.length) {
-				$.post('', { id: $current_block.attr('id') }).done(function(content) {
+				$.post('', { id: $current_block.attr('member-id') }).done(function(content) {
 					$('.panel').remove();
 
 					$members.removeClass('active');
@@ -46,6 +49,13 @@ $(function() {
 
 	});
 
+	$window
+		.on('load', function(e) {
+			setTimeout(function() {
+				$members.filter('[member-id="' + location.hash.replace('#', '') + '"]').eq(0).trigger('click');
+			}, 300);
+		});
+
 	$document
 		.on('mouseenter', '.member_item', function(e) {
 			$('.members_title').text($(this).attr('data-name'));
@@ -55,8 +65,9 @@ $(function() {
 		})
 		.on('mouseup touchend', function(e) {
 			if ($(event.target).closest('.in').length) return;
-			$('.panel').remove();
 
+			location.hash = '!';
+			$('.panel').remove();
 			$members.removeClass('active');
 
 			event.stopPropagation();
