@@ -43,14 +43,25 @@ $(function() {
 		});
 
 	$('.current_month').on('click', function(e) {
-		$('.day_item').removeClass('selected');
+		var offset = $('.timeline_outer').scrollLeft() + $('.month_item.selected').offset().left
+
+		$('.timeline_outer').animate({
+			'scrollLeft': offset
+		}, 300);
+
+		$('.month_item.selected').children('.month_placeholder').trigger('click');
 	});
 
 	$('.select_month').on('click', function(e) {
-		if ($(this).hasClass('next')) {
-			$('.month_item.selected').next().children('.month_placeholder').trigger('click');
-		} else {
-			$('.month_item.selected').prev().children('.month_placeholder').trigger('click');
-		}
+		$(this).hasClass('next')
+			? $('.month_item.selected').next().children('.month_placeholder').trigger('click')
+			: $('.month_item.selected').prev().children('.month_placeholder').trigger('click');
+
+		var offset = $('.timeline_outer').scrollLeft() + $('.month_item.selected').offset().left
+
+		$('.timeline_outer').animate({
+			'scrollLeft': offset
+		}, 300);
+
 	});
 });
