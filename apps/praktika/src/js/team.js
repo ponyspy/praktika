@@ -11,6 +11,8 @@ $(function() {
 			location.hash = '!';
 			$('.panel').remove();
 			$current_block.removeClass('active');
+			$document.trigger('scroll.load');
+
 			return false;
 		}
 
