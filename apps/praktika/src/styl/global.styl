@@ -8,6 +8,23 @@ body
 	font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
+
+.maket_block.invert
+	.title_block
+		a
+			color white!important
+		.search, .logo, .menu_open
+			filter: invert(100%)
+	.footer_block
+		.footer_inner
+			border-color white
+			.quality_block a
+				border-color white
+		img
+			filter: invert(100%)
+		a
+			color white!important
+
 .title_block
 	width 100%
 	text-align center

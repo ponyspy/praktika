@@ -3,40 +3,41 @@ html
 	head
 		include header
 	body
-		.title_block: .title_inner
-			.menu_block
-				.menu_open
-				.menu_items
-					.items_main
-						a(href='/events') репертуар и билеты
-						a(href='/contacts') контакты
-					.items_drop
-						a(href='/team') команда
-						a(href='/about') о театре
-					if (session && session.user_id)
-						span.stargazer_block
-							a(href='/auth') stargazer
-							a(href='/auth/logout') выход
-			.nav_block
-				a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
-				a.lang(href='#') eng
-			a(href='/'): img.logo(src='/stuff/praktika/logo/logo_praktika.svg')
+		.maket_block
+			.title_block: .title_inner
+				.menu_block
+					.menu_open
+					.menu_items
+						.items_main
+							a(href='/events') репертуар и билеты
+							a(href='/contacts') контакты
+						.items_drop
+							a(href='/team') команда
+							a(href='/about') о театре
+						if (session && session.user_id)
+							span.stargazer_block
+								a(href='/auth') stargazer
+								a(href='/auth/logout') выход
+				.nav_block
+					a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
+					a.lang(href='#') eng
+				a(href='/'): img.logo(src='/stuff/praktika/logo/logo_praktika.svg')
 
-		.content_block
-			block content
+			.content_block
+				block content
 
-		.footer_block: .footer_inner
-			a.logo_dep(href='#'): img(src='/stuff/praktika/logo/logo_depcult.svg')
-			.quality_block
-				a(href='#')
-					img(src='/stuff/praktika/logo/likes-01.svg')
-					span Оценка качества услуг учреждений культуры
-				a(href='#')
-					span Результаты независимой оценки качества услуг
-			.social_block
-				a(href='#'): img(src='/stuff/praktika/social/facebook.svg')
-				a(href='#'): img(src='/stuff/praktika/social/instagram.svg')
-				a(href='#'): img(src='/stuff/praktika/social/vk.svg')
-				a(href='#'): img(src='/stuff/praktika/social/telegram.svg')
+			.footer_block: .footer_inner
+				a.logo_dep(href='#'): img(src='/stuff/praktika/logo/logo_depcult.svg')
+				.quality_block
+					a(href='#')
+						img(src='/stuff/praktika/logo/likes-01.svg')
+						span Оценка качества услуг учреждений культуры
+					a(href='#')
+						span Результаты независимой оценки качества услуг
+				.social_block
+					a(href='#'): img(src='/stuff/praktika/social/facebook.svg')
+					a(href='#'): img(src='/stuff/praktika/social/instagram.svg')
+					a(href='#'): img(src='/stuff/praktika/social/vk.svg')
+					a(href='#'): img(src='/stuff/praktika/social/telegram.svg')
 
 		include counters
