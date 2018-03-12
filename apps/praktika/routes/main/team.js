@@ -8,7 +8,7 @@ module.exports = function(Model) {
 	var Event = Model.Event;
 
 	module.index = function(req, res) {
-		Member.find().sort('name.value').exec(function(err, members) {
+		Member.find().where('status').nin(['hidden', 'special']).sort('name.value').exec(function(err, members) {
 			res.render('main/team.jade', { members: members });
 		});
 	};
