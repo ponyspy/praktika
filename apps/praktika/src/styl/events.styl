@@ -86,6 +86,7 @@
 .events_title
 	margin-bottom 80px
 	font 16pt/18pt 'PT Mono Bold'
+	user-select none
 	.current_month
 		cursor pointer
 		display inline-block
@@ -93,16 +94,14 @@
 			opacity 0.7
 	.select_month
 		cursor pointer
-		content ''
-		z-index 0
 		position relative
 		background-image url('/stuff/praktika/icons/arrow_list.svg')
-		width 8px
-		height 8px
+		width 20px
+		height 20px
 		display inline-block
 		vertical-align middle
-		background-position top
-		background-size contain
+		background-position center
+		background-size 50%
 		background-repeat no-repeat
 		&:hover
 			opacity 0.7
