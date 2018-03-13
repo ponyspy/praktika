@@ -2,9 +2,14 @@ module.exports = function(Model) {
 	var module = {};
 
 	var Media = Model.Media;
+	var Announce = Model.Announce;
 
 	module.index = function(req, res) {
-		res.render('main/index.jade');
+		Media.find().sort('date').exec(function(err, medias) {
+			Announce.findOne().sort('-date').exec(function(err, announce) {
+				res.render('main/index.jade', { announce: Announce, medias: medias });
+			});
+		});
 	};
 
 	return module;
