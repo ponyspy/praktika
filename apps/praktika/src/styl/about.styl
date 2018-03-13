@@ -5,14 +5,6 @@
 html, body
 	height 100%
 
-.maket_block.invert
-	.slider_navigate
-		color white
-	.content_block
-		background-color black
-	.slide_item
-		color white
-
 .title_block
 	position absolute
 
@@ -73,3 +65,24 @@ html, body
 		left auto!important
 		right 40px!important
 		width auto
+		.swiper-pagination-bullet
+			background-color transparent!important
+			opacity 1!important
+			border 1px solid black
+			&.swiper-pagination-bullet-active
+				background-color black!important
+
+.maket_block.white
+	.swiper-pagination-bullet
+		border 1px solid white!important
+		&.swiper-pagination-bullet-active
+			background-color white!important
+	.swiper-pagination-black
+	.swiper-button-black
+		display none!important
+	.slider_navigate
+		color white
+	.content_block
+		background-color black
+	.slide_item
+		color white
