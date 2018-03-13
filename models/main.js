@@ -101,6 +101,7 @@ mediaSchema = new Schema({
 slideSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
+	body: Boolean,
 	contents: Boolean,
 	poster: String,
 	video: String,

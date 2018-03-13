@@ -25,6 +25,10 @@ block content
 			+form_text_single('title', slide)
 			.form_title Описание:
 			+form_text_multi('description', slide)
+			.form_title Показ текста:
+			select(name='body')
+				option(value='true', selected=slide.body == true) Вкл.
+				option(value='false', selected=slide.body == false) Выкл.
 			.form_title Оглавление:
 			select(name='contents')
 				option(value='true', selected=slide.contents == true) Вкл.

@@ -18,14 +18,16 @@ block content
 			each slide in slides
 				if slide.poster
 					.slide_item.swiper-slide(id=slide._id, data-style=slide.style, style='background-image: url( ' + slide.poster + ' )'): .slide_holder
-						.slide_body
-							.slide_title= slide.i18n.title.get(locale)
-							.slide_desc!= slide.i18n.description.get(locale)
+						if slide.body
+							.slide_body
+								.slide_title= slide.i18n.title.get(locale)
+								.slide_desc!= slide.i18n.description.get(locale)
 				else
 					.slide_item.swiper-slide(id=slide._id, data-style=slide.style)
-						.slide_body
-							.slide_title= slide.i18n.title.get(locale)
-							.slide_desc!= slide.i18n.description.get(locale)
+						if slide.body
+							.slide_body
+								.slide_title= slide.i18n.title.get(locale)
+								.slide_desc!= slide.i18n.description.get(locale)
 
 		.swiper-button-next.swiper-button-white
 		.swiper-button-prev.swiper-button-white
