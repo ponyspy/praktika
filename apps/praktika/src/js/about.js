@@ -10,8 +10,15 @@ $(function() {
 		}
 	});
 
+	swiper.on('slideChange', function(e) {
+		var style = $('.slide_item').eq(swiper.activeIndex).attr('data-style');
+
+		$('.maket_block').removeClass('white black').addClass(style);
+	});
+
 	$('.navigate_item').on('click', function(e) {
-		var index = $(this).index();
+		var id = $(this).attr('slide-id');
+		var index = $('.slide_item').filter('#' + id).index();
 		swiper.slideTo(index);
 	});
 });

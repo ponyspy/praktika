@@ -3,7 +3,7 @@ extends layout
 block header_meta
 	- var content_title= __('практика') + ' : ' + __('о театре')
 	- var content_description= ''
-	- var content_style = 'white'
+	- var content_style = slides && slides.length && slides[0].style
 
 block header_include
 	- var include_libs_css = ['swiper.min.css']
@@ -17,12 +17,12 @@ block content
 		.swiper-wrapper
 			each slide in slides
 				if slide.poster
-					.slide_item.swiper-slide(style='background-image: url( ' + slide.poster + ' )'): .slide_holder
+					.slide_item.swiper-slide(id=slide._id, data-style=slide.style, style='background-image: url( ' + slide.poster + ' )'): .slide_holder
 						.slide_body
 							.slide_title= slide.i18n.title.get(locale)
 							.slide_desc!= slide.i18n.description.get(locale)
 				else
-					.slide_item.swiper-slide
+					.slide_item.swiper-slide(id=slide._id, data-style=slide.style)
 						.slide_body
 							.slide_title= slide.i18n.title.get(locale)
 							.slide_desc!= slide.i18n.description.get(locale)
@@ -38,4 +38,4 @@ block content
 	.slider_navigate
 		each slide in slides
 			if (slide.contents)
-				.navigate_item= slide.i18n.title.get(locale)
+				.navigate_item(slide-id=slide._id)= slide.i18n.title.get(locale)
