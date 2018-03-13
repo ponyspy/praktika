@@ -41,6 +41,9 @@ module.exports = function(Model, Params) {
 				checkNested(post, [locale, 'title'])
 					&& slide.setPropertyLocalised('title', post[locale].title, locale);
 
+				checkNested(post, [locale, 'description'])
+					&& slide.setPropertyLocalised('description', post[locale].description, locale);
+
 			});
 
 			uploadImage(slide, 'slides', 'poster', 1920, files.poster && files.poster[0], post.poster_del, function(err, slide) {
