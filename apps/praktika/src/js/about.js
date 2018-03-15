@@ -4,6 +4,9 @@ $(function() {
 			nextEl: '.swiper-button-next',
 			prevEl: '.swiper-button-prev',
 		},
+		keyboard: {
+			enabled: true
+		},
 		pagination: {
 			clickable: true,
 			el: '.swiper-pagination',

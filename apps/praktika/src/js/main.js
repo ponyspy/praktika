@@ -7,6 +7,9 @@ $(function() {
 		init: false,
 		effect: 'fade',
 		initialSlide: randomInteger(0, $('.slide_item').length),
+		keyboard: {
+			enabled: true
+		},
 		pagination: {
 			clickable: true,
 			el: '.swiper-pagination',
