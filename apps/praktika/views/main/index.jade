@@ -19,7 +19,9 @@ block content
 	.slider_block.swiper-container
 		.swiper-wrapper
 			each media in medias
-				.slide_item.swiper-slide(data-style=media.style, style='background-image: url(' + media.poster + ')'): .slide_holder
+				.slide_item.swiper-slide(data-style=media.style, style='background-image: url(' + media.poster + ')')
+					if media.style == 'white'
+						.slide_holder
 
 		.swiper-pagination.swiper-pagination-white
 		.swiper-pagination.swiper-pagination-black

@@ -17,7 +17,9 @@ block content
 		.swiper-wrapper
 			each slide in slides
 				if slide.poster
-					.slide_item.swiper-slide(id=slide._id, data-style=slide.style, style='background-image: url( ' + slide.poster + ' )'): .slide_holder
+					.slide_item.swiper-slide(id=slide._id, data-style=slide.style, style='background-image: url( ' + slide.poster + ' )')
+						if slide.style == 'white'
+							.slide_holder
 						if slide.body
 							.slide_body
 								.slide_title= slide.i18n.title.get(locale)
