@@ -18,7 +18,11 @@ $(function() {
 	});
 
 	swiper.on('init slideChange', function(e) {
-		var style = $('.slide_item').eq(swiper.activeIndex).attr('data-style');
+		var $current_slide = $('.slide_item').eq(swiper.activeIndex);
+		var style = $current_slide.attr('data-style');
+
+		$('video').trigger('pause');
+		$current_slide.children('video').trigger('play');
 
 		$('.maket_block').removeClass('white black').addClass(style);
 	});
