@@ -26,8 +26,8 @@ block content
 			+form_text_single('title', media)
 			.form_title Стиль:
 			select(name='style')
-				option(value='black', selected= media.style == 'black' && 'black') Черный текст / белый фон
 				option(value='white', selected= media.style == 'white' && 'white') Белый текст / черный фон
+				option(value='black', selected= media.style == 'black' && 'black') Черный текст / белый фон
 			.form_title Затенение фона:
 			select(name='holder')
 				option(value='true', selected=media.holder == true) Вкл.
