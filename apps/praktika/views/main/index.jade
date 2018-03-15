@@ -19,7 +19,8 @@ block content
 	.slider_block.swiper-container
 		.swiper-wrapper
 			each media in medias
-				.slide_item.swiper-slide(data-style=media.style, style='background-image: url(' + media.poster + ')')
+				.slide_item.swiper-slide(data-style=media.style)
+					video(autoplay=false, loop=true, muted=false, controls=false, poster=media.poster, src=media.video)
 					if media.style == 'white'
 						.slide_holder
 

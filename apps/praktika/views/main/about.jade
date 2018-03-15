@@ -16,20 +16,14 @@ block content
 	.slider_block.swiper-container
 		.swiper-wrapper
 			each slide in slides
-				if slide.poster
-					.slide_item.swiper-slide(id=slide._id, data-style=slide.style, style='background-image: url( ' + slide.poster + ' )')
-						if slide.style == 'white'
-							.slide_holder
-						if slide.body
-							.slide_body
-								.slide_title= slide.i18n.title.get(locale)
-								.slide_desc!= slide.i18n.description.get(locale)
-				else
-					.slide_item.swiper-slide(id=slide._id, data-style=slide.style)
-						if slide.body
-							.slide_body
-								.slide_title= slide.i18n.title.get(locale)
-								.slide_desc!= slide.i18n.description.get(locale)
+				.slide_item.swiper-slide(id=slide._id, data-style=slide.style)
+					video(autoplay=false, loop=true, muted=false, controls=false, poster=slide.poster, src=slide.video)
+					if slide.style == 'white'
+						.slide_holder
+					if slide.body
+						.slide_body
+							.slide_title= slide.i18n.title.get(locale)
+							.slide_desc!= slide.i18n.description.get(locale)
 
 		.swiper-button-next.swiper-button-white
 		.swiper-button-prev.swiper-button-white
