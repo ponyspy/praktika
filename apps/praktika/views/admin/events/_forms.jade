@@ -105,7 +105,7 @@ mixin form_schedule(schedule)
 			- var mm = date && (date.getMinutes())
 			.block_item.schedule(class= item.hidden ? 'hidden' : '', style=item.hidden ? 'display: none;': '')
 				input.rm_block(type='button', value='−')
-				input.date(type='text', value=dd)
+				input.date(type='text', value=dd, readonly=true)
 				span= ' -- '
 				select.hours
 					each hours, i in new Array(24)
