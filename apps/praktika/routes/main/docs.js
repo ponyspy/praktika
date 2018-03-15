@@ -4,7 +4,7 @@ module.exports = function(Model) {
 	var Document = Model.Document;
 
 	module.index = function(req, res) {
-		Document.find().sort('-date').exec(function(err, docs) {
+		Document.find().where('status').ne('hidden').sort('-date').exec(function(err, docs) {
 			res.render('main/docs.jade', { docs: docs });
 		});
 	};

@@ -4,7 +4,7 @@ module.exports = function(Model) {
 	var Slide = Model.Slide;
 
 	module.index = function(req, res) {
-		Slide.find().sort('date').exec(function(err, slides) {
+		Slide.find().where('status').ne('hidden').sort('date').exec(function(err, slides) {
 			res.render('main/about.jade', { slides: slides });
 		});
 	};
