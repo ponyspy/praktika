@@ -34,6 +34,7 @@ module.exports = function(Model, Params) {
 			slide.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 			slide.style = post.style;
 			slide.contents = post.contents;
+			slide.holder = post.holder;
 			slide.body = post.body;
 
 			var locales = post.en ? ['ru', 'en'] : ['ru'];

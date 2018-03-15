@@ -26,8 +26,12 @@ block content
 			+form_text_single('title')
 			.form_title Стиль:
 			select(name='style')
-				option(value='black') Черный
-				option(value='white') Белый
+				option(value='black') Черный текст / белый фон
+				option(value='white') Белый текст / черный фон
+			.form_title Затенение фона:
+			select(name='holder')
+				option(value='true') Вкл.
+				option(value='false') Выкл.
 			.form_title Обложка:
 			+form_single_file('poster')(accept='image/jpeg,image/png,image/gif')
 			.form_title Видео MP4:

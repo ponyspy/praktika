@@ -21,7 +21,7 @@ block content
 			each media in medias
 				.slide_item.swiper-slide(data-style=media.style)
 					video(autoplay=false, loop=true, muted=false, controls=false, poster=media.poster, src=media.video)
-					if media.style == 'white'
+					if media.holder
 						.slide_holder
 
 		.swiper-pagination.swiper-pagination-white

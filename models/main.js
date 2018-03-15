@@ -88,6 +88,7 @@ mediaSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	poster: String,
 	video: String,
+	holder: Boolean,
 	style: String, // black / white
 	interval: {
 		start: Date,
@@ -103,6 +104,7 @@ slideSchema = new Schema({
 	description: { type: String, trim: true, locale: true },
 	body: Boolean,
 	contents: Boolean,
+	holder: Boolean,
 	poster: String,
 	video: String,
 	style: String, // black / white
