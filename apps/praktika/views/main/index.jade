@@ -3,7 +3,7 @@ extends layout
 block header_meta
 	- var content_title= __('практика')
 	- var content_description= ''
-	- var content_style = 'white'
+	- var content_style = medias && medias.length && medias[0].style
 
 block header_include
 	- var include_libs_css = ['swiper.min.css']
@@ -14,10 +14,13 @@ block header_include
 
 block content
 	a.announcement_block(href='/events')
-		.announcement_title обновилось расписание на январь
-		.announcement_desc Успейте купить билеты на детскую новогоднюю программу и любимые спектакли
+		.announcement_title= announce.i18n.title.get(locale)
+		.announcement_s_title= announce.i18n.s_title.get(locale)
+
 	.slider_block.swiper-container
 		.swiper-wrapper
-			each slide, i in new Array(1)
-				.slide_item.swiper-slide(style='background-image: url(/stuff/praktika/main/' + (i+1) + '.jpg)'): .slide_holder
+			each media in medias
+				.slide_item.swiper-slide(style='background-image: url(' + media.poster + ')'): .slide_holder
+
 		.swiper-pagination.swiper-pagination-white
+		.swiper-pagination.swiper-pagination-black
