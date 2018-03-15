@@ -46,12 +46,16 @@ module.exports = function(Model, Params) {
 			event.age = post.age;
 			event.sym = post.sym ? post.sym : undefined;
 
-			event.schedule = post.schedule && post.schedule.map(function(schedule) {
-				return {
-					date: moment(schedule.date + 'T' + schedule.time.hours + ':' + schedule.time.minutes),
-					premiere: schedule.premiere
-				};
-			}) || [];
+			event.schedule = post.schedule && post.schedule.reduce(function(arr, schedule) {
+				if (schedule.date != '') {
+					arr.push({
+						date: moment(schedule.date + 'T' + schedule.time.hours + ':' + schedule.time.minutes),
+						premiere: schedule.premiere
+					});
+				}
+
+				return arr;
+			}, []) || [];
 
 			event.members = post.members && post.members.map(function(group) {
 				return {
