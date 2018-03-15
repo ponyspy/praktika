@@ -5,10 +5,10 @@ block header_meta
 	- var content_title= 'РЕДАКТИРОВАТЬ АНОНС'
 
 block header_include
-	- var include_libs_css = ['font-awesome.css', 'wysiwyg-editor.min.css']
+	- var include_libs_css = ['pickmeup.min.css']
 	- var include_css = ['add.css']
-	- var include_libs_js = ['wysiwyg.min.js', 'wysiwyg-editor.min.js']
-	- var include_js = ['editor.js', 'add.js']
+	- var include_libs_js = ['jquery.pickmeup.min.js']
+	- var include_js = ['add.js', 'a_events.js']
 
 block sub_menu
 	a.sub_item.back_link(href='/admin/announces') Назад
@@ -28,6 +28,10 @@ block content
 			+form_text_single('s_title', announce)
 			.form_title Ссылка:
 			input(type='text', name='link', value=announce.link)
+			.form_title Начало показа:
+			+form_date('interval[start]', announce.interval.start)
+			.form_title Окончание показа:
+			+form_date('interval[end]', announce.interval.end)
 			.form_title Статус:
 			select(name='status')
 				option(value='base') Обычный
