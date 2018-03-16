@@ -19,7 +19,8 @@ module.exports = (function() {
 		.get(main.index.index);
 
 	router.route('/events')
-		.get(main.events.index);
+		.get(main.events.index)
+		.post(main.events.get_events);
 
 	router.route('/events/:short_id')
 		.get(main.events.event);
