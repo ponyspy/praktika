@@ -4,6 +4,7 @@ module.exports = function(Model) {
 	var module = {};
 
 	var Event = Model.Event;
+	var Member = Model.Member;
 
 	module.index = function(req, res) {
 		res.render('main/events.jade');
@@ -33,7 +34,9 @@ module.exports = function(Model) {
 			}}}}
 		])
 		.exec(function(err, events) {
-			res.send(events);
+			Member.populate(events, { path: 'members.list', select: 'name' }, function(err, events) {
+				res.send(events);
+			});
 		});
 	};
 
