@@ -40,8 +40,9 @@ block content
 						.event_meta
 							.event_age 18
 							.event_members
-								.members_title режиссёры
-								.members_items
-									each director in event.directors
-										a.item(href='#')= director
+								.members_group
+									.group_title режиссёры
+									.group_items
+										each director in event.directors
+											a.member_item(href='#')= director
 						.event_description= event.desc

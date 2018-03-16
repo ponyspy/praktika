@@ -1,4 +1,6 @@
 var moment = require('moment');
+var jade = require('jade');
+var i18n = require('i18n');
 
 module.exports = function(Model) {
 	var module = {};
@@ -35,7 +37,18 @@ module.exports = function(Model) {
 		])
 		.exec(function(err, events) {
 			Member.populate(events, { path: 'members.list', select: 'name' }, function(err, events) {
-				res.send(events);
+
+				var opts = {
+					__: function() { return i18n.__.apply(null, arguments); },
+					__n: function() { return i18n.__n.apply(null, arguments); },
+					get_locale: function(option, lg) {return ((option.filter(function(locale) {return locale.lg == lg; })[0] || {}).value || ''); },
+					events: events,
+					locale: req.locale,
+					moment: moment,
+					compileDebug: false, debug: false, cache: false, pretty: false
+				};
+
+				res.send(jade.renderFile(__app_root + '/views/main/_events.jade', opts));
 			});
 		});
 	};
