@@ -9,7 +9,16 @@ module.exports = function(Model) {
 	var Member = Model.Member;
 
 	module.index = function(req, res) {
-		res.render('main/events.jade');
+		var months = [0, 1, 2].map(function(month) {
+			var date = moment().lang(req.locale).add(month, 'months');
+			var days = Array.from({ length: date.daysInMonth() }).map(function(day, i) {
+				return { date: i+1, wday: date.set('date', i+1).format('dd') };
+			});
+
+			return { month: date.format('MMMM'), days: days };
+		});
+
+		res.render('main/events.jade', { months: months });
 	};
 
 	module.get_events = function(req, res) {
@@ -57,7 +66,7 @@ module.exports = function(Model) {
 		var id = req.params.short_id;
 
 		Event.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden').exec(function(err, event) {
-			res.render('main/event.jade', { event: event });
+			res.render('main/event.jade', { event: event, moment: moment });
 		});
 	};
 

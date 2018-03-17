@@ -13,19 +13,19 @@ block content
 	include p_db/events.jade
 
 	.timeline_block: .timeline_outer: .timeline_inner
-		each month, i in month_array
-			.month_item(class=(i==0 ? 'selected' : ''), data-month=month)
+		each month, i in months
+			.month_item(class=(i==0 ? 'selected' : ''), data-month=month.month)
 				.month_placeholder(class=(i==0 ? 'hide' : ''))
 				.month_days
-					each day, j in week_array
-						.day_item(class=(day == 'сб' || day == 'вс') ? 'weekend': '')
-							.day_date= j+1
-							.day_week= day
+					each day in month.days
+						.day_item(class=/сб|вс|sa|su/.test(day.wday) ? 'weekend': '')
+							.day_date= day.date
+							.day_week= day.wday
 
 	.events_block
 		.events_title
 			.select_month.prev
-			.current_month(data-month='сентябрь') сентябрь
+			.current_month(data-month=months[0].month)= months[0].month
 			.select_month.next
 
 		.events_list
