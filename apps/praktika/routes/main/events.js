@@ -10,7 +10,7 @@ module.exports = function(Model) {
 
 	module.index = function(req, res) {
 		var months = [0, 1, 2].map(function(month) {
-			var date = moment().lang(req.locale).add(month, 'months');
+			var date = moment().locale(req.locale).add(month, 'months');
 			var days = Array.from({ length: date.daysInMonth() }).map(function(day, i) {
 				return { date: i+1, wday: date.set('date', i+1).format('dd') };
 			});
