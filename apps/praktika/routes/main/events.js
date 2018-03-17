@@ -22,12 +22,16 @@ module.exports = function(Model) {
 	};
 
 	module.get_events = function(req, res) {
+		var month = req.body.month;
+
 		Event.aggregate([
 			{ $unwind: '$schedule' },
-			{ $match: { 'status': { $ne: 'hidden' }}},
+			{ $match: { 'status': {
+				$ne: 'hidden'
+			}}},
 			{ $match: { 'schedule.date': {
-				'$gte': moment().startOf('month').add(0, 'months').toDate(),
-				'$lte': moment().endOf('month').add(0, 'months').toDate()
+				$gte: moment().startOf('month').add(month, 'months').toDate(),
+				$lte: moment().endOf('month').add(month, 'months').toDate()
 			}}},
 			{ $sort: { 'schedule.date': 1 } },
 			{ $project: {
@@ -41,7 +45,7 @@ module.exports = function(Model) {
 			{ $addFields: { 'members': { $filter: {
 				input: '$members',
 				as: 'group',
-				cond: { $ne: ['$$group.mode', 'event']}
+				cond: { $ne: ['$$group.mode', 'event'] }
 			}}}}
 		])
 		.exec(function(err, events) {
