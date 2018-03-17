@@ -3,7 +3,7 @@ each event in events
 		.event_poster(style='background-image: url(' + event.poster + ')')
 		.event_body
 			.event_head
-				.event_date 3 сентября
+				.event_date= moment(event.schedule.date).locale(locale).format('D MMMM')
 				.event_ticket= __('купить билет')
 			.event_title= get_locale(event.title, locale)
 			.event_meta

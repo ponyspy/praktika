@@ -8,25 +8,33 @@ $(function() {
 		});
 	}
 
-	$(document).on('scroll', function(e) {
-		var $title = $('.title_block');
-		var $timeline = $('.timeline_block');
+	$(window)
+		.on('load hashchange', function(e) {
+			var month = location.hash ? location.hash.replace('#', '') : 0;
 
-		$(this).scrollTop() >= $title.height() + $title.offset().top
-			? $timeline.addClass('fix')
-			: $timeline.removeClass('fix');
-	});
+			$.post('', { month: month }).done(function(data) {
+				$('.events_list').empty().append(data);
+			});
+		});
 
-	$(document).on('click', '.day_item', function(e) {
-		$('.day_item').removeClass('selected').filter(this).addClass('selected');
-	});
+	$(document)
+		.on('scroll', function(e) {
+			var $title = $('.title_block');
+			var $timeline = $('.timeline_block');
 
-	$(document).on('click', '.day_item.selected', function(e) {
-		$(this).removeClass('selected');
-	});
+			$(this).scrollTop() >= $title.height() + $title.offset().top
+				? $timeline.addClass('fix')
+				: $timeline.removeClass('fix');
+		})
+		.on('click', '.day_item', function(e) {
+			$('.day_item').removeClass('selected').filter(this).addClass('selected');
+		})
+		.on('click', '.day_item.selected', function(e) {
+			$(this).removeClass('selected');
+		});
 
 	$('.month_placeholder')
-		.on('click', function(e, $month_fire) {
+		.on('click', function(e) {
 			var $month_item = $(this).parent();
 			var month_name = $month_item.attr('data-month');
 
@@ -34,6 +42,8 @@ $(function() {
 			$('.month_placeholder').removeClass('hide').filter(this).addClass('hide');
 			$('.current_month').text(month_name).attr('data-month', month_name);
 			$('.month_item').removeClass('selected').filter($month_item).addClass('selected');
+
+			location.hash = $month_item.attr('data-count');
 		})
 		.on('mouseenter', function(e) {
 			$('.current_month').text($(this).parent().attr('data-month'));
@@ -43,7 +53,7 @@ $(function() {
 		});
 
 	$('.current_month').on('click', function(e) {
-		var offset = $('.timeline_outer').scrollLeft() + $('.month_item.selected').offset().left
+		var offset = $('.timeline_outer').scrollLeft() + $('.month_item.selected').offset().left;
 
 		$('.timeline_outer').animate({
 			'scrollLeft': offset
@@ -57,7 +67,7 @@ $(function() {
 			? $('.month_item.selected').next().children('.month_placeholder').trigger('click')
 			: $('.month_item.selected').prev().children('.month_placeholder').trigger('click');
 
-		var offset = $('.timeline_outer').scrollLeft() + $('.month_item.selected').offset().left
+		var offset = $('.timeline_outer').scrollLeft() + $('.month_item.selected').offset().left;
 
 		$('.timeline_outer').animate({
 			'scrollLeft': offset

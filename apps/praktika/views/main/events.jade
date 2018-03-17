@@ -10,11 +10,9 @@ block header_include
 
 
 block content
-	include p_db/events.jade
-
 	.timeline_block: .timeline_outer: .timeline_inner
 		each month, i in months
-			.month_item(class=(i==0 ? 'selected' : ''), data-month=month.month)
+			.month_item(class=(i==0 ? 'selected' : ''), data-month=month.month, data-count=i)
 				.month_placeholder(class=(i==0 ? 'hide' : ''))
 				.month_days
 					each day in month.days
@@ -27,22 +25,4 @@ block content
 			.select_month.prev
 			.current_month(data-month=months[0].month)= months[0].month
 			.select_month.next
-
 		.events_list
-			each event, i in events
-				.event_item
-					.event_poster(style='background-image: url(/stuff/praktika/events/' + (i+1) + '.jpg)')
-					.event_body
-						.event_head
-							.event_date 3 сентября
-							.event_ticket купить билет
-						.event_title= event.title
-						.event_meta
-							.event_age 18
-							.event_members
-								.members_group
-									.group_title режиссёры
-									.group_items
-										each director in event.directors
-											a.member_item(href='#')= director
-						.event_description= event.desc
