@@ -12,8 +12,8 @@ block header_include
 block content
 	.timeline_block: .timeline_outer: .timeline_inner
 		each month, i in months
-			.month_item(class=(i==0 ? 'selected' : ''), data-month=month.month, data-count=i)
-				.month_placeholder(class=(i==0 ? 'hide' : ''))
+			.month_item(data-month=month.month)
+				.month_placeholder
 				.month_days
 					each day in month.days
 						.day_item(class=/сб|вс|sa|su/.test(day.wday) ? 'weekend': '')

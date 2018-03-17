@@ -9,12 +9,10 @@ $(function() {
 	}
 
 	$(window)
-		.on('load hashchange', function(e) {
+		.on('load', function(e) {
 			var month = location.hash ? location.hash.replace('#', '') : 0;
 
-			$.post('', { month: month }).done(function(data) {
-				$('.events_list').empty().append(data);
-			});
+			$('.month_item').eq(month).children('.month_placeholder').trigger('click');
 		});
 
 	$(document)
@@ -37,13 +35,17 @@ $(function() {
 		.on('click', function(e) {
 			var $month_item = $(this).parent();
 			var month_name = $month_item.attr('data-month');
+			var month_index = $month_item.index();
 
 			$('.day_item.selected').removeClass('selected');
 			$('.month_placeholder').removeClass('hide').filter(this).addClass('hide');
 			$('.current_month').text(month_name).attr('data-month', month_name);
 			$('.month_item').removeClass('selected').filter($month_item).addClass('selected');
 
-			location.hash = $month_item.attr('data-count');
+			$.post('', { month: month_index }).done(function(data) {
+				location.hash = month_index;
+				$('.events_list').empty().append(data);
+			});
 		})
 		.on('mouseenter', function(e) {
 			$('.current_month').text($(this).parent().attr('data-month'));
