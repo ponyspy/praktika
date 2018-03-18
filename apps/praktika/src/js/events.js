@@ -1,4 +1,5 @@
 $(function() {
+
 	if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 		$('.timeline_block').on('mousemove', function(e) {
 			var $this = $(this).children('.timeline_outer');
@@ -8,12 +9,17 @@ $(function() {
 		});
 	}
 
+
 	$(window)
 		.on('load', function(e) {
 			var month = location.hash ? location.hash.replace('#', '') : 0;
+			var $current_month = $('.month_item').eq(month);
+			var offset = $('.timeline_outer').scrollLeft() + $current_month.offset().left;
 
-			$('.month_item').eq(month).children('.month_placeholder').trigger('click');
+			$('.timeline_outer').scrollLeft(offset);
+			$current_month.children('.month_placeholder').trigger('click');
 		});
+
 
 	$(document)
 		.on('scroll', function(e) {
@@ -25,11 +31,17 @@ $(function() {
 				: $timeline.removeClass('fix');
 		})
 		.on('click', '.day_item', function(e) {
+			var date = $(this).children('.day_date').text();
+			$('.event_item').addClass('hidden').filter('.date_' + date).removeClass('hidden');
+
 			$('.day_item').removeClass('selected').filter(this).addClass('selected');
 		})
 		.on('click', '.day_item.selected', function(e) {
+			$('.event_item').removeClass('hidden');
+
 			$(this).removeClass('selected');
 		});
+
 
 	$('.month_placeholder')
 		.on('click', function(e) {
@@ -54,6 +66,7 @@ $(function() {
 			$('.current_month').text($('.current_month').attr('data-month'));
 		});
 
+
 	$('.current_month').on('click', function(e) {
 		var offset = $('.timeline_outer').scrollLeft() + $('.month_item.selected').offset().left;
 
@@ -63,6 +76,7 @@ $(function() {
 
 		$('.month_item.selected').children('.month_placeholder').trigger('click');
 	});
+
 
 	$('.select_month').on('click', function(e) {
 		$(this).hasClass('next')
@@ -76,4 +90,5 @@ $(function() {
 		}, 300);
 
 	});
+
 });
