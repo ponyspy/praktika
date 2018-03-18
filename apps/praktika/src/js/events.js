@@ -56,7 +56,17 @@ $(function() {
 
 			$.post('', { month: month_index }).done(function(data) {
 				location.hash = month_index;
-				$('.events_list').empty().append(data);
+
+				var $events = $(data);
+				$('.events_list').empty().append($events);
+
+				var dates = $events.map(function() {
+					return $(this).attr('class').split(' ')[1];
+				}).toArray();
+
+				$('.day_item').removeClass('disabled');
+				$('.month_item.selected').find('.day_item').addClass('disabled')
+																 .filter('.' + dates.join(', .')).removeClass('disabled');
 			});
 		})
 		.on('mouseenter', function(e) {
