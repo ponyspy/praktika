@@ -35,6 +35,10 @@ $(function() {
 			$('.event_item').addClass('hidden').filter('.date_' + date).removeClass('hidden');
 
 			$('.day_item').removeClass('selected').filter(this).addClass('selected');
+
+			$('html, body').animate({
+				'scrollTop': 0
+			});
 		})
 		.on('click', '.day_item.selected', function(e) {
 			$('.event_item').removeClass('hidden');
@@ -67,6 +71,10 @@ $(function() {
 				$('.day_item').removeClass('disabled');
 				$('.month_item.selected').find('.day_item').addClass('disabled')
 																 .filter('.' + dates.join(', .')).removeClass('disabled');
+
+				$('html, body').animate({
+					'scrollTop': 0
+				});
 			});
 		})
 		.on('mouseenter', function(e) {
