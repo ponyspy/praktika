@@ -36,10 +36,8 @@ module.exports = function(Model) {
 			}}},
 			{ $sort: { 'schedule.date': 1 } },
 			{ $project: {
-				sym:    1, _short_id: 1,
-				title:  1, s_title:   1,
-				age:    1, schedule:  1,
-				poster: 1, members:   1
+				sym:   1, _short_id: 1, age:    1, schedule: 1,
+				title: 1, s_title:   1, poster: 1, members:  1
 			}},
 			{ $addFields: { 'members': { $filter: {
 				input: '$members',
