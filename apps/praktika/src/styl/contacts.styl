@@ -34,20 +34,26 @@ html, body
 		margin 40px auto
 		overflow hidden
 		column-count 2
+		column-gap 20px
 		.column
+			break-inside avoid
 			margin-bottom 40px
 			width 100%
 			position relative
+			overflow hidden
 			.title
-				vertical-align top
-				display inline-block
+				float left
+				// vertical-align top
+				// display inline-block
 				width 40%
 				font 12pt/16pt 'PT Mono Bold'
-				max-width 120px
+				min-width 120px
 				padding-right 40px
+				box-sizing border-box
 			.value
-				vertical-align top
-				display inline-block
+				float left
+				// vertical-align top
+				// display inline-block
 				width 60%
 				font 12pt/16pt 'PT Mono'
 				a
