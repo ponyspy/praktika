@@ -50,7 +50,7 @@ module.exports = function(Model) {
 			}}}}
 		])
 		.exec(function(err, events) {
-			Member.populate(events, { path: 'members.list', select: 'name _short_id' }, function(err, events) {
+			Member.populate(events, { path: 'members.list', select: 'name _short_id status' }, function(err, events) {
 
 				var opts = {
 					__: function() { return i18n.__.apply(null, arguments); },
