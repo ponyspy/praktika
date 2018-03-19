@@ -20,7 +20,10 @@ html
 								a(href='/auth/logout') выход
 				.nav_block
 					a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
-					a.lang(href='#') eng
+					if locale == 'ru'
+						a.lang(href='/lang/en') eng
+					else
+						a.lang(href='/lang/ru') rus
 				a(href='/'): img.logo(src='/stuff/praktika/logo/logo_praktika.svg')
 
 			.content_block
