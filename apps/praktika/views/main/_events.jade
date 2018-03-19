@@ -16,5 +16,5 @@ each event in events
 							.group_title= get_locale(group.title, locale)
 							.group_items
 								each member in group.list
-									a.member_item(href='#')= get_locale(member.name, locale)
+									a.member_item(href='/team#' + member._short_id)= get_locale(member.name, locale)
 			.event_description= get_locale(event.s_title, locale)
