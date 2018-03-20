@@ -94,6 +94,8 @@ module.exports.images = function(obj, base_path, hold, upload_images, callback) 
 			async.eachOfSeries(upload_images.path, function(item, i, callback) {
 				images[i] = { path: null, description: [] };
 				images[i].path = upload_images.path[i];
+				images[i].style = upload_images.style[i];
+				images[i].holder = upload_images.holder[i];
 
 				images[i].description.push({ lg: 'ru', value: upload_images.description.ru[i] });
 				if (upload_images.description.en) {
@@ -124,6 +126,8 @@ module.exports.images = function(obj, base_path, hold, upload_images, callback) 
 									obj_img.preview = preview_path;
 
 									obj_img.description = image.description;
+									obj_img.style = image.style;
+									obj_img.holder = image.holder;
 
 									obj.images.push(obj_img);
 

@@ -40,7 +40,7 @@ $(function() {
 		}
 	});
 
-	$(document).on('click', '.image_main', function(event) {
+	$(document).on('click', '.image_holder', function(event) {
 		var $this = $(this);
 
 		if ($this.children('input').val() == 'true') {
@@ -52,19 +52,21 @@ $(function() {
 		}
 	});
 
-	$(document).on('click', '.image_size', function(event) {
+	$(document).on('click', '.image_style', function(event) {
 		var $this = $(this);
 
-		var arr_size = ['1x', '2x', '3x'];
-		var current = $this.children('input').val();
-		var index = arr_size.indexOf(current);
+		var arr_label = ['чт/бф', 'чф/бт'];
+		var arr_style = ['white', 'black'];
 
-		index + 1 >= arr_size.length
+		var current = $this.children('.label').text();
+		var index = arr_label.indexOf(current);
+
+		index + 1 >= arr_label.length
 			? index = 0
 			: index += 1;
 
-		$this.children('.label').text(arr_size[index]);
-		$this.children('input').val(arr_size[index]);
+		$this.children('.label').text(arr_label[index]);
+		$this.children('input').val(arr_style[index]);
 	});
 
 	$('.images_upload_preview').filedrop({
@@ -88,11 +90,19 @@ $(function() {
 			var image = $('<div />', {'class': 'image_upload_preview', 'style': 'background-image:url(' + response + ')'});
 			var image_delete = $('<div />', {'class': 'image_delete', 'text': '×'});
 
+			var image_style = $('<div />', {'class': 'image_style'});
+			var style_label = $('<span />', { 'class': 'label', 'text': 'чф/бт'});
+			var style_form = $('<input />', {'class': 'style_form', 'type': 'hidden', 'name': 'images[style][]', 'value': 'black'});
+
+			var image_holder = $('<div />', {'class': 'image_holder'});
+			var holder_label = $('<span />', { 'class': 'label', 'text': '◦'});
+			var holder_form = $('<input />', {'class': 'holder_form', 'type': 'hidden', 'name': 'images[holder][]', 'value': 'false'});
+
 			var image_description = $('<div />', {'class': 'image_description'});
 			var desc_ru = $('<textarea />', {'class': 'image_description_input ru_img', 'name': 'images[description][ru][]', 'placeholder':'Описание'});
 			var desc_en = $('<textarea />', {'class': 'image_description_input en_img', 'name': 'images[description][en][]', 'disabled':'disabled', 'placeholder':'Description'});
 			var image_form = $('<input />', {'class': 'image_form', 'type': 'hidden', 'name': 'images[path][]', 'value': response});
-			$('.images_upload_preview').append(image.append(image_delete, image_form, image_description.append(desc_ru, desc_en)));
+			$('.images_upload_preview').append(image.append(image_delete, image_style.append(style_label, style_form), image_holder.append(holder_label, holder_form), image_form, image_description.append(desc_ru, desc_en)));
 		},
 		progressUpdated: function(i, file, progress) {
 

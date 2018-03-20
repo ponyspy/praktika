@@ -52,6 +52,8 @@ var eventSchema = new Schema({
 	}],
 	images: [{
 		description: { type: String, trim: true, locale: true },
+		holder: Boolean,
+		style: String,
 		original: { type: String },
 		thumb: { type: String },
 		preview: { type: String }
