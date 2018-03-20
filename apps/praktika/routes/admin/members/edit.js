@@ -6,6 +6,7 @@ module.exports = function(Model, Params) {
 	var Member = Model.Member;
 
 	var uploadImage = Params.upload.image;
+	var uploadImagePreview = Params.upload.image_preview;
 	var checkNested = Params.locale.checkNested;
 
 
@@ -44,13 +45,17 @@ module.exports = function(Model, Params) {
 					&& member.setPropertyLocalised('description', post[locale].description, locale);
 			});
 
-			uploadImage(member, 'members', 'photo', 500, files.photo && files.photo[0], post.photo_del, function(err, member) {
+			uploadImagePreview(member, 'members', 'photo_preview', 200, files.photo && files.photo[0], post.photo_del, function(err, member) {
 				if (err) return next(err);
 
-				member.save(function(err, member) {
+				uploadImage(member, 'members', 'photo', 500, files.photo && files.photo[0], post.photo_del, function(err, member) {
 					if (err) return next(err);
 
-					res.redirect('back');
+					member.save(function(err, member) {
+						if (err) return next(err);
+
+						res.redirect('back');
+					});
 				});
 			});
 		});

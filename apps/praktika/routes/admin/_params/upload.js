@@ -34,6 +34,38 @@ module.exports.file = function(obj, base_path, field_name, file, del_file, callb
 	});
 };
 
+module.exports.image_preview = function(obj, base_path, field_name, file_size, file, del_file, callback) {
+
+	if (del_file && obj[field_name]) {
+		rimraf.sync(public_path + obj[field_name].replace(/jpg|png/, '*'), { glob: true });
+		obj[field_name] = undefined;
+	}
+
+	if (del_file || !file) return callback.call(null, null, obj);
+
+	var file_path = '/cdn/' + base_path + '/' + obj._id + '/images';
+
+	rimraf(public_path + file_path + '/' + field_name + '.*', { glob: true }, function() {
+		mkdirp(public_path + file_path, function() {
+			if (/jpeg|png|gif/.test(mime.getExtension(file.mimetype))) {
+				gm(file.path).identify({ bufferStream: true }, function(err, meta) {
+					var file_name = field_name + '.' + mime.getExtension(file.mimetype);
+
+					this.resize(meta.size.width > file_size ? file_size : false, false);
+					this.quality(meta.size.width >= file_size ? 82 : 100);
+					this.write(public_path + file_path + '/' + file_name, function(err) {
+						obj[field_name] = file_path + '/' + file_name;
+
+						callback.call(null, null, obj);
+					});
+				});
+			} else {
+				callback.call(null, null, obj);
+			}
+		});
+	});
+};
+
 module.exports.image = function(obj, base_path, field_name, file_size, file, del_file, callback) {
 
 	if (del_file && obj[field_name]) {

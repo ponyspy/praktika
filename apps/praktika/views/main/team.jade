@@ -15,6 +15,5 @@ block content
 		.members_roles= __('все')
 
 	.members_list
-		//- each member in members.reduce(function (res, current, index, array) { return res.concat(array); }, [])
 		each member in members
-			.member_item(member-id=member._short_id, data-name=member.i18n.name.get(locale), data-src=member.photo): .in
+			.member_item(member-id=member._short_id, data-name=member.i18n.name.get(locale), data-src=member.photo_preview): .in
