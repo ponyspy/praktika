@@ -8,6 +8,12 @@ module.exports = function(Model) {
 	var Event = Model.Event;
 	var Member = Model.Member;
 
+	var get_locale = function(option, lg) {
+		return ((option.filter(function(locale) {
+			return locale.lg == lg;
+		})[0] || {}).value || '');
+	};
+
 	module.index = function(req, res) {
 		var months = [0, 1, 2].map(function(month) {
 			var date = moment().locale(req.locale).add(month, 'months');
@@ -51,7 +57,7 @@ module.exports = function(Model) {
 				var opts = {
 					__: function() { return i18n.__.apply(null, arguments); },
 					__n: function() { return i18n.__n.apply(null, arguments); },
-					get_locale: function(option, lg) {return ((option.filter(function(locale) {return locale.lg == lg; })[0] || {}).value || ''); },
+					get_locale: get_locale,
 					events: events,
 					locale: req.locale,
 					moment: moment,
@@ -66,8 +72,8 @@ module.exports = function(Model) {
 	module.event = function(req, res) {
 		var id = req.params.short_id;
 
-		Event.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden').exec(function(err, event) {
-			res.render('main/event.jade', { event: event, moment: moment });
+		Event.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden').populate('members.list comments.member').exec(function(err, event) {
+			res.render('main/event.jade', { event: event, moment: moment, get_locale: get_locale });
 		});
 	};
 

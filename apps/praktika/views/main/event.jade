@@ -10,4 +10,42 @@ block header_include
 
 
 block content
-	h1= event.i18n.title.get(locale)
+	h1.event_title= event.i18n.title.get(locale)
+	h2.event_s_title= event.i18n.s_title.get(locale)
+	.event_description!= event.i18n.description.get(locale)
+
+	.event_schedule
+		each item in event.schedule
+			.schedule_item
+				.item_date= item.date
+				.item_premiere= item.premiere
+
+	.event_place= get_locale(event.place, locale)
+	.event_duration= get_locale(event.duration, locale)
+	.event_age= event.age + '+'
+
+	.event_images
+		each image in event.images
+			img(width='150px', src=image)
+
+	.event_members
+		each group in event.members
+			.group_title= get_locale(group.title, locale)
+			.group_list
+				each item in group.list
+					.list_item= get_locale(item.name, locale)
+
+	.event_comments
+		each comment in event.comments
+			.comment_item
+				.comment_title= get_locale(comment.title, locale)
+				.comment_member
+					img.member_photo(width='150px', src=comment.member.photo)
+					.member_name= get_locale(comment.member.name, locale)
+				.comment_description!= get_locale(comment.description, locale)
+
+	.event_publications
+		each publication in event.publications
+			a.publication_item(href=publication.link)
+				.publication_title= get_locale(publication.title, locale)
+				.publication_description!= get_locale(publication.description, locale)
