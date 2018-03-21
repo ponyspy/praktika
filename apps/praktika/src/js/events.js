@@ -38,7 +38,7 @@ $(function() {
 
 			$('html, body').animate({
 				'scrollTop': 0
-			});
+			}, 300);
 		})
 		.on('click', '.day_item.selected', function(e) {
 			$('.event_item').removeClass('hidden');
@@ -73,7 +73,7 @@ $(function() {
 
 				$('html, body').animate({
 					'scrollTop': 0
-				});
+				}, 300);
 			});
 		})
 		.on('mouseenter', function(e) {
