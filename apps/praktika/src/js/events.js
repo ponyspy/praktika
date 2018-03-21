@@ -68,8 +68,8 @@ $(function() {
 					return $(this).attr('class').split(' ')[1];
 				}).toArray();
 
-				$('.day_item').removeClass('enabled');
-				$('.month_item.selected').find('.day_item').filter('.' + dates.join(', .')).addClass('enabled');
+				$('.month_item').find('.day_item').removeClass('enabled').end()
+												.filter('.selected').find('.' + dates.join(', .')).addClass('enabled');
 
 				$('html, body').animate({
 					'scrollTop': 0
