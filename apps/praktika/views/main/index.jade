@@ -12,9 +12,10 @@ block header_include
 
 
 block content
-	a.announcement_block(href='/events')
-		.announcement_title= announce.i18n.title.get(locale)
-		.announcement_s_title= announce.i18n.s_title.get(locale)
+	if announce
+		a.announcement_block(href='/events')
+			.announcement_title= announce.i18n.title.get(locale)
+			.announcement_s_title= announce.i18n.s_title.get(locale)
 
 	.slider_block.swiper-container
 		.swiper-wrapper
