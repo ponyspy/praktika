@@ -30,9 +30,8 @@ block content
 				span.snake
 					input.back(type="button", value="-")
 					select(name='roles[]', disabled=disable)
-						- var roles = { actor: 'актер', director: 'режиссер', artist: 'художник', author: 'автор', management: 'менеджмент', partner: 'партнер', consul: 'попечительский совет' }
-						each role, i in roles
-							option(value=i)= role
+						each role in static_types.members_roles
+							option(value=role)= __(role)
 				input.forward(type="button", value="+")
 			.form_title Фото:
 			+form_single_file('photo')(accept='image/jpeg,image/png,image/gif')

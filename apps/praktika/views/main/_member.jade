@@ -5,7 +5,7 @@
 			.member_name= member.i18n.name.get(locale)
 			.member_roles
 				each role in member.roles
-					.role= role
+					.role= __(role)
 		if events.length
 			.member_events
 				.events_title= __('спектакли')

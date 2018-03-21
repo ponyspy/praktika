@@ -1,0 +1,11 @@
+{
+	"members_roles": [
+		"actor",
+		"director",
+		"artist",
+		"author",
+		"management",
+		"partner",
+		"consul"
+	]
+}

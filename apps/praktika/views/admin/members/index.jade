@@ -17,8 +17,8 @@ block sub_menu
 			.drop_title Роль
 			.drop_inner
 				.drop_item(class='all').select Все
-				.drop_item(class='actor') Актер
-				.drop_item(class='director') Режиссер
+				each role in static_types.members_roles
+					.drop_item(class=role)= __(role)
 
 		.sub_drop.status(style='z-index: 1;')
 			.drop_title Статус
