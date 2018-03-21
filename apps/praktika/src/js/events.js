@@ -30,7 +30,7 @@ $(function() {
 				? $timeline.addClass('fix')
 				: $timeline.removeClass('fix');
 		})
-		.on('click', '.day_item', function(e) {
+		.on('click', '.day_item.enabled', function(e) {
 			var date = $(this).children('.day_date').text();
 			$('.event_item').addClass('hidden').filter('.date_' + date).removeClass('hidden');
 
@@ -68,9 +68,8 @@ $(function() {
 					return $(this).attr('class').split(' ')[1];
 				}).toArray();
 
-				$('.day_item').removeClass('disabled');
-				$('.month_item.selected').find('.day_item').addClass('disabled')
-																 .filter('.' + dates.join(', .')).removeClass('disabled');
+				$('.day_item').removeClass('enabled');
+				$('.month_item.selected').find('.day_item').filter('.' + dates.join(', .')).addClass('enabled');
 
 				$('html, body').animate({
 					'scrollTop': 0

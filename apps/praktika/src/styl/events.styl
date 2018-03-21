@@ -42,12 +42,14 @@
 					display none
 			&:hover
 				opacity 1
+				&:not(.selected) .day_item
+					opacity 1
 			&.selected
 				opacity 1
 				background-color rgb(247, 247, 247)
-			&.selected .day_item:hover
-				color white
-				background-color black
+				.day_item.enabled:hover
+					color white
+					background-color black
 			&:last-child
 				border-right none
 				margin-right 0
@@ -62,9 +64,11 @@
 				padding-bottom 10px
 				padding-left 5px
 				padding-right 5px
-				&.disabled
-					pointer-events none
-					opacity 0.3
+				opacity 0.3
+				pointer-events none
+				&.enabled
+					pointer-events auto
+					opacity 1
 				&.weekend
 					color rgb(226, 82, 65)
 				&.selected
