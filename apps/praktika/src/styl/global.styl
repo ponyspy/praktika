@@ -37,14 +37,21 @@ body
 		background-color black
 		a
 			color white!important
+		.menu_block
+			flex-grow 4.29
 		.search, .logo, .menu_open
 			filter: invert(100%)
 	.title_inner
 		position relative
 		margin-left 40px
 		margin-right 40px
+		display flex
+		justify-content center
+		align-items flex-start
+		background-color red
 	.nav_block
-		display inline-block
+		flex-grow 5.8
+		padding-bottom 6px
 		overflow hidden
 		.search
 			margin-top 13px
@@ -61,22 +68,10 @@ body
 			margin-right 20px
 			&:last-child
 				margin-right 0
-	.menu_open
-		width 40px
-		height 40px
-		background-image url('/stuff/praktika/icons/menu.svg')
-		background-size contain
-		background-position center
-		background-repeat no-repeat
-		float left
-		cursor pointer
-		&.open
-			background-size 50%
-			background-image url('/stuff/praktika/icons/x.svg')
 	.menu_block
-		position absolute
-		left 0
+		flex-grow 3
 		padding-top 5px
+		display flex
 		a
 			margin-top 5px
 			float left
@@ -86,6 +81,17 @@ body
 			margin-left 40px
 			&:hover
 				opacity 0.7
+		.menu_open
+			width 40px
+			height 40px
+			background-image url('/stuff/praktika/icons/menu.svg')
+			background-size contain
+			background-position center
+			background-repeat no-repeat
+			cursor pointer
+			&.open
+				background-size 50%
+				background-image url('/stuff/praktika/icons/x.svg')
 		.menu_items
 			margin-top 5px
 			float left
@@ -104,11 +110,10 @@ body
 			.items_drop
 				display none
 	.logo
+		flex-grow 3
 		padding-top 20px
 		padding-bottom 20px
 		width 120px
-		position absolute
-		right 0
 
 
 .footer_block
