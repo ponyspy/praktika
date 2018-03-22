@@ -5,25 +5,27 @@ html
 	body
 		.maket_block(class=content_style)
 			.title_block: .title_inner
-				.menu_block
-					.menu_open
-					.menu_items
-						.items_main
-							a(href='/events') репертуар и билеты
-							a(href='/contacts') контакты
-						.items_drop
-							a(href='/team') команда
-							a(href='/about') о театре
-						if (session && session.user_id)
-							span.stargazer_block
-								a(href='/auth') stargazer
-								a(href='/auth/logout') выход
-				.nav_block
-					a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
-					if locale == 'ru'
-						a.lang(href='/lang/en') eng
-					else
-						a.lang(href='/lang/ru') rus
+				.panel_block
+					.menu_block
+						.menu_open
+						.menu_items
+							.items_main
+								a(href='/events') репертуар и билеты
+								a(href='/contacts') контакты
+							.items_drop
+								a(href='/team') команда
+								a(href='/about') о театре
+							if (session && session.user_id)
+								span.stargazer_block
+									a(href='/auth') stargazer
+									a(href='/auth/logout') выход
+					.nav_block
+						a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
+						if locale == 'ru'
+							a.lang(href='/lang/en') eng
+						else
+							a.lang(href='/lang/ru') rus
+					.logo_spacer
 				a(href='/'): img.logo(src='/stuff/praktika/logo/logo_praktika.svg')
 
 			.content_block
