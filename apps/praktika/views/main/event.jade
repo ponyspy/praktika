@@ -39,7 +39,7 @@ block content
 
 	.event_partners
 		each partner in event.partners
-			.partner_item= get_locale(partner.title, locale)
+			a.partner_item(href=partner.link, target='_blank'): img(width='150px', src=partner.logo)
 
 	.event_comments
 		each comment in event.comments
