@@ -11,6 +11,7 @@ var admin = {
 	documents: require('./documents/_documents.js'),
 	slides: require('./slides/_slides.js'),
 	members: require('./members/_members.js'),
+	partners: require('./partners/_partners.js'),
 	cv: require('./cv.js'),
 	users: require('./users/_users.js'),
 	options: require('./options.js')
@@ -37,6 +38,7 @@ module.exports = (function() {
 	router.use('/slides', checkAuth, upload.fields([ { name: 'poster' }, { name: 'video' } ]), admin.slides);
 	router.use('/announces', checkAuth, admin.announces);
 	router.use('/members', checkAuth, upload.fields([ { name: 'photo' } ]), admin.members);
+	router.use('/partners', checkAuth, upload.fields([ { name: 'logo' } ]), admin.partners);
 	router.use('/users', checkAuth, admin.users);
 
 	router.post('/preview', checkAuth, upload.single('image'), admin.options.preview);
