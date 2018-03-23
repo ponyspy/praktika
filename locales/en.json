@@ -8,6 +8,10 @@
 	"спектакли": "спектакли",
 	"документы": "документы",
 	"купить билет": "купить билет",
+	"actresse": {
+		"one": "actresse",
+		"other": "actresses"
+	},
 	"actor": {
 		"one": "actor",
 		"other": "actors"

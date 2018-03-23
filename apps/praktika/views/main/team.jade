@@ -14,8 +14,8 @@ block content
 		.members_title(data-title=__('команда'))= __('команда')
 		.members_roles
 			.role= __('все')
-			each role in static_types.members_roles
-				.role(data-role=role)= __n(role, 5)
+			each role, i in static_types.members_roles
+				.role(data-role=i)= __n(role.male, 5)
 
 	.members_list
 		each member in members

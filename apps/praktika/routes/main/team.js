@@ -22,6 +22,7 @@ module.exports = function(Model) {
 					locale: req.locale,
 					events: events,
 					member: member,
+					static_types: req.app.locals.static_types,
 					compileDebug: false, debug: false, cache: true, pretty: false
 				};
 

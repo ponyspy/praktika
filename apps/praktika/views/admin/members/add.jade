@@ -34,8 +34,8 @@ block content
 				span.snake
 					input.back(type="button", value="-")
 					select(name='roles[]', disabled=disable)
-						each role in static_types.members_roles
-							option(value=role)= __(role)
+						each role, key in static_types.members_roles
+							option(value=key)= __(key)
 				input.forward(type="button", value="+")
 			.form_title Фото:
 			+form_single_file('photo')(accept='image/jpeg,image/png,image/gif')
