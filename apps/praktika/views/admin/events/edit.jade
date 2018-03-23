@@ -42,6 +42,8 @@ block content
 					option(value=i, selected=(event.age == i))= i + '+'
 			.form_title Расписание:
 			+form_schedule(event.schedule)
+			.form_title Партнеры:
+			+form_partners(event.partners)
 			.form_title Участники:
 			+form_members(event.members)
 			.form_title Комментарии:

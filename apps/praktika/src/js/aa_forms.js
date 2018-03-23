@@ -53,6 +53,15 @@ $(function() {
 			});
 		});
 
+		// -- Partners
+
+		$('.block_item.partners').not('.hidden').toArray().forEach(function(partners, i) {
+			$('<input />').attr('type', 'hidden')
+										.attr('name', 'partners' + '[' + i + ']')
+										.attr('value', $(partners).find('.partner_item').val())
+										.appendTo('form');
+		});
+
 		// -- Comments
 
 		$('.block_item.comment').not('.hidden').toArray().forEach(function(comment, i) {

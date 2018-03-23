@@ -7,6 +7,7 @@ module.exports = function(Model, Params) {
 
 	var Event = Model.Event;
 	var Member = Model.Member;
+	var Partner = Model.Partner;
 
 	var uploadImages = Params.upload.images;
 	var uploadImage = Params.upload.image;
@@ -15,7 +16,13 @@ module.exports = function(Model, Params) {
 
 	module.index = function(req, res, next) {
 		Member.find().sort('name.value').exec(function(err, members) {
-			res.render('admin/events/add.jade', { members: members });
+			if (err) return next(err);
+
+			Partner.find().sort('title.value').exec(function(err, partners) {
+				if (err) return next(err);
+
+				res.render('admin/events/add.jade', { members: members, partners: partners });
+			});
 		});
 	};
 
@@ -31,6 +38,8 @@ module.exports = function(Model, Params) {
 		event.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 		event.age = post.age;
 		event.sym = post.sym ? post.sym : undefined;
+
+		event.partners = post.partners;
 
 		event.schedule = post.schedule && post.schedule.reduce(function(arr, schedule) {
 			if (schedule.date != '') {

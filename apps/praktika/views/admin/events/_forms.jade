@@ -1,3 +1,22 @@
+//- Partners form
+
+mixin form_partners(event_partners)
+	.block_items
+		each event_partner in (event_partners && event_partners.length) ? event_partners : [{ hidden: true, link: '', title: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ] }]
+			.block_item.partners(class= event_partner.hidden ? 'hidden' : '', style=event_partner.hidden ? 'display: none;': '')
+				.partner_options
+					input.rm_block(type='button', value='−')
+					input.up_block(type='button', value='▲')
+					input.down_block(type='button', value='▼')
+					select.partner_item
+						each partner in (partners && partners.length) ? partners : [{ hidden: true, link: '', title: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ] }]
+							option(value=partner._id, selected=event_partner == partner._id.toString())= partner.title.filter(function(locale) { return locale.lg == 'ru' })[0].value
+					input.list_sort_tg(type='button', value='⦿')
+					input.list_sort(type='text', style='display: none; font-size: 9pt;')
+				br
+
+		input.add_group(type='button', value='+ Добавить партнера')
+
 //- Members form
 
 mixin form_members(groups)

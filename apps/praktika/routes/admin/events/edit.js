@@ -6,6 +6,7 @@ module.exports = function(Model, Params) {
 
 	var Event = Model.Event;
 	var Member = Model.Member;
+	var Partner = Model.Partner;
 
 	var previewImages = Params.upload.preview;
 	var uploadImages = Params.upload.images;
@@ -22,10 +23,13 @@ module.exports = function(Model, Params) {
 			Member.find().sort('name.value').exec(function(err, members) {
 				if (err) return next(err);
 
-				previewImages(event.images, function(err, images_preview) {
-					if (err) return next(err);
+				Partner.find().sort('title.value').exec(function(err, partners) {
 
-					res.render('admin/events/edit.jade', { event: event, members: members, images_preview: images_preview });
+					previewImages(event.images, function(err, images_preview) {
+						if (err) return next(err);
+
+						res.render('admin/events/edit.jade', { event: event, members: members, partners: partners, images_preview: images_preview });
+					});
 				});
 			});
 		});
@@ -45,6 +49,8 @@ module.exports = function(Model, Params) {
 			event.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 			event.age = post.age;
 			event.sym = post.sym ? post.sym : undefined;
+
+			event.partners = post.partners;
 
 			event.schedule = post.schedule && post.schedule.reduce(function(arr, schedule) {
 				if (schedule.date != '') {
