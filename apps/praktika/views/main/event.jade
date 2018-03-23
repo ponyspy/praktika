@@ -37,6 +37,10 @@ block content
 				each item in group.list
 					.list_item= get_locale(item.name, locale)
 
+	.event_partners
+		each partner in event.partners
+			.partner_item= get_locale(partner.title, locale)
+
 	.event_comments
 		each comment in event.comments
 			.comment_item
