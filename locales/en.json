@@ -10,37 +10,30 @@
 	"купить билет": "купить билет",
 	"actor": {
 		"one": "actor",
-		"few": "actress",
 		"other": "actors"
 	},
 	"director": {
 		"one": "director",
-		"few": "director",
 		"other": "directors"
 	},
 	"artist": {
 		"one": "artist",
-		"few": "artist",
 		"other": "artists"
 	},
 	"author": {
 		"one": "author",
-		"few": "author",
 		"other": "authors"
 	},
 	"management": {
 		"one": "менеджмент",
-		"few": "менеджмент",
 		"other": "менеджмент"
 	},
 	"partner": {
 		"one": "partner",
-		"few": "partner",
 		"other": "partners"
 	},
 	"consul": {
 		"one": "попечительский совет",
-		"few": "попечительский совет",
 		"other": "попечительский совет"
 	}
 }
