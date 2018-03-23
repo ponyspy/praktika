@@ -18,7 +18,7 @@ block sub_menu
 			.drop_inner
 				.drop_item(class='all').select Все
 				each role in static_types.members_roles
-					.drop_item(class=role)= __(role)
+					.drop_item(class=role)= __n(role, 5)
 
 		.sub_drop.status(style='z-index: 1;')
 			.drop_title Статус

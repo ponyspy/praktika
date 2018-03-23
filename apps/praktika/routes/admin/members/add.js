@@ -27,6 +27,7 @@ module.exports = function(Model, Params) {
 		member.roles = post.roles;
 		member.sym = post.sym ? post.sym : undefined;
 		member.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
+		member.sex = post.sex;
 
 		var locales = post.en ? ['ru', 'en'] : ['ru'];
 

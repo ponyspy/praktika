@@ -25,6 +25,10 @@ block content
 			+form_text_single('name')
 			.form_title Описание:
 			+form_text_multi('description')
+			.form_title Пол:
+			select(name='sex')
+				option(value='male') муж.
+				option(value='female') жен.
 			.form_title Роли:
 			.snake_outer
 				span.snake
