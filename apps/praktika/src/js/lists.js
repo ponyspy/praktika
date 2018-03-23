@@ -181,6 +181,7 @@ $(function() {
 		.on('click', '.item_rm.event', {path:'/admin/events/remove', description: 'Удалить событие?'}, remove)
 		.on('click', '.item_rm.slide', {path:'/admin/slides/remove', description: 'Удалить слайд?'}, remove)
 		.on('click', '.item_rm.doc', {path:'/admin/documents/remove', description: 'Удалить документ?'}, remove)
+		.on('click', '.item_rm.partner', {path:'/admin/partners/remove', description: 'Удалить партнера?'}, remove)
 		.on('click', '.item_rm.announce', {path:'/admin/announces/remove', description: 'Удалить анонс?'}, remove);
 
 });
