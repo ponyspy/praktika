@@ -14,6 +14,8 @@ module.exports = function(Model) {
 	};
 
 	module.get_member = function(req, res) {
+		i18n.setLocale(req.locale);
+
 		Member.findOne({ '_short_id': req.body.id }).exec(function(err, member) {
 			Event.find({ 'members.list': member._id }).exec(function(err, events) {
 				var opts = {

@@ -13,9 +13,9 @@ block content
 	.members_header: .members_header_inner
 		.members_title(data-title=__('команда'))= __('команда')
 		.members_roles
-			.role= __('все')
-			each role, i in static_types.members_roles
-				.role(data-role=i)= __n(role.male, 5)
+			span.role= __('все')
+			//- each role, i in static_types.members_roles
+			//- 	.role(data-role=i)= __n(role.male, 5)
 
 	.members_list
 		each member in members
