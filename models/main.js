@@ -50,6 +50,7 @@ var eventSchema = new Schema({
 		mode: String,
 		list: [{ type: ObjectId, ref: 'Member' }],
 	}],
+	partners: [{ type: ObjectId, ref: 'Partner' }],
 	images: [{
 		description: { type: String, trim: true, locale: true },
 		holder: Boolean,
@@ -124,6 +125,16 @@ documentSchema = new Schema({
 	date: { type: Date, default: Date.now },
 });
 
+partnerSchema = new Schema({
+	title: { type: String, trim: true, locale: true },
+	link: String,
+	logo: String,
+	status: String,
+	_short_id: { type: String, unique: true, index: true, sparse: true },
+	date: { type: Date, default: Date.now },
+});
+
+
 // ------------------------
 // *** Index Block ***
 // ------------------------
@@ -136,6 +147,8 @@ announceSchema.index({'title.value': 'text', 's_title.value': 'text'}, {language
 mediaSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 slideSchema.index({'title.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 documentSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
+partnerSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
+
 
 // ------------------------
 // *** Plugins Block ***
@@ -150,6 +163,7 @@ announceSchema.plugin(mongooseLocale);
 mediaSchema.plugin(mongooseLocale);
 slideSchema.plugin(mongooseLocale);
 documentSchema.plugin(mongooseLocale);
+partnerSchema.plugin(mongooseLocale);
 
 
 // ------------------------
@@ -164,3 +178,4 @@ module.exports.Announce = mongoose.model('Announce', announceSchema);
 module.exports.Media = mongoose.model('Media', mediaSchema);
 module.exports.Slide = mongoose.model('Slide', slideSchema);
 module.exports.Document = mongoose.model('Document', documentSchema);
+module.exports.Partner = mongoose.model('Partner', partnerSchema);
