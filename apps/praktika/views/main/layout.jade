@@ -11,14 +11,14 @@ html
 						.menu_items
 							.items_main
 								a(href='/events') репертуар и билеты
-								a(href='/contacts') контакты
+								a(href='/contacts')= __('контакты')
 							.items_drop
-								a(href='/team') команда
-								a(href='/about') о театре
+								a(href='/team')= __('команда')
+								a(href='/about')= __('о театре')
 							if (session && session.user_id)
 								span.stargazer_block
 									a(href='/auth') stargazer
-									a(href='/auth/logout') выход
+									a(href='/auth/logout')= __('выход')
 					.nav_block
 						a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
 						if locale == 'ru'
