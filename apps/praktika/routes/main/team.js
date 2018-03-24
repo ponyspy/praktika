@@ -1,5 +1,4 @@
 var jade = require('jade');
-var i18n = require('i18n');
 
 module.exports = function(Model) {
 	var module = {};
@@ -14,13 +13,11 @@ module.exports = function(Model) {
 	};
 
 	module.get_member = function(req, res) {
-		i18n.setLocale(req.locale);
-
 		Member.findOne({ '_short_id': req.body.id }).exec(function(err, member) {
 			Event.find({ 'members.list': member._id }).exec(function(err, events) {
 				var opts = {
-					__: function() { return i18n.__.apply(null, arguments); },
-					__n: function() { return i18n.__n.apply(null, arguments); },
+					__: function() { return res.locals.__.apply(null, arguments); },
+					__n: function() { return res.locals.__n.apply(null, arguments); },
 					locale: req.locale,
 					events: events,
 					member: member,
