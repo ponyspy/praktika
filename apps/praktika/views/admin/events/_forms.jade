@@ -9,7 +9,7 @@ mixin form_partners(event_partners)
 					input.up_block(type='button', value='▲')
 					input.down_block(type='button', value='▼')
 					select.partner_item
-						each partner in (partners && partners.length) ? partners : [{ hidden: true, link: '', title: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ] }]
+						each partner in (partners && partners.length) ? partners : [{ hidden: true, link: '', _id: 0, title: [ {lg: 'ru', value: ''}, {lg: 'en', value: ''} ] }]
 							option(value=partner._id, selected=event_partner == partner._id.toString())= partner.title.filter(function(locale) { return locale.lg == 'ru' })[0].value
 					input.list_sort_tg(type='button', value='⦿')
 					input.list_sort(type='text', style='display: none; font-size: 9pt;')
