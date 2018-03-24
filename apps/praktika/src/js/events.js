@@ -105,9 +105,9 @@ $(function() {
 			? $('.month_item.selected').next()
 			: $('.month_item.selected').prev();
 
-		$future_month.children('.month_placeholder').trigger('click');
-
 		var offset = $('.timeline_outer').scrollLeft() + $future_month.offset().left;
+
+		$future_month.children('.month_placeholder').trigger('click');
 
 		$('.timeline_outer').animate({
 			'scrollLeft': offset
