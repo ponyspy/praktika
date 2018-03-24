@@ -36,7 +36,7 @@ block content
 						input.back(type="button", value="-")
 						select(name='roles[]', disabled=disable)
 							each role, key in static_types.members_roles
-									option(value=key, selected=m_role == key)= __n(key, 1)
+									option(value=key, selected=m_role == key)= __n(role[member.sex], 1)
 				input.forward(type="button", value="+")
 			.form_title Фото:
 			+form_single_file('photo', member)(accept='image/jpeg,image/png,image/gif')
