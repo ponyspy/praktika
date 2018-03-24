@@ -1,6 +1,7 @@
 $(function() {
 	var $document = $(document);
 	var $window = $(window);
+	var title = $('title').text();
 
 	var $members = $('.member_item').on('click', function(e) {
 		var $current_block = $(this);
@@ -12,6 +13,7 @@ $(function() {
 			$('.panel').remove();
 			$current_block.removeClass('active');
 			$document.trigger('scroll.load');
+			$('title').text(title);
 
 			return false;
 		}
@@ -45,6 +47,8 @@ $(function() {
 			}
 		});
 
+		$('title').text(title + ' : ' + $current_block.attr('data-name').toLowerCase());
+
 		$('html, body').animate({
 			'scrollTop': $current_block.offset().top - $('.members_header').height() - 10
 		}, 300);
@@ -71,6 +75,7 @@ $(function() {
 			location.hash = '!';
 			$('.panel').remove();
 			$members.removeClass('active');
+			$('title').text(title);
 
 			event.stopPropagation();
 		})

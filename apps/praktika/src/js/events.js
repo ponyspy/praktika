@@ -1,4 +1,5 @@
 $(function() {
+	var title = $('title').text();
 
 	if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 		$('.timeline_block').on('mousemove', function(e) {
@@ -68,6 +69,7 @@ $(function() {
 				$('.day_item.selected').removeClass('selected');
 				$('.month_placeholder').removeClass('hide').filter($this).addClass('hide');
 				$('.current_month').text(month_name).attr('data-month', month_name);
+				$('title').text(title + ' : ' + month_name.toLowerCase());
 
 				$month_items.removeClass('selected').filter($month_item).addClass('selected');
 				$month_items.find('.day_item').removeClass('enabled');
