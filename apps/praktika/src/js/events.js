@@ -100,11 +100,14 @@ $(function() {
 
 
 	$('.select_month').on('click', function(e) {
-		$(this).hasClass('next')
-			? $('.month_item.selected').next().children('.month_placeholder').trigger('click')
-			: $('.month_item.selected').prev().children('.month_placeholder').trigger('click');
 
-		var offset = $('.timeline_outer').scrollLeft() + $('.month_item.selected').offset().left;
+		var $future_month = $(this).hasClass('next')
+			? $('.month_item.selected').next()
+			: $('.month_item.selected').prev();
+
+		$future_month.children('.month_placeholder').trigger('click');
+
+		var offset = $('.timeline_outer').scrollLeft() + $future_month.offset().left;
 
 		$('.timeline_outer').animate({
 			'scrollLeft': offset
