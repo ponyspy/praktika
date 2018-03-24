@@ -49,27 +49,29 @@ $(function() {
 
 	$('.month_placeholder')
 		.on('click', function(e) {
-			var $month_item = $(this).parent();
+			var $this = $(this);
+			var $month_items = $('.month_item');
+			var $month_item = $this.parent();
+
 			var month_name = $month_item.attr('data-month');
 			var month_index = $month_item.index();
 
-			$('.day_item.selected').removeClass('selected');
-			$('.month_placeholder').removeClass('hide').filter(this).addClass('hide');
-			$('.current_month').text(month_name).attr('data-month', month_name);
-			$('.month_item').removeClass('selected').filter($month_item).addClass('selected');
-
 			$.post('', { month: month_index }).done(function(data) {
 				location.hash = month_index;
-
 				var $events = $(data);
-				$('.events_list').empty().append($events);
-
 				var dates = $events.map(function() {
 					return $(this).attr('class').split(' ')[1];
 				}).toArray();
 
-				$('.month_item').find('.day_item').removeClass('enabled').end()
-												.filter('.selected').find('.' + dates.join(', .')).addClass('enabled');
+				$('.events_list').empty().append($events);
+
+				$('.day_item.selected').removeClass('selected');
+				$('.month_placeholder').removeClass('hide').filter($this).addClass('hide');
+				$('.current_month').text(month_name).attr('data-month', month_name);
+
+				$month_items.removeClass('selected').filter($month_item).addClass('selected');
+				$month_items.find('.day_item').removeClass('enabled');
+				$month_item.find('.' + dates.join(', .')).addClass('enabled');
 
 				$('html, body').animate({
 					'scrollTop': 0
