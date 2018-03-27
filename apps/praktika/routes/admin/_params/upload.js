@@ -149,7 +149,7 @@ module.exports.images = function(obj, base_path, hold, upload_images, callback) 
 						gm(public_path + image.path).resize(420, false).quality(80).write(public_path + preview_path, function(err) {
 							gm(public_path + image.path).size({ bufferStream: true }, function(err, size) {
 								this.resize(size.width > 1920 ? 1920 : false, false);
-								this.quality(size.width > 1920 ? 80 : 100);
+								this.quality(size.width >= 1920 ? 80 : 100);
 								this.write(public_path + thumb_path, function(err) {
 									var obj_img = {};
 
