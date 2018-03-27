@@ -5,7 +5,7 @@ each event in events
 		.event_poster(style='background-image: url(' + event.poster + ')')
 		.event_body
 			.event_head
-				.event_date= event_date.locale(locale).format('D MMMM')
+				.event_date= event_date.locale(locale).format('DD MMMM')
 				.event_ticket= __('купить билет')
 			a.event_title(href='/events/' + (event.sym ? event.sym : event._short_id))= get_locale(event.title, locale)
 			.event_meta
