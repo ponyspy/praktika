@@ -5,7 +5,6 @@
 		"artist": { "male": "artist", "female": "artist" },
 		"author": { "male": "author", "female": "author" },
 		"management": { "male": "management", "female": "management" },
-		"partner": { "male": "partner", "female": "partner" },
 		"consul": { "male": "consul", "female": "consul"}
 	}
 }
