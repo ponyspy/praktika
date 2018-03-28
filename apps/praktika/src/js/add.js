@@ -37,8 +37,17 @@ $(function() {
 	});
 
 	$('.form_submit').on('click', function(event) {
-		$(this).off();
+		var $this = $(this);
+
+		if ($this.data('timer')) return false;
+
+		$this.data('timer', true);
+
 		$('form').submit();
+
+		setTimeout(function() {
+			$this.data('timer', false);
+		}, 3000);
 	});
 
 	$('.form_cancel').on('click', function(event) {
