@@ -29,7 +29,8 @@ module.exports = function(Model) {
 
 	module.get_events = function(req, res) {
 		var month = req.body.month;
-		var date = moment().set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
+		var date_start = moment().set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
+		var date_end = moment().set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
 
 		Event.aggregate([
 			{ $unwind: '$schedule' },
@@ -37,8 +38,8 @@ module.exports = function(Model) {
 				$ne: 'hidden'
 			}}},
 			{ $match: { 'schedule.date': {
-				$gte: month > 0 ? date.startOf('month').add(month, 'months').toDate() : moment().toDate(),
-				$lte: date.endOf('month').add(month, 'months').toDate()
+				$gte: month > 0 ? date_start.startOf('month').add(month, 'months').toDate() : moment().toDate(),
+				$lte: date_end.endOf('month').add(month, 'months').toDate()
 			}}},
 			{ $sort: { 'schedule.date': 1 } },
 			{ $project: {
