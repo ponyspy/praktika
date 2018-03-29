@@ -5,6 +5,30 @@
 html, body
 	height 100%
 
+.banner_block
+	width 100%
+	height 80px
+	padding-left 40px
+	padding-right 40px
+	padding-top 20px
+	box-sizing border-box
+	&:hover .banner_close
+		display block
+	.banner_close
+		display none
+		float right
+		width 40px
+		height 40px
+		background-image url('/stuff/praktika/icons/x.svg')
+		background-size 50%
+		background-position center
+		background-repeat no-repeat
+		cursor pointer
+	.banner_logo
+		display block
+		width 120px
+		float left
+
 .title_block
 	position absolute
 	height 0
@@ -16,7 +40,8 @@ html, body
 .content_block
 	position absolute
 	width 100%
-	height 100%
+	top 80px
+	bottom 0px
 
 .announcement_block
 	display block

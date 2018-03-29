@@ -4,6 +4,10 @@ html
 		include header
 	body
 		.maket_block(class=content_style)
+			if content_banner
+				.banner_block
+					a.banner_logo(href='#'): img(src='/stuff/praktika/logo/logo_depcult.svg')
+					.banner_close
 			.title_block: .title_inner
 				.panel_block
 					.menu_block
