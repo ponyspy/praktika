@@ -3,6 +3,7 @@ extends layout
 block header_meta
 	- var content_title= __('практика') + ' : ' + event.i18n.title.get(locale)
 	- var content_description= event.i18n.description.get(locale)
+	- var content_style = event.images && event.images.length && event.images[0].style
 
 block header_include
 	- var include_libs_css = ['swiper.min.css']
@@ -13,12 +14,13 @@ block header_include
 
 block content
 	.event_head
-		.event_head_title= event.i18n.title.get(locale)
-		.event_head_s_title= event.i18n.s_title.get(locale)
+		.head_meta
+			.event_head_title= event.i18n.title.get(locale)
+			.event_head_s_title= event.i18n.s_title.get(locale)
 		.slider_block.swiper-container
 			.swiper-wrapper
 				each image in event.images
-					.slide_item.swiper-slide
+					.slide_item.swiper-slide(data-style=image.style)
 						.slide_image(style='background-image: url(' + image.thumb + ')' )
 						if image.holder
 							.slide_holder
@@ -26,7 +28,7 @@ block content
 	.event_schedule
 		each item in event.schedule
 			.schedule_item
-				.item_date= item.date
+				.item_date= moment(item.date).locale(locale).format('DD MMMM')
 				.item_premiere= item.premiere
 
 	.event_body

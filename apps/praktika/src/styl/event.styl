@@ -1,0 +1,89 @@
+.title_block
+	position absolute
+	height 0
+
+.event_head
+	width 100%
+	height 100%
+	position absolute
+	.head_meta
+		top 140px
+		left 40px
+		z-index 999
+		position absolute
+		.event_head_title
+			font-size 24pt
+		.event_head_s_title
+			font-size 14pt
+			margin-top 20px
+			max-width 440px
+
+.event_schedule
+	z-index 999
+	position absolute
+	background-color black
+	color white
+	padding 20px
+	box-sizing border-box
+	bottom 0
+	width 100%
+	.schedule_item
+		float left
+		margin-right 20px
+
+.event_body
+	position absolute
+	top 100%
+
+.slider_block
+	width 100%
+	height 100%
+	.slide_item
+		width 100%
+		height 100%
+		position relative
+		.slide_image
+			position absolute
+			z-index 0
+			width 100%
+			height 100%
+			background-size cover
+			background-position center
+			background-repeat no-repeat
+		.slide_holder
+			position absolute
+			width 100%
+			height 100%
+			background-color rgba(0, 0, 0, 0.15)
+	.swiper-pagination
+		bottom 40px
+		left auto!important
+		right 40px!important
+		width auto
+		.swiper-pagination-bullet
+			background-color transparent!important
+			opacity 1!important
+			border 1px solid black
+			&.swiper-pagination-bullet-active
+				background-color black!important
+
+
+
+
+
+.maket_block.white
+	.event_head
+		color white
+	.swiper-pagination-bullet
+		border 1px solid white!important
+		&.swiper-pagination-bullet-active
+			background-color white!important
+	.swiper-pagination-black
+	.swiper-button-black
+		display none!important
+	.slider_navigate
+		color white
+	.content_block
+		background-color black
+	.slide_item
+		color white

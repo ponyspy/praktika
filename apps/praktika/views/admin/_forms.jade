@@ -126,7 +126,7 @@ mixin form_multiple_files(path, object)
 mixin form_images_upload(images)
 	if !images
 		.form_images_upload
-			input#upload_fallback(type='file')
+			input#upload_fallback(type='file', multiple='true')
 			.images_upload_preview
 	else
 		- function get_locale(option, lang) {return ((option.filter(function(locale) {return locale.lg == lang; })[0] || {}).value || ''); }
