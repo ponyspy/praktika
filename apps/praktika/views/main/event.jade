@@ -23,13 +23,21 @@ block over
 						.slide_image(style='background-image: url(' + image.thumb + ')' )
 						if image.holder
 							.slide_holder
+			//- .swiper-button-next.swiper-button-white
+			//- .swiper-button-prev.swiper-button-white
+			//- .swiper-button-next.swiper-button-black
+			//- .swiper-button-prev.swiper-button-black
+
+			.swiper-pagination.swiper-pagination-white
+			.swiper-pagination.swiper-pagination-black
 
 block content
 	.event_schedule
+		.schedule_ticket= __('купить билет')
 		each item in event.schedule
 			.schedule_item
 				.item_date= moment(item.date).locale(locale).format('DD MMMM')
-				.item_premiere= item.premiere
+				.item_time= moment(item.date).locale(locale).format('dd hh:mm')
 
 	.event_body
 		.event_title= event.i18n.title.get(locale)
@@ -48,7 +56,7 @@ block content
 					.group_title= get_locale(group.title, locale)
 					.group_list
 						each item in group.list
-							a.list_item(href='#')= get_locale(item.name, locale)
+							a.list_item(href='/team#' + item._short_id)= get_locale(item.name, locale)
 
 		.event_comments
 			each comment in event.comments

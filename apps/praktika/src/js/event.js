@@ -19,4 +19,15 @@ $(function() {
 
 		$('.maket_block').removeClass('white black').addClass(style);
 	});
+
+
+	$(document)
+		.on('scroll', function(e) {
+			var $head = $('.event_head');
+			var $schedule = $('.event_schedule');
+
+			$(this).scrollTop() >= $head.height() + $head.offset().top - $schedule.height() - 30
+				? $schedule.addClass('fix')
+				: $schedule.removeClass('fix');
+		})
 });

@@ -15,8 +15,7 @@ html, body, .maket_block, .over_block
 		position absolute
 		.event_head_title
 			text-transform lowercase
-			font-size 24pt
-			font 22pt/24pt 'PT Mono Bold'
+			font 28pt/30pt 'PT Mono Bold'
 		.event_head_s_title
 			font 12pt/18pt 'PT Mono'
 			margin-top 40px
@@ -27,27 +26,42 @@ html, body, .maket_block, .over_block
 	position absolute
 	background-color black
 	color white
-	padding-top 20px
-	padding-bottom 20px
+	padding-top 15px
+	padding-bottom 15px
 	box-sizing border-box
 	bottom 0
 	width 100%
+	&.fix
+		top 0
+		bottom auto
+		position fixed
+	.schedule_ticket
+		font 14pt/16pt 'PT Mono Bold'
+		float left
+		margin-left 40px
+		margin-top 10px
+		&:hover
+			cursor pointer
+			opacity 0.7
 	.schedule_item
 		float left
 		margin-left 40px
-
-// .event_body
-// 	margin 0 auto
-// 	max-width 960px
-// 	padding-left 40px
-// 	padding-right 40px
+		cursor pointer
+		&:hover
+			opacity 0.7
+		.item_date
+			font 10pt/12pt 'PT Mono Bold'
+			margin-bottom 10px
+		.item_time
+			font 10pt/12pt 'PT Mono'
 
 .event_title
+	text-transform lowercase
 	padding-left 40px
 	padding-right 40px
 	padding-top 40px
 	padding-bottom 40px
-	font 22pt/24pt 'PT Mono Bold'
+	font 28pt/30pt 'PT Mono Bold'
 
 .event_main
 	overflow hidden
@@ -104,6 +118,8 @@ html, body, .maket_block, .over_block
 					display block
 					color black
 					text-decoration none
+					&:hover
+						opacity 0.7
 
 
 
@@ -139,7 +155,7 @@ html, body, .maket_block, .over_block
 			height 100%
 			background-color rgba(0, 0, 0, 0.15)
 	.swiper-pagination
-		bottom 40px
+		bottom 100px
 		left auto!important
 		right 40px!important
 		width auto
