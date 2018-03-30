@@ -77,6 +77,6 @@ block content
 			.publications_title пресса
 			.publications_list
 				each publication in event.publications
-					a.publication_item(href=publication.link)
-						.publication_title= get_locale(publication.title, locale)
+					.publication_item
+						a.publication_title(href=publication.link, target='_blank')= get_locale(publication.title, locale)
 						.publication_description!= get_locale(publication.description, locale)
