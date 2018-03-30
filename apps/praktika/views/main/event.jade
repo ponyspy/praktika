@@ -36,17 +36,19 @@ block content
 
 		.event_main
 			.event_meta
-				.event_place= get_locale(event.place, locale)
-				.event_duration= get_locale(event.duration, locale)
-				.event_age= event.age
+				.meta.age= event.age
+				.meta.place= get_locale(event.place, locale)
+				.meta.duration= get_locale(event.duration, locale)
+
 			.event_description!= event.i18n.description.get(locale)
 
-		.event_members
+		.event_members: .members_inner
 			each group in event.members
-				.group_title= get_locale(group.title, locale)
-				.group_list
-					each item in group.list
-						.list_item= get_locale(item.name, locale)
+				.members_group
+					.group_title= get_locale(group.title, locale)
+					.group_list
+						each item in group.list
+							a.list_item(href='#')= get_locale(item.name, locale)
 
 		.event_comments
 			each comment in event.comments

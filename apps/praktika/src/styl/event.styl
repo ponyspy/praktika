@@ -36,11 +36,87 @@ html, body, .maket_block, .over_block
 		float left
 		margin-left 40px
 
-.event_body
-	margin 0 auto
-	max-width 960px
+// .event_body
+// 	margin 0 auto
+// 	max-width 960px
+// 	padding-left 40px
+// 	padding-right 40px
+
+.event_title
 	padding-left 40px
 	padding-right 40px
+	padding-top 40px
+	padding-bottom 40px
+	font 22pt/24pt 'PT Mono Bold'
+
+.event_main
+	overflow hidden
+	.event_meta
+		width 20%
+		float left
+		padding-left 40px
+		padding-right 20px
+		box-sizing border-box
+		font 12pt/14pt 'PT Mono Bold'
+		color grey
+		.meta
+			margin-bottom 10px
+			&.age:after
+				content '+'
+
+	.event_description
+		font 14pt/16pt 'PT Serif'
+		padding-left 20px
+		padding-right 40px
+		box-sizing border-box
+		float left
+		width 80%
+		max-width 960px
+
+.event_members
+	margin-top 80px
+	width 80%
+	max-width 960px
+	padding-left 20%
+	.members_inner
+		padding-left 20px
+		padding-right 40px
+		.members_group
+			overflow hidden
+			margin-bottom 40px
+			&:last-child
+				margin-bottom 0
+			.group_title
+				float left
+				width 20%
+				font 12pt/14pt 'PT Mono Bold'
+				padding-right 40px
+				box-sizing border-box
+			.group_list
+				padding-left 40px
+				box-sizing border-box
+				font 12pt/14pt 'PT Mono'
+				float left
+				width 80%
+				column-width 240px
+				column-gap 40px
+				.list_item
+					display block
+					color black
+					text-decoration none
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .slider_block
 	width 100%
