@@ -132,6 +132,7 @@ body
 		.footer_main
 			display flex
 			justify-content space-between
+			align-items center
 		.footer_under
 			margin-top 20px
 			display flex
@@ -142,18 +143,20 @@ body
 		&:hover
 			opacity 0.7
 	.logo_dep
+		flex-grow 1.25
 		img
 			display block
 			width 110px
-	.social_block
-		margin-top 5px
-		a
-			margin-left 20px
 	.quality
-		display inline-block
 		max-width 230px
+		flex-grow 4
 		img
 			width 45px
 			float left
 			display block
 			margin-right 15px
+	.social_block
+		flex-grow 1
+		a
+			float right
+			margin-left 20px
