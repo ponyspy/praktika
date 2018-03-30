@@ -12,9 +12,16 @@ block header_include
 
 
 block content
-	h1.event_title= event.i18n.title.get(locale)
-	h2.event_s_title= event.i18n.s_title.get(locale)
-	.event_description!= event.i18n.description.get(locale)
+	.event_head
+		.event_head_title= event.i18n.title.get(locale)
+		.event_head_s_title= event.i18n.s_title.get(locale)
+		.slider_block.swiper-container
+			.swiper-wrapper
+				each image in event.images
+					.slide_item.swiper-slide
+						.slide_image(style='background-image: url(' + image.thumb + ')' )
+						if image.holder
+							.slide_holder
 
 	.event_schedule
 		each item in event.schedule
@@ -22,36 +29,42 @@ block content
 				.item_date= item.date
 				.item_premiere= item.premiere
 
-	.event_place= get_locale(event.place, locale)
-	.event_duration= get_locale(event.duration, locale)
-	.event_age= event.age + '+'
+	.event_body
+		.event_title= event.i18n.title.get(locale)
 
-	.event_images
-		each image in event.images
-			img(width='150px', src=image.thumb)
+		.event_main
+			.event_meta
+				.event_place= get_locale(event.place, locale)
+				.event_duration= get_locale(event.duration, locale)
+				.event_age= event.age
+			.event_description!= event.i18n.description.get(locale)
 
-	.event_members
-		each group in event.members
-			.group_title= get_locale(group.title, locale)
-			.group_list
-				each item in group.list
-					.list_item= get_locale(item.name, locale)
+		.event_members
+			each group in event.members
+				.group_title= get_locale(group.title, locale)
+				.group_list
+					each item in group.list
+						.list_item= get_locale(item.name, locale)
 
-	.event_partners
-		each partner in event.partners
-			a.partner_item(href=partner.link, target='_blank'): img(width='150px', src=partner.logo)
+		.event_comments
+			each comment in event.comments
+				.comment_item
+					.comment_title= get_locale(comment.title, locale)
+					.comment_member
+						img.member_photo(width='150px', src=comment.member.photo)
+						.member_name= get_locale(comment.member.name, locale)
+					.comment_description!= get_locale(comment.description, locale)
 
-	.event_comments
-		each comment in event.comments
-			.comment_item
-				.comment_title= get_locale(comment.title, locale)
-				.comment_member
-					img.member_photo(width='150px', src=comment.member.photo)
-					.member_name= get_locale(comment.member.name, locale)
-				.comment_description!= get_locale(comment.description, locale)
+		.event_partners
+			.partners_title при участии
+			.partners_list
+				each partner in event.partners
+					a.partner_item(href=partner.link, target='_blank'): img(width='150px', src=partner.logo)
 
-	.event_publications
-		each publication in event.publications
-			a.publication_item(href=publication.link)
-				.publication_title= get_locale(publication.title, locale)
-				.publication_description!= get_locale(publication.description, locale)
+		.event_publications
+			.publications_title пресса
+			.publications_list
+				each publication in event.publications
+					a.publication_item(href=publication.link)
+						.publication_title= get_locale(publication.title, locale)
+						.publication_description!= get_locale(publication.description, locale)
