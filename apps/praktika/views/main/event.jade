@@ -58,12 +58,12 @@ block content
 						each item in group.list
 							a.list_item(href='/team#' + item._short_id)= get_locale(item.name, locale)
 
-		.event_comments
+		.event_comments: .comments_inner
 			each comment in event.comments
 				.comment_item
 					.comment_title= get_locale(comment.title, locale)
 					.comment_member
-						img.member_photo(width='150px', src=comment.member.photo)
+						.member_photo(style='background-image: url(' + comment.member.photo + ')')
 						.member_name= get_locale(comment.member.name, locale)
 					.comment_description!= get_locale(comment.description, locale)
 
