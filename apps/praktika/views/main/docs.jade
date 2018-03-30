@@ -12,4 +12,5 @@ block header_include
 block content
 	h1 Документы!
 	each doc in docs
-		.doc_item= doc
+		a(href=doc.attach).doc_item= doc.i18n.title.get(locale)
+		br

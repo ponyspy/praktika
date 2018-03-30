@@ -18,8 +18,6 @@ body
 	.footer_block
 		.footer_inner
 			border-color white
-			.quality_block a
-				border-color white
 		img
 			filter: invert(100%)
 		a
@@ -130,9 +128,14 @@ body
 		margin-left 40px
 		margin-right 40px
 		padding-top 20px
-		display flex
-		justify-content space-between
 		border-top 1px solid black
+		.footer_main
+			display flex
+			justify-content space-between
+		.footer_under
+			margin-top 20px
+			display flex
+			justify-content space-between
 	a
 		color black
 		text-decoration none
@@ -143,19 +146,12 @@ body
 			display block
 			width 110px
 	.social_block
+		margin-top 5px
 		a
 			margin-left 20px
-	.quality_block
-		a
-			display inline-block
-			max-width 230px
-			border-right 1px solid black
-			padding-right 20px
-			margin-right 20px
-			&:last-child
-				margin 0
-				padding 0
-				border none
+	.quality
+		display inline-block
+		max-width 230px
 		img
 			width 45px
 			float left
