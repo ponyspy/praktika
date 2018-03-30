@@ -11,8 +11,7 @@ block header_include
 	- var include_libs_js = ['swiper.min.js']
 	- var include_js = ['event.js']
 
-
-block content
+block over
 	.event_head
 		.head_meta
 			.event_head_title= event.i18n.title.get(locale)
@@ -25,6 +24,7 @@ block content
 						if image.holder
 							.slide_holder
 
+block content
 	.event_schedule
 		each item in event.schedule
 			.schedule_item

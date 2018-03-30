@@ -2,11 +2,8 @@
 	position absolute
 	height 0
 
-html, body, .maket_block, .content_block
+html, body, .maket_block, .over_block
 	height 100%
-
-.footer_block
-	background-color grey
 
 .event_head
 	width 100%
@@ -30,17 +27,20 @@ html, body, .maket_block, .content_block
 	position absolute
 	background-color black
 	color white
-	padding 20px
+	padding-top 20px
+	padding-bottom 20px
 	box-sizing border-box
 	bottom 0
 	width 100%
 	.schedule_item
 		float left
-		margin-right 20px
+		margin-left 40px
 
-// .event_body
-// 	position absolute
-// 	top 100%
+.event_body
+	margin 0 auto
+	max-width 960px
+	padding-left 40px
+	padding-right 40px
 
 .slider_block
 	width 100%
@@ -79,6 +79,11 @@ html, body, .maket_block, .content_block
 
 
 .maket_block.white
+	.footer_block
+		img
+			filter: none
+		a
+			color black!important
 	.event_head
 		color white
 	.swiper-pagination-bullet
@@ -90,7 +95,7 @@ html, body, .maket_block, .content_block
 		display none!important
 	.slider_navigate
 		color white
-	.content_block
+	.over_block
 		background-color black
 	.slide_item
 		color white
