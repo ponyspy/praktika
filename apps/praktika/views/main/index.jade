@@ -13,8 +13,8 @@ block header_include
 
 
 block content
-	if announce
-		a.announcement_block(href='/events')
+	if announce && !announce_hide
+		a.announcement_block(href=announce.link, data-id=announce._short_id)
 			.announcement_title= announce.i18n.title.get(locale)
 			.announcement_s_title= announce.i18n.s_title.get(locale)
 

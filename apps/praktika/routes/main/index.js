@@ -12,7 +12,11 @@ module.exports = function(Model) {
 					? +req.cookies.banner <= 2
 					: true
 
-				res.render('main/index.jade', { announce: announce, medias: medias, banner: banner });
+				var announce_hide = req.cookies.announce
+					? announce._short_id == req.cookies.announce
+					: false;
+
+				res.render('main/index.jade', { announce: announce, medias: medias, banner: banner, announce_hide: announce_hide });
 			});
 		});
 	};

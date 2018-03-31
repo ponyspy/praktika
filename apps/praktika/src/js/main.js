@@ -4,6 +4,7 @@ $(function() {
 	};
 
 	var swiper = new Swiper('.swiper-container', {
+		loop: true,
 		init: false,
 		effect: 'fade',
 		initialSlide: randomInteger(0, $('.slide_item').length),
@@ -29,7 +30,18 @@ $(function() {
 
 	swiper.init();
 
-	$('.banner_close').on('click', function() {
+	$('.slide_item').on('click', function(e) {
+		swiper.slideNext();
+	});
+
+	$('.announcement_block').on('click', function(e) {
+		var announce = $(this).attr('data-id');
+		$.cookie('announce', announce, {
+			expires: 2
+		});
+	});
+
+	$('.banner_close').on('click', function(e) {
 		$('.maket_block').removeClass('banner');
 		$('.banner_block').addClass('close');
 
@@ -38,7 +50,7 @@ $(function() {
 			: 1;
 
 		$.cookie('banner', banner, {
-			expires: 2
+			expires: 5
 		});
 	});
 });
