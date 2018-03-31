@@ -77,8 +77,8 @@ html, body, .maket_block, .over_block
 			margin-bottom 10px
 			&.age:after
 				content '+'
-
 	.event_description
+		hyphens auto
 		font 14pt/16pt 'PT Serif'
 		padding-left 20px
 		padding-right 40px
@@ -136,6 +136,9 @@ html, body, .maket_block, .over_block
 		box-sizing border-box
 		.comment_item
 			overflow hidden
+			margin-bottom 40px
+			&:last-child
+				margin-bottom 0
 			.comment_column
 				float left
 				box-sizing border-box
@@ -164,6 +167,7 @@ html, body, .maket_block, .over_block
 				&:hover
 					opacity 0.7
 			.comment_description
+				hyphens auto
 				font 12pt/18pt 'PT Serif'
 
 
