@@ -61,11 +61,12 @@ block content
 		.event_comments: .comments_inner
 			each comment in event.comments
 				.comment_item
-					.comment_title= get_locale(comment.title, locale)
-					.comment_member
+					.comment_column.left
+						.comment_title= get_locale(comment.title, locale)
 						.member_photo(style='background-image: url(' + comment.member.photo + ')')
+					.comment_column.right
 						.member_name= get_locale(comment.member.name, locale)
-					.comment_description!= get_locale(comment.description, locale)
+						.comment_description!= get_locale(comment.description, locale)
 
 		.event_partners
 			.partners_title при участии

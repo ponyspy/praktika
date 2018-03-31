@@ -95,6 +95,7 @@ html, body, .maket_block, .over_block
 	.members_inner
 		padding-left 20px
 		padding-right 40px
+		max-width 960px
 		.members_group
 			overflow hidden
 			margin-bottom 40px
@@ -124,27 +125,41 @@ html, body, .maket_block, .over_block
 .event_comments
 	margin-top 80px
 	width 80%
-	max-width 960px
 	padding-left 20%
-	background-color lightgrey
+	padding-top 40px
+	padding-bottom 40px
+	background-color rgb(247, 247, 247)
 	.comments_inner
+		max-width 960px
 		padding-left 20px
 		padding-right 40px
+		box-sizing border-box
 		.comment_item
+			overflow hidden
+			.comment_column
+				float left
+				box-sizing border-box
+				&.left
+					width 20%
+					padding-right 40px
+				&.right
+					width 80%
+					padding-left 40px
 			.comment_title
 				font 12pt/14pt 'PT Mono Bold'
-			.comment_member
-				.member_photo
-					border-radius 100%
-					width 60px
-					height 60px
-					background-position center
-					background-size cover
-					background-repeat no-repeat
-				.member_name
-					font 12pt/14pt 'PT Mono'
-			.comment_description
+				margin-bottom 40px
+			.member_photo
+				border-radius 100%
+				width 80px
+				height 80px
+				background-position center
+				background-size cover
+				background-repeat no-repeat
+			.member_name
 				font 12pt/14pt 'PT Mono'
+				margin-bottom 40px
+			.comment_description
+				font 12pt/14pt 'PT Serif'
 
 
 
