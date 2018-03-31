@@ -27,26 +27,38 @@ html, body, .maket_block, .over_block
 	position absolute
 	background-color black
 	color white
-	padding-top 15px
-	padding-bottom 15px
 	box-sizing border-box
 	bottom 0
 	width 100%
-	// .schedule_outer
-	// .schedule_inner
+	overflow hidden
+	user-select none
+	height 70px
 	&.fix
 		top 0
 		bottom auto
 		position fixed
+	.schedule_outer
+		width 100%
+		overflow hidden	// overflow-x scroll
+	.schedule_inner
+		vertical-align top
+		display inline-block
+		white-space nowrap
+		font-size 0
 	.schedule_item
-		float left
+		display inline-block
+		white-space nowrap
+		padding-top 15px
+		padding-bottom 15px
 		margin-left 40px
 		cursor pointer
+		vertical-align middle
+		&:last-child
+			margin-right 40px
 		&:hover
 			opacity 0.7
 		.item_ticket
 			font 14pt/16pt 'PT Mono Bold'
-			margin-top 10px
 		.item_date
 			font 10pt/12pt 'PT Mono Bold'
 			margin-bottom 10px
