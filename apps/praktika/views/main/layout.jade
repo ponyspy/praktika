@@ -3,8 +3,8 @@ html
 	head
 		include header
 	body
-		.maket_block(class=content_style, class=content_banner && !banner ? 'banner': '')
-			if content_banner && !banner
+		.maket_block(class=content_style, class=content_banner && banner ? 'banner' : '')
+			if content_banner && banner
 				.banner_block
 					a.banner_logo(href='https://www.mos.ru/kultura', target='_blank'): img(src='/stuff/praktika/logo/logo_depcult.svg')
 					.banner_close

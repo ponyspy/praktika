@@ -32,7 +32,12 @@ $(function() {
 	$('.banner_close').on('click', function() {
 		$('.maket_block').removeClass('banner');
 		$('.banner_block').addClass('close');
-		$.cookie('banner', 1, {
+
+		var banner = $.cookie('banner')
+			? +$.cookie('banner') + 1
+			: 1;
+
+		$.cookie('banner', banner, {
 			expires: 2
 		});
 	});
