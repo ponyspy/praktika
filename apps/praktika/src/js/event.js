@@ -1,5 +1,6 @@
 $(function() {
 	var swiper = new Swiper('.swiper-container', {
+		loop: true,
 		navigation: {
 			nextEl: '.swiper-button-next',
 			prevEl: '.swiper-button-prev',
@@ -20,6 +21,9 @@ $(function() {
 		$('.maket_block').removeClass('white black').addClass(style);
 	});
 
+	$('.slide_item').on('click', function(e) {
+		swiper.slideNext();
+	});
 
 	$(document)
 		.on('scroll', function(e) {
