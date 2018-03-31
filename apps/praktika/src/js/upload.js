@@ -55,7 +55,7 @@ $(function() {
 	$(document).on('click', '.image_style', function(event) {
 		var $this = $(this);
 
-		var arr_label = ['чт/бф', 'чф/бт'];
+		var arr_label = ['чф/бт', 'чт/бф'];
 		var arr_style = ['white', 'black'];
 
 		var current = $this.children('.label').text();
@@ -92,7 +92,7 @@ $(function() {
 
 			var image_style = $('<div />', {'class': 'image_style'});
 			var style_label = $('<span />', { 'class': 'label', 'text': 'чф/бт'});
-			var style_form = $('<input />', {'class': 'style_form', 'type': 'hidden', 'name': 'images[style][]', 'value': 'black'});
+			var style_form = $('<input />', {'class': 'style_form', 'type': 'hidden', 'name': 'images[style][]', 'value': 'white'});
 
 			var image_holder = $('<div />', {'class': 'image_holder'});
 			var holder_label = $('<span />', { 'class': 'label', 'text': '◦'});

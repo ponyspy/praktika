@@ -144,7 +144,7 @@ mixin form_images_upload(images)
 							span.label= image.holder ? '●' : '◦'
 							input.size_form(type='hidden', name='images[holder][]', value=image.holder ? 'true' : 'false')
 						.image_style
-							span.label= image.style == 'black' ? 'чф/бт' : 'чт/бф'
+							span.label= image.style == 'white' ? 'чф/бт' : 'чт/бф'
 							input.style_form(type='hidden', name='images[style][]', value=image.style)
 						.image_description
 							textarea.image_description_input.ru_img(name='images[description][ru][]', placeholder='Описание')= get_locale(image.description, 'ru')
