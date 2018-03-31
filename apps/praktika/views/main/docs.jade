@@ -6,11 +6,11 @@ block header_meta
 
 block header_include
 	- var include_css = ['docs.css']
-	- var include_js = ['docs.js']
+	//- - var include_js = ['docs.js']
 
 
 block content
-	h1 Документы!
-	each doc in docs
-		a(href=doc.attach).doc_item= doc.i18n.title.get(locale)
-		br
+	.docs_title документы
+	.docs_list
+		each doc in docs
+			a.doc_item(href=doc.attach, target='_blank')= doc.i18n.title.get(locale)
