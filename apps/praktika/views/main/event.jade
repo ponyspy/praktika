@@ -65,7 +65,7 @@ block content
 						.comment_title= get_locale(comment.title, locale)
 						.member_photo(style='background-image: url(' + comment.member.photo + ')')
 					.comment_column.right
-						.member_name= get_locale(comment.member.name, locale)
+						a.member_name(href='/team#' + comment.member._short_id)= get_locale(comment.member.name, locale)
 						.comment_description!= get_locale(comment.description, locale)
 
 		.event_partners
