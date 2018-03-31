@@ -23,10 +23,6 @@ block over
 						.slide_image(style='background-image: url(' + image.thumb + ')' )
 						if image.holder
 							.slide_holder
-			//- .swiper-button-next.swiper-button-white
-			//- .swiper-button-prev.swiper-button-white
-			//- .swiper-button-next.swiper-button-black
-			//- .swiper-button-prev.swiper-button-black
 
 			.swiper-pagination.swiper-pagination-white
 			.swiper-pagination.swiper-pagination-black
@@ -47,37 +43,40 @@ block content
 				.meta.age= event.age
 				.meta.place= get_locale(event.place, locale)
 				.meta.duration= get_locale(event.duration, locale)
-
 			.event_description!= event.i18n.description.get(locale)
 
-		.event_members: .members_inner
-			each group in event.members
-				.members_group
-					.group_title= get_locale(group.title, locale)
-					.group_list
-						each item in group.list
-							a.list_item(href='/team#' + item._short_id)= get_locale(item.name, locale)
+		if event.members && event.members.length
+			.event_members: .members_inner
+				each group in event.members
+					.members_group
+						.group_title= get_locale(group.title, locale)
+						.group_list
+							each item in group.list
+								a.list_item(href='/team#' + item._short_id)= get_locale(item.name, locale)
 
-		.event_comments: .comments_inner
-			each comment in event.comments
-				.comment_item
-					.comment_column.left
-						.comment_title= get_locale(comment.title, locale)
-						.member_photo(style='background-image: url(' + comment.member.photo + ')')
-					.comment_column.right
-						a.member_name(href='/team#' + comment.member._short_id)= get_locale(comment.member.name, locale)
-						.comment_description!= get_locale(comment.description, locale)
+		if event.comments && event.comments.length
+			.event_comments: .comments_inner
+				each comment in event.comments
+					.comment_item
+						.comment_column.left
+							.comment_title= get_locale(comment.title, locale)
+							.member_photo(style='background-image: url(' + comment.member.photo + ')')
+						.comment_column.right
+							a.member_name(href='/team#' + comment.member._short_id)= get_locale(comment.member.name, locale)
+							.comment_description!= get_locale(comment.description, locale)
 
-		.event_partners
-			.partners_title при участии
-			.partners_list
-				each partner in event.partners
-					a.partner_item(href=partner.link, target='_blank'): img(src=partner.logo)
+		if event.partners && event.partners.length
+			.event_partners
+				.partners_title при участии
+				.partners_list
+					each partner in event.partners
+						a.partner_item(href=partner.link, target='_blank'): img(src=partner.logo)
 
-		.event_publications
-			.publications_title пресса
-			.publications_list
-				each publication in event.publications
-					.publication_item
-						a.publication_title(href=publication.link, target='_blank')= get_locale(publication.title, locale)
-						.publication_description!= get_locale(publication.description, locale)
+		if event.publications && event.publications.length
+			.event_publications
+				.publications_title пресса
+				.publications_list
+					each publication in event.publications
+						.publication_item
+							a.publication_title(href=publication.link, target='_blank')= get_locale(publication.title, locale)
+							.publication_description!= get_locale(publication.description, locale)
