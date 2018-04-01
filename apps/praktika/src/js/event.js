@@ -24,8 +24,14 @@ $(function() {
 		swiper.slideNext();
 	});
 
+	$('.schedule_ticket').on('click', function(e) {
+		$('#pn_widget').hide();
+	});
+
 	$('.schedule_item').on('click', function(e) {
 		var $this = $(this);
+
+		$('#pn_widget').show();
 
 		pnwidget.show({
 			exclude_dates: false,

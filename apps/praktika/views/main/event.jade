@@ -32,7 +32,7 @@ block content
 	#pn_widget
 
 	.event_schedule: .schedule_outer: .schedule_inner
-		.schedule_item: .item_ticket= __('купить билет')
+		.schedule_ticket: .item_ticket= __('купить билет')
 		each item in event.schedule
 			.schedule_item(schedule-alias= event.sym, schedule-date=moment(item.date).format('DD.MM.YYYY HH:mm'))
 				.item_date= moment(item.date).locale(locale).format('DD MMMM')
