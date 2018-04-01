@@ -1,6 +1,5 @@
 var moment = require('moment');
 var jade = require('jade');
-var i18n = require('i18n');
 
 module.exports = function(Model) {
 	var module = {};
@@ -56,8 +55,8 @@ module.exports = function(Model) {
 			Member.populate(events, { path: 'members.list', select: 'name _short_id status' }, function(err, events) {
 
 				var opts = {
-					__: function() { return i18n.__.apply(null, arguments); },
-					__n: function() { return i18n.__n.apply(null, arguments); },
+					__: function() { return res.locals.__.apply(null, arguments); },
+					__n: function() { return res.locals.__n.apply(null, arguments); },
 					get_locale: get_locale,
 					events: events,
 					locale: req.locale,
