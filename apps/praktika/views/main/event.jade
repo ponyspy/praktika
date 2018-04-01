@@ -6,6 +6,7 @@ block header_meta
 	- var content_style = event.images && event.images.length && event.images[0].style
 
 block header_include
+	- var exclude_js = ['http://w.cultserv.ru/v2.2/public/js/widgetloader.js']
 	- var include_libs_css = ['swiper.min.css']
 	- var include_css = ['event.css']
 	- var include_libs_js = ['swiper.min.js']
@@ -28,10 +29,12 @@ block over
 			.swiper-pagination.swiper-pagination-black
 
 block content
+	#pn_widget
+
 	.event_schedule: .schedule_outer: .schedule_inner
 		.schedule_item: .item_ticket= __('купить билет')
 		each item in event.schedule
-			.schedule_item
+			.schedule_item(schedule-alias= event.sym, schedule-date=moment(item.date).format('DD.MM.YYYY HH:mm'))
 				.item_date= moment(item.date).locale(locale).format('DD MMMM')
 				.item_time= moment(item.date).locale(locale).format('dd HH:mm')
 

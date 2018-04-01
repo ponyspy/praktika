@@ -37,8 +37,13 @@ each item in global_css
 //- scripts
 
 
+- var global_exclude_js = []
 - var global_libs_js = ['jquery-2.2.4.min.js']
 - var global_js = ['global.js']
+
+- global_exclude_js.push.apply(global_exclude_js, exclude_js || [])
+each item in global_exclude_js
+	script(type='text/javascript', src=item + '?ver=' + version)
 
 - global_libs_js.push.apply(global_libs_js, include_libs_js || [])
 each item in global_libs_js

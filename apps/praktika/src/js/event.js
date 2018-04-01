@@ -1,4 +1,6 @@
 $(function() {
+	pnwidget.init({ containerId: 'pn_widget' });
+
 	var swiper = new Swiper('.swiper-container', {
 		loop: true,
 		effect: 'fade',
@@ -20,6 +22,27 @@ $(function() {
 
 	$('.slide_item').on('click', function(e) {
 		swiper.slideNext();
+	});
+
+	$('.schedule_item').on('click', function(e) {
+		var $this = $(this);
+
+		pnwidget.show({
+			exclude_dates: false,
+			scrollToWidget: false,
+			closeButton: true,
+			hideHeader: true,
+			referral_auth: 'praktikatheatre',
+			event: {
+				alias: $this.attr('schedule-alias'),
+				date: $this.attr('schedule-date').split(' ')[0],
+				time: $this.attr('schedule-date').split(' ')[1]
+			}
+		});
+
+		$('html, body').animate({
+			'scrollTop': $this.offset().top
+		}, 300);
 	});
 
 	if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
