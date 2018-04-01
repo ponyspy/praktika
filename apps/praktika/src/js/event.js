@@ -47,7 +47,7 @@ $(function() {
 		});
 
 		$('html, body').animate({
-			'scrollTop': $this.offset().top
+			'scrollTop': $('.event_head').height() - $('.event_schedule').height()
 		}, 300);
 	});
 
