@@ -25,7 +25,6 @@ html, body, .maket_block, .over_block
 .event_schedule
 	z-index 999
 	position absolute
-	background-color black
 	color white
 	box-sizing border-box
 	bottom 0
@@ -33,7 +32,11 @@ html, body, .maket_block, .over_block
 	overflow hidden
 	user-select none
 	height 70px
+	background-color rgba(0, 0, 0, 0.7)
+	transition .2s linear
 	&.fix
+		transition .2s linear
+		background-color black
 		top 0
 		bottom auto
 		position fixed
