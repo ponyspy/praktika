@@ -25,7 +25,7 @@ $(function() {
 	});
 
 	$('.schedule_ticket').on('click', function(e) {
-		$('#pn_widget').hide();
+		$('#pn_widget').toggle();
 	});
 
 	$('.schedule_item').on('click', function(e) {
