@@ -24,14 +24,18 @@ $(function() {
 		swiper.slideNext();
 	});
 
-	$('.schedule_ticket').on('click', function(e) {
-		$('#pn_widget').toggle();
-	});
-
 	$('.schedule_item').on('click', function(e) {
 		var $this = $(this);
+		var schedule_alias = $this.attr('schedule-alias');
+		var schedule_date = $this.attr('schedule-date');
 
-		$('#pn_widget').show();
+		if ($this.hasClass('open')) {
+			$this.removeClass('open');
+			$('#pn_widget').hide();
+			return false;
+		}
+
+		$('.schedule_item').removeClass('open').filter(this).addClass('open');
 
 		pnwidget.show({
 			exclude_dates: false,
@@ -40,11 +44,13 @@ $(function() {
 			hideHeader: true,
 			referral_auth: 'praktikatheatre',
 			event: {
-				alias: $this.attr('schedule-alias'),
-				date: $this.attr('schedule-date').split(' ')[0],
-				time: $this.attr('schedule-date').split(' ')[1]
+				alias: schedule_alias,
+				date: schedule_date ? schedule_date.split(' ')[0] : null,
+				time: schedule_date ? schedule_date.split(' ')[1] : null
 			}
 		});
+
+		$('#pn_widget').show();
 
 		$('html, body').animate({
 			'scrollTop': $('.event_head').height() - $('.event_schedule').height()
