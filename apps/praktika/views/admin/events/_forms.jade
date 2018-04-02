@@ -77,8 +77,8 @@ mixin form_comments(comments)
 					input.list_sort(type='text', style='display: none; font-size: 9pt;')
 				br
 				.comment_description
-					textarea.ru.editor(type="text")=comment.description.filter(function(locale) { return locale.lg == 'ru' })[0].value
-					textarea.en.editor(type="text", disabled)=comment.description.filter(function(locale) { return locale.lg == 'en' })[0].value
+					textarea.ru.editor=comment.description.filter(function(locale) { return locale.lg == 'ru' })[0].value
+					textarea.en.editor(disabled)=comment.description.filter(function(locale) { return locale.lg == 'en' })[0].value
 				br(style='clear: both;')
 				div ------------
 				br
@@ -105,8 +105,8 @@ mixin form_publications(publications)
 					input.link_open(type='button', value='>')
 				br
 				.publication_description
-					textarea.ru.editor(type="text")=publication.description.filter(function(locale) { return locale.lg == 'ru' })[0].value
-					textarea.en.editor(type="text", disabled)=publication.description.filter(function(locale) { return locale.lg == 'en' })[0].value
+					textarea.ru.editor=publication.description.filter(function(locale) { return locale.lg == 'ru' })[0].value
+					textarea.en.editor(disabled)=publication.description.filter(function(locale) { return locale.lg == 'en' })[0].value
 				br(style='clear: both;')
 				div ------------
 				br

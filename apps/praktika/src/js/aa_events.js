@@ -11,6 +11,42 @@ var date_config = {
 	}
 };
 
+var editor_config = {
+		classes: 'editor',
+		toolbar: 'top-selection',
+		buttons: {
+		insertlink: {
+				title: 'Insert link',
+				image: '\uf08e',
+		},
+		 bold: {
+					title: 'Bold (Ctrl+B)',
+					image: '\uf032',
+					hotkey: 'b'
+			},
+			italic: {
+					title: 'Italic (Ctrl+I)',
+					image: '\uf033',
+					hotkey: 'i'
+			},
+			underline: {
+					title: 'Underline (Ctrl+U)',
+					image: '\uf0cd',
+					hotkey: 'u'
+			},
+			removeformat: {
+					title: 'Remove format',
+					image: '\uf12d'
+			},
+		},
+		submit: {
+				title: 'Submit',
+				image: '\uf00c'
+		},
+		// placeholder: 'Type your text here...',
+		placeholderUrl: 'www.example.com',
+};
+
 var search = {
 	val: '', buf: '',
 	checkResult: function() {
@@ -85,12 +121,19 @@ $(function() {
 					.find('.date').val('').pickmeup(date_config).end()
 					.show();
 			} else {
+				var $editor = ['ru', 'en'].map(function(locale) {
+					return $('<textarea>', { 'class': 'editor ' + locale, 'disabled': locale == 'en' });
+				});
+
 				$block.first().clone()
 					.find('.list_item').first().nextAll('.list_item').remove().end().end().end()
 					.find('option').prop('selected', false)
 					.filter('.hide').unwrap().removeClass('hide').end().end()
 					.find('textarea').val('').end()
-					.find('.wysiwyg-editor').empty().end()
+					.find('.comment_description, .publication_description').empty().append($editor).children('.editor').each(function() {
+						editor_config.classes = $(this).attr('class');
+						$(this).wysiwyg(editor_config);
+					}).end().end()
 					.find('input[type=text]').val('').end()
 					.find('input[type=checkbox]').prop('checked', false).end()
 					.find('.date').val('').pickmeup(date_config).end()
