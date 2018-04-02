@@ -2,7 +2,8 @@ each event in events
 	- var event_date = moment(event.schedule.date)
 
 	.event_item(class='date_' + event_date.get('date'))
-		.event_poster(style='background-image: url(' + event.poster + ')')
+		a.event_poster(href='/events/' + (event.sym ? event.sym : event._short_id))= get_locale(event.title, locale)
+			.poster_main(style='background-image: url(' + event.poster + ')')
 		.event_body
 			.event_head
 				.event_date

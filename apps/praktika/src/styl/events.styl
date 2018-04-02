@@ -125,12 +125,23 @@
 		&.hidden
 			display none
 		.event_poster
+			display block
 			width 50%
 			height 340px
-			background-position center
-			background-repeat no-repeat
-			background-size cover
 			float left
+			position relative
+			overflow hidden
+			.poster_main
+				top 0; left 0; right 0; bottom 0;
+				margin auto
+				position absolute
+				background-position center
+				background-repeat no-repeat
+				background-size cover
+				transition .3s linear
+				&:hover
+					transition .3s linear
+					top -20px; left -20px; right -20px; bottom -20px;
 		.event_body
 			width 50%
 			float left
