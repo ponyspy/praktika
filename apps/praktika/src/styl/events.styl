@@ -138,30 +138,20 @@
 			box-sizing border-box
 			font 12pt/14pt 'PT Mono'
 			.event_head
-			.event_meta
+			.event_content
 				overflow hidden
+			.event_meta
+				float left
 			.event_date
 				text-transform lowercase
 				float left
 				font 14pt/16pt 'PT Mono'
+				.date
+					margin-bottom 10px
 			.event_ticket
 				float right
 				font 14pt/16pt 'PT Mono Bold'
 				cursor pointer
-				&:after
-					content ''
-					z-index 0
-					position relative
-					background-image url('/stuff/praktika/icons/arrow_list.svg')
-					width 8px
-					height 8px
-					margin-left 15px
-					display inline-block
-					transform rotate(90deg)
-					vertical-align middle
-					background-position top
-					background-size contain
-					background-repeat no-repeat
 			.event_title
 				text-transform lowercase
 				display block
@@ -172,9 +162,11 @@
 				font 22pt/24pt 'PT Mono Bold'
 				&:hover
 					opacity 0.7
+			.event_premiere
+				font 12pt/14pt 'PT Mono Bold'
+				margin-bottom 5px
 			.event_age
 				font 12pt/14pt 'PT Mono Bold'
-				float left
 				&:after
 					content '+'
 			.event_members

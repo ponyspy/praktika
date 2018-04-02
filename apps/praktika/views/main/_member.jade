@@ -11,5 +11,5 @@
 				.events_title= __('спектакли')
 				.events_list
 					each event in events
-						a.event_item(href='/events/' + (event.sym ? event.sym : event._short_id), target='_blank')= event.i18n.title.get(locale)
+						a.event_item(href='/events/' + (event.sym ? event.sym : event._short_id))= event.i18n.title.get(locale)
 		.member_description!= member.i18n.description.get(locale)

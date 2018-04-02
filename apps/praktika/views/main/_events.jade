@@ -5,11 +5,16 @@ each event in events
 		.event_poster(style='background-image: url(' + event.poster + ')')
 		.event_body
 			.event_head
-				.event_date= event_date.locale(locale).format('DD MMMM')
+				.event_date
+					.date= event_date.locale(locale).format('DD MMMM')
+					.time= event_date.locale(locale).format('HH:mm')
 				.event_ticket= __('купить билет')
 			a.event_title(href='/events/' + (event.sym ? event.sym : event._short_id))= get_locale(event.title, locale)
-			.event_meta
-				.event_age= event.age
+			.event_content
+				.event_meta
+					if event.schedule.premiere
+						.event_premiere премьера
+					.event_age= event.age
 				.event_members
 					each group in event.members
 						.members_group
