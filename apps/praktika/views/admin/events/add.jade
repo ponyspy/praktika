@@ -39,6 +39,8 @@ block content
 			select(name='age')
 				each age, i in new Array(22)
 					option(value=i)= i + '+'
+			.form_title Ponominalu alias:
+			input(type='text', name='pn_alias')
 			.form_title Расписание:
 			+form_schedule()
 			.form_title Партнеры:
