@@ -56,6 +56,8 @@ block content
 			+form_publications(event.publications)
 			.form_title Обложка:
 			+form_single_file('poster', event)(accept='image/jpeg,image/png,image/gif')
+			.form_title Обложка [при наведении]:
+			+form_single_file('poster_hover', event)(accept='image/jpeg,image/png,image/gif')
 			.form_title Изображения:
 			+form_images_upload(event.images)
 			.form_title Статус:

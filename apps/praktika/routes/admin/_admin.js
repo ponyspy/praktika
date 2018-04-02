@@ -32,7 +32,7 @@ module.exports = (function() {
 		.get(checkAuth, admin.cv.edit)
 		.post(checkAuth, admin.cv.edit_form);
 
-	router.use('/events', checkAuth, upload.fields([ { name: 'poster' } ]), admin.events);
+	router.use('/events', checkAuth, upload.fields([ { name: 'poster' }, { name: 'poster_hover' } ]), admin.events);
 	router.use('/medias', checkAuth, upload.fields([ { name: 'poster' }, { name: 'video' } ]), admin.medias);
 	router.use('/documents', checkAuth, upload.fields([ { name: 'attach' } ]), admin.documents);
 	router.use('/slides', checkAuth, upload.fields([ { name: 'poster' }, { name: 'video' } ]), admin.slides);

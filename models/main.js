@@ -30,6 +30,7 @@ var eventSchema = new Schema({
 	duration: { type: String, trim: true, locale: true },
 	age: Number,
 	poster: { type: String },
+	poster_hover: { type: String },
 	pn_alias: { type: String, trim: true },
 	sym: { type: String, trim: true, index: true, unique: true, sparse: true },
 	schedule: [{
