@@ -2,8 +2,10 @@ each event in events
 	- var event_date = moment(event.schedule.date)
 
 	.event_item(class='date_' + event_date.get('date'))
-		a.event_poster(href='/events/' + (event.sym ? event.sym : event._short_id))
+		a.event_poster(class= event.poster_hover ? 'hover' : '', href='/events/' + (event.sym ? event.sym : event._short_id))
 			.poster_main(style='background-image: url(' + event.poster + ')')
+			if event.poster_hover
+				.poster_hover(style='background-image: url(' + event.poster_hover + ')')
 		.event_body
 			.event_head
 				.event_date
