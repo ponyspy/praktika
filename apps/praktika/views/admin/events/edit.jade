@@ -42,6 +42,8 @@ block content
 					option(value=i, selected=(event.age == i))= i + '+'
 			.form_title Ponominalu alias:
 			input(type='text', name='pn_alias', value=event.pn_alias)
+			if event.pn_alias && event.pn_alias != ''
+				input(type='button', onclick='window.open("https://ponominalu.ru/event/' + event.pn_alias + '", "_blank")', value='>')
 			.form_title Расписание:
 			+form_schedule(event.schedule)
 			.form_title Партнеры:
