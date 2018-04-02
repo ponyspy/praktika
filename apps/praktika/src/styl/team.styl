@@ -132,6 +132,10 @@
 					.role
 						display inline-block
 						margin-left 10px
+						&:after
+							content ','
+						&:last-child:after
+							content ''
 			.member_events
 				margin-bottom 40px
 				.events_title
@@ -143,7 +147,11 @@
 						text-decoration none
 						display inline-block
 						font 12pt/14pt 'PT Mono'
-						margin-right 20px
+						margin-right 10px
+						&:after
+							content ','
+						&:last-child:after
+							content ''
 						&:last-child
 							margin-right 0
 						&:hover
