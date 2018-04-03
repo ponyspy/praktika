@@ -4,6 +4,7 @@ $(function() {
 	});
 
 	$(document)
+		.on('touchmove', 'body.stop_scroll', false)
 		.on('mouseup touchend', function(e) {
 			if ($(event.target).closest('.title_block').length) return;
 
@@ -13,12 +14,14 @@ $(function() {
 		});
 
 	$('.search').on('click', function(e) {
-		$('.search_block').toggleClass('show');
+		$('.search_block').addClass('show');
+		$('body').addClass('stop_scroll');
 		$('.search_input').focus();
 	});
 
 	$('.search_close').on('click', function(e) {
-		$('.search_block').toggleClass('show');
+		$('body').removeClass('stop_scroll');
+		$('.search_block').removeClass('show');
 	});
 
 	var search = {
@@ -31,11 +34,7 @@ $(function() {
 		},
 		getResult: function (result) {
 			$.post('/search', { text: result }).done(function(data) {
-				if (data == 'end') {
-					$('.search_results').empty().text('Ничего нет!');
-				} else {
-					$('.search_results').empty().append(data);
-				}
+				$('.search_results').empty().append(data);
 			});
 		}
 	};
