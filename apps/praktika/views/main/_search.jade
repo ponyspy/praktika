@@ -2,8 +2,8 @@
 	.context_title команда
 	.context_results
 		each member in members
-			.result_item
-				.item_photo
+			a.result_item(href='/team#' + member._short_id)
+				.item_photo(style='background-image: url(' + member.photo + ')')
 				.item_roles
 					each role in member.roles
 						.role= role
@@ -13,6 +13,6 @@
 	.context_title события
 	.context_results
 		each event in events
-			.result_item
-				.item_poster
+			a.result_item(href='/events/' + (event.sym ? event.sym : event._short_id))
+				.item_poster(style='background-image: url(' + event.poster + ')')
 				.item_title= event.i18n.title.get(locale)
