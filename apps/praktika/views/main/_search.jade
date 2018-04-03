@@ -1,0 +1,18 @@
+.context_column.members
+	.context_title команда
+	.context_results
+		each member in members
+			.result_item
+				.item_photo
+				.item_roles
+					each role in member.roles
+						.role= role
+				.item_name= member.i18n.name.get(locale)
+
+.context_column.events
+	.context_title события
+	.context_results
+		each event in new events
+			.result_item
+				.item_poster
+				.item_title= event.i18n.title.get(locale)

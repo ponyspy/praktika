@@ -43,6 +43,9 @@ module.exports = (function() {
 		res.redirect('back');
 	});
 
+	router.route('/search')
+		.post(main.options.search);
+
 	router.route('/sitemap.xml')
 		.get(main.options.sitemap);
 
