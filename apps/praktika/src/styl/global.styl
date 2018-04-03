@@ -23,6 +23,81 @@ body
 		a
 			color white!important
 
+
+
+
+.search_block
+	z-index 9999999999999999999
+	position fixed
+	top 0
+	left 0
+	width 100%
+	height 100%
+	background-color white
+	padding-left 40px
+	padding-right 40px
+	overflow scroll
+	.search_close
+		margin-top 20px
+		width 40px
+		height 40px
+		background-position center
+		background-repeat no-repeat
+		background-size 50%
+		background-image url('/stuff/praktika/icons/x.svg')
+	.search_input
+		margin 0 auto
+		display block
+		margin-top 40px
+		margin-bottom 40px
+		font 22pt/24pt 'PT Mono'
+		text-align center
+		border none
+		outline none
+		width 100%
+		max-width 960px
+		border-bottom 1px solid black
+	.context_column
+		overflow hidden
+		margin-bottom 40px
+		.context_title
+			width 20%
+			background-color rgba(131, 193, 216, 1.000)
+			float left
+		.context_results
+			width 80%
+			background-color rgba(231, 197, 123, 1.000)
+			overflow hidden
+			float left
+			.result_item
+				display inline-block
+				margin-right -4px;
+				width 50%
+				background-color lightgrey
+				overflow hidden
+		&.events
+			.item_poster
+				background-color pink
+				width 100%
+				height 300px
+				background-color green
+			.item_title
+				font 12pt/14pt 'PT Mono'
+		&.members
+			.item_photo
+				width 100px
+				height 100px
+				background-color green
+				float left
+			.item_roles
+				font 12pt/14pt 'PT Mono'
+			.item_name
+				font 12pt/14pt 'PT Mono Bold'
+
+
+
+
+
 .title_block
 	width 100%
 	text-align center

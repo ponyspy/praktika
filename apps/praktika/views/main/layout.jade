@@ -8,6 +8,29 @@ html
 				.banner_block
 					a.banner_logo(href='https://www.mos.ru/kultura', target='_blank'): img(src='/stuff/praktika/logo/logo_depcult.svg')
 					.banner_close
+
+			.search_block
+				.search_close
+				input.search_input(type='text', placeholder='поиск...')
+				.search_results
+
+					.context_column.members
+						.context_title команда
+						.context_results
+							each item in new Array(4)
+								.result_item
+									.item_photo
+									.item_roles режиссер
+									.item_name Олег Глушков
+
+					.context_column.events
+						.context_title события
+						.context_results
+							each item in new Array(4)
+								.result_item
+									.item_poster
+									.item_title кеды
+
 			.title_block: .title_inner
 				.panel_block
 					.menu_block
