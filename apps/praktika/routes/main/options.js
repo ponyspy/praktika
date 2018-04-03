@@ -20,7 +20,7 @@ module.exports = function(Model) {
 			});
 
 			var query = members_ids && members_ids.length > 0
-				? { $text: { $search: req.body.text }, 'members.list': { $in: members_ids } }
+				? { $or: [{ $text: { $search: req.body.text } }, { 'members.list': { $in: members_ids } }] }
 				: { $text: { $search: req.body.text } }
 
 			Event.find(query).exec(function(err, events) {
