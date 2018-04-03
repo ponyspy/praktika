@@ -23,7 +23,7 @@ module.exports = function(Model) {
 				? { $or: [{ $text: { $search: req.body.text } }, { 'members.list': { $in: members_ids } }] }
 				: { $text: { $search: req.body.text } }
 
-			Event.find(query).exec(function(err, events) {
+			Event.find(query, { score: { $meta: 'textScore' } }).sort( { score: { $meta: 'textScore' } } ).exec(function(err, events) {
 
 				var opts = {
 					__: function() { return res.locals.__.apply(null, arguments); },
