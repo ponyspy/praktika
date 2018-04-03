@@ -145,8 +145,8 @@ partnerSchema = new Schema({
 
 eventSchema.index({'schedule.date': -1});
 eventSchema.index({'members.list': 1});
-eventSchema.index({'title.value': 'text', 's_title.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
-memberSchema.index({'name.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
+eventSchema.index({'title.value': 'text', 's_title.value': 'text', 'description.value': 'text'}, { weights: {'description.value': 2, 's_title.value': 3, 'title.value': 5 }, language_override: 'lg', default_language: 'ru'});
+memberSchema.index({'name.value': 'text', 'description.value': 'text'}, { weights: { 'name.value': 5, 'description.value': 2 }, language_override: 'lg', default_language: 'ru'});
 announceSchema.index({'title.value': 'text', 's_title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 mediaSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 slideSchema.index({'title.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
