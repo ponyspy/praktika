@@ -11,7 +11,12 @@ $(function() {
 			$('.menu_items, .title_block, .menu_open').removeClass('open');
 
 			event.stopPropagation();
+		})
+		.on('click', '.results_holder', function(e) {
+			$(this).closest('.context_results').find('.hidden').removeClass('hidden');
+			$(this).remove();
 		});
+
 
 	$('.search').on('click', function(e) {
 		$('.search_block').addClass('show');

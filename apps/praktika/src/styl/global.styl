@@ -78,6 +78,11 @@ body
 			max-width 960px
 			margin 0 auto
 			overflow hidden
+			.results_holder
+				cursor pointer
+				font 12pt/14pt 'PT Mono'
+				&:hover
+					opacity 0.7
 			.result_item
 				// background-color green
 				display inline-block
@@ -90,6 +95,8 @@ body
 				width 50%
 				overflow hidden
 				padding-right 20px
+				&.hidden
+					display none
 				&:hover
 					opacity 0.7
 				&:nth-child(2n)
