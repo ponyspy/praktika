@@ -19,19 +19,11 @@ module.exports = function(Model) {
 				return member._id.toString();
 			});
 
-			console.log(members_ids);
-
-			// Event.find({ $text: { $search: req.body.text }, 'members.list': { $in: members_ids } }).exec(function(err, events) {
-			// Event.find({ $or: [ { $text: { $search: req.body.text } }, { 'members.list': { $in: members_ids } } ] }).exec(function(err, events) {
-
 			var query = members_ids && members_ids.length > 0
-				// ? { $or: [ { $text: { $search: req.body.text } }, { 'members.list': { $in: members_ids } } ] }
 				? { $text: { $search: req.body.text }, 'members.list': { $in: members_ids } }
 				: { $text: { $search: req.body.text } }
 
 			Event.find(query).exec(function(err, events) {
-
-				console.log(events);
 
 				var opts = {
 					__: function() { return res.locals.__.apply(null, arguments); },

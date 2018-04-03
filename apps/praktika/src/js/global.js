@@ -12,6 +12,15 @@ $(function() {
 			event.stopPropagation();
 		});
 
+	$('.search').on('click', function(e) {
+		$('.search_block').toggleClass('show');
+		$('.search_input').focus();
+	});
+
+	$('.search_close').on('click', function(e) {
+		$('.search_block').toggleClass('show');
+	});
+
 	var search = {
 		val: '', buf: '',
 		checkResult: function() {

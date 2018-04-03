@@ -27,6 +27,7 @@ body
 
 
 .search_block
+	display none
 	z-index 9999999999999999999
 	position absolute
 	top 0
@@ -38,6 +39,8 @@ body
 	padding-right 40px
 	box-sizing border-box
 	overflow scroll
+	&.show
+		display block
 	.search_close
 		cursor pointer
 		margin-top 20px
