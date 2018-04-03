@@ -12,7 +12,7 @@ if members && members.length > 0
 
 if events && events.length > 0
 	.context_column.events
-		.context_title= __('события')
+		.context_title= __('спектакли')
 		.context_results
 			each event in events
 				a.result_item(href='/events/' + (event.sym ? event.sym : event._short_id))

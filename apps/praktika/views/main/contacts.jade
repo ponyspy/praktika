@@ -11,26 +11,26 @@ block header_include
 
 
 block content
-	.map_block#map-canvas(data-placeholder='Большой Козихинский переулок 30')
+	.map_block#map-canvas(data-placeholder= __('Большой Козихинский<br>переулок 30').replace('<br>', ' '))
 	.contacts_block: .contacts_inner
 		.column
-			.title адрес
+			.title= __('адрес')
 			.value
-				div Большой Козихинский<br>переулок 30, метро:
-				div «Маяковская», «Пушкинская»
+				div!= __('Большой Козихинский<br>переулок 30') + ', ' + __('метро') + ':'
+				div= __('«Маяковская»') + ', ' + __('«Пушкинская»')
 		.column
-			.title касса театра 11:00 – 21:00
+			.title= __('касса театра') + ' ' + '11:00 – 21:00'
 			.value
 				div: a(href='tel:+7 (495) 544-55-45') +7 495 544-55-45
 				div: a(href='mailto:tickets@praktikatheatre.ru') tickets@praktikatheatre.ru
 		.column
-			.title PR-директор
+			.title= __('PR-директор')
 			.value
-				div Арина Светлица
+				div= __('Арина Светлица')
 				div: a(href='mailto:as@praktikatheatre.ru') as@praktikatheatre.ru
 				div: a(href='tel:+7 (916) 902-64-61') +7 916 902-64-61
 		.column
-			.title запись для студентов
+			.title= __('запись для студентов')
 			.value
-				div Дарья Панина
+				div= __('Дарья Панина')
 				div: a(href='mailto:podushka@praktikatheatre.ru') podushka@praktikatheatre.ru
