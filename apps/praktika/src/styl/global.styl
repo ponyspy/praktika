@@ -60,21 +60,27 @@ body
 	.context_column
 		overflow hidden
 		margin-bottom 40px
+		position relative
 		.context_title
-			width 20%
-			background-color rgba(131, 193, 216, 1.000)
-			float left
+			font 12pt/14pt 'PT Mono'
+			position absolute
+			// background-color rgba(131, 193, 216, 1.000)
 		.context_results
-			width 80%
+			max-width 960px
+			margin 0 auto
 			background-color rgba(231, 197, 123, 1.000)
 			overflow hidden
-			float left
 			.result_item
 				display inline-block
-				margin-right -4px;
+				margin-right -4px
+				margin-bottom 20px
+				box-sizing border-box
 				width 50%
 				background-color lightgrey
 				overflow hidden
+				padding-right 20px
+				&:nth-child(2n)
+					padding-right 0
 		&.events
 			.item_poster
 				background-color pink
@@ -82,7 +88,7 @@ body
 				height 300px
 				background-color green
 			.item_title
-				font 12pt/14pt 'PT Mono'
+				font 22pt/24pt 'PT Mono Bold'
 		&.members
 			.item_photo
 				width 100px
