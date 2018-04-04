@@ -1,5 +1,5 @@
 each event in events
-	- var event_date = moment(event.schedule.date)
+	- var event_date = moment(event.schedule.date).locale(locale)
 
 	.event_item(class='date_' + event_date.get('date'))
 		a.event_poster(class= event.poster_hover ? 'hover' : '', href='/events/' + (event.sym ? event.sym : event._short_id))
@@ -9,14 +9,14 @@ each event in events
 		.event_body
 			.event_head
 				.event_date
-					.date= event_date.locale(locale).format('DD MMMM')
-					.time= event_date.locale(locale).format('HH:mm')
-				.event_ticket= __('купить билет')
+					.date= event_date.format('DD MMMM')
+					.time= event_date.format('HH:mm')
+				.event_ticket(schedule-alias= event.pn_alias, schedule-date=event_date.format('DD.MM.YYYY HH:mm'))= __('купить билет')
 			a.event_title(href='/events/' + (event.sym ? event.sym : event._short_id))= get_locale(event.title, locale)
 			.event_content
 				.event_meta
 					if event.schedule.premiere
-						.event_premiere премьера
+						.event_premiere= __('премьера')
 					.event_age= event.age
 				.event_members
 					each group in event.members

@@ -44,7 +44,7 @@ module.exports = function(Model) {
 			{ $project: {
 				sym:   1, _short_id: 1, age:    1, schedule: 1,
 				title: 1, s_title:   1, poster: 1, members:  1,
-				poster_hover: 1
+				poster_hover: 1, pn_alias: 1
 			}},
 			{ $addFields: { 'members': { $filter: {
 				input: '$members',
