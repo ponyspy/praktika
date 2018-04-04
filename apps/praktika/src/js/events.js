@@ -1,8 +1,6 @@
 $(function() {
 	var title = $('title').text();
 
-	pnwidget.init({ containerId: 'pn_widget' });
-
 	if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 		$('.timeline_block').on('mousemove', function(e) {
 			var $this = $(this).children('.timeline_outer');
@@ -60,18 +58,14 @@ $(function() {
 			var schedule_alias = $this.attr('schedule-alias');
 			var schedule_date = $this.attr('schedule-date');
 
-			pnwidget.show({
-				exclude_dates: false,
-				scrollToWidget: false,
-				closeButton: true,
-				hideHeader: true,
-				referral_auth: 'praktikatheatre',
-				event: {
-					alias: schedule_alias,
-					date: schedule_date ? schedule_date.split(' ')[0] : null,
-					time: schedule_date ? schedule_date.split(' ')[1] : null
-				}
-			});
+			var $frame = $('<iframe>', {
+				src: '/widget?alias=' + schedule_alias + '&date=' + schedule_date.split(' ')[0] + '&time=' + schedule_date.split(' ')[1],
+				id: 'pn_widget',
+				frameborder: 0,
+				scrolling: 'yes'
+				});
+
+			$('.widget_inner').empty().append($frame);
 
 			$('.widget_block').show();
 		});

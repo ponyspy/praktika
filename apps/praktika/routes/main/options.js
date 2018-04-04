@@ -13,6 +13,10 @@ module.exports = function(Model) {
 		})[0] || {}).value || '');
 	};
 
+	module.widget = function(req, res, next) {
+		res.render('main/_widget.jade', { alias: req.query.alias, date: req.query.date, time: req.query.time });
+	};
+
 	module.search = function(req, res, next) {
 		Member.find({ $text: { $search: req.body.text } }).exec(function(err, members) {
 			var members_ids = members.map(function(member) {

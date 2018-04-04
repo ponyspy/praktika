@@ -43,6 +43,9 @@ module.exports = (function() {
 		res.redirect('back');
 	});
 
+	router.route('/widget')
+		.get(main.options.widget);
+
 	router.route('/search')
 		.post(main.options.search);
 
