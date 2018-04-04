@@ -49,7 +49,7 @@ $(function() {
 		.on('mouseup touchend', function(e) {
 			if ($(event.target).closest('.widget_inner').length) return;
 
-			$('.widget_block').hide();
+			$('.widget_block').empty().hide();
 
 			event.stopPropagation();
 		})
@@ -65,9 +65,7 @@ $(function() {
 				scrolling: 'yes'
 				});
 
-			$('.widget_inner').empty().append($frame);
-
-			$('.widget_block').show();
+			$('.widget_block').empty().append($frame).show();
 		});
 
 
