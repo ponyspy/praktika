@@ -30,11 +30,17 @@ $(function() {
 		var date = schedule_date ? schedule_date.split(' ')[0] : null;
 		var time = schedule_date ? schedule_date.split(' ')[1] : null;
 
+		$('body').addClass('stop_scroll');
+
 		var $frame = $('<iframe>', {
 			src: '/widget?alias=' + schedule_alias + '&date=' + date + '&time=' + time,
 			id: 'pn_widget',
 			frameborder: 0,
 			scrolling: 'yes'
+		});
+
+		$frame.one('load', function(e) {
+			$('#pn_widget').addClass('show');
 		});
 
 		$('.widget_block').children('.widget_inner').empty().append($frame).end().show();
@@ -53,6 +59,7 @@ $(function() {
 		.on('mouseup touchend', function(e) {
 			if ($(event.target).closest('.widget_inner').length) return;
 
+			$('body').removeClass('stop_scroll');
 			$('.widget_block').hide().children('.widget_inner').empty();
 
 			event.stopPropagation();

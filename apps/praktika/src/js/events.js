@@ -49,6 +49,7 @@ $(function() {
 		.on('mouseup touchend', function(e) {
 			if ($(event.target).closest('.widget_inner').length) return;
 
+			$('body').removeClass('stop_scroll');
 			$('.widget_block').hide().children('.widget_inner').empty();
 
 			event.stopPropagation();
@@ -58,11 +59,17 @@ $(function() {
 			var schedule_alias = $this.attr('schedule-alias');
 			var schedule_date = $this.attr('schedule-date');
 
+			$('body').addClass('stop_scroll');
+
 			var $frame = $('<iframe>', {
 				src: '/widget?alias=' + schedule_alias + '&date=' + schedule_date.split(' ')[0] + '&time=' + schedule_date.split(' ')[1],
 				id: 'pn_widget',
 				frameborder: 0,
 				scrolling: 'yes'
+			});
+
+			$frame.one('load', function(e) {
+				$('#pn_widget').addClass('show');
 			});
 
 			$('.widget_block').children('.widget_inner').empty().append($frame).end().show();
