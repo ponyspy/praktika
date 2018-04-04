@@ -1,6 +1,8 @@
 $(function() {
 	var title = $('title').text();
 
+	pnwidget.init({ containerId: 'pn_widget' });
+
 	if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 		$('.timeline_block').on('mousemove', function(e) {
 			var $this = $(this).children('.timeline_outer');
@@ -13,7 +15,7 @@ $(function() {
 
 	$(window)
 		.on('load', function(e) {
-			var month = location.hash ? location.hash.replace('#', '') : 0;
+			var month = location.hash ? location.hash.slice(-1) : 0;
 			var $current_month = $('.month_item').eq(month);
 			var offset = $('.timeline_outer').scrollLeft() + $current_month.offset().left;
 
@@ -45,6 +47,33 @@ $(function() {
 			$('.event_item').removeClass('hidden');
 
 			$(this).removeClass('selected');
+		})
+		.on('mouseup touchend', function(e) {
+			if ($(event.target).closest('.widget_inner').length) return;
+
+			$('.widget_block').hide();
+
+			event.stopPropagation();
+		})
+		.on('click', '.event_ticket', function(e) {
+			var $this = $(this);
+			var schedule_alias = $this.attr('schedule-alias');
+			var schedule_date = $this.attr('schedule-date');
+
+			pnwidget.show({
+				exclude_dates: false,
+				scrollToWidget: false,
+				closeButton: true,
+				hideHeader: true,
+				referral_auth: 'praktikatheatre',
+				event: {
+					alias: schedule_alias,
+					date: schedule_date ? schedule_date.split(' ')[0] : null,
+					time: schedule_date ? schedule_date.split(' ')[1] : null
+				}
+			});
+
+			$('.widget_block').show();
 		});
 
 

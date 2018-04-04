@@ -2,6 +2,27 @@
 @media screen and (max-width: 680px)
 	@import 'mobile/_events.styl'
 
+.widget_block
+	position fixed
+	top 0
+	left 0
+	width 100%
+	height 100%
+	background-color rgba(0, 0, 0, 0.8)
+	display none
+	z-index 99999999999999
+	.widget_inner
+		position fixed
+		max-width 800px
+		height 600px
+		top 0; left 0; right 0; bottom 0;
+		margin auto
+		overflow scroll
+		#pn_widget
+			position relative
+			width 100%
+			height 100%
+
 .timeline_block
 	width 100%
 	border-top 1px solid black
@@ -172,6 +193,8 @@
 				float right
 				font 14pt/16pt 'PT Mono Bold'
 				cursor pointer
+				&:hover
+					opacity 0.7
 			.event_title
 				text-transform lowercase
 				display block

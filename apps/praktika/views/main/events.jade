@@ -6,10 +6,13 @@ block header_meta
 
 block header_include
 	- var include_css = ['events.css']
+	- var exclude_js = ['http://w.cultserv.ru/v2.2/public/js/widgetloader.js']
 	- var include_js = ['events.js']
 
 
 block content
+	.widget_block: .widget_inner: #pn_widget
+
 	.timeline_block: .timeline_outer: .timeline_inner
 		each month, i in months
 			.month_item(data-month=month.month)
