@@ -32,12 +32,13 @@ block over
 block content
 	#pn_widget
 
-	.event_schedule: .schedule_outer: .schedule_inner
-		.schedule_item(schedule-alias= event.pn_alias): .item_ticket= __('купить билет')
-		each item in event.schedule
-			.schedule_item(schedule-alias= event.pn_alias, schedule-date=moment(item.date).format('DD.MM.YYYY HH:mm'))
-				.item_date= moment(item.date).locale(locale).format('DD MMMM')
-				.item_time= moment(item.date).locale(locale).format('dd HH:mm')
+	if event.schedule.length > 0
+		.event_schedule: .schedule_outer: .schedule_inner
+			.schedule_item(schedule-alias= event.pn_alias): .item_ticket= __('купить билет')
+			each item in event.schedule
+				.schedule_item(schedule-alias= event.pn_alias, schedule-date=moment(item.date).format('DD.MM.YYYY HH:mm'))
+					.item_date= moment(item.date).locale(locale).format('DD MMMM')
+					.item_time= moment(item.date).locale(locale).format('dd HH:mm')
 
 	.event_body
 		.event_title= event.i18n.title.get(locale)
