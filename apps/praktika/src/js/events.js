@@ -13,7 +13,7 @@ $(function() {
 
 	$(window)
 		.on('load', function(e) {
-			var month = location.hash ? location.hash.slice(-1) : 0;
+			var month = location.hash ? location.hash.replace('#', '') : 0;
 			var $current_month = $('.month_item').eq(month);
 			var offset = $('.timeline_outer').scrollLeft() + $current_month.offset().left;
 
@@ -49,7 +49,7 @@ $(function() {
 		.on('mouseup touchend', function(e) {
 			if ($(event.target).closest('.widget_inner').length) return;
 
-			$('.widget_block').empty().hide();
+			$('.widget_block').hide().children('.widget_inner').empty();
 
 			event.stopPropagation();
 		})
@@ -65,7 +65,7 @@ $(function() {
 				scrolling: 'yes'
 				});
 
-			$('.widget_block').empty().append($frame).show();
+			$('.widget_block').children('.widget_inner').empty().append($frame).end().show();
 		});
 
 
