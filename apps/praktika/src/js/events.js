@@ -63,7 +63,7 @@ $(function() {
 				id: 'pn_widget',
 				frameborder: 0,
 				scrolling: 'yes'
-				});
+			});
 
 			$('.widget_block').children('.widget_inner').empty().append($frame).end().show();
 		});
