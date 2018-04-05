@@ -14,7 +14,10 @@ module.exports = function(Model) {
 	};
 
 	module.widget = function(req, res, next) {
-		res.render('main/_widget.jade', { alias: req.query.alias, date: req.query.date, time: req.query.time });
+		var query = req.query;
+		var ref = req.app.locals.static_types.pn_ref;
+
+		res.render('main/_widget.jade', { ref: ref, alias: query.alias, date: query.date, time: query.time });
 	};
 
 	module.search = function(req, res, next) {

@@ -8,7 +8,7 @@ $(function() {
 		scrollToWidget: false,
 		closeButton: true,
 		hideHeader: true,
-		referral_auth: 'praktikatheatre',
+		referral_auth: $pn_widget.attr('data-ref'),
 		event: {
 			alias: $pn_widget.attr('data-alias'),
 			date: $pn_widget.attr('data-date'),
