@@ -6,7 +6,7 @@ $(function() {
 	pnwidget.show({
 		exclude_dates: false,
 		scrollToWidget: false,
-		closeButton: true,
+		closeButton: false,
 		hideHeader: true,
 		referral_auth: $pn_widget.attr('data-ref'),
 		event: {
