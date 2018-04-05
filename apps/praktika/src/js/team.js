@@ -6,6 +6,15 @@ $(function() {
 
 
 	$document
+		.on('mouseup touchend', function(e) {
+			if ($(event.target).closest('.members_roles').length) return;
+
+			var select_role = $('.members_roles').attr('active-role');
+
+			$('.select_role').removeClass('show selected').filter('[data-role="' + select_role + '"]').addClass('selected');
+
+			event.stopPropagation();
+		})
 		.on('click', '.select_role.selected', function(e) {
 			$(this).parent().children('.select_role').removeClass('selected').addClass('show');
 		})
@@ -13,6 +22,7 @@ $(function() {
 			var $this = $(this);
 			var select_role = $this.attr('data-role');
 
+			$('.members_roles').attr('active-role', select_role);
 			$this.parent().children('.select_role').removeClass('show selected').filter(this).addClass('selected');
 
 			select_role == 'all'
