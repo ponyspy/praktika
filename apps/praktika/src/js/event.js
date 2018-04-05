@@ -43,7 +43,7 @@ $(function() {
 			$('#pn_widget').addClass('show');
 		});
 
-		$('.widget_block').children('.widget_inner').empty().append($frame).end().show();
+		$('.widget_block').children('.widget_inner').empty().append($frame).end().addClass('open');
 	});
 
 	if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -59,8 +59,10 @@ $(function() {
 		.on('mouseup touchend', function(e) {
 			if ($(event.target).closest('.widget_inner').length) return;
 
-			$('body').removeClass('stop_scroll');
-			$('.widget_block').hide().children('.widget_inner').empty();
+			if ($('.widget_block').hasClass('open')) {
+				$('body').removeClass('stop_scroll');
+				$('.widget_block').removeClass('open').children('.widget_inner').empty();
+			}
 
 			event.stopPropagation();
 		})

@@ -49,8 +49,10 @@ $(function() {
 		.on('mouseup touchend', function(e) {
 			if ($(event.target).closest('.widget_inner').length) return;
 
-			$('body').removeClass('stop_scroll');
-			$('.widget_block').hide().children('.widget_inner').empty();
+			if ($('.widget_block').hasClass('open')) {
+				$('body').removeClass('stop_scroll');
+				$('.widget_block').removeClass('open').children('.widget_inner').empty();
+			}
 
 			event.stopPropagation();
 		})
@@ -72,7 +74,7 @@ $(function() {
 				$('#pn_widget').addClass('show');
 			});
 
-			$('.widget_block').children('.widget_inner').empty().append($frame).end().show();
+			$('.widget_block').children('.widget_inner').empty().append($frame).end().addClass('open');
 		});
 
 
