@@ -1,10 +1,11 @@
 $(function() {
 	var $document = $(document);
 	var $window = $(window);
+	var $members = $('.member_item');
 	var title = $('title').text();
 
 
-	$(document)
+	$document
 		.on('click', '.select_role.selected', function(e) {
 			$(this).parent().children('.select_role').removeClass('selected').addClass('show');
 		})
@@ -14,16 +15,14 @@ $(function() {
 
 			$this.parent().children('.select_role').removeClass('show selected').filter(this).addClass('selected');
 
-			if (select_role == 'all') {
-				$('.member_item').removeClass('hide');
-			} else {
-				$('.member_item').addClass('hide').filter('.' + select_role).removeClass('hide');
-			}
+			select_role == 'all'
+				? $members.removeClass('hide')
+				: $members.addClass('hide').filter('.' + select_role).removeClass('hide');
 
-			$(document).trigger('scroll.load');
+			$document.trigger('scroll.load');
 		});
 
-	var $members = $('.member_item').on('click', function(e) {
+	$members.on('click', function(e) {
 		var $current_block = $(this);
 
 		location.hash = $current_block.attr('member-id');
