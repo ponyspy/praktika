@@ -3,6 +3,24 @@ $(function() {
 	var $window = $(window);
 	var title = $('title').text();
 
+
+	$(document)
+		.on('click', '.select_role.selected', function(e) {
+			$(this).parent().children('.select_role').removeClass('selected').addClass('show');
+		})
+		.on('click', '.select_role:not(.selected)', function(e) {
+			var $this = $(this);
+			var select_role = $this.attr('data-role');
+
+			$this.parent().children('.select_role').removeClass('show selected').filter(this).addClass('selected');
+
+			if (select_role == 'all') {
+				$('.member_item').removeClass('hide');
+			} else {
+				$('.member_item').addClass('hide').filter('.' + select_role).removeClass('hide');
+			}
+		});
+
 	var $members = $('.member_item').on('click', function(e) {
 		var $current_block = $(this);
 

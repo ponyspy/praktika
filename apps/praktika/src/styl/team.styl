@@ -35,20 +35,31 @@
 	margin-bottom 20px
 	cursor pointer
 	display inline-block
-	&:after
-		content ''
-		z-index 0
-		position relative
-		background-image url('/stuff/praktika/icons/arrow_list.svg')
-		width 8px
-		height 8px
-		// margin-left 15px
-		display inline-block
-		transform rotate(90deg)
-		vertical-align middle
-		background-position top
-		background-size contain
-		background-repeat no-repeat
+	.select_role
+		display none
+		margin-bottom 8px
+		&:last-child
+			margin-bottom 0
+		&:hover
+			opacity 0.7
+		&.show
+			display block
+		&.selected
+			display block
+			&:after
+				content ''
+				z-index 0
+				position relative
+				background-image url('/stuff/praktika/icons/arrow_list.svg')
+				width 8px
+				height 8px
+				margin-left 10px
+				display inline-block
+				transform rotate(90deg)
+				vertical-align middle
+				background-position top
+				background-size contain
+				background-repeat no-repeat
 
 
 .members_list
@@ -67,6 +78,8 @@
 	padding-top 16.666666667%
 	box-sizing border-box
 	position relative
+	&.hide
+		display none
 	&.show .in
 		opacity 1
 	&:hover

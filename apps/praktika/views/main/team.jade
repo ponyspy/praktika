@@ -13,10 +13,10 @@ block content
 	.members_header: .members_header_inner
 		.members_title(data-title=__('команда'))= __('команда')
 		.members_roles
-			span.role= __('все')
-			//- each role, i in static_types.members_roles
-			//- 	.role(data-role=i)= __n(role.male, 5)
+			.select_role.selected(data-role='all')= __('все')
+			each role, i in static_types.members_roles
+				.select_role(data-role=i)= __n(role.male, 5)
 
 	.members_list
 		each member in members
-			.member_item(member-id=member._short_id, data-name=member.i18n.name.get(locale), data-src=member.photo_preview): .in
+			.member_item(class=member.roles, member-id=member._short_id, data-name=member.i18n.name.get(locale), data-src=member.photo_preview): .in
