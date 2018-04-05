@@ -19,6 +19,8 @@ $(function() {
 			} else {
 				$('.member_item').addClass('hide').filter('.' + select_role).removeClass('hide');
 			}
+
+			$(document).trigger('scroll.load');
 		});
 
 	var $members = $('.member_item').on('click', function(e) {
