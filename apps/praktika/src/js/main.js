@@ -36,7 +36,7 @@ $(function() {
 
 	$('.announcement_block').on('click', function(e) {
 		var announce = $(this).attr('data-id');
-		$.cookie('announce', announce, {
+		Cookies.set('announce', announce, {
 			expires: 2
 		});
 	});
@@ -45,11 +45,11 @@ $(function() {
 		$('.maket_block').removeClass('banner');
 		$('.banner_block').addClass('close');
 
-		var banner = $.cookie('banner')
-			? +$.cookie('banner') + 1
+		var banner = Cookies.get('banner')
+			? +Cookies.get('banner') + 1
 			: 1;
 
-		$.cookie('banner', banner, {
+		Cookies.set('banner', banner, {
 			expires: 5
 		});
 	});
