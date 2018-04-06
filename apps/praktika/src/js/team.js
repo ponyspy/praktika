@@ -37,14 +37,9 @@ $(function() {
 
 
 	$members.on('click', function(e) {
-		location.hash = $(this).attr('member-id');
-	});
+		var $this = $(this)
 
-
-	$window.on('load hashchange', function(e) {
-		var $current_block = $members.filter('[member-id="' + location.hash.replace('#', '') + '"]').eq(0);
-
-		if ($current_block.hasClass('active')) {
+		if ($this.hasClass('active')) {
 			location.hash = '!';
 			$('.panel').remove();
 			$current_block.removeClass('active');
@@ -53,6 +48,13 @@ $(function() {
 
 			return false;
 		}
+
+		location.hash = $this.attr('member-id');
+	});
+
+
+	$window.on('load hashchange', function(e) {
+		var $current_block = $members.filter('[member-id="' + location.hash.replace('#', '') + '"]').eq(0);
 
 		var $set = $current_block.nextAll('.member_item').addBack($current_block).each(function() {
 			var $this = $(this);
