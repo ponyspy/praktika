@@ -2,6 +2,9 @@ $(function() {
 	var $document = $(document);
 	var $window = $(window);
 	var $members = $('.member_item');
+	var $title = $('.title_block');
+	var $members_header = $('.members_header');
+
 	var title = $('title').text();
 
 
@@ -119,9 +122,10 @@ $(function() {
 			$members.not('.show').each(function() {
 				var $this = $(this);
 
-				if ($this.offset().top + $this.height() <= viewport - 50) {
-					$this.children('.in').css('background-image', 'url(' + $this.attr('data-src') + ')').end().addClass('show');
-				}
+				$this.offset().top + $this.height() <= viewport - 50
+					? $this.children('.in').css('background-image', 'url(' + $this.attr('data-src') + ')').end().addClass('show')
+					: false;
+
 			});
 
 			if (viewport >= $document.height()) {
@@ -131,9 +135,6 @@ $(function() {
 
 		}).trigger('scroll.load')
 		.on('scroll', function(e) {
-			var $title = $('.title_block');
-			var $members_header = $('.members_header');
-
 			$(this).scrollTop() >= $title.height() + $title.offset().top
 				? $members_header.addClass('fix')
 				: $members_header.removeClass('fix');
