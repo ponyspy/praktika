@@ -55,10 +55,11 @@ $(function() {
 
 	$window.on('load hashchange', function(e) {
 		var $current_block = $members.filter('[member-id="' + location.hash.replace('#', '') + '"]').eq(0);
+		var $set = $current_block.nextAll('.member_item').addBack($current_block);
+		var $members_list = $('.members_list');
 
-		var $set = $current_block.nextAll('.member_item').addBack($current_block).each(function() {
+		$set.each(function() {
 			var $this = $(this);
-			var $members_list = $('.members_list');
 
 			if ($this.offset().left + $this.width() > $members_list.width() + $members_list.offset().left) {
 				$.post('', { id: $current_block.attr('member-id') }).done(function(content) {
