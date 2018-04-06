@@ -42,7 +42,7 @@ $(function() {
 		if ($this.hasClass('active')) {
 			location.hash = '!';
 			$('.panel').remove();
-			$current_block.removeClass('active');
+			$this.removeClass('active');
 			$document.trigger('scroll.load');
 			$('title').text(title);
 
