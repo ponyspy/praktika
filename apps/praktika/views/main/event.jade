@@ -31,15 +31,16 @@ block over
 block content
 	.widget_block: .widget_inner
 
-	if event.schedule.length > 0
+	if event.schedule.length > 0 && event.schedule.some(function(item) { return moment(item.date).isAfter() })
 		.event_schedule: .schedule_outer: .schedule_inner
 			.schedule_item(schedule-alias= event.pn_alias): .item_ticket= __('купить билет')
-			each item in event.schedule
+			each item in event.schedule.sort(function(a, b) { return a.date > b.date })
 				- var schedule_item = moment(item.date).locale(locale)
 
-				.schedule_item(schedule-alias= event.pn_alias, schedule-date=schedule_item.format('DD.MM.YYYY HH:mm'))
-					.item_date= schedule_item.format('DD MMMM')
-					.item_time= schedule_item.format('dd HH:mm')
+				if schedule_item.isAfter()
+					.schedule_item(schedule-alias= event.pn_alias, schedule-date=schedule_item.format('DD.MM.YYYY HH:mm'))
+						.item_date= schedule_item.format('DD MMMM')
+						.item_time= schedule_item.format('dd HH:mm')
 
 	.event_body
 		.event_title= event.i18n.title.get(locale)
