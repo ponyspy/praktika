@@ -18,9 +18,10 @@ module.exports.event = function(req, res) {
 
 		var out = body.message.map(function(event) {
 			return moment(event.date).format('DD.MM.YYYY HH:mm');
-		});
+		}).sort();
 
 		Event.findById(req.body.event_id).exec(function(err, event) {
+			if (err) return res.send('err');
 
 			event.schedule = out.map(function(item) {
 				var event_date = event.schedule.filter(function(e_item) {
