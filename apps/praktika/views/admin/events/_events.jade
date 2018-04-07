@@ -6,6 +6,11 @@ mixin items(events)
 			span.item_preview
 				span= ' --> '
 				a(href='/events/' + (event.sym ? event.sym : event._short_id), target='_blank') превью
+			if event.pn_alias
+				span.item_schedule
+					span= ' --> '
+					a(href='#', event_id=event._id, alias=event.pn_alias) синхронизировать
+
 
 mixin counters(count, skip)
 	a.list_back(href='#'): b назад

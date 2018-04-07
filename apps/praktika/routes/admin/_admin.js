@@ -14,6 +14,7 @@ var admin = {
 	partners: require('./partners/_partners.js'),
 	cv: require('./cv.js'),
 	users: require('./users/_users.js'),
+	schedule: require('./schedule.js'),
 	options: require('./options.js')
 };
 
@@ -41,6 +42,7 @@ module.exports = (function() {
 	router.use('/partners', checkAuth, upload.fields([ { name: 'logo' } ]), admin.partners);
 	router.use('/users', checkAuth, admin.users);
 
+	router.post('/schedule_event', checkAuth, admin.schedule.event);
 	router.post('/preview', checkAuth, upload.single('image'), admin.options.preview);
 
 	return router;

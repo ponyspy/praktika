@@ -132,6 +132,20 @@ $(function() {
 	});
 
 
+	// -- Schedule
+
+
+	$(document).on('click', '.item_schedule', function(event) {
+		var $item = $(this).children('a');
+
+		$.post('/admin/schedule_event', { event_id: $item.attr('event_id'), alias: $item.attr('alias') }).done(function(data) {
+			if (data != 'err') {
+				$item.css('color', 'green');
+			}
+		});
+	});
+
+
 	// -- Remove
 
 
@@ -141,6 +155,10 @@ $(function() {
 
 	$('.toggle_preview').on('click', function() {
 		$('.item_preview').toggleClass('show');
+	});
+
+	$('.toggle_schedule').on('click', function() {
+		$('.item_schedule').toggleClass('show');
 	});
 
 
