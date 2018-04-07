@@ -3,14 +3,13 @@ mixin items(events)
 		.list_item
 			a.item_rm.event(href='#', id=event._id) -- удалить
 			a.item_title(href='/admin/events/edit/' + event._id, class=event.status)= (event.i18n.title.get('ru') || '!!! ПУСТОЕ ПОЛЕ !!!')
-			span.item_preview
-				span= ' --> '
-				a(href='/events/' + (event.sym ? event.sym : event._short_id), target='_blank') превью
 			if event.pn_alias
 				span.item_schedule
 					span= ' --> '
 					a(href='#', event_id=event._id, alias=event.pn_alias) синхронизировать
-
+			span.item_preview
+				span= ' --> '
+				a(href='/events/' + (event.sym ? event.sym : event._short_id), target='_blank') превью
 
 mixin counters(count, skip)
 	a.list_back(href='#'): b назад
