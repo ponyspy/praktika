@@ -66,8 +66,8 @@ module.exports = function(Model) {
 				};
 
 				res.send({
-					start: date_start.format('YYYY-MM-DD'),
-					end: date_end.format('YYYY-MM-DD'),
+					start: date_start.add(1, 'second').format('YYYY-MM-DD'),
+					end: date_end.add(1, 'second').format('YYYY-MM-DD'),
 					events: jade.renderFile(__app_root + '/views/main/_events.jade', opts)
 				});
 			});
