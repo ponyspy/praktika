@@ -22,7 +22,7 @@ $(function() {
 		swiper.slideNext();
 	});
 
-	$.post('/ticket_event', { alias: 'presledovatel' }).done(function(data) {
+	$.post('/ticket_event', { alias: $('.schedule_item').eq(0).attr('schedule-alias') }).done(function(data) {
 		if (data == 'err') return false;
 
 		$('.schedule_item').each(function() {
