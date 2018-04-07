@@ -65,7 +65,11 @@ module.exports = function(Model) {
 					compileDebug: false, debug: false, cache: false, pretty: false
 				};
 
-				res.send(jade.renderFile(__app_root + '/views/main/_events.jade', opts));
+				res.send({
+					start: date_start.format('YYYY-MM-DD'),
+					end: date_end.format('YYYY-MM-DD'),
+					events: jade.renderFile(__app_root + '/views/main/_events.jade', opts)
+				});
 			});
 		});
 	};

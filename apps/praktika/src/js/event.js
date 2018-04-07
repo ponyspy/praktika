@@ -22,7 +22,20 @@ $(function() {
 		swiper.slideNext();
 	});
 
-	$('.schedule_item').on('click', function(e) {
+	$.post('/ticket_event', { alias: 'presledovatel' }).done(function(data) {
+		if (data == 'err') return false;
+
+		$('.schedule_item').each(function() {
+			var $this = $(this);
+
+			data.indexOf($this.attr('schedule-date')) != -1
+				? $this.addClass('active')
+				: $this.addClass('soldout').children('.item_time').text($this.attr('soldout'));
+
+		});
+	});
+
+	$(document).on('click', '.schedule_item.active', function(e) {
 		var $this = $(this);
 		var schedule_alias = $this.attr('schedule-alias');
 		var schedule_date = $this.attr('schedule-date');

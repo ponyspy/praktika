@@ -1,5 +1,7 @@
 {
+	"pn_token": "praktika83492814",
 	"pn_ref": "praktikatheatre",
+	"pn_venue_id": 9,
 	"members_roles": {
 		"actor": { "male": "actor", "female": "actresse" },
 		"director": { "male": "director", "female": "director" },

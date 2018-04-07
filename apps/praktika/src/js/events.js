@@ -56,7 +56,7 @@ $(function() {
 
 			event.stopPropagation();
 		})
-		.on('click', '.event_ticket', function(e) {
+		.on('click', '.event_ticket.active', function(e) {
 			var $this = $(this);
 			var schedule_alias = $this.attr('schedule-alias');
 			var schedule_date = $this.attr('schedule-date');
@@ -89,7 +89,7 @@ $(function() {
 
 			$.post('', { month: month_index }).done(function(data) {
 				location.hash = month_index;
-				var $events = $(data);
+				var $events = $(data.events);
 				var dates = $events.map(function() {
 					return $(this).attr('class').split(' ')[1];
 				}).toArray();
@@ -104,6 +104,18 @@ $(function() {
 				$month_items.removeClass('selected').filter($month_item).addClass('selected');
 				$month_items.find('.day_item').removeClass('enabled');
 				$month_item.find('.' + dates.join(', .')).addClass('enabled');
+
+				$.post('/ticket_schedule', { min: data.start, max: data.end }).done(function(data) {
+					if (data == 'err') return false;
+
+					$('.event_ticket').each(function() {
+						var $this = $(this);
+
+						data.indexOf($this.attr('schedule-date')) != -1
+							? $this.addClass('active')
+							: $this.addClass('soldout').text($this.attr('soldout'));
+					})
+				});
 
 				$('html, body').animate({
 					'scrollTop': 0

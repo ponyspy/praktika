@@ -38,7 +38,7 @@ block content
 				- var schedule_item = moment(item.date).locale(locale)
 
 				if schedule_item.isAfter()
-					.schedule_item(schedule-alias= event.pn_alias, schedule-date=schedule_item.format('DD.MM.YYYY HH:mm'))
+					.schedule_item(schedule-alias= event.pn_alias, schedule-date=schedule_item.format('DD.MM.YYYY HH:mm'), soldout=__('билеты проданы'))
 						.item_date= schedule_item.format('DD MMMM')
 						.item_time= schedule_item.format('dd HH:mm')
 

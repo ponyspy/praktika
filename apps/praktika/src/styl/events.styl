@@ -196,9 +196,14 @@
 			.event_ticket
 				float right
 				font 14pt/16pt 'PT Mono Bold'
-				cursor pointer
-				&:hover
-					opacity 0.7
+				display none
+				&.soldout
+					display block
+				&.active
+					cursor pointer
+					display block
+					&:hover
+						opacity 0.7
 			.event_title
 				text-transform lowercase
 				display block

@@ -9,7 +9,8 @@ var main = {
 	docs: require('./docs.js')(Model),
 	about: require('./about.js')(Model),
 	contacts: require('./contacts.js')(),
-	options: require('./options.js')(Model)
+	options: require('./options.js')(Model),
+	tickets: require('./tickets.js')()
 };
 
 module.exports = (function() {
@@ -44,7 +45,13 @@ module.exports = (function() {
 	});
 
 	router.route('/widget')
-		.get(main.options.widget);
+		.get(main.tickets.widget);
+
+	router.route('/ticket_schedule')
+		.post(main.tickets.schedule);
+
+	router.route('/ticket_event')
+		.post(main.tickets.event);
 
 	router.route('/search')
 		.post(main.options.search);
