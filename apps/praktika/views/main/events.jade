@@ -18,7 +18,7 @@ block content
 				.month_placeholder
 				.month_days
 					each day in month.days
-						.day_item(class=/сб|вс|sa|su/.test(day.wday) ? 'weekend': '', class='date_' + day.date)
+						.day_item(class=/сб|вс|Sa|Su/.test(day.wday) ? 'weekend': '', class='date_' + day.date)
 							.day_date= day.date
 							.day_week= day.wday
 
