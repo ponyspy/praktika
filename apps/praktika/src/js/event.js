@@ -25,7 +25,10 @@ $(function() {
 	$.post('/ticket_event', { alias: $('.schedule_item').eq(0).attr('schedule-alias') }).done(function(data) {
 		if (data == 'err') return false;
 
-		$('.schedule_item').each(function() {
+		var $schedule_items = $('.schedule_item').not('.all');
+		var $schedule_all = $('.schedule_item').filter('.all')
+
+		$schedule_items.each(function() {
 			var $this = $(this);
 
 			data.indexOf($this.attr('schedule-date')) != -1
@@ -33,6 +36,11 @@ $(function() {
 				: $this.addClass('soldout').children('.item_time').text($this.attr('soldout'));
 
 		});
+
+		$schedule_items.filter('.soldout').length == $schedule_items.length
+			? $schedule_all.addClass('soldout').children('.item_ticket').text($schedule_all.attr('soldout'))
+			: $schedule_all.addClass('active');
+
 	});
 
 	$(document).on('click', '.schedule_item.active', function(e) {

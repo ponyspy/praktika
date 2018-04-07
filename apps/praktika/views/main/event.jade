@@ -33,8 +33,8 @@ block content
 
 	if event.pn_alias && event.schedule.length > 0 && event.schedule.some(function(item) { return moment(item.date).isAfter() })
 		.event_schedule: .schedule_outer: .schedule_inner
-			.schedule_item(schedule-alias= event.pn_alias): .item_ticket= __('купить билет')
-			each item in event.schedule.sort(function(a, b) { return a.date > b.date })
+			.schedule_item.all(schedule-alias= event.pn_alias, soldout=__('билеты проданы')): .item_ticket= __('купить билет')
+			each item in event.schedule
 				- var schedule_item = moment(item.date).locale(locale)
 
 				if schedule_item.isAfter()
