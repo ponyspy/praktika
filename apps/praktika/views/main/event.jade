@@ -5,6 +5,7 @@ block header_meta
 	- var content_description = event.i18n.s_title.get(locale)
 	- var content_images = [event.poster]
 	- var content_style = event.images && event.images.length && event.images[0].style
+	- var content_event_id = event._id
 
 block header_include
 	- var include_libs_css = ['swiper.min.css']

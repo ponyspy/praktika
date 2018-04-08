@@ -38,6 +38,8 @@ html
 						if (session && session.user_id)
 							span.stargazer_block
 								a(href='/auth') ✦
+								if content_event_id
+									a(href='/admin/events/edit/' + content_event_id, target='_blank') ✑
 								a(href='/auth/logout') ⇤
 						.menu_items
 							.items_main
