@@ -150,6 +150,8 @@ body
 	position relative
 	z-index 9999999
 	&.open
+		.stargazer_block
+			display block!important
 		height 160px
 		background-color black
 		a
@@ -162,6 +164,20 @@ body
 		position relative
 		margin-left 40px
 		margin-right 40px
+		.stargazer_block
+			display none
+			position absolute
+			top 43px
+			a
+				margin 0!important
+				padding-left 10px
+				padding-right 10px
+				padding-top 10px
+				padding-bottom 5px
+				float none!important
+				margin-top 5px!important
+				font-size 16pt
+				display block
 	.panel_block
 		display flex
 		justify-content center
@@ -172,12 +188,8 @@ body
 		overflow hidden
 		.search
 			margin-top 13px
-			&:hover
-				opacity 0.7
 		.lang
 			margin-top 15px
-			&:hover
-				opacity 0.7
 		a
 			font-weight bold
 			display block
@@ -218,8 +230,6 @@ body
 			.items_main
 				float left
 			&.open
-				.stargazer_block
-					display none
 				a
 					margin-bottom 15px
 					margin-right 0

@@ -35,6 +35,10 @@ html
 				.panel_block
 					.menu_block
 						.menu_open
+						if (session && session.user_id)
+							span.stargazer_block
+								a(href='/auth') ✦
+								a(href='/auth/logout') ⇤
 						.menu_items
 							.items_main
 								a(href='/events') репертуар и билеты
@@ -42,10 +46,6 @@ html
 							.items_drop
 								a(href='/team')= __('команда')
 								a(href='/about')= __('о театре')
-							if (session && session.user_id)
-								span.stargazer_block
-									a(href='/auth') stargazer
-									a(href='/auth/logout')= __('выход')
 					.nav_block
 						a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
 						if locale == 'ru'
