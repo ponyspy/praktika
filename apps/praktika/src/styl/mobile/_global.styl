@@ -1,0 +1,45 @@
+.menu_items
+	display none
+
+.nav_block
+	display none
+
+.logo, .logo_spacer
+	display none
+
+.title_block
+	height 60px!important
+	// background-color red!important
+	.title_inner
+		margin-left 20px!important
+		margin-right 20px!important
+		.nav_block
+			position absolute
+			left 0
+			bottom 10px
+		.menu_block a
+			font 16pt/18pt 'PT Mono'
+			margin-bottom 40px!important
+			margin-left 0
+		.menu_open
+			margin-top 4px
+	&.open
+		top 0
+		height 100%!important
+		position fixed
+		.menu_open
+			margin-top 14px
+			width 25px!important
+			height 25px!important
+			background-size 100%!important
+		.title_inner
+			height 160px
+		.menu_items
+			position absolute
+			left 0
+			top 200px
+			display block
+		.nav_block
+			display block
+		.logo
+			display block
