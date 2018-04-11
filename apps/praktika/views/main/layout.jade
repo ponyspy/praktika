@@ -46,19 +46,21 @@ html
 			.content_block
 				block content
 
-			.footer_block: .footer_inner
-				.footer_main
-					a.logo_dep(href='https://www.mos.ru/kultura', target='_blank'): img(src='/stuff/praktika/logo/logo_depcult.svg')
-					a.quality(href='http://old.kultura.mos.ru/organizations/gbuk_gmoskvy_eksperimentalnyi_teatralnyi_tsentr_novoi_dramy_praktika.html', target='_blank')
-						img(src='/stuff/praktika/logo/likes-01.svg')
-						span= __('Оценка качества услуг учреждений культуры')
-					.social_block
-						a(href='https://www.facebook.com/Praktika', target='_blank'): img(src='/stuff/praktika/social/facebook.svg')
-						a(href='https://www.instagram.com/praktika_theatre', target='_blank'): img(src='/stuff/praktika/social/instagram.svg')
-						a(href='https://vk.com/praktika', target='_blank'): img(src='/stuff/praktika/social/vk.svg')
-						a(href='https://twitter.com/teatr_praktika', target='_blank'): img(src='/stuff/praktika/social/twitter.svg')
-						a(href='https://t.me/praktika_news', target='_blank'): img(src='/stuff/praktika/social/telegram.svg')
-				.footer_under
-					a.copy(href='/')= '© ' +  __('Театр «Практика»') + ' ' + new Date().getFullYear()
-					a.docs(href='/docs')= __('документы')
+			if !content_footer_hidden
+				.footer_block: .footer_inner
+					.footer_main
+						a.logo_dep(href='https://www.mos.ru/kultura', target='_blank'): img(src='/stuff/praktika/logo/logo_depcult.svg')
+						a.quality(href='http://old.kultura.mos.ru/organizations/gbuk_gmoskvy_eksperimentalnyi_teatralnyi_tsentr_novoi_dramy_praktika.html', target='_blank')
+							img(src='/stuff/praktika/logo/likes-01.svg')
+							span= __('Оценка качества услуг учреждений культуры')
+						.social_block
+							a(href='https://www.facebook.com/Praktika', target='_blank'): img(src='/stuff/praktika/social/facebook.svg')
+							a(href='https://www.instagram.com/praktika_theatre', target='_blank'): img(src='/stuff/praktika/social/instagram.svg')
+							a(href='https://vk.com/praktika', target='_blank'): img(src='/stuff/praktika/social/vk.svg')
+							a(href='https://twitter.com/teatr_praktika', target='_blank'): img(src='/stuff/praktika/social/twitter.svg')
+							a(href='https://t.me/praktika_news', target='_blank'): img(src='/stuff/praktika/social/telegram.svg')
+					.footer_under
+						a.copy(href='/')= '© ' +  __('Театр «Практика»') + ' ' + new Date().getFullYear()
+						a.docs(href='/docs')= __('документы')
+
 		include counters
