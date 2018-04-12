@@ -1,7 +1,7 @@
 $(function() {
 	var title = $('title').text();
 
-	if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+	if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 		$('.timeline_block').on('mousemove', function(e) {
 			var $this = $(this).children('.timeline_outer');
 
@@ -58,19 +58,26 @@ $(function() {
 		})
 		.on('click', '.event_ticket.active', function(e) {
 			var $this = $(this);
-			var schedule_alias = $this.attr('schedule-alias');
-			var schedule_date = $this.attr('schedule-date');
+			var schedule_date = $this.attr('schedule-date').split(' ');
+			var query = $.param({
+				alias: $this.attr('schedule-alias'),
+				date: schedule_date[0],
+				time: schedule_date[1]
+			});
+
+			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+				window.open('/widget?' + query, '_blank');
+				return false;
+			}
 
 			$('body').addClass('stop_scroll');
 
 			var $frame = $('<iframe>', {
-				src: '/widget?alias=' + schedule_alias + '&date=' + schedule_date.split(' ')[0] + '&time=' + schedule_date.split(' ')[1],
+				src: '/widget?' + query,
 				id: 'pn_widget',
 				frameborder: 0,
 				scrolling: 'yes'
-			});
-
-			$frame.one('load', function(e) {
+			}).one('load', function(e) {
 				$('#pn_widget').addClass('show');
 			});
 
