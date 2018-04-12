@@ -68,7 +68,9 @@ block content
 					.comment_item
 						.comment_column.top
 							.column.left: .col_title= get_locale(comment.title, locale)
-							.column.right: a.col_name(href='/team#' + comment.member._short_id)= get_locale(comment.member.name, locale)
+							.column.right
+								.col_photo_mobile(style='background-image: url(' + comment.member.photo_preview + ')')
+								a.col_name(href='/team#' + comment.member._short_id)= get_locale(comment.member.name, locale)
 						.comment_column.bottom
 							.column.left: .col_photo(style='background-image: url(' + comment.member.photo_preview + ')')
 							.column.right: .col_description!= get_locale(comment.description, locale)
