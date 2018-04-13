@@ -1,7 +1,7 @@
 extends layout
 
 block header_meta
-	- var content_title= __('практика') + ' : ' + __('документы')
+	- var content_title= __('практика') + ' : ' + __('Документы').toLowerCase()
 	- var content_description= ''
 
 block header_include
@@ -10,7 +10,7 @@ block header_include
 
 
 block content
-	.docs_title документы
+	.docs_title= __('Документы')
 	.docs_list
 		each doc in docs
 			a.doc_item(href=doc.attach, target='_blank')= doc.i18n.title.get(locale)
