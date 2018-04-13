@@ -1,6 +1,10 @@
 $(function() {
 	$('.menu_open').on('click', function(e) {
 		$('.menu_items, .title_block, .menu_open').toggleClass('open');
+
+		// if ($(window).width() <= 840) {
+		// 	$('body').addClass('stop_scroll');
+		// }
 	});
 
 	$(document)
