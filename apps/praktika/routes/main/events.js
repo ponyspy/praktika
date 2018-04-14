@@ -25,7 +25,11 @@ module.exports = function(Model) {
 		Event.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden').populate('partners members.list comments.member').exec(function(err, event) {
 			event.schedule.sort(function(a, b) { return a.date > b.date });
 
-			res.render('main/event.jade', { event: event, moment: moment, get_locale: get_locale });
+			var check_schedule = event.pn_alias && event.schedule.length > 0 && event.schedule.some(function(item) {
+				return moment(item.date).isAfter();
+			});
+
+			res.render('main/event.jade', { event: event, check_schedule: check_schedule, moment: moment, get_locale: get_locale });
 		});
 	};
 
