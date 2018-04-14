@@ -13,6 +13,9 @@ block header_include
 	- var include_libs_js = ['swiper.min.js']
 	- var include_js = ['event.js']
 
+
+- var check_schedule = event.pn_alias && event.schedule.length > 0 && event.schedule.some(function(item) { return moment(item.date).isAfter() })
+
 block over
 	.event_head
 		.head_meta
@@ -26,13 +29,13 @@ block over
 						if image.holder
 							.slide_holder
 
-			.swiper-pagination.swiper-pagination-white
-			.swiper-pagination.swiper-pagination-black
+			.swiper-pagination(class= !check_schedule ? 'no_schedule': '').swiper-pagination-white
+			.swiper-pagination(class= !check_schedule ? 'no_schedule': '').swiper-pagination-black
 
 block content
 	.widget_block: .widget_inner
 
-	if event.pn_alias && event.schedule.length > 0 && event.schedule.some(function(item) { return moment(item.date).isAfter() })
+	if check_schedule
 		.event_schedule: .schedule_outer: .schedule_inner
 			.schedule_item.all(schedule-alias= event.pn_alias, soldout=__('все') + ' ' + __('билеты проданы')): .item_ticket= __('купить билет')
 			each item in event.schedule
