@@ -14,6 +14,22 @@ module.exports = function(Model) {
 	};
 
 	module.index = function(req, res) {
+		Event.find().sort('-date').where('status').ne('hidden').exec(function(err, events) {
+			res.render('main/events.jade', { events: events });
+		});
+	};
+
+	module.event = function(req, res) {
+		var id = req.params.short_id;
+
+		Event.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden').populate('partners members.list comments.member').exec(function(err, event) {
+			event.schedule.sort(function(a, b) { return a.date > b.date });
+
+			res.render('main/event.jade', { event: event, moment: moment, get_locale: get_locale });
+		});
+	};
+
+	module.schedule = function(req, res) {
 		var months = [0, 1, 2].map(function(month) {
 			var date = moment().locale(req.locale).add(month, 'months');
 			var days = Array.from({ length: date.daysInMonth() }).map(function(day, i) {
@@ -23,7 +39,7 @@ module.exports = function(Model) {
 			return { month: date.format('MMMM'), days: days };
 		});
 
-		res.render('main/events.jade', { months: months });
+		res.render('main/schedule.jade', { months: months });
 	};
 
 	module.get_events = function(req, res) {
@@ -71,16 +87,6 @@ module.exports = function(Model) {
 					events: jade.renderFile(__app_root + '/views/main/_events.jade', opts)
 				});
 			});
-		});
-	};
-
-	module.event = function(req, res) {
-		var id = req.params.short_id;
-
-		Event.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden').populate('partners members.list comments.member').exec(function(err, event) {
-			event.schedule.sort(function(a, b) { return a.date > b.date });
-
-			res.render('main/event.jade', { event: event, moment: moment, get_locale: get_locale });
 		});
 	};
 

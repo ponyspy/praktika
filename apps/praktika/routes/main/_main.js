@@ -19,9 +19,12 @@ module.exports = (function() {
 	router.route('/')
 		.get(main.index.index);
 
-	router.route('/events')
-		.get(main.events.index)
+	router.route('/schedule')
+		.get(main.events.schedule)
 		.post(main.events.get_events);
+
+	router.route('/events')
+		.get(main.events.index);
 
 	router.route('/events/:short_id')
 		.get(main.events.event);

@@ -14,7 +14,7 @@ body
 
 .maket_block.white
 	.title_block
-		a
+		a, span
 			color white!important
 		.search, .logo, .menu_open
 			filter: invert(100%)
@@ -158,7 +158,7 @@ body
 			display block!important
 		height 160px
 		background-color black
-		a
+		a, span
 			color white!important
 		.menu_block
 			flex-grow 4.29
@@ -173,6 +173,7 @@ body
 			position absolute
 			top 42px
 			a
+				text-decoration none
 				margin 0!important
 				padding-left 10px
 				padding-right 10px
@@ -208,7 +209,19 @@ body
 		flex-grow 3
 		padding-top 5px
 		display flex
-		a
+		.menu_group
+			margin-top 5px
+			float left
+			display block
+			margin-left 40px
+			.group_spacer
+				cursor default
+			.group_item
+				color black
+				text-decoration none
+				&:hover
+					opacity 0.7
+		.menu_item
 			margin-top 5px
 			float left
 			display block
@@ -235,7 +248,8 @@ body
 			.items_main
 				float left
 			&.open
-				a
+				.menu_group
+				.menu_item
 					margin-bottom 15px
 					margin-right 0
 					float none

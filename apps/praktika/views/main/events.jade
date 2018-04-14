@@ -6,25 +6,15 @@ block header_meta
 
 block header_include
 	- var include_css = ['events.css']
-	- var include_js = ['events.js']
+	//- - var include_js = ['events.js']
 
 
 block content
-	.widget_block: .widget_inner
-
-	.timeline_block: .timeline_outer: .timeline_inner
-		each month, i in months
-			.month_item(data-month=month.month)
-				.month_placeholder
-				.month_days
-					each day in month.days
-						.day_item(class=/сб|вс|Sa|Su/.test(day.wday) ? 'weekend': '', class='date_' + day.date)
-							.day_date= day.date
-							.day_week= day.wday
-
 	.events_block
-		.events_title
-			.select_month.prev
-			.current_month(data-month=months[0].month)= months[0].month
-			.select_month.next
-		.events_list
+		each event in events
+			.event_item
+				.event_poster
+					.poster_main(style='background-image: url(' + event.poster + ')')
+					.poster_hover(style='background-image: url(' + event.poster_hover + ')')
+				.event_title= event.i18n.title.get(locale)
+				.event_s_title= event.i18n.s_title.get(locale)

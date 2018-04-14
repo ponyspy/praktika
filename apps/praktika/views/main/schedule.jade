@@ -1,0 +1,30 @@
+extends layout
+
+block header_meta
+	- var content_title= __('практика') + ' : ' + 'афиша'
+	- var content_description= ''
+
+block header_include
+	- var include_css = ['schedule.css']
+	- var include_js = ['schedule.js']
+
+
+block content
+	.widget_block: .widget_inner
+
+	.timeline_block: .timeline_outer: .timeline_inner
+		each month, i in months
+			.month_item(data-month=month.month)
+				.month_placeholder
+				.month_days
+					each day in month.days
+						.day_item(class=/сб|вс|Sa|Su/.test(day.wday) ? 'weekend': '', class='date_' + day.date)
+							.day_date= day.date
+							.day_week= day.wday
+
+	.events_block
+		.events_title
+			.select_month.prev
+			.current_month(data-month=months[0].month)= months[0].month
+			.select_month.next
+		.events_list
