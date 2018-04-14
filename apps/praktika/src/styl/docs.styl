@@ -7,7 +7,6 @@
 	margin 0 auto
 	padding-left 40px
 	padding-right 40px
-	box-sizing border-box
 
 .docs_title
 	font 22pt/24pt 'PT Mono Bold'
@@ -16,12 +15,14 @@
 	text-transform lowercase
 
 .docs_list
-	font 14pt/18pt 'PT Mono'
-	column-width 300px
+	font 12pt/18pt 'PT Mono'
+	column-width 340px
 	column-gap 40px
 	margin-bottom 40px
 	.doc_item
-		display block
+		break-inside avoid
+		display inline-block
+		vertical-align top
 		margin-bottom 40px
 		text-decoration none
 		color black
