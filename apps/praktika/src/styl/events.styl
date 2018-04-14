@@ -3,10 +3,14 @@
 
 
 .events_block
-	margin 40px auto
+	margin 20px auto
 	max-width 960px
-	padding-left 30px
-	padding-right 30px
+	padding-left 40px
+	padding-right 40px
+
+.events_title
+	font 22pt/24pt 'PT Mono Bold'
+	margin-bottom 80px
 
 .event_item
 	display inline-block
@@ -15,10 +19,11 @@
 	font-size 0
 	color black
 	text-decoration none
-	padding-left 10px
-	padding-right 10px
+	padding-right 20px
 	margin-bottom 40px
 	box-sizing border-box
+	&:nth-child(3n)
+		padding-right 0
 	&:hover
 		.event_title
 		.event_description

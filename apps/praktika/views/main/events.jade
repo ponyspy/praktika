@@ -11,11 +11,13 @@ block header_include
 
 block content
 	.events_block
-		each event in events
-			a.event_item(href='/events/' + (event.sym ? event.sym : event._short_id))
-				.event_poster(class= event.poster_hover ? 'hover' : '')
-					.poster_main(style='background-image: url(' + event.poster + ')')
-					if event.poster_hover
-						.poster_hover(style='background-image: url(' + event.poster_hover + ')')
-				.event_title= event.i18n.title.get(locale)
-				.event_description= event.i18n.s_title.get(locale)
+		.events_title= __('репертуар')
+		.events_list
+			each event in events
+				a.event_item(href='/events/' + (event.sym ? event.sym : event._short_id))
+					.event_poster(class= event.poster_hover ? 'hover' : '')
+						.poster_main(style='background-image: url(' + event.poster + ')')
+						if event.poster_hover
+							.poster_hover(style='background-image: url(' + event.poster_hover + ')')
+					.event_title= event.i18n.title.get(locale)
+					.event_description= event.i18n.s_title.get(locale)
