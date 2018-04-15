@@ -138,10 +138,18 @@ $(function() {
 	$(document).on('click', '.item_schedule', function(event) {
 		var $item = $(this).children('a');
 
+		if ($item.data('timer')) return false;
+
+		$item.data('timer', true).css('color', 'gold');
+
 		$.post('/admin/schedule_event', { event_id: $item.attr('event_id'), alias: $item.attr('alias') }).done(function(data) {
-			if (data != 'err') {
-				$item.css('color', 'green');
-			}
+			data == 'err'
+				? $item.css('color', 'red')
+				: $item.css('color', 'green');
+
+			setTimeout(function() {
+				$item.data('timer', false);
+			}, 3000);
 		});
 	});
 
