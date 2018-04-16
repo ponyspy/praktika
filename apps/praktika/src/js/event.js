@@ -79,6 +79,8 @@ $(function() {
 			var percent = (e.pageX - $this.offset().left) / $this.width() * 1.1 - 0.25;
 			$this.scrollLeft($this.children('.schedule_inner').width() * percent);
 		});
+	} else {
+		$('.schedule_outer').addClass('mobile');
 	}
 
 	$(document)

@@ -8,6 +8,8 @@ $(function() {
 			var percent = (e.pageX - $this.offset().left) / $this.width() * 1.1 - 0.25;
 			$this.scrollLeft($this.children('.timeline_inner').width() * percent);
 		});
+	} else {
+		$('.timeline_outer').addClass('mobile');
 	}
 
 
