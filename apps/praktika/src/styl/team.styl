@@ -29,32 +29,37 @@
 	margin-bottom 10px
 	text-transform lowercase
 
+.roles_title
+	font 14pt/16pt 'PT Mono'
+	cursor pointer
+	&.mobile
+		display none
+	&:after
+		content ''
+		z-index 0
+		position relative
+		background-image url('/stuff/praktika/icons/arrow_list.svg')
+		width 8px
+		height 8px
+		margin-left 10px
+		display inline-block
+		transform rotate(90deg)
+		vertical-align middle
+		background-position top
+		background-size contain
+		background-repeat no-repeat
+
 .members_roles
 	font 14pt/16pt 'PT Mono'
 	margin-bottom 20px
 	cursor pointer
 	display inline-block
-	.roles_title
-		&:after
-			content ''
-			z-index 0
-			position relative
-			background-image url('/stuff/praktika/icons/arrow_list.svg')
-			width 8px
-			height 8px
-			margin-left 10px
-			display inline-block
-			transform rotate(90deg)
-			vertical-align middle
-			background-position top
-			background-size contain
-			background-repeat no-repeat
 	.roles_list
 		display none
 		&.open
 			display block
 		.select_role
-			margin-top 8px
+			margin-top 10px
 			&.selected
 				display none
 			&:hover

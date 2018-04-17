@@ -40,7 +40,7 @@ $(function() {
 
 
 	$members.on('click', function(e) {
-		var $this = $(this)
+		var $this = $(this);
 
 		if ($this.hasClass('active')) {
 			location.hash = '!';
@@ -92,7 +92,7 @@ $(function() {
 		$('title').text(title + ' : ' + $current_block.attr('data-name').toLowerCase());
 
 		$('html, body').animate({
-			'scrollTop': $current_block.offset().top - $('.members_header').height() - 10
+			'scrollTop': $current_block.offset().top - ($window.width() >= 840 ? $('.members_header').height() : 0) - 10
 		}, 300);
 
 	});
