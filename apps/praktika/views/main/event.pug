@@ -61,7 +61,10 @@ block content
 						.group_title= get_locale(group.title, locale)
 						.group_list
 							each item in group.list
-								a.list_item(href='/team#' + item._short_id)= get_locale(item.name, locale)
+								if item.status == 'special'
+									.list_item= get_locale(item.name, locale)
+								else
+									a.list_item(href='/team#' + item._short_id)= get_locale(item.name, locale)
 
 		if event.comments && event.comments.length
 			.event_comments: .comments_inner
@@ -71,7 +74,10 @@ block content
 							.column.left: .col_title= get_locale(comment.title, locale)
 							.column.right
 								.col_photo_mobile(style='background-image: url(' + comment.member.photo_preview + ')')
-								a.col_name(href='/team#' + comment.member._short_id)= get_locale(comment.member.name, locale)
+								if comment.member.status == 'special'
+									.col_name= get_locale(comment.member.name, locale)
+								else
+									a.col_name(href='/team#' + comment.member._short_id)= get_locale(comment.member.name, locale)
 						.comment_column.bottom
 							.column.left: .col_photo(style='background-image: url(' + comment.member.photo_preview + ')')
 							.column.right: .col_description!= get_locale(comment.description, locale)
