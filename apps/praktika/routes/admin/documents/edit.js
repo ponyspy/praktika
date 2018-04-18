@@ -15,7 +15,7 @@ module.exports = function(Model, Params) {
 		Document.findById(id).exec(function(err, doc) {
 			if (err) return next(err);
 
-			res.render('admin/documents/edit.jade', { doc: doc });
+			res.render('admin/documents/edit.pug', { doc: doc });
 		});
 
 	};

@@ -16,7 +16,7 @@ module.exports = function(Model) {
 					? announce._short_id == req.cookies.announce
 					: false;
 
-				res.render('main/index.jade', { announce: announce, medias: medias, banner: banner, announce_hide: announce_hide });
+				res.render('main/index.pug', { announce: announce, medias: medias, banner: banner, announce_hide: announce_hide });
 			});
 		});
 	};

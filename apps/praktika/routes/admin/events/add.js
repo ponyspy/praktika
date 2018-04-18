@@ -21,7 +21,7 @@ module.exports = function(Model, Params) {
 			Partner.find().sort('title.value').exec(function(err, partners) {
 				if (err) return next(err);
 
-				res.render('admin/events/add.jade', { members: members, partners: partners });
+				res.render('admin/events/add.pug', { members: members, partners: partners });
 			});
 		});
 	};

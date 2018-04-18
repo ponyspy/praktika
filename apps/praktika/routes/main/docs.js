@@ -5,7 +5,7 @@ module.exports = function(Model) {
 
 	module.index = function(req, res) {
 		Document.find().where('status').ne('hidden').sort('-date').exec(function(err, docs) {
-			res.render('main/docs.jade', { docs: docs });
+			res.render('main/docs.pug', { docs: docs });
 		});
 	};
 

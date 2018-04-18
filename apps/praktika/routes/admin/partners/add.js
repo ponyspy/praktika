@@ -11,7 +11,7 @@ module.exports = function(Model, Params) {
 
 
 	module.index = function(req, res, next) {
-		res.render('admin/partners/add.jade');
+		res.render('admin/partners/add.pug');
 	};
 
 

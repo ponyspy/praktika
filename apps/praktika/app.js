@@ -20,7 +20,7 @@ i18n.configure({
 
 app.set('x-powered-by', false);
 app.set('views', __app_root + '/views');
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 // app.use(express.static(__glob_root + '/public'));  // remove
 if (process.env.NODE_ENV != 'production') {

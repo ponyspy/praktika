@@ -1,4 +1,4 @@
-var jade = require('jade');
+var pug = require('pug');
 
 module.exports = function(Model) {
 	var module = {};
@@ -8,7 +8,7 @@ module.exports = function(Model) {
 
 	module.index = function(req, res) {
 		Member.find().where('status').nin(['hidden', 'special']).sort('name.value').exec(function(err, members) {
-			res.render('main/team.jade', { members: members });
+			res.render('main/team.pug', { members: members });
 		});
 	};
 
@@ -25,7 +25,7 @@ module.exports = function(Model) {
 					compileDebug: false, debug: false, cache: true, pretty: false
 				};
 
-				res.send(jade.renderFile(__app_root + '/views/main/_member.jade', opts));
+				res.send(pug.renderFile(__app_root + '/views/main/_member.pug', opts));
 			});
 		});
 	};

@@ -1,8 +1,8 @@
 extends ../layout
-include _slides.jade
+include _members.pug
 
 block header_meta
-	- var content_title= 'О ТЕАТРЕ'
+	- var content_title= 'КОМАНДА'
 
 block header_include
 	- var include_css = ['add.css']
@@ -13,23 +13,31 @@ block sub_menu
 	span.sub_item.toggle_rm Удалить
 	.sub_right_block
 
+		.sub_drop.type(style='z-index: 2;')
+			.drop_title Роль
+			.drop_inner
+				.drop_item(class='all').select Все
+				each role, key in static_types.members_roles
+					.drop_item(class=key)= __n(key, 5)
+
 		.sub_drop.status(style='z-index: 1;')
 			.drop_title Статус
 			.drop_inner
 				.drop_item(class='all').select Все
 				.drop_item(class='base') Обычный
 				.drop_item(class='hidden') Скрытый
+				.drop_item(class='special') Особый
 
 		input.sub_search(type='text', placeholder='Поиск...')
 
 block content
 	.title= content_title
 	br
-	a.add(href='/admin/slides/add') + Добавить слайд
+	a.add(href='/admin/members/add') + Добавить участника
 	br
 	br
 	.lists_block
 		.list_items
-			+items(slides)
+			+items(members)
 		.list_counter
 			+counters(count)

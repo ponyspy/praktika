@@ -28,7 +28,7 @@ module.exports = function(Model, Params) {
 					previewImages(event.images, function(err, images_preview) {
 						if (err) return next(err);
 
-						res.render('admin/events/edit.jade', { event: event, members: members, partners: partners, images_preview: images_preview });
+						res.render('admin/events/edit.pug', { event: event, members: members, partners: partners, images_preview: images_preview });
 					});
 				});
 			});

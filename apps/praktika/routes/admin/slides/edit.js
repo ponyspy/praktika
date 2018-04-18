@@ -16,7 +16,7 @@ module.exports = function(Model, Params) {
 		Slide.findById(id).exec(function(err, slide) {
 			if (err) return next(err);
 
-			res.render('admin/slides/edit.jade', { slide: slide });
+			res.render('admin/slides/edit.pug', { slide: slide });
 		});
 
 	};

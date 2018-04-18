@@ -25,7 +25,7 @@ exports.edit = function(req, res) {
 			fs.readFile(__app_root + '/static/adress_en.html', callback);
 		}
 	}, function(err, results) {
-		res.render('admin/cv.jade', { content: results });
+		res.render('admin/cv.pug', { content: results });
 	});
 };
 

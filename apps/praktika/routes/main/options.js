@@ -1,5 +1,5 @@
 var sitemap = require('sitemap');
-var jade = require('jade');
+var pug = require('pug');
 
 module.exports = function(Model) {
 	var module = {};
@@ -36,7 +36,7 @@ module.exports = function(Model) {
 					compileDebug: false, debug: false, cache: false, pretty: false
 				};
 
-				res.send(jade.renderFile(__app_root + '/views/main/_search.jade', opts));
+				res.send(pug.renderFile(__app_root + '/views/main/_search.pug', opts));
 			});
 		});
 	};

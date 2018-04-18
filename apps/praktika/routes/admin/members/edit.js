@@ -16,7 +16,7 @@ module.exports = function(Model, Params) {
 		Member.findById(id).exec(function(err, member) {
 			if (err) return next(err);
 
-			res.render('admin/members/edit.jade', { member: member });
+			res.render('admin/members/edit.pug', { member: member });
 		});
 
 	};

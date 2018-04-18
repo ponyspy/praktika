@@ -16,7 +16,7 @@ module.exports = function(Model, Params) {
 		Media.findById(id).exec(function(err, media) {
 			if (err) return next(err);
 
-			res.render('admin/medias/edit.jade', { media: media });
+			res.render('admin/medias/edit.pug', { media: media });
 		});
 
 	};

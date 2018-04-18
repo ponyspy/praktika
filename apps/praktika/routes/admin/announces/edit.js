@@ -14,7 +14,7 @@ module.exports = function(Model, Params) {
 		Announce.findById(id).exec(function(err, announce) {
 			if (err) return next(err);
 
-			res.render('admin/announces/edit.jade', {announce: announce});
+			res.render('admin/announces/edit.pug', {announce: announce});
 		});
 	};
 

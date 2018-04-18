@@ -1,8 +1,8 @@
 extends ../layout
-include ../_forms.jade
+include ../_forms.pug
 
 block header_meta
-	- var content_title= 'ДОБАВИТЬ УЧАСТНИКА'
+	- var content_title= 'РЕДАКТИРОВАТЬ УЧАСТНИКА'
 
 block header_include
 	- var include_libs_css = ['pickmeup.min.css', 'font-awesome.css', 'wysiwyg-editor.min.css']
@@ -15,35 +15,36 @@ block sub_menu
 	span.sub_item.toggle_eng Перевод
 	.sub_right_block
 		input.form_cancel(type='submit', value='Отменить')
-		input.form_submit(type='submit', value='Добавить')
+		input.form_submit(type='submit', value='Сохранить')
 
 block content
 	.form_block
 		.title= content_title
 		form(action="", method="post", enctype="multipart/form-data")
 			.form_title Имя:
-			+form_text_single('name')
+			+form_text_single('name', member)
 			.form_title Описание:
-			+form_text_multi('description')
+			+form_text_multi('description', member)
 			.form_title Пол:
 			select(name='sex')
-				option(value='male') муж.
-				option(value='female') жен.
+				option(value='male', selected= member.sex == 'male' && 'male') муж.
+				option(value='female', selected= member.sex == 'female' && 'female') жен.
 			.form_title Роли:
 			.snake_outer
-				span.snake
-					input.back(type="button", value="-")
-					select(name='roles[]', disabled=disable)
-						each role, key in static_types.members_roles
-							option(value=key)= __n(key, 1)
+				each m_role in member.roles
+					span.snake
+						input.back(type="button", value="-")
+						select(name='roles[]', disabled=disable)
+							each role, key in static_types.members_roles
+									option(value=key, selected=m_role == key)= __n(role[member.sex], 1)
 				input.forward(type="button", value="+")
 			.form_title Фото:
-			+form_single_file('photo')(accept='image/jpeg,image/png,image/gif')
+			+form_single_file('photo', member)(accept='image/jpeg,image/png,image/gif')
 			.form_title Статус:
 			select(name='status')
 				option(value='base') Обычный
-				option(value='hidden') Скрытый
-				option(value='special') Особый
+				option(value='hidden', selected= member.status == 'hidden' && 'hidden') Скрытый
+				option(value='special', selected= member.status == 'special' && 'special') Особый
 			.form_title Дата публикации:
-			+form_date('date')
+			+form_date('date', member.date)
 

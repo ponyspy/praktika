@@ -1,5 +1,5 @@
 var moment = require('moment');
-var jade = require('jade');
+var pug = require('pug');
 
 module.exports = function(Model) {
 	var module = {};
@@ -15,7 +15,7 @@ module.exports = function(Model) {
 
 	module.index = function(req, res) {
 		Event.find().sort('-date').where('status').ne('hidden').exec(function(err, events) {
-			res.render('main/events.jade', { events: events });
+			res.render('main/events.pug', { events: events });
 		});
 	};
 
@@ -29,7 +29,7 @@ module.exports = function(Model) {
 				return moment(item.date).isAfter();
 			});
 
-			res.render('main/event.jade', { event: event, check_schedule: check_schedule, moment: moment, get_locale: get_locale });
+			res.render('main/event.pug', { event: event, check_schedule: check_schedule, moment: moment, get_locale: get_locale });
 		});
 	};
 
@@ -43,7 +43,7 @@ module.exports = function(Model) {
 			return { month: date.format('MMMM'), days: days };
 		});
 
-		res.render('main/schedule.jade', { months: months });
+		res.render('main/schedule.pug', { months: months });
 	};
 
 	module.get_events = function(req, res) {
@@ -88,7 +88,7 @@ module.exports = function(Model) {
 				res.send({
 					start: date_start.add(1, 'second').format('YYYY-MM-DD'),
 					end: date_end.add(1, 'second').format('YYYY-MM-DD'),
-					events: jade.renderFile(__app_root + '/views/main/_events.jade', opts)
+					events: pug.renderFile(__app_root + '/views/main/_events.pug', opts)
 				});
 			});
 		});

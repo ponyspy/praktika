@@ -16,7 +16,7 @@ module.exports = function(Model, Params) {
 		Partner.findById(id).exec(function(err, partner) {
 			if (err) return next(err);
 
-			res.render('admin/partners/edit.jade', { partner: partner });
+			res.render('admin/partners/edit.pug', { partner: partner });
 		});
 
 	};

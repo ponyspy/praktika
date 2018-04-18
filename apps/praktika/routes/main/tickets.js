@@ -54,7 +54,7 @@ module.exports = function() {
 		var query = req.query;
 		var ref = req.app.locals.static_types.pn_ref;
 
-		res.render('main/_widget.jade', { ref: ref, alias: query.alias, date: query.date, time: query.time });
+		res.render('main/_widget.pug', { ref: ref, alias: query.alias, date: query.date, time: query.time });
 	};
 
 	return module;
