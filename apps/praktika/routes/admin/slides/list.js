@@ -39,13 +39,12 @@ module.exports = function(Model) {
 				if (slides.length > 0) {
 					var opts = {
 						slides: slides,
-						load_list: true,
 						count: Math.ceil(count / 10),
 						skip: +post.context.skip,
 						compileDebug: false, debug: false, cache: true, pretty: false
 					};
 
-					res.send(pug.renderFile(__app_root + '/views/admin/slides/_slides.pug', opts));
+					res.send(pug.renderFile(__app_root + '/views/admin/slides/_list.pug', opts));
 				} else {
 					res.send('end');
 				}

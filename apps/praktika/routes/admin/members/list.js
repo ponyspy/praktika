@@ -43,13 +43,12 @@ module.exports = function(Model) {
 				if (members.length > 0) {
 					var opts = {
 						members: members,
-						load_list: true,
 						count: Math.ceil(count / 10),
 						skip: +post.context.skip,
 						compileDebug: false, debug: false, cache: true, pretty: false
 					};
 
-					res.send(pug.renderFile(__app_root + '/views/admin/members/_members.pug', opts));
+					res.send(pug.renderFile(__app_root + '/views/admin/members/_list.pug', opts));
 				} else {
 					res.send('end');
 				}

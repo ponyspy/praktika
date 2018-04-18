@@ -21,10 +21,3 @@ mixin counters(count, skip)
 			- i++
 	span= ' - '
 	a.list_next(href='#'): b вперед
-
-
-if load_list
-	.list_items
-		+items(events)
-	.list_counter
-		+counters(count, skip)

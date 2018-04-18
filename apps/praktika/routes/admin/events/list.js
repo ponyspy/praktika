@@ -39,13 +39,12 @@ module.exports = function(Model) {
 				if (events.length > 0) {
 					var opts = {
 						events: events,
-						load_list: true,
 						count: Math.ceil(count / 10),
 						skip: +post.context.skip,
 						compileDebug: false, debug: false, cache: true, pretty: false
 					};
 
-					res.send(pug.renderFile(__app_root + '/views/admin/events/_events.pug', opts));
+					res.send(pug.renderFile(__app_root + '/views/admin/events/_list.pug', opts));
 				} else {
 					res.send('end');
 				}
