@@ -84,14 +84,14 @@ block content
 
 		if event.partners && event.partners.length
 			.event_partners
-				.partners_title при участии
+				.partners_title= __('при участии')
 				.partners_list
 					each partner in event.partners
 						a.partner_item(href=partner.link, target='_blank'): img(src=partner.logo)
 
 		if event.publications && event.publications.length
 			.event_publications
-				.publications_title пресса
+				.publications_title= __('пресса')
 				.publications_list
 					each publication in event.publications
 						.publication_item
