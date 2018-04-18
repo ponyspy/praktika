@@ -56,7 +56,14 @@ $(function() {
 	});
 
 
-	$window.on('load hashchange', function(e) {
+	$window.on('load', function(e) {
+		setTimeout(function() {
+			$window.trigger('hashchange');
+		}, 600);
+	});
+
+
+	$window.on('hashchange', function(e) {
 		var $current_block = $members.filter('[member-id="' + location.hash.replace('#', '') + '"]').eq(0);
 		var $set = $current_block.nextAll('.member_item').addBack($current_block);
 		var $members_list = $('.members_list');
