@@ -7,7 +7,7 @@ module.exports = function(Model) {
 
 
 	module.index = function(req, res, next) {
-		Slide.find().sort('-date').limit(10).exec(function(err, slides) {
+		Slide.find().sort('date').limit(10).exec(function(err, slides) {
 			if (err) return next(err);
 
 			Slide.count().exec(function(err, count) {
@@ -33,7 +33,7 @@ module.exports = function(Model) {
 		Query.count(function(err, count) {
 			if (err) return next(err);
 
-			Query.find().sort('-date').skip(+post.context.skip).limit(+post.context.limit).exec(function(err, slides) {
+			Query.find().sort('date').skip(+post.context.skip).limit(+post.context.limit).exec(function(err, slides) {
 				if (err) return next(err);
 
 				if (slides.length > 0) {
