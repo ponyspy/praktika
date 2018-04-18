@@ -1,4 +1,4 @@
-mixin items(events)
+.list_items
 	each event in events
 		.list_item
 			a.item_rm.event(href='#', id=event._id) -- удалить
@@ -11,7 +11,7 @@ mixin items(events)
 				span= ' --> '
 				a(href='/events/' + (event.sym ? event.sym : event._short_id), target='_blank') превью
 
-mixin counters(count, skip)
+.list_counter
 	a.list_back(href='#'): b назад
 	span= ' - '
 	select.list_select

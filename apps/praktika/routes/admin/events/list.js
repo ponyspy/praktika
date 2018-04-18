@@ -44,7 +44,7 @@ module.exports = function(Model) {
 						compileDebug: false, debug: false, cache: true, pretty: false
 					};
 
-					res.send(pug.renderFile(__app_root + '/views/admin/events/_list.pug', opts));
+					res.send(pug.renderFile(__app_root + '/views/admin/events/_events.pug', opts));
 				} else {
 					res.send('end');
 				}

@@ -1,10 +1,10 @@
-mixin items(docs)
+.list_items
 	each doc in docs
 		.list_item
 			a.item_rm.doc(href='#', id=doc._id) -- удалить
 			a.item_title(href='/admin/documents/edit/' + doc._id, class=doc.status)= (doc.i18n.title.get('ru') || '!!! ПУСТОЕ ПОЛЕ !!!')
 
-mixin counters(count, skip)
+.list_counter
 	a.list_back(href='#'): b назад
 	span= ' - '
 	select.list_select

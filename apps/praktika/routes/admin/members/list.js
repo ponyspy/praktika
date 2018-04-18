@@ -48,7 +48,7 @@ module.exports = function(Model) {
 						compileDebug: false, debug: false, cache: true, pretty: false
 					};
 
-					res.send(pug.renderFile(__app_root + '/views/admin/members/_list.pug', opts));
+					res.send(pug.renderFile(__app_root + '/views/admin/members/_members.pug', opts));
 				} else {
 					res.send('end');
 				}
