@@ -7,7 +7,7 @@ module.exports = function(Model) {
 
 
 	module.index = function(req, res, next) {
-		Slide.find().sort('date').limit(10).exec(function(err, slides) {
+		Slide.find().sort('-date').limit(10).exec(function(err, slides) {
 			if (err) return next(err);
 
 			Slide.count().exec(function(err, count) {
