@@ -1,5 +1,4 @@
 extends ../layout
-include _members.pug
 
 block header_meta
 	- var content_title= 'КОМАНДА'
@@ -37,7 +36,4 @@ block content
 	br
 	br
 	.lists_block
-		.list_items
-			+items(members)
-		.list_counter
-			+counters(count)
+		include _list

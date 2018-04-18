@@ -1,5 +1,4 @@
 extends ../layout
-include _announces
 
 block header_meta
 	- var content_title= 'АНОНСЫ'
@@ -29,7 +28,4 @@ block content
 	br
 	br
 	.lists_block
-		.list_items
-			+items(announces)
-		.list_counter
-			+counters(count)
+		include _list

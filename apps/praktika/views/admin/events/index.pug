@@ -1,5 +1,4 @@
 extends ../layout
-include _events.pug
 
 block header_meta
 	- var content_title= 'СОБЫТИЯ'
@@ -31,7 +30,4 @@ block content
 	br
 	br
 	.lists_block
-		.list_items
-			+items(events)
-		.list_counter
-			+counters(count)
+		include _list

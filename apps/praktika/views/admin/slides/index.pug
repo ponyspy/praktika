@@ -1,5 +1,4 @@
 extends ../layout
-include _slides.pug
 
 block header_meta
 	- var content_title= 'О ТЕАТРЕ'
@@ -29,7 +28,4 @@ block content
 	br
 	br
 	.lists_block
-		.list_items
-			+items(slides)
-		.list_counter
-			+counters(count)
+		include _list

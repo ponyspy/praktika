@@ -1,5 +1,4 @@
 extends ../layout
-include _partners.pug
 
 block header_meta
 	- var content_title= 'ПАРТНЕРЫ'
@@ -29,7 +28,4 @@ block content
 	br
 	br
 	.lists_block
-		.list_items
-			+items(partners)
-		.list_counter
-			+counters(count)
+		include _list
