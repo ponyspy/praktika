@@ -66,6 +66,8 @@ $(function() {
 		var $set = $current_block.nextAll('.member_item').addBack($current_block);
 		var $members_list = $('.members_list');
 
+		if ($current_block.length == 0) return false;
+
 		$set.each(function() {
 			var $this = $(this);
 
@@ -94,13 +96,11 @@ $(function() {
 			}
 		});
 
-		if ($current_block.length > 0) {
-			$('title').text(title + ' : ' + $current_block.attr('data-name').toLowerCase());
+		$('title').text(title + ' : ' + $current_block.attr('data-name').toLowerCase());
 
-			$('html, body').animate({
-				'scrollTop': $current_block.offset().top - ($window.width() >= 840 ? $('.members_header').height() : 0) - 10
-			}, 300);
-		}
+		$('html, body').animate({
+			'scrollTop': $current_block.offset().top - ($window.width() >= 840 ? $('.members_header').height() : 0) - 10
+		}, 300);
 
 	});
 
