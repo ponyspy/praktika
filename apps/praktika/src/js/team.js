@@ -116,7 +116,6 @@ $(function() {
 			$('.panel').remove();
 			$members.removeClass('active');
 			$('title').text(title);
-			// $document.trigger('scroll.load');
 
 			event.stopPropagation();
 		})
