@@ -40,6 +40,8 @@ $(function() {
 			select_role == 'all'
 				? $members.removeClass('hide')
 				: $members.addClass('hide').filter('.' + select_role).removeClass('hide');
+
+			$window.trigger('scroll');
 		});
 
 
