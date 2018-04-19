@@ -22,6 +22,7 @@ $(function() {
 			if ($(event.target).closest('.members_roles').length) return;
 
 			$('.roles_list').removeClass('open');
+			$window.trigger('scroll');
 
 			event.stopPropagation();
 		})
