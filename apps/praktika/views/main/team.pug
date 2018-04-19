@@ -6,6 +6,7 @@ block header_meta
 
 block header_include
 	- var include_css = ['team.css']
+	- var include_libs_js = ['jquery.lazy.min.js']
 	- var include_js = ['team.js']
 
 
@@ -22,4 +23,19 @@ block content
 
 	.members_list
 		each member in members
-			.member_item(class=member.roles, member-id=member._short_id, data-name=member.i18n.name.get(locale), data-src=member.photo_preview): .in
+			.member_item(class=member.roles, member-id=member._short_id, data-name=member.i18n.name.get(locale)): .in(data-src=member.photo_preview)
+
+		each member in members
+			.member_item(class=member.roles, member-id=member._short_id, data-name=member.i18n.name.get(locale)): .in(data-src=member.photo_preview)
+
+		each member in members
+			.member_item(class=member.roles, member-id=member._short_id, data-name=member.i18n.name.get(locale)): .in(data-src=member.photo_preview)
+
+		each member in members
+			.member_item(class=member.roles, member-id=member._short_id, data-name=member.i18n.name.get(locale)): .in(data-src=member.photo_preview)
+
+		each member in members
+			.member_item(class=member.roles, member-id=member._short_id, data-name=member.i18n.name.get(locale)): .in(data-src=member.photo_preview)
+
+		each member in members
+			.member_item(class=member.roles, member-id=member._short_id, data-name=member.i18n.name.get(locale)): .in(data-src=member.photo_preview)

@@ -34,8 +34,6 @@ $(function() {
 			select_role == 'all'
 				? $members.removeClass('hide')
 				: $members.addClass('hide').filter('.' + select_role).removeClass('hide');
-
-			$document.trigger('scroll.load');
 		});
 
 
@@ -46,7 +44,6 @@ $(function() {
 			location.hash = '!';
 			$('.panel').remove();
 			$this.removeClass('active');
-			$document.trigger('scroll.load');
 			$('title').text(title);
 
 			return false;
@@ -89,14 +86,21 @@ $(function() {
 			}
 		});
 
-		$('title').text(title + ' : ' + $current_block.attr('data-name').toLowerCase());
+		// $('title').text(title + ' : ' + $current_block.attr('data-name').toLowerCase());
 
-		$('html, body').animate({
-			'scrollTop': $current_block.offset().top - ($window.width() >= 840 ? $('.members_header').height() : 0) - 10
-		}, 300);
+		// $('html, body').animate({
+		// 	'scrollTop': $current_block.offset().top - ($window.width() >= 840 ? $('.members_header').height() : 0) - 10
+		// }, 300);
 
 	});
 
+	$('.in').Lazy({
+		scrollDirection: 'vertical',
+		effect: 'fadeIn',
+		effectTime: 300,
+		threshold: 300,
+		visibleOnly: true
+	});
 
 	$document
 		.on('mouseenter', '.member_item', function(e) {
@@ -112,28 +116,10 @@ $(function() {
 			$('.panel').remove();
 			$members.removeClass('active');
 			$('title').text(title);
-			$document.trigger('scroll.load');
+			// $document.trigger('scroll.load');
 
 			event.stopPropagation();
 		})
-		.on('scroll.load', function(e) {
-			var viewport = $document.scrollTop() + $window.height();
-
-			$members.not('.show').each(function() {
-				var $this = $(this);
-
-				$this.offset().top + $this.height() <= viewport - 50
-					? $this.children('.in').css('background-image', 'url(' + $this.attr('data-src') + ')').end().addClass('show')
-					: false;
-
-			});
-
-			if (viewport >= $document.height()) {
-				$document.off('scroll.load');
-				return false;
-			}
-
-		}).trigger('scroll.load')
 		.on('scroll', function(e) {
 			$(this).scrollTop() >= $title.height() + $title.offset().top
 				? $members_header.addClass('fix')
