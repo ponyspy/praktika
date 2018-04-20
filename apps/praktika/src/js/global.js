@@ -7,24 +7,6 @@ $(function() {
 		.on('touchmove', 'body.stop_scroll', false)
 		.on('keyup', function(e) {
 
-			if (e.which == 82) {
-				if ($('.ru').length > 0) {
-					window.location.href = $('.ru').attr('href');
-				}
-			}
-
-			if (e.which == 69) {
-				if ($('.en').length > 0) {
-					window.location.href = $('.en').attr('href');
-				}
-			}
-
-			if (e.which == 13) {
-				if (!$('.search_block').hasClass('open')) {
-					$('.search').trigger('click');
-				}
-			}
-
 			if (e.which == 27) {
 				$('.search_block').removeClass('show');
 				$('.menu_items, .title_block, .menu_open').removeClass('open');
