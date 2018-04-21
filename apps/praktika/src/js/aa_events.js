@@ -100,7 +100,7 @@ $(function() {
 			$block.insertAfter($block.next());
 		})
 		.on('click', '.rm_block', function(e) {
-			if ($(this).closest('.block_items').children('.block_item').size() == 1) {
+			if ($(this).closest('.block_items').children('.block_item').length == 1) {
 				$(this).closest('.block_item').addClass('hidden').hide();
 			} else {
 				$(this).closest('.block_item').remove();
@@ -109,7 +109,7 @@ $(function() {
 		.on('click', '.add_date, .add_comment, .add_publication, .add_group', function(e) {
 			var $block = $(this).closest('.block_items').children('.block_item');
 
-			if ($block.size() == 1 && $block.hasClass('hidden')) {
+			if ($block.length == 1 && $block.hasClass('hidden')) {
 				$block.removeClass('hidden')
 					.find('.list_item').first().nextAll('.list_item').remove().end().end().end()
 					.find('option').prop('selected', false)
@@ -161,7 +161,7 @@ $(function() {
 		.on('click', '.rm_member', function(e) {
 			var $list = $(this).closest('.group_list').children('.list_item');
 
-			if ($list.size() == 1) return false;
+			if ($list.length == 1) return false;
 			$(this).parent('.list_item').remove();
 		});
 });
