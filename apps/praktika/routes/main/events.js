@@ -25,7 +25,7 @@ module.exports = function(Model) {
 		var id = req.params.short_id;
 
 		Event.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden').populate('partners members.list comments.member').exec(function(err, event) {
-			if (err) return next(err);
+			if (!event || err) return next(err);
 
 			event.schedule.sort(function(a, b) { return a.date > b.date });
 
