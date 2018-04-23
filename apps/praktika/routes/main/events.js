@@ -13,16 +13,20 @@ module.exports = function(Model) {
 		})[0] || {}).value || '');
 	};
 
-	module.index = function(req, res) {
+	module.index = function(req, res, next) {
 		Event.find().sort('-date').where('status').ne('hidden').exec(function(err, events) {
+			if (err) return next(err);
+
 			res.render('main/events.pug', { events: events });
 		});
 	};
 
-	module.event = function(req, res) {
+	module.event = function(req, res, next) {
 		var id = req.params.short_id;
 
 		Event.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden').populate('partners members.list comments.member').exec(function(err, event) {
+			if (err) return next(err);
+
 			event.schedule.sort(function(a, b) { return a.date > b.date });
 
 			var check_schedule = event.pn_alias && event.schedule.length > 0 && event.schedule.some(function(item) {
