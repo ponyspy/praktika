@@ -26,10 +26,8 @@ html
 								a(href='/auth/logout') ⇤
 						.menu_items
 							.items_main
-								.menu_group
-									a.group_item(href='/events')= __('репертуар')
-									span.group_spacer= ' / '
-									a.group_item(href='/schedule')= __('афиша')
+								a.menu_item(href='/events')= __('репертуар')
+								a.menu_item(href='/schedule')= __('афиша')
 								a.menu_item(href='/contacts')= __('контакты')
 							.items_drop
 								a.menu_item(href='/team')= __('команда')
