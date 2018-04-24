@@ -1,15 +1,15 @@
 {
 	"репертуар": "repertoire",
-	"контакты": "contacts",
+	"контакты": "contact us",
 	"команда": "team",
 	"о театре": "about",
 	"практика": "praktika",
 	"все": "all",
-	"спектакли": "спектакли",
+	"спектакли": "shows",
 	"Документы": "Documents",
-	"купить билет": "buy ticket",
+	"купить билет": "buy tickets",
 	"actresse": {
-		"one": "actresse",
+		"one": "actress",
 		"other": "actresses"
 	},
 	"actor": {
@@ -21,37 +21,38 @@
 		"other": "directors"
 	},
 	"artist": {
-		"one": "artist",
-		"other": "artists"
+		"one": "set designer",
+		"other": "set designers"
 	},
 	"author": {
 		"one": "author",
 		"other": "authors"
 	},
 	"management": {
-		"one": "менеджмент",
-		"other": "менеджмент"
+		"one": "management",
+		"other": "management"
 	},
 	"consul": {
-		"one": "попечитель",
-		"other": "попечители"
+		"one": "trustee",
+		"other": "trustees"
 	},
 	"поиск": "search",
 	"адрес": "adress",
-	"метро": "метро",
-	"«Маяковская»": "«Маяковская»",
-	"«Пушкинская»": "«Пушкинская»",
-	"касса театра": "касса театра",
-	"PR-директор": "PR-директор",
-	"Арина Светлица": "Арина Светлица",
-	"запись для студентов": "запись для студентов",
-	"Дарья Панина": "Дарья Панина",
-	"Оценка качества услуг учреждений культуры": "Оценка качества услуг учреждений культуры",
-	"Театр «Практика»": "Театр «Практика»",
+	"метро": "metro",
+	"«Маяковская»": "«Mayakovskaya»",
+	"«Пушкинская»": "«Pushkinskaya»",
+	"касса театра": "box office",
+	"PR-директор": "head of PR",
+	"Арина Светлица": "Arina Svetlitsa",
+	"запись для студентов": "entry pass for students",
+	"Дарья Панина": "Darya Panina",
+	"Оценка качества услуг учреждений культуры": "assessing quality<br>of service",
+	"Театр «Практика»": "Praktika Theatre",
 	"премьера": "premiere",
-	"билеты проданы": "tickets sold out",
-	"Большой Козихинский<br>переулок 30": "Большой Козихинский<br>переулок 30",
+	"билеты проданы": "sold out",
+	"Большой Козихинский<br>переулок 30": "Bolshoy Kozihinskiy lane 30",
 	"афиша": "playbill",
-	"при участии": "при участии",
-	"пресса": "press"
+	"при участии": "with the participation",
+	"пресса": "press",
+	"еще": "more"
 }
