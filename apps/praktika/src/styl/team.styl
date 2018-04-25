@@ -83,11 +83,12 @@
 	position relative
 	&.hide
 		display none
-	&:hover
-	&.active
-		.in
-			transition 0.20s ease
-			top 40px; left 40px; right 40px; bottom 40px
+	&:hover .in
+		transition 0.20s ease
+		top 25px; left 25px; right 25px; bottom 25px
+	&.active .in
+		transition 0.20s ease
+		top 45px; left 45px; right 45px; bottom 45px
 	.in
 		-webkit-backface-visibility: hidden;
 		-webkit-transform: translate3d(0, 0, 0);
