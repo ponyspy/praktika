@@ -36,7 +36,7 @@ module.exports = (function() {
 	router.use('/events', checkAuth, upload.fields([ { name: 'poster' }, { name: 'poster_hover' } ]), admin.events);
 	router.use('/medias', checkAuth, upload.fields([ { name: 'poster' }, { name: 'video' } ]), admin.medias);
 	router.use('/documents', checkAuth, upload.fields([ { name: 'attach' } ]), admin.documents);
-	router.use('/slides', checkAuth, upload.fields([ { name: 'poster' }, { name: 'video' } ]), admin.slides);
+	router.use('/slides', checkAuth, upload.fields([ { name: 'poster' }, { name: 'video' }, { name: 'attach' } ]), admin.slides);
 	router.use('/announces', checkAuth, admin.announces);
 	router.use('/members', checkAuth, upload.fields([ { name: 'photo' } ]), admin.members);
 	router.use('/partners', checkAuth, upload.fields([ { name: 'logo' } ]), admin.partners);

@@ -53,19 +53,28 @@ html, body
 			height 100%
 			background-color rgba(0, 0, 0, 0.15)
 		.slide_body
+			max-width 720px
 			margin-top 200px
 			margin-left 40px
 			margin-right 40px
 			position absolute
 			.slide_title
 				text-transform lowercase
-				max-width 720px
 				font 24pt/26pt 'PT Mono Bold'
-			.slide_desc
-				max-width 720px
+			.slide_description
 				margin-top 40px
 				margin-left 220px
 				font 14pt/18pt 'PT Mono'
+			.slide_attach
+				margin-top 20px
+				font 14pt/18pt 'PT Mono Bold'
+				margin-left 220px
+				display inline-block
+				color black
+				text-decoration none
+				&:hover
+					opacity 0.7
+
 	.swiper-button-next
 		right 40px
 	.swiper-button-prev
@@ -96,3 +105,5 @@ html, body
 		background-color black
 	.slide_item
 		color white
+		a
+			color white!important

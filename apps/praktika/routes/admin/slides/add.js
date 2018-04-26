@@ -39,6 +39,9 @@ module.exports = function(Model, Params) {
 			checkNested(post, [locale, 'description'])
 				&& slide.setPropertyLocalised('description', post[locale].description, locale);
 
+			checkNested(post, [locale, 'attach_desc'])
+				&& slide.setPropertyLocalised('attach_desc', post[locale].attach_desc, locale);
+
 		});
 
 		uploadImage(slide, 'slides', 'poster', 1920, files.poster && files.poster[0], null, function(err, slide) {
@@ -47,10 +50,14 @@ module.exports = function(Model, Params) {
 			uploadFile(slide, 'slides', 'video', files.video && files.video[0], null, function(err, slide) {
 				if (err) return next(err);
 
-				slide.save(function(err, slide) {
+				uploadFile(slide, 'slides', 'attach', files.attach && files.attach[0], null, function(err, slide) {
 					if (err) return next(err);
 
-					res.redirect('/admin/slides');
+					slide.save(function(err, slide) {
+						if (err) return next(err);
+
+						res.redirect('/admin/slides');
+					});
 				});
 			});
 		});

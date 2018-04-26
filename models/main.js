@@ -111,6 +111,8 @@ slideSchema = new Schema({
 	description: { type: String, trim: true, locale: true },
 	body: Boolean,
 	contents: Boolean,
+	attach: String,
+	attach_desc: { type: String, trim: true, locale: true },
 	holder: Boolean,
 	poster: String,
 	video: String,
