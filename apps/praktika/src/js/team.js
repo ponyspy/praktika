@@ -10,6 +10,7 @@ $(function() {
 
 	$('.in').Lazy({
 		scrollDirection: 'vertical',
+		threshold: 100,
 		visibleOnly: true
 	});
 
