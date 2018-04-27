@@ -12,7 +12,7 @@ module.exports = function() {
 			alias: req.body.alias
 		});
 
-		request.get('https://api.cultserv.ru/v4/subevents/actual/get?' + query, { timeout: 2500, json: true }, function(err, resp, body) {
+		request.get('https://api.cultserv.ru/v4/subevents/actual/get?' + query, { timeout: 6000, json: true }, function(err, resp, body) {
 			if (err || body.code != 1) return res.send('err');
 
 			var out = body.message.map(function(event) {
@@ -32,7 +32,7 @@ module.exports = function() {
 			fields: 'subevents,seo'
 		});
 
-		request.get('https://api.cultserv.ru/v4/events/list?' + query, { timeout: 2500, json: true }, function(err, resp, body) {
+		request.get('https://api.cultserv.ru/v4/events/list?' + query, { timeout: 6000, json: true }, function(err, resp, body) {
 			if (err || body.code != 1) return res.send('err');
 
 			var out = body.message.reduce(function(arr, current) {
