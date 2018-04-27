@@ -10,7 +10,7 @@ $(function() {
 
 	$('.in').Lazy({
 		scrollDirection: 'vertical',
-		threshold: 100,
+		threshold: 300,
 		visibleOnly: true
 	});
 
@@ -22,7 +22,7 @@ $(function() {
 			if ($(event.target).closest('.members_roles').length) return;
 
 			$('.roles_list').removeClass('open');
-			$(window).trigger('scroll');
+			$window.trigger('scroll');
 
 			event.stopPropagation();
 		})
@@ -42,7 +42,7 @@ $(function() {
 				? $members.removeClass('hide')
 				: $members.addClass('hide').filter('.' + select_role).removeClass('hide');
 
-			$(window).trigger('scroll');
+			$window.trigger('scroll');
 		});
 
 
