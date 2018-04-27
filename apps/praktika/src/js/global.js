@@ -11,6 +11,7 @@ $(function() {
 				$('.search_block').removeClass('show');
 				$('.menu_items, .title_block, .menu_open').removeClass('open');
 				$('body').removeClass('stop_scroll');
+				$('.widget_block').removeClass('open').children('.widget_inner').empty();
 			}
 
 		})

@@ -26,7 +26,7 @@ $(function() {
 		if (data == 'err') return false;
 
 		var $schedule_items = $('.schedule_item').not('.all');
-		var $schedule_all = $('.schedule_item').filter('.all')
+		var $schedule_all = $('.schedule_item').filter('.all');
 
 		$schedule_items.each(function() {
 			var $this = $(this);
@@ -101,5 +101,5 @@ $(function() {
 			$(this).scrollTop() >= $head.height() + $head.offset().top - $schedule.height()
 				? $schedule.addClass('fix')
 				: $schedule.removeClass('fix');
-		})
+		});
 });
