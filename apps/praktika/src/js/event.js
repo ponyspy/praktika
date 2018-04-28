@@ -85,14 +85,14 @@ $(function() {
 
 	$(document)
 		.on('mouseup touchend', function(e) {
-			if ($(event.target).closest('.widget_inner').length) return;
+			if ($(e.target).closest('.widget_inner').length) return;
 
 			if ($('.widget_block').hasClass('open')) {
 				$('body').removeClass('stop_scroll');
 				$('.widget_block').removeClass('open').children('.widget_inner').empty();
 			}
 
-			event.stopPropagation();
+			e.stopPropagation();
 		})
 		.on('scroll', function(e) {
 			var $head = $('.event_head');

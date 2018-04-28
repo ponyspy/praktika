@@ -19,12 +19,12 @@ $(function() {
 			$('.search_close').trigger('click');
 		})
 		.on('mouseup touchend', function(e) {
-			if ($(event.target).closest('.members_roles').length) return;
+			if ($(e.target).closest('.members_roles').length) return;
 
 			$('.roles_list').removeClass('open');
 			$window.trigger('scroll');
 
-			event.stopPropagation();
+			e.stopPropagation();
 		})
 		.on('click', '.roles_title', function(e) {
 			$('.roles_list').toggleClass('open');
@@ -113,14 +113,14 @@ $(function() {
 			$('.members_title').text($('.members_title').attr('data-title'));
 		})
 		.on('mouseup touchend', function(e) {
-			if ($(event.target).closest('.in, .search_block').length) return;
+			if ($(e.target).closest('.in, .search_block').length) return;
 
 			location.hash = '!';
 			$('.panel').remove();
 			$members.removeClass('active');
 			$('title').text(title);
 
-			event.stopPropagation();
+			e.stopPropagation();
 		})
 		.on('scroll', function(e) {
 			$(this).scrollTop() >= $title.height() + $title.offset().top

@@ -16,11 +16,11 @@ $(function() {
 
 		})
 		.on('mouseup touchend', function(e) {
-			if ($(event.target).closest('.title_block').length) return;
+			if ($(e.target).closest('.title_block').length) return;
 
 			$('.menu_items, .title_block, .menu_open').removeClass('open');
 
-			event.stopPropagation();
+			e.stopPropagation();
 		})
 		.on('click', '.results_holder', function(e) {
 			$(this).closest('.context_results').find('.hidden').removeClass('hidden');

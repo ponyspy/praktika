@@ -49,14 +49,14 @@ $(function() {
 			$(this).removeClass('selected');
 		})
 		.on('mouseup touchend', function(e) {
-			if ($(event.target).closest('.widget_inner').length) return;
+			if ($(e.target).closest('.widget_inner').length) return;
 
 			if ($('.widget_block').hasClass('open')) {
 				$('body').removeClass('stop_scroll');
 				$('.widget_block').removeClass('open').children('.widget_inner').empty();
 			}
 
-			event.stopPropagation();
+			e.stopPropagation();
 		})
 		.on('click', '.event_ticket.active', function(e) {
 			var $this = $(this);
