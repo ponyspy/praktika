@@ -26,12 +26,12 @@ html
 								a(href='/auth/logout') ⇤
 						.menu_items
 							.items_main
+								a.menu_item(href='/schedule')= __('билеты')
 								a.menu_item(href='/events')= __('репертуар')
-								a.menu_item(href='/schedule')= __('афиша')
 								a.menu_item(href='/contacts')= __('контакты')
 							.items_drop
-								a.menu_item(href='/team')= __('команда')
 								a.menu_item(href='/about')= __('о театре')
+								a.menu_item(href='/team')= __('команда')
 					.nav_block
 						a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
 						if locale == 'ru'

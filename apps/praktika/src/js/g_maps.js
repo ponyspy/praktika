@@ -22,7 +22,7 @@ function initialize() {
 	map = new google.maps.Map(map_canvas, map_options);
 
 	var infowindow = new google.maps.InfoWindow({
-			content: map_canvas.getAttribute('data-placeholder')
+			content: '<a class="map_link" href="https://goo.gl/maps/Gr5HpBWog432", target="_blank">' + map_canvas.getAttribute('data-placeholder') + '</a>'
 	});
 
 	var marker = new google.maps.Marker({
