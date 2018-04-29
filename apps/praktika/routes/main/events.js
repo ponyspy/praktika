@@ -92,6 +92,7 @@ module.exports = function(Model) {
 				res.send({
 					start: date_start.add(1, 'second').format('YYYY-MM-DD'),
 					end: date_end.add(1, 'second').format('YYYY-MM-DD'),
+					count: events.length,
 					events: pug.renderFile(__app_root + '/views/main/_events.pug', opts)
 				});
 			});

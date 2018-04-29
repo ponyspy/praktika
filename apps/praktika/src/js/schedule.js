@@ -111,7 +111,7 @@ $(function() {
 				$month_items.removeClass('selected').filter($month_item).addClass('selected');
 				$month_items.find('.day_item').removeClass('enabled');
 
-				if ($events.length === 0) return false;
+				if (data.count === 0) return false;
 
 				var dates = $events.map(function() {
 					return $(this).attr('class').split(' ')[1];
