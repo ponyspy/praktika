@@ -98,10 +98,8 @@ $(function() {
 
 			$.post('', { month: month_index }).done(function(data) {
 				location.hash = month_index;
+
 				var $events = $(data.events);
-				var dates = $events.map(function() {
-					return $(this).attr('class').split(' ')[1];
-				}).toArray();
 
 				$('.events_list').empty().append($events);
 
@@ -112,6 +110,13 @@ $(function() {
 
 				$month_items.removeClass('selected').filter($month_item).addClass('selected');
 				$month_items.find('.day_item').removeClass('enabled');
+
+				if ($events.length === 0) return false;
+
+				var dates = $events.map(function() {
+					return $(this).attr('class').split(' ')[1];
+				}).toArray();
+
 				$month_item.find('.' + dates.join(', .')).addClass('enabled');
 
 				$.post('/ticket_schedule', { min: data.start, max: data.end }).done(function(data) {

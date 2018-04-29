@@ -1,3 +1,6 @@
+if events.length == 0
+	.events_placeholder= __('Нет расписания')
+
 each event in events
 	- var event_date = moment(event.schedule.date).locale(locale)
 
