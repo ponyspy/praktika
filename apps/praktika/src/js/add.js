@@ -11,7 +11,7 @@ $(function() {
 		})
 		.on('click', '.back', function() {
 			var $snake = $(this).closest('.snake_outer').children('.snake');
-			if ($snake.size() == 1) return false;
+			if ($snake.length == 1) return false;
 			$(this).parent('.snake').remove();
 		})
 		.on('scroll', function(event) {

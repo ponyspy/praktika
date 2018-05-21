@@ -42,8 +42,6 @@
 	"«Маяковская»": "«Mayakovskaya»",
 	"«Пушкинская»": "«Pushkinskaya»",
 	"касса театра": "box office",
-	"PR-директор": "head of PR",
-	"Арина Светлица": "Arina Svetlitsa",
 	"запись для студентов": "entry pass for students",
 	"Дарья Панина": "Darya Panina",
 	"Оценка качества услуг учреждений культуры": "assessing quality<br>of service",
@@ -56,5 +54,7 @@
 	"еще": "more",
 	"билеты": "tickets",
 	"расписание": "schedule",
-	"Нет расписания": "No schedule"
+	"Нет расписания": "No schedule",
+	"руководитель пресс-службы": "head of PR",
+	"Егор Хлыстов": "Egor Hlystov"
 }
