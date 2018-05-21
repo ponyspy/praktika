@@ -8,7 +8,9 @@ module.exports = function(Model) {
 
 	module.index = function(req, res) {
 		Member.find().where('status').nin(['hidden', 'special']).sort('name.value').exec(function(err, members) {
-			res.render('main/team.pug', { members: members });
+			Member.distinct('roles').exec(function(err, roles) {
+				res.render('main/team.pug', { members: members, roles: roles });
+			});
 		});
 	};
 

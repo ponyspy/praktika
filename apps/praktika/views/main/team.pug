@@ -18,8 +18,8 @@ block content
 			.roles_title(active-role='all')= __('все')
 			.roles_list
 				.select_role.selected(data-role='all')= __('все')
-				each role, i in static_types.members_roles
-					.select_role(data-role=i)= __n(role.male, 5)
+				each role in roles
+					.select_role(data-role=role)= __n(static_types.members_roles[role].male, 5)
 
 	.members_list
 		each member in members
