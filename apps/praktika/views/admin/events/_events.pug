@@ -6,7 +6,7 @@
 			if event.pn_alias
 				span.item_schedule
 					span= ' --> '
-					a(href='#', event_id=event._id, alias=event.pn_alias) синхронизировать
+					a(href='#', event_id=event._id, alias=event.pn_alias) обновить
 			span.item_preview
 				span= ' --> '
 				a(href='/events/' + (event.sym ? event.sym : event._short_id), target='_blank') превью
