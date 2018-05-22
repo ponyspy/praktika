@@ -16,6 +16,8 @@ module.exports = function(Model) {
 
 	module.get_member = function(req, res) {
 		Member.findOne({ '_short_id': req.body.id }).where('status').nin(['hidden', 'special']).exec(function(err, member) {
+			if (err || !member) return res.send('err');
+
 			Event.find({ 'members.list': member._id }).where('status').ne('hidden').exec(function(err, events) {
 				var opts = {
 					__: function() { return res.locals.__.apply(null, arguments); },

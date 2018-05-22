@@ -63,46 +63,44 @@ $(function() {
 
 
 	$window.on('load hashchange', function(e) {
-		var $current_block = $members.filter('[member-id="' + location.hash.replace('#', '') + '"]').eq(0);
-		var $set = $current_block.nextAll('.member_item').addBack($current_block);
-		var $members_list = $('.members_list');
+		$.post('', { id: location.hash.replace('#', '') }).done(function(content) {
+			if (content == 'err') return false;
 
-		if ($current_block.length == 0) return false;
+			$('.panel').remove();
 
-		$set.each(function() {
-			var $this = $(this);
+			var $current_block = $members.filter('[member-id="' + location.hash.replace('#', '') + '"]').eq(0);
+			var $set = $current_block.nextAll('.member_item').addBack($current_block);
+			var $members_list = $('.members_list');
 
-			if ($this.offset().left + $this.width() > $members_list.width() + $members_list.offset().left) {
-				$.post('', { id: $current_block.attr('member-id') }).done(function(content) {
-					$('.panel').remove();
+			$set.each(function() {
+				var $this = $(this);
+
+				if ($this.offset().left + $this.width() > $members_list.width() + $members_list.offset().left) {
 
 					$members.removeClass('active');
 					$current_block.addClass('active');
 
 					$this.after(content);
-				});
 
-				return false;
-			} else if ($this.index('.member_item') + 1 == $members.length) {
-				$.post('', { id: $current_block.attr('member-id') }).done(function(content) {
-					$('.panel').remove();
+					return false;
+				} else if ($this.index('.member_item') + 1 == $members.length) {
 
 					$members.removeClass('active');
 					$current_block.addClass('active');
 
 					$set.last().after(content);
-				});
 
-				return false;
-			}
+					return false;
+				}
+			});
+
+			$('title').text(title + ' : ' + $current_block.attr('data-name').toLowerCase());
+
+			$('html, body').animate({
+				'scrollTop': $current_block.offset().top - ($window.width() >= 840 ? $('.members_header').height() : 0) - 10
+			}, 300);
+
 		});
-
-		$('title').text(title + ' : ' + $current_block.attr('data-name').toLowerCase());
-
-		$('html, body').animate({
-			'scrollTop': $current_block.offset().top - ($window.width() >= 840 ? $('.members_header').height() : 0) - 10
-		}, 300);
-
 	});
 
 	$document
