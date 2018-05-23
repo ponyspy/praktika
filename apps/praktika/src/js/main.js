@@ -39,6 +39,10 @@ $(function() {
 		Cookies.set('announce', announce, {
 			expires: 2
 		});
+
+		location.href = $(this).attr('href');
+
+		return false;
 	});
 
 	$(document).on('keyup', function(e) {

@@ -36,6 +36,8 @@ block content
 			+form_single_file('poster')(accept='image/jpeg,image/png,image/gif')
 			.form_title Видео MP4:
 			+form_single_file('video')(accept='video/mp4')
+			.form_title Анонс:
+			+form_single_select('announce', announces)
 			.form_title Статус:
 			select(name='status')
 				option(value='base') Обычный

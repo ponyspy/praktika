@@ -4,6 +4,7 @@ module.exports = function(Model, Params) {
 	var module = {};
 
 	var Media = Model.Media;
+	var Announce = Model.Announce;
 
 	var uploadImage = Params.upload.image;
 	var uploadFile = Params.upload.file;
@@ -16,7 +17,11 @@ module.exports = function(Model, Params) {
 		Media.findById(id).exec(function(err, media) {
 			if (err) return next(err);
 
-			res.render('admin/medias/edit.pug', { media: media });
+			Announce.find().exec(function(err, announces) {
+				if (err) return next(err);
+
+				res.render('admin/medias/edit.pug', { media: media, announces: announces });
+			});
 		});
 
 	};
@@ -34,6 +39,7 @@ module.exports = function(Model, Params) {
 			media.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 			media.style = post.style;
 			media.holder = post.holder;
+			media.announce = post.announce != 'none' ? post.announce : undefined;
 
 			var locales = post.en ? ['ru', 'en'] : ['ru'];
 

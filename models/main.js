@@ -97,10 +97,7 @@ mediaSchema = new Schema({
 	video: String,
 	holder: Boolean,
 	style: String, // black / white
-	interval: {
-		start: Date,
-		end: Date
-	},
+	announce: { type: ObjectId, ref: 'Announce' },
 	status: String,
 	_short_id: { type: String, unique: true, index: true, sparse: true },
 	date: { type: Date, default: Date.now },
