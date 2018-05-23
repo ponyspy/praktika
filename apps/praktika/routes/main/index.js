@@ -10,7 +10,7 @@ module.exports = function(Model) {
 				? +req.cookies.banner <= 2
 				: true
 
-			res.render('main/index.pug', { medias: medias, banner: banner });
+			res.render('main/index.pug', { medias: medias, banner: banner, cookies: req.cookies });
 		});
 	};
 

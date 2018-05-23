@@ -35,14 +35,13 @@ $(function() {
 	});
 
 	$('.announcement_block').on('click', function(e) {
+		e.stopPropagation();
+
 		var announce = $(this).attr('data-id');
-		Cookies.set('announce', announce, {
+
+		Cookies.set(announce, 'announce', {
 			expires: 2
 		});
-
-		location.href = $(this).attr('href');
-
-		return false;
 	});
 
 	$(document).on('keyup', function(e) {
