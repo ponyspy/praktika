@@ -42,8 +42,6 @@
 	"«Маяковская»": "«Mayakovskaya»",
 	"«Пушкинская»": "«Pushkinskaya»",
 	"касса театра": "box office",
-	"запись для студентов": "entry pass for students",
-	"Дарья Панина": "Darya Panina",
 	"Оценка качества услуг учреждений культуры": "assessing quality<br>of service",
 	"Театр «Практика»": "Praktika Theatre",
 	"премьера": "premiere",
@@ -56,5 +54,6 @@
 	"расписание": "schedule",
 	"Нет расписания": "No schedule",
 	"руководитель пресс-службы": "head of PR",
-	"Егор Хлыстов": "Egor Hlystov"
+	"Егор Хлыстов": "Egor Hlystov",
+	"администрация": "administration"
 }
