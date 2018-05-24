@@ -1,5 +1,3 @@
-var moment = require('moment');
-
 module.exports = function(Model) {
 	var module = {};
 
@@ -9,8 +7,8 @@ module.exports = function(Model) {
 		Media.find().sort('date').where('status').ne('hidden').populate({
 			path: 'announce',
 			match: { 'status': { $ne: 'hidden' },
-							 'interval.start': { $gte: moment().toDate() },
-							 'interval.end': { $lte: moment().toDate() },
+							 'interval.start': { $lte: new Date().getTime() },
+							 'interval.end': { $gte: new Date().getTime() },
 			}}).exec(function(err, medias) {
 
 			var banner = req.cookies.banner
