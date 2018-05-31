@@ -18,7 +18,7 @@ block content
 		.swiper-wrapper
 			each slide in slides
 				.slide_item.swiper-slide(id=slide._id, data-style=slide.style)
-					video(autoplay=false, loop=true, muted=false, controls=false, poster=slide.poster, src=slide.video)
+					video(autoplay=false, loop=true, muted=true, controls=false, poster=slide.poster, src=slide.video)
 					if slide.holder
 						.slide_holder
 					if slide.body

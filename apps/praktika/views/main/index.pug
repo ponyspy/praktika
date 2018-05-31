@@ -18,7 +18,7 @@ block content
 		.swiper-wrapper
 			each media in medias
 				.slide_item.swiper-slide(data-style=media.style)
-					video(autoplay=false, loop=true, muted=false, controls=false, poster=media.poster, src=media.video)
+					video(autoplay=false, loop=true, muted=true, controls=false, poster=media.poster, src=media.video)
 					if media.holder
 						.slide_holder
 					if media.announce && !cookies[media.announce._short_id]
