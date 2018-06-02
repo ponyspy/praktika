@@ -1,11 +1,51 @@
+$(window).on('load hashchange', function(e) {
+	var $members = $('.member_item');
+
+	$.post('', { id: location.hash.replace('#', '') }).done(function(content) {
+		if (content == 'err') return false;
+
+		$('.panel').remove();
+
+		var $current_block = $members.filter('[member-id="' + location.hash.replace('#', '') + '"]').eq(0);
+		var $set = $current_block.nextAll('.member_item').addBack($current_block);
+		var $members_list = $('.members_list');
+
+		$set.each(function() {
+			var $this = $(this);
+
+			if ($this.offset().left + $this.width() > $members_list.width() + $members_list.offset().left) {
+
+				$members.removeClass('active');
+				$current_block.addClass('active');
+
+				$this.after(content);
+
+				return false;
+			} else if ($this.index('.member_item') + 1 == $members.length) {
+
+				$members.removeClass('active');
+				$current_block.addClass('active');
+
+				$set.last().after(content);
+
+				return false;
+			}
+		});
+
+		$('title').text($('title').text().split(' : ').slice(0, 2).concat($current_block.attr('data-name').toLowerCase()).join(' : '));
+
+		$('html, body').animate({
+			'scrollTop': $current_block.offset().top - ($(window).width() >= 840 ? $('.members_header').height() : 0) - 10
+		}, 300);
+
+	});
+});
+
+
 $(function() {
-	var $document = $(document);
-	var $window = $(window);
 	var $members = $('.member_item');
 	var $title = $('.title_block');
 	var $members_header = $('.members_header');
-
-	var title = $('title').text();
 
 
 	$('.in').Lazy({
@@ -14,7 +54,7 @@ $(function() {
 		visibleOnly: true
 	});
 
-	$document
+	$(document)
 		.on('click', '.result_item', function(e) {
 			$('.search_close').trigger('click');
 		})
@@ -22,7 +62,7 @@ $(function() {
 			if ($(e.target).closest('.members_roles').length) return;
 
 			$('.roles_list').removeClass('open');
-			$window.trigger('scroll');
+			$(window).trigger('scroll');
 
 			e.stopPropagation();
 		})
@@ -42,7 +82,7 @@ $(function() {
 				? $members.removeClass('hide')
 				: $members.addClass('hide').filter('.' + select_role).removeClass('hide');
 
-			$window.trigger('scroll');
+			$(window).trigger('scroll');
 		});
 
 
@@ -53,7 +93,7 @@ $(function() {
 			location.hash = '!';
 			$('.panel').remove();
 			$this.removeClass('active');
-			$('title').text(title);
+			$('title').text($('title').text().split(' : ').slice(0, 2).join(' : '));
 
 			return false;
 		}
@@ -62,50 +102,7 @@ $(function() {
 	});
 
 
-	$window.on('load hashchange', function(e) {
-		$.ready.then(function() {
-			$.post('', { id: location.hash.replace('#', '') }).done(function(content) {
-				if (content == 'err') return false;
-
-				$('.panel').remove();
-
-				var $current_block = $members.filter('[member-id="' + location.hash.replace('#', '') + '"]').eq(0);
-				var $set = $current_block.nextAll('.member_item').addBack($current_block);
-				var $members_list = $('.members_list');
-
-				$set.each(function() {
-					var $this = $(this);
-
-					if ($this.offset().left + $this.width() > $members_list.width() + $members_list.offset().left) {
-
-						$members.removeClass('active');
-						$current_block.addClass('active');
-
-						$this.after(content);
-
-						return false;
-					} else if ($this.index('.member_item') + 1 == $members.length) {
-
-						$members.removeClass('active');
-						$current_block.addClass('active');
-
-						$set.last().after(content);
-
-						return false;
-					}
-				});
-
-				$('title').text(title + ' : ' + $current_block.attr('data-name').toLowerCase());
-
-				$('html, body').animate({
-					'scrollTop': $current_block.offset().top - ($window.width() >= 840 ? $('.members_header').height() : 0) - 10
-				}, 300);
-
-			});
-		});
-	});
-
-	$document
+	$(document)
 		.on('mouseenter', '.member_item', function(e) {
 			$('.members_title').text($(this).attr('data-name'));
 		})
@@ -118,7 +115,7 @@ $(function() {
 			location.hash = '!';
 			$('.panel').remove();
 			$members.removeClass('active');
-			$('title').text(title);
+			$('title').text($('title').text().split(' : ').slice(0, 2).join(' : '));
 
 			e.stopPropagation();
 		})
