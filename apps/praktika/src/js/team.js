@@ -63,43 +63,45 @@ $(function() {
 
 
 	$window.on('load hashchange', function(e) {
-		$.post('', { id: location.hash.replace('#', '') }).done(function(content) {
-			if (content == 'err') return false;
+		$.ready.then(function() {
+			$.post('', { id: location.hash.replace('#', '') }).done(function(content) {
+				if (content == 'err') return false;
 
-			$('.panel').remove();
+				$('.panel').remove();
 
-			var $current_block = $members.filter('[member-id="' + location.hash.replace('#', '') + '"]').eq(0);
-			var $set = $current_block.nextAll('.member_item').addBack($current_block);
-			var $members_list = $('.members_list');
+				var $current_block = $members.filter('[member-id="' + location.hash.replace('#', '') + '"]').eq(0);
+				var $set = $current_block.nextAll('.member_item').addBack($current_block);
+				var $members_list = $('.members_list');
 
-			$set.each(function() {
-				var $this = $(this);
+				$set.each(function() {
+					var $this = $(this);
 
-				if ($this.offset().left + $this.width() > $members_list.width() + $members_list.offset().left) {
+					if ($this.offset().left + $this.width() > $members_list.width() + $members_list.offset().left) {
 
-					$members.removeClass('active');
-					$current_block.addClass('active');
+						$members.removeClass('active');
+						$current_block.addClass('active');
 
-					$this.after(content);
+						$this.after(content);
 
-					return false;
-				} else if ($this.index('.member_item') + 1 == $members.length) {
+						return false;
+					} else if ($this.index('.member_item') + 1 == $members.length) {
 
-					$members.removeClass('active');
-					$current_block.addClass('active');
+						$members.removeClass('active');
+						$current_block.addClass('active');
 
-					$set.last().after(content);
+						$set.last().after(content);
 
-					return false;
-				}
+						return false;
+					}
+				});
+
+				$('title').text(title + ' : ' + $current_block.attr('data-name').toLowerCase());
+
+				$('html, body').animate({
+					'scrollTop': $current_block.offset().top - ($window.width() >= 840 ? $('.members_header').height() : 0) - 10
+				}, 300);
+
 			});
-
-			$('title').text(title + ' : ' + $current_block.attr('data-name').toLowerCase());
-
-			$('html, body').animate({
-				'scrollTop': $current_block.offset().top - ($window.width() >= 840 ? $('.members_header').height() : 0) - 10
-			}, 300);
-
 		});
 	});
 
