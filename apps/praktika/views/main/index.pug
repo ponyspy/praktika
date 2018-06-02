@@ -3,6 +3,7 @@ extends layout
 block header_meta
 	- var content_title= __('практика')
 	- var content_description= ''
+	- var content_images = [medias && medias.length && medias[0].poster]
 	- var content_banner = true
 	- var content_footer_hidden = true
 
