@@ -1,5 +1,60 @@
+$(window).on('load hashchange', function(e) {
+	var month_index = location.hash ? location.hash.replace('#', '') : 0;
+
+	var $month_items = $('.month_item');
+	var $month_item = $month_items.eq(month_index);
+	var $month_placeholder = $month_item.children('.month_placeholder');
+
+	var month_name = $month_item.attr('data-month');
+
+	if (e.type == 'load') {
+		var offset = $('.timeline_outer').scrollLeft() + $month_item.offset().left;
+
+		$('.timeline_outer').scrollLeft(offset);
+	}
+
+	$.post('', { month: month_index }).done(function(data) {
+		var $events = $(data.events);
+
+		$('.events_list').empty().append($events);
+
+		$('.day_item.selected').removeClass('selected');
+		$('.month_placeholder').removeClass('hide').filter($month_placeholder).addClass('hide');
+		$('.current_month').text(month_name).attr('data-month', month_name);
+
+		$('title').text($('title').text().split(' : ').slice(0, 2).concat(month_name.toLowerCase()).join(' : '));
+
+		$month_items.removeClass('selected').filter($month_item).addClass('selected');
+		$month_items.find('.day_item').removeClass('enabled');
+
+		if (data.count === 0) return false;
+
+		var dates = $events.map(function() {
+			return $(this).attr('class').split(' ')[1];
+		}).toArray();
+
+		$month_item.find('.' + dates.join(', .')).addClass('enabled');
+
+		$.post('/ticket_schedule', { min: data.start, max: data.end }).done(function(data) {
+			if (data == 'err') return false;
+
+			$('.event_ticket').each(function() {
+				var $this = $(this);
+
+				data.indexOf($this.attr('schedule-date')) != -1
+					? $this.addClass('active')
+					: $this.addClass('soldout').text($this.attr('soldout'));
+			})
+		});
+
+		$('html, body').animate({
+			'scrollTop': 0
+		}, 300);
+	});
+});
+
+
 $(function() {
-	var title = $('title').text();
 
 	if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 		$('.timeline_block').on('mousemove', function(e) {
@@ -11,19 +66,6 @@ $(function() {
 	} else {
 		$('.timeline_outer').addClass('mobile');
 	}
-
-
-	$(window)
-		.on('load', function(e) {
-			$.ready.then(function() {
-				var month = location.hash ? location.hash.replace('#', '') : 0;
-				var $current_month = $('.month_item').eq(month);
-				var offset = $('.timeline_outer').scrollLeft() + $current_month.offset().left;
-
-				$('.timeline_outer').scrollLeft(offset);
-				$current_month.children('.month_placeholder').trigger('click');
-			});
-		});
 
 
 	$(document)
@@ -91,52 +133,7 @@ $(function() {
 
 	$('.month_placeholder')
 		.on('click', function(e) {
-			var $this = $(this);
-			var $month_items = $('.month_item');
-			var $month_item = $this.parent();
-
-			var month_name = $month_item.attr('data-month');
-			var month_index = $month_item.index();
-
-			$.post('', { month: month_index }).done(function(data) {
-				location.hash = month_index;
-
-				var $events = $(data.events);
-
-				$('.events_list').empty().append($events);
-
-				$('.day_item.selected').removeClass('selected');
-				$('.month_placeholder').removeClass('hide').filter($this).addClass('hide');
-				$('.current_month').text(month_name).attr('data-month', month_name);
-				$('title').text(title + ' : ' + month_name.toLowerCase());
-
-				$month_items.removeClass('selected').filter($month_item).addClass('selected');
-				$month_items.find('.day_item').removeClass('enabled');
-
-				if (data.count === 0) return false;
-
-				var dates = $events.map(function() {
-					return $(this).attr('class').split(' ')[1];
-				}).toArray();
-
-				$month_item.find('.' + dates.join(', .')).addClass('enabled');
-
-				$.post('/ticket_schedule', { min: data.start, max: data.end }).done(function(data) {
-					if (data == 'err') return false;
-
-					$('.event_ticket').each(function() {
-						var $this = $(this);
-
-						data.indexOf($this.attr('schedule-date')) != -1
-							? $this.addClass('active')
-							: $this.addClass('soldout').text($this.attr('soldout'));
-					})
-				});
-
-				$('html, body').animate({
-					'scrollTop': 0
-				}, 300);
-			});
+			location.hash = $(this).parent().index();
 		})
 		.on('mouseenter', function(e) {
 			$('.current_month').text($(this).parent().attr('data-month'));
