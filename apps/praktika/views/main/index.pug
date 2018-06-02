@@ -22,7 +22,7 @@ block content
 					video(autoplay=false, loop=true, muted=true, playsinline=true, controls=false, poster=media.poster, src=media.video)
 					if media.holder
 						.slide_holder
-					if media.announce && !cookies[media.announce._short_id]
+					if media.announce
 						a.announcement_block(href=media.announce.link, data-id=media.announce._short_id)
 							.announcement_title= media.announce.i18n.title.get(locale)
 							.announcement_s_title= media.announce.i18n.s_title.get(locale)

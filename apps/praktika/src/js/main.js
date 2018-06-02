@@ -44,6 +44,19 @@ $(function() {
 		});
 	});
 
+	if (+Cookies.get('banner') >= 3) {
+		$('.maket_block').removeClass('banner');
+		$('.banner_block').remove();
+	}
+
+	$('.announcement_block').each(function() {
+		var $this = $(this)
+
+		if (Cookies.get($this.attr('data-id'))) {
+			$this.remove();
+		}
+	});
+
 	$(document).on('keyup', function(e) {
 		if (e.which == 27) {
 			$('.banner_close').trigger('click');

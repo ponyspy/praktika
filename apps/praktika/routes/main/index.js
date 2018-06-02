@@ -11,11 +11,7 @@ module.exports = function(Model) {
 							 'interval.end': { $gte: new Date().getTime() },
 			}}).exec(function(err, medias) {
 
-			var banner = req.cookies.banner
-				? +req.cookies.banner <= 2
-				: true
-
-			res.render('main/index.pug', { medias: medias, banner: banner, cookies: req.cookies });
+			res.render('main/index.pug', { medias: medias });
 		});
 	};
 
