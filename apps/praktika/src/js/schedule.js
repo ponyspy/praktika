@@ -1,3 +1,14 @@
+$(window)
+	.on('load', function(e) {
+		var month = location.hash ? location.hash.replace('#', '') : 0;
+		var $current_month = $('.month_item').eq(month);
+		var offset = $('.timeline_outer').scrollLeft() + $current_month.offset().left;
+
+		$('.timeline_outer').scrollLeft(offset);
+		$current_month.children('.month_placeholder').trigger('click');
+	});
+
+
 $(function() {
 	var title = $('title').text();
 
@@ -11,19 +22,6 @@ $(function() {
 	} else {
 		$('.timeline_outer').addClass('mobile');
 	}
-
-
-	$(window)
-		.on('load', function(e) {
-			$.ready.then(function() {
-				var month = location.hash ? location.hash.replace('#', '') : 0;
-				var $current_month = $('.month_item').eq(month);
-				var offset = $('.timeline_outer').scrollLeft() + $current_month.offset().left;
-
-				$('.timeline_outer').scrollLeft(offset);
-				$current_month.children('.month_placeholder').trigger('click');
-			});
-		});
 
 
 	$(document)
