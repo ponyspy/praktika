@@ -86,7 +86,7 @@ module.exports = function(Model) {
 					events: events,
 					locale: req.locale,
 					moment: moment,
-					compileDebug: false, debug: false, cache: false, pretty: false
+					compileDebug: false, debug: false, cache: true, pretty: false
 				};
 
 				res.send({
