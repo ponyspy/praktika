@@ -45,5 +45,7 @@ module.exports = (function() {
 	router.post('/schedule_event', checkAuth, admin.schedule.event);
 	router.post('/preview', checkAuth, upload.single('image'), admin.options.preview);
 
+	router.get('/dump', checkAuth, admin.options.dump);
+
 	return router;
 })();

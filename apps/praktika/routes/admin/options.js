@@ -3,6 +3,10 @@ var rimraf = require('rimraf');
 var mime = require('mime');
 
 
+exports.dump = function(req, res) {
+	res.sendFile('dump.tar', {root: __glob_root});
+};
+
 module.exports.preview = function(req, res) {
 	var file = req.file;
 	var newPath = '/preview/' + Date.now() + '.' + mime.getExtension(file.mimetype);
