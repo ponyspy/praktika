@@ -47,9 +47,11 @@ $(window).on('load hashchange', function(e) {
 			})
 		});
 
-		$('html, body').animate({
-			'scrollTop': 0
-		}, 300);
+		if (e.type != 'load') {
+			$('html, body').animate({
+				'scrollTop': 0
+			}, 300);
+		}
 	});
 });
 
