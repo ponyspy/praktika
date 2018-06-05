@@ -23,6 +23,10 @@ module.exports = (function() {
 		.get(main.events.schedule)
 		.post(main.events.get_events);
 
+	router.route('/plays/:short_id').get(function(req, res) {
+		res.redirect('/events/' + req.params.short_id);
+	});
+
 	router.route('/events')
 		.get(main.events.index);
 
