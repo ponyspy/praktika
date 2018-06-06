@@ -36,7 +36,7 @@ module.exports = function() {
 			if (err || body.code != 1) return res.send('err');
 
 			var out = body.message.reduce(function(arr, current) {
-				if (!current.eticket_possible) return 'e_none';
+				if (!current.eticket_possible) return arr.concat('e_none');
 
 				var dates = current.subevents.map(function(subevent) {
 					return moment(subevent.date).format('DD.MM.YYYY HH:mm');
