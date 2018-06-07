@@ -148,16 +148,16 @@ $(function() {
 	$('.current_month').on('click', function(e) {
 		var offset = $('.timeline_outer').scrollLeft() + $('.month_item.selected').offset().left;
 
+		$('.day_item.selected').trigger('click');
+
 		$('.timeline_outer').animate({
 			'scrollLeft': offset
 		}, 300);
 
-		$('.month_item.selected').children('.month_placeholder').trigger('click');
 	});
 
 
 	$('.select_month').on('click', function(e) {
-
 		var $future_month = $(this).hasClass('next')
 			? $('.month_item.selected').next()
 			: $('.month_item.selected').prev();
