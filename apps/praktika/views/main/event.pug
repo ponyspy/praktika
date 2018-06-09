@@ -17,8 +17,8 @@ block header_include
 block over
 	.event_head
 		.head_meta
-			.event_head_title= event.i18n.title.get(locale)
-			.event_head_s_title= event.i18n.s_title.get(locale)
+			.event_head_title!= event.i18n.title.get(locale)
+			.event_head_s_title!= event.i18n.s_title.get(locale)
 		.slider_block.swiper-container
 			.swiper-wrapper
 				each image in event.images
@@ -45,7 +45,7 @@ block content
 						.item_time= schedule_item.format('dd HH:mm')
 
 	.event_body
-		.event_title= event.i18n.title.get(locale)
+		.event_title!= event.i18n.title.get(locale)
 
 		.event_main
 			.event_meta

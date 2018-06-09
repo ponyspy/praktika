@@ -2,7 +2,7 @@
 	.panel_photo(style='background-image: url(' + member.photo + ')')
 	.panel_body
 		.member_head
-			.member_name= member.i18n.name.get(locale)
+			.member_name!= member.i18n.name.get(locale)
 			.member_roles
 				each role in member.roles
 					.role(class=role)= __n(static_types.members_roles[role][member.sex], 1)
@@ -11,5 +11,5 @@
 				.events_title= __('спектакли')
 				.events_list
 					each event in events
-						a.event_item(href='/events/' + (event.sym ? event.sym : event._short_id))= event.i18n.title.get(locale)
+						a.event_item(href='/events/' + (event.sym ? event.sym : event._short_id))!= event.i18n.title.get(locale)
 		.member_description!= member.i18n.description.get(locale)

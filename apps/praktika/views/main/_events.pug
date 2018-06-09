@@ -16,7 +16,7 @@ each event in events
 					.time= event_date.format('HH:mm')
 				if event.pn_alias
 					.event_ticket(schedule-alias= event.pn_alias, schedule-date=event_date.format('DD.MM.YYYY HH:mm'), soldout=__('билеты проданы'))= __('купить билет')
-			a.event_title(href='/events/' + (event.sym ? event.sym : event._short_id))= get_locale(event.title, locale)
+			a.event_title(href='/events/' + (event.sym ? event.sym : event._short_id))!= get_locale(event.title, locale)
 			.event_content
 				.event_meta
 					if event.schedule.premiere
@@ -32,4 +32,4 @@ each event in events
 										.member_item= get_locale(member.name, locale)
 									else
 										a.member_item(href='/team#' + member._short_id)= get_locale(member.name, locale)
-			.event_description= get_locale(event.s_title, locale)
+			.event_description!= get_locale(event.s_title, locale)

@@ -24,8 +24,9 @@ block content
 						.slide_holder
 					if media.announce
 						a.announcement_block(href=media.announce.link, data-id=media.announce._short_id)
-							.announcement_title= media.announce.i18n.title.get(locale)
-							.announcement_s_title= media.announce.i18n.s_title.get(locale)
+							.announcement_title!= media.announce.i18n.title.get(locale)
+							if media.announce.i18n.s_title.get(locale) != ''
+								.announcement_s_title!= media.announce.i18n.s_title.get(locale)
 
 		if medias.length > 1
 			.swiper-pagination.swiper-pagination-white
