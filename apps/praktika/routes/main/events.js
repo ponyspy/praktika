@@ -14,7 +14,7 @@ module.exports = function(Model) {
 	};
 
 	module.index = function(req, res, next) {
-		Event.find().sort('-date').where('status').ne('hidden').exec(function(err, events) {
+		Event.find().sort('title.value').where('status').ne('hidden').exec(function(err, events) {
 			if (err) return next(err);
 
 			res.render('main/events.pug', { events: events });
