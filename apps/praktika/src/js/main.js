@@ -1,13 +1,16 @@
 $(function() {
-	var randomInteger = function(min, max) {
-		return Math.round(min - 0.5 + Math.random() * (max - min + 1));
-	};
+	if (+Cookies.get('banner') >= 3) {
+		$('.maket_block').removeClass('banner');
+		$('.banner_block').remove();
+	}
 
 	var swiper = new Swiper('.swiper-container', {
 		loop: true,
 		init: false,
 		effect: 'fade',
-		initialSlide: randomInteger(0, $('.slide_item').length),
+		initialSlide: (function(min, max) {
+			return Math.round(min - 0.5 + Math.random() * (max - min + 1));
+		})(0, $('.slide_item').length),
 		keyboard: {
 			enabled: true
 		},
@@ -37,29 +40,6 @@ $(function() {
 	$('.announcement_block').on('click', function(e) {
 		e.stopPropagation();
 	});
-
-	// $('.announcement_block').each(function() {
-	// 	var $this = $(this)
-
-	// 	if (Cookies.get($this.attr('data-id'))) {
-	// 		$this.remove();
-	// 	}
-	// });
-
-	// $('.announcement_block').on('click', function(e) {
-	// 	e.stopPropagation();
-
-	// 	var announce = $(this).attr('data-id');
-
-	// 	Cookies.set(announce, 'announce', {
-	// 		expires: 2
-	// 	});
-	// });
-
-	if (+Cookies.get('banner') >= 3) {
-		$('.maket_block').removeClass('banner');
-		$('.banner_block').remove();
-	}
 
 	$(document).on('keyup', function(e) {
 		if (e.which == 27) {
