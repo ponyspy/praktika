@@ -34,6 +34,10 @@ $(function() {
 		swiper.slideNext();
 	});
 
+	$('.announcement_block').on('click', function(e) {
+		e.stopPropagation();
+	});
+
 	// $('.announcement_block').each(function() {
 	// 	var $this = $(this)
 
