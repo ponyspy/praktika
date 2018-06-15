@@ -34,28 +34,28 @@ $(function() {
 		swiper.slideNext();
 	});
 
-	$('.announcement_block').on('click', function(e) {
-		e.stopPropagation();
+	// $('.announcement_block').each(function() {
+	// 	var $this = $(this)
 
-		var announce = $(this).attr('data-id');
+	// 	if (Cookies.get($this.attr('data-id'))) {
+	// 		$this.remove();
+	// 	}
+	// });
 
-		Cookies.set(announce, 'announce', {
-			expires: 2
-		});
-	});
+	// $('.announcement_block').on('click', function(e) {
+	// 	e.stopPropagation();
+
+	// 	var announce = $(this).attr('data-id');
+
+	// 	Cookies.set(announce, 'announce', {
+	// 		expires: 2
+	// 	});
+	// });
 
 	if (+Cookies.get('banner') >= 3) {
 		$('.maket_block').removeClass('banner');
 		$('.banner_block').remove();
 	}
-
-	$('.announcement_block').each(function() {
-		var $this = $(this)
-
-		if (Cookies.get($this.attr('data-id'))) {
-			$this.remove();
-		}
-	});
 
 	$(document).on('keyup', function(e) {
 		if (e.which == 27) {
