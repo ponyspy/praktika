@@ -28,13 +28,14 @@ block content
 							if slide.attach
 								a.slide_attach(href=slide.attach, target='_blank')= slide.i18n.attach_desc.get(locale)
 
-		.swiper-button-next.swiper-button-white
-		.swiper-button-prev.swiper-button-white
-		.swiper-button-next.swiper-button-black
-		.swiper-button-prev.swiper-button-black
+		if slides.length > 1
+			.swiper-button-next.swiper-button-white
+			.swiper-button-prev.swiper-button-white
+			.swiper-button-next.swiper-button-black
+			.swiper-button-prev.swiper-button-black
 
-		.swiper-pagination.swiper-pagination-white
-		.swiper-pagination.swiper-pagination-black
+			.swiper-pagination.swiper-pagination-white
+			.swiper-pagination.swiper-pagination-black
 
 	.slider_navigate
 		each slide in slides

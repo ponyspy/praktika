@@ -27,8 +27,9 @@ block over
 						if image.holder
 							.slide_holder
 
-			.swiper-pagination(class= !check_schedule ? 'no_schedule': '').swiper-pagination-white
-			.swiper-pagination(class= !check_schedule ? 'no_schedule': '').swiper-pagination-black
+			if event.images && event.images.length > 1
+				.swiper-pagination(class= !check_schedule ? 'no_schedule': '').swiper-pagination-white
+				.swiper-pagination(class= !check_schedule ? 'no_schedule': '').swiper-pagination-black
 
 block content
 	.widget_block: .widget_inner
