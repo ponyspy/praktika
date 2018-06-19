@@ -13,7 +13,7 @@ block content
 	.events_block
 		.events_title= __('репертуар')
 		.events_list
-			each event in events.sort(function(a, b) { return a.i18n.title.get(locale) < b.i18n.title.get(locale) ? -1 : 1 })
+			each event in events.sort(function(a, b) { return a.i18n.title.get(locale).replace(/ё/g, 'е') < b.i18n.title.get(locale).replace(/ё/g, 'е') ? -1 : 1 })
 				a.event_item(href='/events/' + (event.sym ? event.sym : event._short_id))
 					.event_poster(class= event.poster_hover ? 'hover' : '')
 						.poster_main(style='background-image: url(' + event.poster + ')')
