@@ -10,7 +10,8 @@ var main = {
 	about: require('./about.js')(Model),
 	contacts: require('./contacts.js')(),
 	options: require('./options.js')(Model),
-	tickets: require('./tickets.js')()
+	tickets: require('./tickets.js')(),
+	static: require('./static.js'),
 };
 
 module.exports = (function() {
@@ -45,6 +46,9 @@ module.exports = (function() {
 
 	router.route('/docs')
 		.get(main.docs.index);
+
+	router.route('/students')
+		.get(main.static.students);
 
 	router.route('/lang/:locale').get(function(req, res) {
 		res.cookie('locale', req.params.locale);

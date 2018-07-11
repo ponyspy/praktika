@@ -1,0 +1,16 @@
+extends layout
+
+block header_meta
+	- var content_title= __('практика') + ' : ' + __('Студентам').toLowerCase()
+	- var content_description= ''
+
+block header_include
+	- var include_css = ['students.css']
+	//- - var include_js = ['students.js']
+
+
+block content
+	.students_title= __('Студентам')
+	.students_content
+		span= 'Студенты могут бесплатно попасть на спектакль «Практики» при наличии такой возможности. Для этого необходимо минимум за 3 дня написать на '
+		a(href='mailto:podushka@praktikatheatre.ru') podushka@praktikatheatre.ru
