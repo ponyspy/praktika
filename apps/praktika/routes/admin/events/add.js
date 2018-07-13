@@ -42,7 +42,7 @@ module.exports = function(Model, Params) {
 
 		event.partners = post.partners;
 
-		event.schedule = post.schedule && post.schedule.reduce(function(arr, schedule) {
+		event.schedule = post.schedule ? post.schedule.reduce(function(arr, schedule) {
 			if (schedule.date != '') {
 				arr.push({
 					date: moment(schedule.date + 'T' + schedule.time.hours + ':' + schedule.time.minutes),
@@ -51,31 +51,31 @@ module.exports = function(Model, Params) {
 			}
 
 			return arr;
-		}, []) || [];
+		}, []) : [];
 
-		event.members = post.members && post.members.map(function(group) {
+		event.members = post.members ? post.members.map(function(group) {
 			return {
 				mode: group.mode,
 				title: [{ 'lg':'ru', 'value': group.title.ru }, { 'lg':'en', 'value': group.title.en }],
 				list: group.list ? group.list.filter(function(item) { return item !== ''; }) : []
 			};
-		}) || [];
+		}) : [];
 
-		event.comments = post.comments && post.comments.map(function(comment) {
+		event.comments = post.comments ? post.comments.map(function(comment) {
 			return {
 				title: [{ 'lg':'ru', 'value': comment.title.ru }, { 'lg':'en', 'value': comment.title.en }],
 				description: [{ 'lg':'ru', 'value': comment.description.ru }, { 'lg':'en', 'value': comment.description.en }],
 				member: comment.member
 			};
-		}) || [];
+		}) : [];
 
-		event.publications = post.publications && post.publications.map(function(publication) {
+		event.publications = post.publications ? post.publications.map(function(publication) {
 			return {
 				title: [{ 'lg':'ru', 'value': publication.title.ru }, { 'lg':'en', 'value': publication.title.en }],
 				description: [{ 'lg':'ru', 'value': publication.description.ru }, { 'lg':'en', 'value': publication.description.en }],
 				link: publication.link
 			};
-		}) || [];
+		}) : [];
 
 
 		var locales = post.en ? ['ru', 'en'] : ['ru'];
