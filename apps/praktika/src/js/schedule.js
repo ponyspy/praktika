@@ -1,5 +1,7 @@
 $(window).on('load hashchange', function(e) {
-	var month_index = location.hash ? location.hash.replace('#', '') : 0;
+	var month_index = location.hash ? location.hash.replace('#', '') : +Cookies.get('month') || 0;
+
+	Cookies.set('month', month_index, { expires: 2 });
 
 	var $month_items = $('.month_item');
 	var $month_item = $month_items.eq(month_index);
