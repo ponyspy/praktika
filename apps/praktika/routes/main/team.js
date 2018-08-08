@@ -7,7 +7,7 @@ module.exports = function(Model) {
 	var Event = Model.Event;
 
 	module.index = function(req, res) {
-		Member.find().where('status').nin(['hidden', 'special']).sort('name.value').exec(function(err, members) {
+		Member.find().where('status').nin(['hidden', 'special']).sort('-date').exec(function(err, members) {
 			Member.distinct('roles').exec(function(err, roles) {
 				res.render('main/team.pug', { members: members, roles: roles });
 			});
