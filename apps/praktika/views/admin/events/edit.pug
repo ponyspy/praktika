@@ -54,6 +54,8 @@ block content
 			+form_comments(event.comments)
 			.form_title Пресса:
 			+form_publications(event.publications)
+			.form_title Видео YouTube / Vimeo:
+			input(type='text', name='video', value=(event.video && event.video.provider) ? (event.video.provider == 'youtube' ? 'https://youtu.be/' + event.video.id : 'https://vimeo.com/' + event.video.id) : '')
 			.form_title Обложка:
 			+form_single_file('poster', event)(accept='image/jpeg,image/png,image/gif')
 			.form_title Обложка [при наведении]:

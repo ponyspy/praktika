@@ -33,6 +33,10 @@ var eventSchema = new Schema({
 	poster_hover: { type: String },
 	pn_alias: { type: String, trim: true },
 	sym: { type: String, trim: true, index: true, unique: true, sparse: true },
+	video: {
+		provider: String,
+		id: String
+	},
 	schedule: [{
 		date: Date,
 		premiere: Boolean

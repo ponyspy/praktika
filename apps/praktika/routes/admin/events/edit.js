@@ -12,6 +12,8 @@ module.exports = function(Model, Params) {
 	var uploadImages = Params.upload.images;
 	var uploadImage = Params.upload.image;
 	var checkNested = Params.locale.checkNested;
+	var youtubeId = Params.helpers.youtubeId;
+	var vimeoId = Params.helpers.vimeoId;
 
 
 	module.index = function(req, res, next) {
@@ -87,6 +89,20 @@ module.exports = function(Model, Params) {
 					link: publication.link
 				};
 			}) : [];
+
+			if (youtubeId(post.video)) {
+				event.video = {
+					provider: 'youtube',
+					id: youtubeId(post.video)
+				}
+			} else if (vimeoId(post.video)) {
+				event.video = {
+					provider: 'vimeo',
+					id: vimeoId(post.video)
+				}
+			} else {
+				event.video = undefined;
+			}
 
 			var locales = post.en ? ['ru', 'en'] : ['ru'];
 

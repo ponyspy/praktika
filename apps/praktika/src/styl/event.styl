@@ -128,15 +128,30 @@ html, body, .maket_block, .over_block
 			margin-bottom 10px
 			&.age:after
 				content '+'
-	.event_description
-		hyphens auto
-		font 14pt/20pt 'PT Serif'
+	.event_content
 		padding-left 20px
 		padding-right 40px
 		box-sizing border-box
 		float left
 		width 80%
 		max-width 800px  // 960px
+		.event_description
+			hyphens auto
+			font 14pt/20pt 'PT Serif'
+		.event_video
+			width 100%
+			margin-top 40px
+			.video_inner
+				position relative
+				padding-bottom 56.25% /* 16:9 */
+				padding-top 0px
+				height 0
+				.video
+					position absolute
+					top 0
+					left 0
+					width 100%
+					height 100%
 
 
 .event_members
@@ -162,6 +177,7 @@ html, body, .maket_block, .over_block
 				box-sizing border-box
 			.group_list
 				padding-left 40px
+				padding-right 120px
 				box-sizing border-box
 				font 12pt/18pt 'PT Mono'
 				float left
