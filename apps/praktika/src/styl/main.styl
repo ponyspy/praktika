@@ -1,9 +1,12 @@
 @media screen and (max-width: 840px)
 	@import 'mobile/_main.styl'
 
-.maket_block.banner .over_block
-	padding-top 80px
-	box-sizing border-box
+.maket_block.banner
+	.over_block
+		padding-top 80px
+		box-sizing border-box
+	.title_block
+		height 260px
 
 html, body, .maket_block, .over_block
 	height 100%
@@ -95,6 +98,30 @@ html, body, .maket_block, .over_block
 			&.swiper-pagination-bullet-active
 				background-color black!important
 
+.content_block
+	margin-left 40px
+	margin-right 40px
+
+.journal_title
+	font 28pt/30pt 'PT Mono Bold'
+	margin-top 40px
+	margin-bottom 40px
+
+.jounral_posts
+	width 680px
+	margin 0 auto
+	.post_item
+		margin-bottom 40px
+		color black
+		text-decoration none
+		display block
+		&:hover
+			opacity 0.7
+		.post_title
+			font 18pt/28pt 'PT Mono Bold'
+			margin-bottom 10px
+		.post_intro
+			font 14pt/20pt 'PT Serif'
 
 .maket_block.white
 	.footer_block
