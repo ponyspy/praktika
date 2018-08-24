@@ -1,8 +1,9 @@
 @media screen and (max-width: 840px)
 	@import 'mobile/_main.styl'
 
-// .maket_block.banner .over_block
-// 	top 80px
+.maket_block.banner .over_block
+	padding-top 80px
+	box-sizing border-box
 
 html, body, .maket_block, .over_block
 	height 100%
@@ -14,6 +15,7 @@ html, body, .maket_block, .over_block
 	padding-right 40px
 	padding-top 20px
 	box-sizing border-box
+	background-color white
 	&.close
 		display none
 	&:hover .banner_close
@@ -37,10 +39,6 @@ html, body, .maket_block, .over_block
 .title_block
 	position absolute
 	height 0
-
-// .over_block
-// 	top 0
-// 	bottom 0
 
 .announcement_block
 	display block
