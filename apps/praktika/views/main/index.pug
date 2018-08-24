@@ -39,5 +39,7 @@ block content
 	.jounral_posts
 		each post, i in new Array(15)
 			a.post_item(href='#')
-				.post_title Post title #{i+1}
-				.post_intro Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				.post_title Масштабы турбулентности
+				if i % 3 == 0
+					img.post_image(src='/cdn/medias/5ab0b6904a16b4dc41d7f178/images/poster.jpeg')
+				.post_intro Что произойдет, если налить молоко в кофе и помешать ложечкой? Может показаться, что ничего особенного: молоко разобьется на хаотичные течения и постепенно растворится в кофе. Но если взглянуть на это с точки зрения физики (и, возможно, в медленной записи), то можно заметить интересную особенность: сперва молоко образует широкие (крупномасштабные) течения, которые затем будут распадаться на все более и более мелкие...
