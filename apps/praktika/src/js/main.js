@@ -41,6 +41,12 @@ $(function() {
 		e.stopPropagation();
 	});
 
+	$('.journal_open').on('click', function() {
+		$('body').animate({
+			'scrollTop': $('.content_block').offset().top - 40
+		});
+	});
+
 	$(document).on('keyup', function(e) {
 		if (e.which == 27) {
 			$('.banner_close').trigger('click');
