@@ -59,13 +59,13 @@ var search = {
 		var regex = new RegExp(search, 'ig');
 		var $options = block.parent().find('option');
 
-		$options.filter('.hide').unwrap().removeClass('hide');
+		$options.filter('.hide').removeAttr('disabled').unwrap().removeClass('hide');
 
 		$options.each(function() {
 			var $this = $(this);
 
 			if (!regex.test($this.text())) {
-				$this.addClass('hide').wrap('<span/>');
+				$this.addClass('hide').attr('disabled', 'disabled').wrap('<span/>');
 			}
 		});
 
@@ -113,7 +113,7 @@ $(function() {
 				$block.removeClass('hidden')
 					.find('.list_item').first().nextAll('.list_item').remove().end().end().end()
 					.find('option').prop('selected', false)
-					.filter('.hide').unwrap().removeClass('hide').end().end()
+					.filter('.hide').removeAttr('disabled').unwrap().removeClass('hide').end().end()
 					.find('textarea').val('').end()
 					.find('.wysiwyg-editor').empty().end()
 					.find('input[type=text]').val('').end()
@@ -128,7 +128,7 @@ $(function() {
 				$block.first().clone()
 					.find('.list_item').first().nextAll('.list_item').remove().end().end().end()
 					.find('option').prop('selected', false)
-					.filter('.hide').unwrap().removeClass('hide').end().end()
+					.filter('.hide').removeAttr('disabled').unwrap().removeClass('hide').end().end()
 					.find('textarea').val('').end()
 					.find('.comment_description, .publication_description').empty().append($editor).children('.editor').each(function() {
 						editor_config.classes = $(this).attr('class');
@@ -154,7 +154,7 @@ $(function() {
 
 			$members.first().clone()
 				.find('option').prop('selected', false)
-				.filter('.hide').unwrap().removeClass('hide').end().end()
+				.filter('.hide').removeAttr('disabled').unwrap().removeClass('hide').end().end()
 				.find('.list_sort').val('').end()
 				.insertAfter($members.last());
 		})
