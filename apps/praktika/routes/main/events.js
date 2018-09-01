@@ -24,7 +24,11 @@ module.exports = function(Model) {
 	module.event = function(req, res, next) {
 		var id = req.params.short_id;
 
-		Event.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden').populate('partners members.list comments.member').exec(function(err, event) {
+		Event.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden')
+			.populate({'path': 'partners', 'match': { 'status': { '$ne': 'hidden' } }, 'select': 'title status _short_id' })
+			.populate({'path': 'members.list', 'match': { 'status': { '$ne': 'hidden' } }, 'select': 'name status _short_id' })
+			.populate({'path': 'comments.member', 'match': { 'status': { '$ne': 'hidden' } }, 'select': 'name status _short_id' })
+			.exec(function(err, event) {
 			if (!event || err) return next(err);
 
 			event.schedule.sort(function(a, b) { return a.date - b.date });
@@ -77,7 +81,7 @@ module.exports = function(Model) {
 			}}}}
 		])
 		.exec(function(err, events) {
-			Member.populate(events, { path: 'members.list', select: 'name _short_id status' }, function(err, events) {
+			Member.populate(events, { path: 'members.list', match: { 'status': { '$ne': 'hidden' } }, select: 'name _short_id status' }, function(err, events) {
 
 				var opts = {
 					__: function() { return res.locals.__.apply(null, arguments); },
