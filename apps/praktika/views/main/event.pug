@@ -72,7 +72,7 @@ block content
 									else
 										a.list_item(href='/team#' + item._short_id)= get_locale(item.name, locale)
 
-		if event.comments && event.comments.length
+		if event.comments && event.comments.length && event.comments[0].member
 			.event_comments: .comments_inner
 				each comment in event.comments
 					if comment.member
