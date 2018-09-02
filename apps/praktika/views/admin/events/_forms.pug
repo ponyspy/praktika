@@ -10,7 +10,9 @@ mixin form_partners(event_partners)
 					input.down_block(type='button', value='▼')
 					select.partner_item
 						each partner in partners
-							option(value=partner._id, selected=event_partner == partner._id.toString())= partner.title.filter(function(locale) { return locale.lg == 'ru' })[0].value
+							- var status_list = { 'hidden': '[*] ', 'special': '[!] ' }
+							- var partner_name = partner.title.filter(function(locale) { return locale.lg == 'ru' })[0].value
+							option(value=partner._id, selected=event_partner == partner._id.toString())= (partner.status != 'base' ? status_list[partner.status] : '') + partner_name
 					input.list_sort_tg(type='button', value='⦿')
 					input.list_sort(type='text', style='display: none; font-size: 9pt;')
 				br
@@ -44,7 +46,8 @@ mixin form_members(groups)
 							input.rm_member(type='button', value='−')
 							select
 								each member in members
-									option(value=member._id, selected=list_item == member._id.toString())= member.i18n.name.get('ru')
+									- var status_list = { 'hidden': '[*] ', 'special': '[!] ' }
+									option(value=member._id, selected=list_item == member._id.toString())=  (member.status != 'base' ? status_list[member.status] : '') + member.i18n.name.get('ru')
 							input.list_sort_tg(type='button', value='⦿')
 							input.list_sort(type='text', style='display: none; font-size: 9pt;')
 					input.add_member(type='button', value='+')
@@ -72,7 +75,8 @@ mixin form_comments(comments)
 				.comment_member
 					select
 						each member in members
-							option(value=member._id, selected=comment.member == member._id.toString())= member.i18n.name.get('ru')
+							- var status_list = { 'hidden': '[*] ', 'special': '[!] ' }
+							option(value=member._id, selected=comment.member == member._id.toString())= (member.status != 'base' ? status_list[member.status] : '') + member.i18n.name.get('ru')
 					input.list_sort_tg(type='button', value='⦿')
 					input.list_sort(type='text', style='display: none; font-size: 9pt;')
 				br

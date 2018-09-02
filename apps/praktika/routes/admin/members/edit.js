@@ -4,6 +4,7 @@ module.exports = function(Model, Params) {
 	var module = {};
 
 	var Member = Model.Member;
+	var Event = Model.Event;
 
 	var uploadImage = Params.upload.image;
 	var uploadImagePreview = Params.upload.image_preview;
@@ -16,7 +17,11 @@ module.exports = function(Model, Params) {
 		Member.findById(id).exec(function(err, member) {
 			if (err) return next(err);
 
-			res.render('admin/members/edit.pug', { member: member });
+			Event.find({ 'members.list': member._id }).exec(function(err, events) {
+				if (err) return next(err);
+
+				res.render('admin/members/edit.pug', { member: member, events: events });
+			});
 		});
 
 	};
