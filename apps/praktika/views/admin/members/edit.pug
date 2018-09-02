@@ -40,7 +40,7 @@ block content
 				input.forward(type="button", value="+")
 			.form_title Фото:
 			+form_single_file('photo', member)(accept='image/jpeg,image/png,image/gif')
-			.form_title Участвует в:
+			.form_title События:
 			each event in events
 				b: a(href='/admin/events/edit/' + event._id)= event.i18n.title.get('ru')
 				br
