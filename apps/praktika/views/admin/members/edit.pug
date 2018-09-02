@@ -42,7 +42,7 @@ block content
 			+form_single_file('photo', member)(accept='image/jpeg,image/png,image/gif')
 			.form_title Участвует в:
 			each event in events
-				b: a(href='/events/' + (event.sym ? event.sym : event._short_id), target='_blank')= event.i18n.title.get('ru')
+				b: a(href='/admin/events/edit/' + event._id)= event.i18n.title.get('ru')
 				br
 			.form_title Статус:
 			select(name='status')
