@@ -41,10 +41,17 @@ $(function() {
 		e.stopPropagation();
 	});
 
-	$('.journal_open').on('click', function() {
+
+	$('.journal_open').on('click', function(e) {
+		if (location.hash !== '') {
+			$(window).trigger('hashchange');
+		}
+	})
+
+	$(window).on('load hashchange', function(e) {
 		$('body').animate({
-			'scrollTop': $('.content_block').offset().top - 40
-		});
+			'scrollTop': $('[anchor="' + location.hash.replace('#', '') + '"]').offset().top - 40
+		}, 400);
 	});
 
 	$(document).on('keyup', function(e) {

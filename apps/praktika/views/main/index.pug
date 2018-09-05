@@ -32,11 +32,11 @@ block over
 			.swiper-pagination.swiper-pagination-white
 			.swiper-pagination.swiper-pagination-black
 
-		.journal_open журнал «Практики»
+		a.journal_open(href='#journal') журнал «Практики»
 
 
 block content
-	.journal_title журнал
+	.journal_title(anchor='journal') журнал
 	.jounral_posts
 		- var arr = new Array(6)
 		each post, i in arr
