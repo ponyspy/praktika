@@ -98,10 +98,6 @@ html, body, .maket_block, .over_block
 			&.swiper-pagination-bullet-active
 				background-color black!important
 
-.content_block
-	margin-left 40px
-	margin-right 40px
-
 .journal_open
 	position absolute
 	color white
@@ -116,16 +112,30 @@ html, body, .maket_block, .over_block
 .journal_title
 	font 28pt/30pt 'PT Mono Bold'
 	margin-top 40px
-	margin-bottom 40px
+	margin-left 40px
+	margin-right 40px
 
 .jounral_posts
-	max-width 680px
-	margin 0 auto
 	.post_item
-		margin-bottom 80px
+		padding-top 40px
+		padding-bottom 40px
 		color black
 		text-decoration none
 		display block
+		background-position center
+		background-repeat no-repeat
+		background-attachment fixed
+		background-size cover
+		&.invert
+			color white
+			background-color black
+			margin-bottom 40px
+			margin-top 40px
+		.post_inner
+			max-width 680px
+			margin 0 auto
+			padding-left 40px
+			padding-right 40px
 		&:hover .post_title
 			opacity 0.7
 		.post_title
