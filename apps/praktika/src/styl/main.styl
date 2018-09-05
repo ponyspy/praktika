@@ -117,6 +117,25 @@ html, body, .maket_block, .over_block
 	margin-left 40px
 	margin-right 40px
 
+.journal_categorys
+	margin-top 15px
+	margin-left 40px
+	margin-right 40px
+	font 14pt/16pt 'PT Mono'
+	margin-bottom 100px
+	.c_item
+		cursor pointer
+		margin-right 20px
+		color black
+		text-decoration none
+		display inline-block
+		margin-bottom 10px
+		&:before
+			content '#'
+		&:hover
+			opacity 0.7
+
+
 .jounral_posts
 	.post_item
 		padding-top 40px
@@ -144,6 +163,19 @@ html, body, .maket_block, .over_block
 			text-transform lowercase
 			font 18pt/28pt 'PT Mono Bold'
 			margin-bottom 10px
+		.post_categorys
+			text-transform lowercase
+			font 12pt/12pt 'PT Mono'
+			margin-bottom 10px
+			.c_item
+				margin-right 10px
+				text-decoration none
+				display inline-block
+				margin-bottom 10px
+				&:before
+					content '#'
+				&:hover
+					opacity 0.7
 		.post_date
 			font 12pt/12pt 'PT Mono'
 			margin-bottom 20px

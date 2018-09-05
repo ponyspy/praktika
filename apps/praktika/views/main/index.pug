@@ -37,11 +37,21 @@ block over
 
 block content
 	.journal_title(anchor='journal') журнал
+	.journal_categorys
+		.c_item новости
+		.c_item дела
+		.c_item до и после
+		.c_item жизнь других
+		.c_item так не пойдет
 	.jounral_posts
 		- var arr = new Array(6)
 		each post, i in arr
 			a.post_item(href='#', class= i == 1 || i == 3 ? 'invert' : '', style= i == 1 ? 'background-image: url(/cdn/events/5aabdc6439901ea428b4a622/images/thumb/1522481313703.jpeg)' : ''): .post_inner
 				.post_title Масштабы турбулентности
+				//- .post_categorys
+					.c_item новости
+					.c_item дела
+					.c_item до и после
 				.post_date 22.07.2018
 				if i % 2 == 0
 					img.post_image(src='/cdn/medias/5ab0b6904a16b4dc41d7f178/images/poster.jpeg')
