@@ -6,49 +6,65 @@ var moment = require('moment');
 module.exports = function() {
 	var module = {};
 
+
 	module.event = function(req, res, next) {
 		var query = querystring.stringify({
-			session: req.app.locals.static_types.pn_token,
-			alias: req.body.alias
+			event_id: req.body.alias
 		});
 
-		request.get('https://api.cultserv.ru/v4/subevents/actual/get?' + query, { timeout: 6000, json: true }, function(err, resp, body) {
-			if (err || body.code != 1) return res.send('err');
+		var options = {
+			url: req.app.locals.static_types.intickets_uri + '?' + query,
+			headers: {
+				'Authorization': req.app.locals.static_types.intickets_key,
+				'Origin': 'https://praktikatheatre.ru'
+				// 'Origin': req.hostname
+			},
+			timeout: 6000,
+			json: true
+		}
 
-			var out = body.message.map(function(event) {
-				return moment(event.date).format('DD.MM.YYYY HH:mm');
+		request.get(options, function(err, resp, body) {
+			if (err || body.message) return res.send('err');
+
+			var out = body.map(function(event) {
+				return moment(event.show_start).format('DD.MM.YYYY HH:mm');
 			});
 
 			res.send(out);
 		});
 	};
 
+
 	module.schedule = function(req, res, next) {
-		var query = querystring.stringify({
-			session: req.app.locals.static_types.pn_token,
-			min_date: req.body.min,
-			max_date: req.body.max,
-			venue_id: req.app.locals.static_types.pn_venue_id,
-			fields: 'subevents,seo'
-		});
+		var options = {
+			url: req.app.locals.static_types.intickets_uri,
+			headers: {
+				'Authorization': req.app.locals.static_types.intickets_key,
+				'Origin': 'https://praktikatheatre.ru'
+				// 'Origin': req.hostname
+			},
+			timeout: 6000,
+			json: true
+		}
 
-		request.get('https://api.cultserv.ru/v4/events/list?' + query, { timeout: 6000, json: true }, function(err, resp, body) {
-			if (err || body.code != 1) return res.send('err');
+		request.get(options, function(err, resp, body) {
+			if (err || body.message) return res.send('err');
 
-			var out = body.message.reduce(function(arr, current) {
-				// if (!current.eticket_possible) return arr.concat('e_none');
+			var out = body.reduce(function(arr, event) {
+				var event_date = moment(event.show_start);
 
-				var dates = current.subevents.map(function(subevent) {
-					return moment(subevent.date).format('DD.MM.YYYY HH:mm');
-				});
+				if (event_date.isBetween(req.body.min, req.body.max, 'minutes', '[]')) {
+					arr.push(event_date.format('DD.MM.YYYY HH:mm'));
+				}
 
-				return arr.concat(dates);
+				return arr;
 
 			}, []);
 
 			res.send(out);
 		});
 	};
+
 
 	module.widget = function(req, res, next) {
 		var query = req.query;
