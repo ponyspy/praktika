@@ -5,7 +5,7 @@ block header_meta
 	- var content_description= ''
 	- var content_images = [medias && medias.length && medias[0].poster]
 	- var content_banner = true
-	- var content_footer_hidden = true
+	- var content_footer_hidden = false
 
 block header_include
 	- var include_libs_css = ['swiper.min.css']
@@ -14,7 +14,7 @@ block header_include
 	- var include_js = ['main.js']
 
 
-block content
+block over
 	.slider_block.swiper-container
 		.swiper-wrapper
 			each media in medias
@@ -31,3 +31,29 @@ block content
 		if medias.length > 1
 			.swiper-pagination.swiper-pagination-white
 			.swiper-pagination.swiper-pagination-black
+
+		a.journal_open(href='#journal') журнал «Практики»
+
+
+block content
+	.journal_title(anchor='journal') журнал
+	.journal_categorys
+		.c_item новости
+		.c_item дела
+		.c_item до и после
+		.c_item жизнь других
+		.c_item так не пойдет
+	.jounral_posts
+		- var arr = new Array(6)
+		each post, i in arr
+			a.post_item(href='#', class= i == 1 || i == 3 ? 'invert' : '', style= i == 1 ? 'background-image: url(/cdn/events/5aabdc6439901ea428b4a622/images/thumb/1522481313703.jpeg)' : ''): .post_inner
+				.post_title Масштабы турбулентности
+				//- .post_categorys
+					.c_item новости
+					.c_item дела
+					.c_item до и после
+				.post_date 22.07.2018
+				if i % 2 == 0
+					img.post_image(src='/cdn/medias/5ab0b6904a16b4dc41d7f178/images/poster.jpeg')
+				if i !== 2
+					.post_intro Что произойдет, если налить молоко в кофе и помешать ложечкой? Может показаться, что ничего особенного: молоко разобьется на хаотичные течения и постепенно растворится в кофе. Но если взглянуть на это с точки зрения физики (и, возможно, в медленной записи), то можно заметить интересную особенность: сперва молоко образует широкие (крупномасштабные) течения, которые затем будут распадаться на все более и более мелкие...

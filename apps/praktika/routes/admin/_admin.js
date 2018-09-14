@@ -12,7 +12,6 @@ var admin = {
 	slides: require('./slides/_slides.js'),
 	members: require('./members/_members.js'),
 	partners: require('./partners/_partners.js'),
-	cv: require('./cv.js'),
 	users: require('./users/_users.js'),
 	schedule: require('./schedule.js'),
 	options: require('./options.js')
@@ -28,10 +27,6 @@ module.exports = (function() {
 	var router = express.Router();
 
 	router.route('/').get(checkAuth, admin.main.index);
-
-	router.route('/cv')
-		.get(checkAuth, admin.cv.edit)
-		.post(checkAuth, admin.cv.edit_form);
 
 	router.use('/events', checkAuth, upload.fields([ { name: 'poster' }, { name: 'poster_hover' } ]), admin.events);
 	router.use('/medias', checkAuth, upload.fields([ { name: 'poster' }, { name: 'video' } ]), admin.medias);

@@ -1,11 +1,15 @@
 @media screen and (max-width: 840px)
 	@import 'mobile/_main.styl'
 
-html, body
-	height 100%
+.maket_block.banner
+	.over_block
+		padding-top 80px
+		box-sizing border-box
+	.title_block
+		height 260px
 
-.maket_block.banner .content_block
-	top 80px
+html, body, .maket_block, .over_block
+	height 100%
 
 .banner_block
 	width 100%
@@ -14,6 +18,7 @@ html, body
 	padding-right 40px
 	padding-top 20px
 	box-sizing border-box
+	background-color white
 	&.close
 		display none
 	&:hover .banner_close
@@ -37,12 +42,6 @@ html, body
 .title_block
 	position absolute
 	height 0
-
-.content_block
-	position absolute
-	width 100%
-	top 0
-	bottom 0
 
 .announcement_block
 	display block
@@ -99,7 +98,103 @@ html, body
 			&.swiper-pagination-bullet-active
 				background-color black!important
 
+.journal_open
+	position absolute
+	color white
+	bottom 40px
+	left 40px
+	z-index 99999
+	font 14pt/16pt 'PT Mono'
+	cursor pointer
+	display block
+	text-decoration none
+	&:hover
+		opacity 0.7
+
+.journal_title
+	font 28pt/30pt 'PT Mono Bold'
+	margin-top 40px
+	margin-left 40px
+	margin-right 40px
+
+.journal_categorys
+	margin-top 15px
+	margin-left 40px
+	margin-right 40px
+	font 14pt/16pt 'PT Mono'
+	margin-bottom 100px
+	.c_item
+		cursor pointer
+		margin-right 20px
+		color black
+		text-decoration none
+		display inline-block
+		margin-bottom 10px
+		&:before
+			content '#'
+		&:hover
+			opacity 0.7
+
+
+.jounral_posts
+	.post_item
+		padding-top 40px
+		padding-bottom 40px
+		color black
+		text-decoration none
+		display block
+		background-position center
+		background-repeat no-repeat
+		background-attachment fixed
+		background-size cover
+		&.invert
+			color white
+			background-color black
+			margin-bottom 40px
+			margin-top 40px
+		.post_inner
+			max-width 680px
+			margin 0 auto
+			padding-left 40px
+			padding-right 40px
+		&:hover .post_title
+			opacity 0.7
+		.post_title
+			text-transform lowercase
+			font 18pt/28pt 'PT Mono Bold'
+			margin-bottom 10px
+		.post_categorys
+			text-transform lowercase
+			font 12pt/12pt 'PT Mono'
+			margin-bottom 10px
+			.c_item
+				margin-right 10px
+				text-decoration none
+				display inline-block
+				margin-bottom 10px
+				&:before
+					content '#'
+				&:hover
+					opacity 0.7
+		.post_date
+			font 12pt/12pt 'PT Mono'
+			margin-bottom 20px
+		.post_image
+			display block
+			width 100%
+			margin-bottom 20px
+		.post_intro
+			font 14pt/20pt 'PT Serif'
+			hyphens auto
+
 .maket_block.white
+	.footer_block
+		.footer_inner
+			border-color black!important
+		img
+			filter: none
+		a
+			color black!important
 	.announcement_block
 		color white
 		&:hover
@@ -113,7 +208,7 @@ html, body
 		display none!important
 	.slider_navigate
 		color white
-	.content_block
+	.over_block
 		background-color black
 	.slide_item
 		color white

@@ -41,6 +41,19 @@ $(function() {
 		e.stopPropagation();
 	});
 
+
+	$('.journal_open').on('click', function(e) {
+		if (location.hash !== '') {
+			$(window).trigger('hashchange');
+		}
+	})
+
+	$(window).on('load hashchange', function(e) {
+		$('body').animate({
+			'scrollTop': $('[anchor="' + location.hash.replace('#', '') + '"]').offset().top - 40
+		}, 400);
+	});
+
 	$(document).on('keyup', function(e) {
 		if (e.which == 27) {
 			$('.banner_close').trigger('click');
