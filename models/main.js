@@ -31,7 +31,7 @@ var eventSchema = new Schema({
 	age: Number,
 	poster: { type: String },
 	poster_hover: { type: String },
-	pn_alias: { type: String, trim: true },
+	w_alias: { type: String, trim: true },
 	sym: { type: String, trim: true, index: true, unique: true, sparse: true },
 	video: {
 		provider: String,
