@@ -16,8 +16,7 @@ module.exports = function() {
 			url: req.app.locals.static_types.intickets_api_uri + '?' + query,
 			headers: {
 				'Authorization': req.app.locals.static_types.intickets_api_key,
-				'Origin': 'https://praktikatheatre.ru'
-				// 'Origin': req.hostname
+				'Origin': req.app.locals.static_types.intickets_origin
 			},
 			timeout: 6000,
 			json: true
@@ -40,8 +39,7 @@ module.exports = function() {
 			url: req.app.locals.static_types.intickets_api_uri,
 			headers: {
 				'Authorization': req.app.locals.static_types.intickets_api_key,
-				'Origin': 'https://praktikatheatre.ru'
-				// 'Origin': req.hostname
+				'Origin': req.app.locals.static_types.intickets_origin
 			},
 			timeout: 6000,
 			json: true
