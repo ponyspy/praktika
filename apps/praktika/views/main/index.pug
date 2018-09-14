@@ -48,10 +48,6 @@ block content
 		each post, i in arr
 			a.post_item(href='#', class= i == 1 || i == 3 ? 'invert' : '', style= i == 1 ? 'background-image: url(/stuff/praktika/beta/t2.jpeg)' : ''): .post_inner
 				.post_title Масштабы турбулентности
-				//- .post_categorys
-					.c_item новости
-					.c_item дела
-					.c_item до и после
 				.post_date 22.07.2018
 				if i % 2 == 0
 					img.post_image(src='/stuff/praktika/beta/t1.jpeg')
