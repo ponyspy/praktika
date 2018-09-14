@@ -62,7 +62,7 @@ module.exports = function(Model) {
 			}}},
 			{ $match: { 'schedule.date': {
 				$gte: month > 0 ? date_start.startOf('month').add(month, 'months').toDate() : moment().toDate(),
-				$lte: date_end.endOf('month').add(month, 'months').toDate()
+				$lte: date_end.add(month, 'months').endOf('months').toDate()
 			}}},
 			{ $sort: { 'schedule.date': 1 } },
 			{ $project: {
