@@ -46,7 +46,15 @@ $(function() {
 		if (location.hash !== '') {
 			$(window).trigger('hashchange');
 		}
-	})
+	});
+
+	$('.c_item').on('click', function(e) {
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			return false;
+		}
+		$('.c_item').removeClass('active').filter(this).addClass('active');
+	});
 
 	$(window).on('load hashchange', function(e) {
 		$('body').animate({
