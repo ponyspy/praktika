@@ -13,9 +13,9 @@ module.exports = function() {
 		});
 
 		var options = {
-			url: req.app.locals.static_types.intickets_uri + '?' + query,
+			url: req.app.locals.static_types.intickets_api_uri + '?' + query,
 			headers: {
-				'Authorization': req.app.locals.static_types.intickets_key,
+				'Authorization': req.app.locals.static_types.intickets_api_key,
 				'Origin': 'https://praktikatheatre.ru'
 				// 'Origin': req.hostname
 			},
@@ -27,7 +27,7 @@ module.exports = function() {
 			if (err || body.message) return res.send('err');
 
 			var out = body.map(function(event) {
-				return moment(event.show_start).format('DD.MM.YYYY HH:mm');
+				return {'show_id': event.show_id,  'date': moment(event.show_start).format('DD.MM.YYYY HH:mm')}
 			});
 
 			res.send(out);
@@ -37,9 +37,9 @@ module.exports = function() {
 
 	module.schedule = function(req, res, next) {
 		var options = {
-			url: req.app.locals.static_types.intickets_uri,
+			url: req.app.locals.static_types.intickets_api_uri,
 			headers: {
-				'Authorization': req.app.locals.static_types.intickets_key,
+				'Authorization': req.app.locals.static_types.intickets_api_key,
 				'Origin': 'https://praktikatheatre.ru'
 				// 'Origin': req.hostname
 			},
@@ -68,9 +68,9 @@ module.exports = function() {
 
 	module.widget = function(req, res, next) {
 		var query = req.query;
-		var ref = req.app.locals.static_types.pn_ref;
+		var uri = req.app.locals.static_types.intickets_widget_uri;
 
-		res.render('main/_widget.pug', { ref: ref, alias: query.alias, date: query.date, time: query.time });
+		res.redirect(uri + '/' + query.show_id)
 	};
 
 	return module;

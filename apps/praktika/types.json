@@ -3,10 +3,10 @@
 	"pn_ref": "praktikatheatre",
 	"pn_venue_id": 9,
 
-	"intickets_uri": "https://demoapi.intickets.ru/widget/v1/shows",
-	"intickets_key": "Bearer 1a8c5942-3599-f2c3-82de-b5eb6654723b",
+	"intickets_api_uri": "https://demoapi.intickets.ru/widget/v1/shows",
+	"intickets_widget_uri": "http://iframeab-pre1602.demo.intickets.ru/node",
+	"intickets_api_key": "Bearer 1a8c5942-3599-f2c3-82de-b5eb6654723b",
 	"intickets_venue_id": "765570",
-	"intickets_widget": "iframeab-pre1602",
 
 	"members_roles": {
 		"actor": { "male": "actor", "female": "actresse" },
