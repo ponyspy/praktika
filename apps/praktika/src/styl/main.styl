@@ -150,25 +150,26 @@ html, body, .maket_block, .over_block
 	.post_item
 		padding-top 40px
 		padding-bottom 40px
-		color black
-		text-decoration none
-		display block
 		background-position center
 		background-repeat no-repeat
 		background-attachment fixed
 		background-size cover
 		&.invert
-			color white
 			background-color black
 			margin-bottom 40px
 			margin-top 40px
+			.post_inner
+				color white
 		.post_inner
 			max-width 680px
 			margin 0 auto
 			padding-left 40px
 			padding-right 40px
-		&:hover .post_title
-			opacity 0.7
+			color black
+			text-decoration none
+			display block
+			&:hover .post_title
+				opacity 0.7
 		.post_title
 			text-transform lowercase
 			font 18pt/28pt 'PT Mono Bold'
