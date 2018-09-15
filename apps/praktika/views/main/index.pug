@@ -44,9 +44,9 @@ block content
 		.c_item жизнь других
 		.c_item так не пойдет
 	.jounral_posts
-		- var arr = new Array(6)
+		- var arr = new Array(8)
 		each post, i in arr
-			a.post_item(href='#', class= i == 1 || i == 3 ? 'invert' : '', style= i == 1 ? 'background-image: url(/stuff/praktika/beta/t2.jpeg)' : ''): .post_inner
+			a.post_item(href='#', class= i == 1 || i == 3 || i == 6 ? 'invert' : '', style= i == 1 ? 'background-image: url(/stuff/praktika/beta/t2.jpeg)' : ''): .post_inner
 				.post_title Масштабы турбулентности
 				.post_date 22.07.2018
 				if i % 2 == 0
