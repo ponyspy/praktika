@@ -199,6 +199,14 @@ html, body, .maket_block, .over_block
 			font 14pt/20pt 'PT Serif'
 			hyphens auto
 
+.post_item.invert ~ .post_item.invert
+	margin-top 0!important
+	margin-bottom 0!important
+
+.post_item.invert ~ .post_item:not(.invert)
+	margin-top 40px!important
+	margin-bottom 40px!important
+
 .maket_block.white
 	.footer_block
 		.footer_inner

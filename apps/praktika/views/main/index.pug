@@ -47,7 +47,7 @@ block content
 	.jounral_posts
 		- var arr = new Array(8)
 		each post, i in arr
-			.post_item(class= i == 0 || i == 3 || i == 6 ? 'invert' : '', style= i == 0 ? 'background-image: url(/stuff/praktika/beta/t2.jpeg)' : ''): a.post_inner(href='#')
+			.post_item(class= i == 0 || i == 3 || i == 4 || i == 6 ? 'invert' : '', style= i == 0 ? 'background-image: url(/stuff/praktika/beta/t2.jpeg)' : ''): a.post_inner(href='#')
 				.post_title Масштабы турбулентности
 				.post_date 22.07.2018
 				if i % 2 != 0
