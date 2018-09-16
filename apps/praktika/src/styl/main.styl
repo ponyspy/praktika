@@ -111,31 +111,41 @@ html, body, .maket_block, .over_block
 	&:hover
 		opacity 0.7
 
-.journal_title
-	font 28pt/30pt 'PT Mono Bold'
-	margin-top 40px
-	margin-left 40px
-	margin-right 40px
+.journal_header
+	padding-top 40px
+	padding-bottom 120px
+	background-position center
+	background-repeat no-repeat
+	background-attachment fixed
+	background-size cover
+	&.invert
+		color white
+		background-color black
+		.c_item
+			color white!important
+	.journal_title
+		font 28pt/30pt 'PT Mono Bold'
+		margin-left 40px
+		margin-right 40px
 
-.journal_categorys
-	margin-top 20px
-	margin-left 40px
-	margin-right 40px
-	font 14pt/16pt 'PT Mono'
-	margin-bottom 120px
-	.c_item
-		cursor pointer
-		margin-right 20px
-		color black
-		text-decoration none
-		display inline-block
-		margin-bottom 10px
-		&.active
-			font 14pt/16pt 'PT Mono Bold'
-		&:before
-			content '#'
-		&:hover
-			opacity 0.7
+	.journal_categorys
+		margin-top 20px
+		margin-left 40px
+		margin-right 40px
+		font 14pt/16pt 'PT Mono'
+		.c_item
+			cursor pointer
+			margin-right 20px
+			color black
+			text-decoration none
+			display inline-block
+			margin-bottom 10px
+			&.active
+				font 14pt/16pt 'PT Mono Bold'
+			&:before
+				content '#'
+			&:hover
+				opacity 0.7
 
 .journal_more
 	font 14pt/16pt 'PT Mono'
@@ -156,8 +166,12 @@ html, body, .maket_block, .over_block
 		background-size cover
 		&.invert
 			background-color black
+			padding-top 80px
+			padding-bottom 80px
 			margin-bottom 40px
 			margin-top 40px
+			&:first-child
+				margin-top 0!important
 			.post_inner
 				color white
 		.post_inner
