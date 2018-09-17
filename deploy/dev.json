@@ -1,7 +1,7 @@
 {
 	"apps": [
 		{
-			"name": "praktika",
+			"name": "praktika_beta",
 			"script": "./apps/praktika/app.js",
 			"exec_mode": "fork",
 			"watch": ["apps/praktika/app.js", "apps/praktika/models", "apps/praktika/routes", "locales/ru.json", "locales/en.json"],
@@ -11,9 +11,24 @@
 			"restart_delay" : 2000,
 			"kill_timeout": 1600,
 			"env": {
-				"PORT": 3000,
+				"PORT": 3001,
 				"NODE_ENV": "development"
 			}
 		},
+		// {
+		// 	"name": "praktika",
+		// 	"script": "./apps/praktika/app.js",
+		// 	"exec_mode": "fork",
+		// 	"watch": ["apps/praktika/app.js", "apps/praktika/models", "apps/praktika/routes", "locales/ru.json", "locales/en.json"],
+		// 	"min_uptime": "300s",
+		// 	"autorestart": false,
+		// 	"max_restarts": 1,
+		// 	"restart_delay" : 2000,
+		// 	"kill_timeout": 1600,
+		// 	"env": {
+		// 		"PORT": 3000,
+		// 		"NODE_ENV": "development"
+		// 	}
+		// },
 	]
 }
