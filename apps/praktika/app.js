@@ -1,6 +1,6 @@
 global.__app_name = 'praktika';
-global.__glob_root = '/var/praktika';
-global.__app_root = '/var/praktika/apps/praktika';
+global.__glob_root = __dirname.replace('/apps/' + __app_name, '');
+global.__app_root = __dirname;
 
 var express = require('express'),
 		bodyParser = require('body-parser'),

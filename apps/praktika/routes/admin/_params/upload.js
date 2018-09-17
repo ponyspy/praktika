@@ -6,8 +6,8 @@ var fs = require('fs');
 var path = require('path');
 var mime = require('mime');
 
-var public_path = __glob_root + '/public';
-var preview_path = __glob_root + '/public/preview/';
+var public_path = '/var/praktika/public';
+var preview_path = '/var/praktika/public/preview/';
 
 
 module.exports.file = function(obj, base_path, field_name, file, del_file, callback) {
