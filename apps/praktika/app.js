@@ -25,7 +25,6 @@ app.set('view engine', 'pug');
 // app.use(express.static(__glob_root + '/public'));  // remove
 if (process.env.NODE_ENV != 'production') {
 	app.use(express.static(__glob_root + '/public'));
-	app.use(express.static('/var/praktika/public'));
 	app.locals.pretty = true;
 	app.set('json spaces', 2);
 }
