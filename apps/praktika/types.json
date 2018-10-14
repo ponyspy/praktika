@@ -1,9 +1,4 @@
 {
-	// "intickets_api_uri": "https://demoapi.intickets.ru/widget/v1/shows",
-	// "intickets_widget_uri": "http://iframeab-pre1602.demo.intickets.ru/node",
-	// "intickets_api_key": "Bearer 1a8c5942-3599-f2c3-82de-b5eb6654723b",
-	// "intickets_origin": "https://praktikatheatre.ru",
-
 	"intickets_api_uri": "https://api.intickets.ru/widget/v1/shows",
 	"intickets_widget_uri": "http://iframeab-pre2094.intickets.ru/node",
 	"intickets_api_key": "Bearer 86fa5e31-ffed-e850-40fc-79f292ca247e",
