@@ -44,7 +44,7 @@ $(window).on('load hashchange', function(e) {
 				var $this = $(this);
 
 				var sh_item = data.filter(function(item) {
-					return item.date == $this.attr('schedule-date');
+					return item.event_id == $this.attr('schedule-alias') && item.date == $this.attr('schedule-date');
 				});
 
 				sh_item.length > 0
