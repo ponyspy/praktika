@@ -52,7 +52,7 @@ module.exports = function() {
 				var event_date = moment(event.show_start);
 
 				if (event_date.isBetween(req.body.min, req.body.max, 'minutes', '[]')) {
-					arr.push({'show_id': event.show_id, 'date': event_date.format('DD.MM.YYYY HH:mm')});
+					arr.push({'show_id': event.show_id, 'event_id': event.event_id, 'date': event_date.format('DD.MM.YYYY HH:mm')});
 				}
 
 				return arr;
