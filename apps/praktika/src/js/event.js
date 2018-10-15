@@ -32,7 +32,7 @@ $(function() {
 			var $this = $(this);
 
 			var sh_item = data.filter(function(item) {
-				return !item.soldout && !item.cost && item.date == $this.attr('schedule-date');
+				return !item.soldout && item.cost && item.date == $this.attr('schedule-date');
 			});
 
 			sh_item.length > 0
