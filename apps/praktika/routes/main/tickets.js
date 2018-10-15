@@ -26,7 +26,7 @@ module.exports = function() {
 			if (err || body.message) return res.send('err');
 
 			var out = body.map(function(event) {
-				return {'soldout': event.sold_out, 'show_id': event.show_id,  'date': moment(event.show_start).format('DD.MM.YYYY HH:mm')};
+				return {'soldout': event.sold_out, 'cost': event.cost, 'show_id': event.show_id,  'date': moment(event.show_start).format('DD.MM.YYYY HH:mm')};
 			});
 
 			res.send(out);
@@ -52,7 +52,7 @@ module.exports = function() {
 				var event_date = moment(event.show_start);
 
 				if (event_date.isBetween(req.body.min, req.body.max, 'minutes', '[]')) {
-					arr.push({'soldout': event.sold_out, 'show_id': event.show_id, 'event_id': event.event_id, 'date': event_date.format('DD.MM.YYYY HH:mm')});
+					arr.push({'soldout': event.sold_out, 'cost': event.cost, 'show_id': event.show_id, 'event_id': event.event_id, 'date': event_date.format('DD.MM.YYYY HH:mm')});
 				}
 
 				return arr;
