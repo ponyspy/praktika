@@ -1,6 +1,6 @@
 {
 	"intickets_api_uri": "https://api.intickets.ru/widget/v1/shows",
-	"intickets_widget_uri": "http://iframeab-pre2094.intickets.ru/node",
+	"intickets_widget_uri": "https://iframeab-pre2094.intickets.ru",
 	"intickets_api_key": "Bearer 86fa5e31-ffed-e850-40fc-79f292ca247e",
 	"intickets_origin": "https://praktikatheatre.ru",
 
