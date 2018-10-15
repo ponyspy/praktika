@@ -65,11 +65,11 @@ module.exports = function() {
 
 
 	module.widget = function(req, res, next) {
-		var query = req.query;
 		var uri = req.app.locals.static_types.intickets_widget_uri;
 
-		res.redirect(uri + '/' + query.show_id);
+		res.redirect(uri + '/node/' + req.query.show_id);
 	};
+
 
 	return module;
 };
