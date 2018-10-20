@@ -22,18 +22,23 @@ module.exports = function(Model) {
 	};
 
 	module.event = function(req, res, next) {
+		var user_id = req.session.user_id;
 		var id = req.params.short_id;
 
-		Event.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden')
+		var Query = user_id
+			? Work.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] })
+			: Work.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden');
+
+		Query
 			.populate({'path': 'partners', 'match': { 'status': { '$ne': 'hidden' } }, 'select': 'title status _short_id' })
 			.populate({'path': 'members.list', 'match': { 'status': { '$ne': 'hidden' } }, 'select': 'name status _short_id' })
 			.populate({'path': 'comments.member', 'match': { 'status': { '$ne': 'hidden' } }, 'select': 'name status photo_preview _short_id' })
 			.exec(function(err, event) {
 			if (!event || err) return next(err);
 
-			event.schedule.sort(function(a, b) { return a.date - b.date });
+			event.schedule.sort(function(a, b) { return a.date - b.date; });
 
-			var check_schedule = event.pn_alias && event.schedule.length > 0 && event.schedule.some(function(item) {
+			var check_schedule = event.w_alias && event.schedule.length > 0 && event.schedule.some(function(item) {
 				return moment(item.date).isAfter();
 			});
 
