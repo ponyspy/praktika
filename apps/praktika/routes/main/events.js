@@ -30,7 +30,7 @@ module.exports = function(Model) {
 			: Event.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden');
 
 		Query
-			.populate({'path': 'partners', 'match': { 'status': { '$ne': 'hidden' } }, 'select': 'title status _short_id' })
+			.populate({'path': 'partners', 'match': { 'status': { '$ne': 'hidden' } }, 'select': 'title status _short_id link logo' })
 			.populate({'path': 'members.list', 'match': { 'status': { '$ne': 'hidden' } }, 'select': 'name status _short_id' })
 			.populate({'path': 'comments.member', 'match': { 'status': { '$ne': 'hidden' } }, 'select': 'name status photo_preview _short_id' })
 			.exec(function(err, event) {
