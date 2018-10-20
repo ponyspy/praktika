@@ -26,8 +26,8 @@ module.exports = function(Model) {
 		var id = req.params.short_id;
 
 		var Query = user_id
-			? Work.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] })
-			: Work.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden');
+			? Event.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] })
+			: Event.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden');
 
 		Query
 			.populate({'path': 'partners', 'match': { 'status': { '$ne': 'hidden' } }, 'select': 'title status _short_id' })
