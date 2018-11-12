@@ -1,7 +1,9 @@
 {
-	"pn_token": "praktika83492814",
-	"pn_ref": "praktikatheatre",
-	"pn_venue_id": 9,
+	"intickets_api_uri": "https://api.intickets.ru/widget/v1/shows",
+	"intickets_widget_uri": "https://iframeab-pre2094.intickets.ru",
+	"intickets_api_key": "Bearer 86fa5e31-ffed-e850-40fc-79f292ca247e",
+	"intickets_origin": "https://praktikatheatre.ru",
+
 	"members_roles": {
 		"actor": { "male": "actor", "female": "actresse" },
 		"director": { "male": "director", "female": "director" },

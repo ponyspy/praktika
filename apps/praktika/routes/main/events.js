@@ -38,7 +38,7 @@ module.exports = function(Model) {
 
 			event.schedule.sort(function(a, b) { return a.date - b.date; });
 
-			var check_schedule = event.pn_alias && event.schedule.length > 0 && event.schedule.some(function(item) {
+			var check_schedule = event.w_alias && event.schedule.length > 0 && event.schedule.some(function(item) {
 				return moment(item.date).isAfter();
 			});
 
@@ -77,7 +77,7 @@ module.exports = function(Model) {
 			{ $project: {
 				sym:   1, _short_id: 1, age:    1, schedule: 1,
 				title: 1, s_title:   1, poster: 1, members:  1,
-				poster_hover: 1, pn_alias: 1
+				poster_hover: 1, w_alias: 1
 			}},
 			{ $addFields: { 'members': { $filter: {
 				input: '$members',

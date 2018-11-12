@@ -43,8 +43,12 @@ $(window).on('load hashchange', function(e) {
 			$('.event_ticket').each(function() {
 				var $this = $(this);
 
-				data.indexOf($this.attr('schedule-date')) != -1
-					? $this.addClass('active')
+				var sh_item = data.filter(function(item) {
+					return !item.soldout && item.cost && item.event_id == $this.attr('schedule-alias') && item.date == $this.attr('schedule-date');
+				});
+
+				sh_item.length > 0
+					? $this.addClass('active').attr('schedule-show', sh_item[0].show_id)
 					: $this.addClass('soldout').text($this.attr('soldout'));
 			})
 		});
@@ -110,9 +114,7 @@ $(function() {
 			var $this = $(this);
 			var schedule_date = $this.attr('schedule-date').split(' ');
 			var query = $.param({
-				alias: $this.attr('schedule-alias'),
-				date: schedule_date[0],
-				time: schedule_date[1]
+				show_id: $this.attr('schedule-show'),
 			});
 
 			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {

@@ -31,26 +31,26 @@ $(function() {
 		$schedule_items.each(function() {
 			var $this = $(this);
 
-			data.indexOf($this.attr('schedule-date')) != -1
-				? $this.addClass('active')
-				: $this.addClass('soldout').children('.item_time').text($this.attr('soldout'));
+			var sh_item = data.filter(function(item) {
+				return !item.soldout && item.cost && item.date == $this.attr('schedule-date');
+			});
 
+			sh_item.length > 0
+				? $this.addClass('active').attr('schedule-show', sh_item[0].show_id)
+				: $this.addClass('soldout').children('.item_time').text($this.attr('soldout'));
 		});
 
 		$schedule_items.filter('.soldout').length == $schedule_items.length
 			? $schedule_all.addClass('soldout').children('.item_ticket').text($schedule_all.attr('soldout'))
-			: $schedule_all.addClass('active');
+			: $schedule_all.addClass('active').attr('schedule-show', $schedule_all.attr('schedule-alias'));
 
 	});
 
 	$(document).on('click', '.schedule_item.active', function(e) {
 		var $this = $(this);
-		var schedule_alias = $this.attr('schedule-alias');
-		var schedule_date = $this.attr('schedule-date');
+		var schedule_show = $this.attr('schedule-show');
 		var query = $.param({
-			alias: schedule_alias,
-			date: schedule_date ? schedule_date.split(' ')[0] : 'null',
-			time: schedule_date ? schedule_date.split(' ')[1] : 'null'
+			show_id: schedule_show,
 		});
 
 		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {

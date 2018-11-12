@@ -3,10 +3,10 @@
 		.list_item
 			a.item_rm.event(href='#', id=event._id) -- удалить
 			a.item_title(href='/admin/events/edit/' + event._id, class=event.status)= (event.i18n.title.get('ru') || '!!! ПУСТОЕ ПОЛЕ !!!')
-			if event.pn_alias
+			if event.w_alias
 				span.item_schedule
 					span= ' --> '
-					a(href='#', event_id=event._id, alias=event.pn_alias) обновить
+					a(href='#', event_id=event._id, alias=event.w_alias) обновить
 			span.item_preview
 				span= ' --> '
 				a(href='/events/' + (event.sym ? event.sym : event._short_id), target='_blank') превью

@@ -51,7 +51,7 @@ module.exports = function(Model, Params) {
 			event.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 			event.age = post.age;
 			event.sym = post.sym ? post.sym : undefined;
-			event.pn_alias = post.pn_alias ? post.pn_alias : undefined;
+			event.w_alias = post.w_alias ? post.w_alias : undefined;
 
 			event.partners = post.partners;
 
