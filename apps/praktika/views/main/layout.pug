@@ -4,43 +4,42 @@ html
 		include header
 	body
 		.maket_block(class=content_style, class=content_banner ? 'banner' : '')
+			if content_banner
+				.banner_block
+					a.banner_logo(href='https://www.mos.ru/kultura', target='_blank'): img(src='/stuff/praktika/logo/logo_depcult.svg')
+					.banner_close
 
 			.search_block
 				.search_close
 				input.search_input(type='text', placeholder= __('поиск') + '...')
 				.search_results
 
-			.title_block
-				if content_banner
-					.banner_block
-						a.banner_logo(href='https://www.mos.ru/kultura', target='_blank'): img(src='/stuff/praktika/logo/logo_depcult.svg')
-						.banner_close
-				.title_inner
-					.panel_block
-						.menu_block
-							.menu_open
-							if (session && session.user_id)
-								span.stargazer_block
-									a(href='/auth') ✦
-									if content_event_id
-										a(href='/admin/events/edit/' + content_event_id, target='_blank') ✑
-									a(href='/auth/logout') ⇤
-							.menu_items
-								.items_main
-									a.menu_item(href='/schedule')= __('билеты')
-									a.menu_item(href='/events')= __('репертуар')
-									a.menu_item(href='/contacts')= __('контакты')
-								.items_drop
-									a.menu_item(href='/about')= __('о театре')
-									a.menu_item(href='/team')= __('команда')
-						.nav_block
-							a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
-							if locale == 'ru'
-								a.lang.en(href='/lang/en') eng
-							else
-								a.lang.ru(href='/lang/ru') rus
-						.logo_spacer
-					a(href='/'): img.logo(src='/stuff/praktika/logo/logo_praktika.svg')
+			.title_block: .title_inner
+				.panel_block
+					.menu_block
+						.menu_open
+						if (session && session.user_id)
+							span.stargazer_block
+								a(href='/auth') ✦
+								if content_event_id
+									a(href='/admin/events/edit/' + content_event_id, target='_blank') ✑
+								a(href='/auth/logout') ⇤
+						.menu_items
+							.items_main
+								a.menu_item(href='/schedule')= __('билеты')
+								a.menu_item(href='/events')= __('репертуар')
+								a.menu_item(href='/contacts')= __('контакты')
+							.items_drop
+								a.menu_item(href='/about')= __('о театре')
+								a.menu_item(href='/team')= __('команда')
+					.nav_block
+						a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
+						if locale == 'ru'
+							a.lang.en(href='/lang/en') eng
+						else
+							a.lang.ru(href='/lang/ru') rus
+					.logo_spacer
+				a(href='/'): img.logo(src='/stuff/praktika/logo/logo_praktika.svg')
 
 			.over_block
 				block over
