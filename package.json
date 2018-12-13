@@ -41,6 +41,7 @@
     "gulp-util": "^3.0.8",
     "jshint": "^2.9.7",
     "jshint-stylish": "^2.1.0",
+    "natives": "^1.1.6",
     "pump": "^3.0.0",
     "run-sequence": "^2.2.1"
   },
