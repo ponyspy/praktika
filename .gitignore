@@ -6,5 +6,5 @@
 /public/stuff*
 /public/cdn*
 /public/robots.txt
-dump.tar
+/dump.tar
 .DS_Store
