@@ -1,8 +1,11 @@
-var rimraf = require('rimraf');
-var pump = require('pump');
+var rimraf = require('rimraf'),
+		pump = require('pump'),
+		colors = require('ansi-colors'),
+		argv = require('minimist')(process.argv.slice(2)),
+		log = require('fancy-log');
 
 var gulp = require('gulp'),
-		util = require('gulp-util'),
+		noop = require('gulp-noop'),
 		changed = require('gulp-changed'),
 		cache = require('gulp-cached'),
 		progeny = require('gulp-progeny'),
@@ -18,19 +21,19 @@ var gulp = require('gulp'),
 // ENV Block
 
 
-var Prod = util.env.p || util.env.prod;
-var Lint = util.env.l || util.env.lint;
-var Maps = util.env.m || util.env.maps;
-var Force = util.env.f || util.env.force;
-var Reset = util.env.reset;
+var Prod = argv.p || argv.prod;
+var Lint = argv.l || argv.lint;
+var Maps = argv.m || argv.maps;
+var Force = argv.f || argv.force;
+var Reset = argv.reset;
 
-if (!Force && !Reset) util.log([
+if (!Force && !Reset) log([
 	'Lint ',
-	(Lint ? util.colors.green('enabled') : util.colors.red('disabled')),
+	(Lint ? colors.green('enabled') : colors.red('disabled')),
 	', sourcemaps ',
-	(Maps ? util.colors.green('enabled') : util.colors.yellow('disabled')),
+	(Maps ? colors.green('enabled') : colors.yellow('disabled')),
 	', build in ',
-	(Prod ? util.colors.underline.green('production') : util.colors.underline.yellow('development')),
+	(Prod ? colors.underline.green('production') : colors.underline.yellow('development')),
 	' mode.',
 ].join(''));
 
@@ -39,8 +42,8 @@ if (!Force && !Reset) util.log([
 
 
 var build_flags = {
-	'-p --prod': 'Builds in ' + util.colors.underline.green('production') + ' mode (minification, etc).',
-	'-d --dev': 'Builds in ' + util.colors.underline.yellow('development') + ' mode (default).',
+	'-p --prod': 'Builds in ' + colors.underline.green('production') + ' mode (minification, etc).',
+	'-d --dev': 'Builds in ' + colors.underline.yellow('development') + ' mode (default).',
 	'-l --lint': 'Lint JavaScript code.',
 	'-m --maps': 'Generate sourcemaps files.'
 };
@@ -55,25 +58,25 @@ var clean_flags = {
 
 
 var errorLogger = function(err) {
-	if (err) util.log([
+	if (err) log([
 		'',
-		util.colors.bold.inverse.red('---------- ERROR MESSAGE START ----------'),
+		colors.bold.inverse.red('---------- ERROR MESSAGE START ----------'),
 		'',
-		(util.colors.red(err.name) + ' in ' + util.colors.yellow(err.plugin)),
+		(colors.red(err.name) + ' in ' + colors.yellow(err.plugin)),
 		'',
 		err.message,
-		util.colors.bold.inverse.red('----------- ERROR MESSAGE END -----------'),
+		colors.bold.inverse.red('----------- ERROR MESSAGE END -----------'),
 		''
 	].join('\n'));
 };
 
 var watchLogger = function(e_type) {
 	return function(path, stats) {
-		util.log([
+		log([
 			'File ',
-			util.colors.green(path.replace(__dirname + '/', '')),
+			colors.green(path.replace(__dirname + '/', '')),
 			' was ',
-			util.colors.yellow(e_type),
+			colors.yellow(e_type),
 			', running tasks...'
 		].join(''));
 	};
@@ -136,13 +139,13 @@ function styles() {
 			cache('styles'),
 			progeny(),
 			filter(['**/*.styl', '!**/_*.styl']),
-			Maps ? sourcemaps.init({ loadMaps: true }) : util.noop(),
+			Maps ? sourcemaps.init({ loadMaps: true }) : noop(),
 			stylus({ compress: Prod }),
 			autoprefixer({
 				browsers: ['last 12 versions'],
 				cascade: !Prod
 			}),
-			Maps ? sourcemaps.write('.') : util.noop(),
+			Maps ? sourcemaps.write('.') : noop(),
 			rename(function(path) { path.dirname = path.dirname.replace('/src/styl', '/css'); }),
 		gulp.dest(paths.styles.dest)
 	], errorLogger);
@@ -152,11 +155,11 @@ function scripts() {
 	return pump([
 		gulp.src(paths.scripts.src),
 			cache('scripts'),
-			Lint ? jshint({ laxbreak: true, expr: true, '-W041': false }) : util.noop(),
-			Lint ? jshint.reporter('jshint-stylish') : util.noop(),
-			Maps ? sourcemaps.init({ loadMaps: true }) : util.noop(),
-			Prod ? uglify() : util.noop(),
-			Maps ? sourcemaps.write('.', { mapSources: function(path) { return path.split('/').slice(-1)[0]; } }) : util.noop(),
+			Lint ? jshint({ laxbreak: true, expr: true, '-W041': false }) : noop(),
+			Lint ? jshint.reporter('jshint-stylish') : noop(),
+			Maps ? sourcemaps.init({ loadMaps: true }) : noop(),
+			Prod ? uglify() : noop(),
+			Maps ? sourcemaps.write('.', { mapSources: function(path) { return path.split('/').slice(-1)[0]; } }) : noop(),
 			rename(function(path) { path.dirname = path.dirname.replace('/src/js', '/js'); }),
 		gulp.dest(paths.scripts.dest)
 	], errorLogger);
