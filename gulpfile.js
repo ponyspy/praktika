@@ -1,5 +1,4 @@
 var rimraf = require('rimraf');
-var runSequence = require('run-sequence');
 var pump = require('pump');
 
 var gulp = require('gulp'),
@@ -36,23 +35,19 @@ if (!Force && !Reset) util.log([
 ].join(''));
 
 
-// Decorators Block
+// Flags Block
 
 
-var _ = function(flags, description, task) {
-	task.description = description;
-	task.flags = {};
+var build_flags = {
+	'-p --prod': 'Builds in ' + util.colors.underline.green('production') + ' mode (minification, etc).',
+	'-d --dev': 'Builds in ' + util.colors.underline.yellow('development') + ' mode (default).',
+	'-l --lint': 'Lint JavaScript code.',
+	'-m --maps': 'Generate sourcemaps files.'
+};
 
-	if (flags && flags.length) flags.forEach(function(flag) {
-		if (flag == 'prod') task.flags['-p --prod'] = 'Builds in ' + util.colors.underline.green('production') + ' mode (minification, etc).';
-		if (flag == 'dev') task.flags['-d --dev'] = 'Builds in ' + util.colors.underline.yellow('development') + ' mode (default).';
-		if (flag == 'lint') task.flags['-l --lint']	= 'Lint JavaScript code.';
-		if (flag == 'maps') task.flags['-m --maps']	= 'Generate sourcemaps files.';
-		if (flag == 'force') task.flags['-f --force']	= 'Force clean public data.';
-		if (flag == 'reset') task.flags['--reset']	= 'Reset project to initial state.';
-	});
-
-	return task;
+var clean_flags = {
+	'-f --force': 'Force clean public data.',
+	'--reset': 'Reset project to initial state.'
 };
 
 
@@ -72,21 +67,21 @@ var errorLogger = function(err) {
 	].join('\n'));
 };
 
-var watchLogger = function(event) {
-	util.log([
-		'File ',
-		util.colors.green(event.path.replace(__dirname + '/', '')),
-		' was ',
-		util.colors.yellow(event.type),
-		', running tasks...'
-	].join(''));
+var watchLogger = function(e_type) {
+	return function(path, stats) {
+		util.log([
+			'File ',
+			util.colors.green(path.replace(__dirname + '/', '')),
+			' was ',
+			util.colors.yellow(e_type),
+			', running tasks...'
+		].join(''));
+	};
 };
 
-var cacheClean = function(event) {
-	if (event.type === 'deleted') {
-		delete cache.caches.scripts[event.path];
-		delete cache.caches.stylus[event.path];
-	}
+var cacheClean = function(path) {
+	delete cache.caches.scripts[path];
+	delete cache.caches.styles[path];
 };
 
 
@@ -94,7 +89,7 @@ var cacheClean = function(event) {
 
 
 var paths = {
-	stylus: {
+	styles: {
 		src: 'apps/**/src/styl/**/*.styl',
 		dest: 'public/build'
 	},
@@ -117,28 +112,28 @@ var paths = {
 // Tasks Block
 
 
-gulp.task('clean', _(['force', 'reset'], 'Clean project folders', function(callback) {
+function clean(callback) {
 	var clean = paths.clean.base;
 
 	if (Force) clean = clean.concat(paths.clean.force);
 	if (Reset) clean = [].concat(paths.clean.base, paths.clean.force, paths.clean.reset);
 
 	return rimraf('{' + clean.join(',') + '}', callback);
-}));
+}
 
-gulp.task('build:stuff', _(null, 'Build Stuff files', function() {
+function stuff() {
 	return pump([
 		gulp.src(paths.stuff.src),
 			changed(paths.stuff.dest),
 			rename(function(path) { path.dirname = path.dirname.replace('/stuff', ''); }),
 		gulp.dest(paths.stuff.dest)
 	], errorLogger);
-}));
+}
 
-gulp.task('build:stylus', _(['prod', 'dev', 'maps'], 'Build Stylus', function() {
+function styles() {
 	return pump([
-		gulp.src(paths.stylus.src),
-			cache('stylus'),
+		gulp.src(paths.styles.src),
+			cache('styles'),
 			progeny(),
 			filter(['**/*.styl', '!**/_*.styl']),
 			Maps ? sourcemaps.init({ loadMaps: true }) : util.noop(),
@@ -149,11 +144,11 @@ gulp.task('build:stylus', _(['prod', 'dev', 'maps'], 'Build Stylus', function() 
 			}),
 			Maps ? sourcemaps.write('.') : util.noop(),
 			rename(function(path) { path.dirname = path.dirname.replace('/src/styl', '/css'); }),
-		gulp.dest(paths.stylus.dest)
+		gulp.dest(paths.styles.dest)
 	], errorLogger);
-}));
+}
 
-gulp.task('build:scripts', _(['prod', 'dev', 'lint', 'maps'], 'Build JavaScript', function() {
+function scripts() {
 	return pump([
 		gulp.src(paths.scripts.src),
 			cache('scripts'),
@@ -165,22 +160,44 @@ gulp.task('build:scripts', _(['prod', 'dev', 'lint', 'maps'], 'Build JavaScript'
 			rename(function(path) { path.dirname = path.dirname.replace('/src/js', '/js'); }),
 		gulp.dest(paths.scripts.dest)
 	], errorLogger);
-}));
+}
 
-gulp.task('watch', _(null, 'Watch files and build on change', function() {
-	gulp.watch(paths.scripts.src, ['build:scripts']).on('change', cacheClean).on('change', watchLogger);
-	gulp.watch(paths.stylus.src, ['build:stylus']).on('change', cacheClean).on('change', watchLogger);
-	gulp.watch(paths.stuff.src, ['build:stuff']).on('change', watchLogger);
-}));
+function watch() {
+	gulp.watch(paths.scripts.src, scripts)
+			.on('unlink', cacheClean)
+			.on('change', watchLogger('changed'))
+			.on('add', watchLogger('added'))
+			.on('unlink', watchLogger('removed'));
+
+	gulp.watch(paths.styles.src, styles)
+			.on('unlink', cacheClean)
+			.on('change', watchLogger('changed'))
+			.on('add', watchLogger('added'))
+			.on('unlink', watchLogger('removed'));
+
+	gulp.watch(paths.stuff.src, stuff)
+			.on('change', watchLogger('changed'))
+			.on('add', watchLogger('added'))
+			.on('unlink', watchLogger('removed'));
+}
 
 
-// Run Tasks Block
+// Exports Block
 
 
-gulp.task('build', _(null, 'Build all...', function(callback) {
-	runSequence('clean', ['build:stylus', 'build:scripts', 'build:stuff'], callback);
-}));
+var task_clean = clean;
+		clean.description = 'Clean project folders';
+		clean.flags = clean_flags;
 
-gulp.task('default', _(null, 'Build and start watching', function(callback) {
-	runSequence('clean', ['build:stylus', 'build:scripts', 'build:stuff'], 'watch', callback);
-}));
+var task_build = gulp.series(clean, gulp.parallel(styles, scripts, stuff));
+		task_build.description = 'Build all...';
+		task_build.flags = build_flags;
+
+var task_default = gulp.series(clean, gulp.parallel(styles, scripts, stuff), watch);
+		task_default.description = 'Build and start watching';
+		task_default.flags = build_flags;
+
+
+exports.build = task_build;
+exports.default = task_default;
+exports.clean = task_clean;
