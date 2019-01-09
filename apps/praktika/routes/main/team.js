@@ -9,6 +9,12 @@ module.exports = function(Model) {
 	module.index = function(req, res) {
 		Member.find().where('status').nin(['hidden', 'special']).sort('-date').exec(function(err, members) {
 			Member.distinct('roles').exec(function(err, roles) {
+				var actual_roles = Object.keys(req.app.locals.static_types.members_roles);
+
+				roles.sort(function(a, b) {
+					return actual_roles.indexOf(a) - actual_roles.indexOf(b);
+				});
+
 				res.render('main/team.pug', { members: members, roles: roles });
 			});
 		});
