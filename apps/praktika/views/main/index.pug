@@ -39,12 +39,12 @@ block content
 	.journal_block
 		.journal_title(anchor='journal') журнал
 		.jounral_posts
-			- var arr = new Array(10)
+			- var arr = new Array(11)
 			each post, i in arr
 				a.post_item(class= i == 3 || i == 6  ? 'blank' : '', class= i == 0 || i == 1  ? 'double' : '', href='#')
 					.post_poster(style='background-image: url(/stuff/praktika/beta/t1.jpeg)')
 					.post_title Масштабы турбулентности
 					.post_hover
 						.post_date 22.07.2018
-						.post_intro Что произойдет, если налить молоко в кофе и помешать ложечкой? Может показаться, что ничего особенного: молоко разобьется на хаотичные течения и постепенно растворится в кофе.
+						.post_intro= i % 2 == 0 ? 'Что произойдет, если налить молоко в кофе и помешать ложечкой?' : 'Может показаться, что ничего особенного: молоко разобьется на хаотичные течения и постепенно растворится в кофе.'
 		.journal_more еще посты...

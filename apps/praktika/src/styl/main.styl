@@ -119,8 +119,8 @@ html, body, .maket_block, .over_block
 
 .journal_title
 	font 22pt/24pt 'PT Mono Bold'
-	margin-top 80px
-	margin-bottom 80px
+	margin-top 60px
+	margin-bottom 60px
 
 .jounral_posts
 	margin-left -20px
@@ -141,9 +141,18 @@ html, body, .maket_block, .over_block
 				opacity 0.7
 			.post_hover
 				transition .3s linear
-				opacity 1
+				opacity 1!important
 		&.double
 			width 50%
+			.post_hover
+				transition .3s linear
+				opacity 0
+				position absolute
+				height 100%
+				top 20px
+				left 40px
+				right 40px
+				color white
 		.post_title
 			text-transform lowercase
 			font 18pt/28pt 'PT Mono Bold'
@@ -158,19 +167,11 @@ html, body, .maket_block, .over_block
 			position relative
 			overflow hidden
 		.post_hover
-			transition .3s linear
-			opacity 0
-			position absolute
-			height 100%
-			top 20px
-			left 40px
-			right 40px
-			color white
 			.post_date
 				font 12pt/12pt 'PT Mono'
 				margin-bottom 20px
 			.post_intro
-				font 14pt/24pt 'PT Serif'
+				font 14pt/20pt 'PT Serif'
 				width 60%
 
 .journal_more
