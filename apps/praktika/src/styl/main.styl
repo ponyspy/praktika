@@ -149,6 +149,8 @@ html, body, .maket_block, .over_block
 			padding-bottom 75%
 			position relative
 			overflow hidden
+			filter: brightness(100%)
+			transition .3s linear
 		.post_hover
 			transition .3s linear
 			.post_date
@@ -187,7 +189,7 @@ html, body, .maket_block, .over_block
 			&:hover
 				.post_poster
 					transition .3s linear
-					opacity 0.7
+					filter: brightness(60%)
 				.post_hover
 					transition .3s linear
 					opacity 1!important
