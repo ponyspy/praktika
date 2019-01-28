@@ -136,6 +136,7 @@ html, body, .maket_block, .over_block
 		box-sizing border-box
 		position relative
 		.post_title
+			transition .3s linear
 			text-transform lowercase
 			font 18pt/28pt 'PT Mono Bold'
 			margin-top 10px
@@ -149,6 +150,7 @@ html, body, .maket_block, .over_block
 			position relative
 			overflow hidden
 		.post_hover
+			transition .3s linear
 			.post_date
 				font 12pt/12pt 'PT Mono'
 				margin-bottom 20px
@@ -156,12 +158,10 @@ html, body, .maket_block, .over_block
 				font 14pt/20pt 'PT Serif'
 				width 60%
 		&:hover
-			.post_poster
-				transition .3s linear
-				opacity 0.7
+			.post_title
 			.post_hover
 				transition .3s linear
-				opacity 1!important
+				opacity 0.7
 		&.blank
 			width 100%
 			.post_inner
@@ -184,6 +184,13 @@ html, body, .maket_block, .over_block
 				left 40px
 				right 40px
 				color white
+			&:hover
+				.post_poster
+					transition .3s linear
+					opacity 0.7
+				.post_hover
+					transition .3s linear
+					opacity 1!important
 
 .journal_more
 	font 14pt/16pt 'PT Mono'
