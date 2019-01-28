@@ -58,7 +58,7 @@ $(function() {
 
 	$(window).on('load hashchange', function(e) {
 		$('body').animate({
-			'scrollTop': $('[anchor="' + location.hash.replace('#', '') + '"]').offset().top - 40
+			'scrollTop': $('[anchor="' + location.hash.replace('#', '') + '"]').offset().top - 60
 		}, 400);
 	});
 
