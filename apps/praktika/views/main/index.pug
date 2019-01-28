@@ -39,9 +39,9 @@ block content
 	.journal_block
 		.journal_title(anchor='journal') журнал
 		.jounral_posts
-			- var arr = new Array(11)
+			- var arr = new Array(12)
 			each post, i in arr
-				a.post_item(class= i == 3 || i == 6  ? 'blank' : '', class= i == 0 || i == 1  ? 'double' : '', href='#')
+				a.post_item(class= i == 5 || i == 8  ? 'blank' : '', class= i == 0 || i == 1  ? 'double' : '', href='#'): .post_inner
 					.post_poster(style='background-image: url(/stuff/praktika/beta/t1.jpeg)')
 					.post_title Масштабы турбулентности
 					.post_hover
