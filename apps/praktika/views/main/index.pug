@@ -32,26 +32,19 @@ block over
 			.swiper-pagination.swiper-pagination-white
 			.swiper-pagination.swiper-pagination-black
 
-		a.journal_open(href='#journal') журнал «Практики»
+		//- a.journal_open(href='#journal') журнал «Практики»
 
 
 block content
-	.journal_header.invert(style='background-image: url(/stuff/praktika/beta/t2.jpeg)')
+	.journal_block
 		.journal_title(anchor='journal') журнал
-		.journal_categorys
-			.c_item новости
-			.c_item дела
-			.c_item до и после
-			.c_item жизнь других
-			.c_item так не пойдет
-	.jounral_posts
-		- var arr = new Array(10)
-		each post, i in arr
-			.post_item(class= i == 0 || i == 3 || i == 4 || i == 6 || i == 8 ? 'invert' : '', style= i == 0 || i == 8 ? 'background-image: url(/stuff/praktika/beta/t2.jpeg)' : ''): a.post_inner(href='#')
-				.post_title Масштабы турбулентности
-				.post_date 22.07.2018
-				if i % 2 !== 0 && i !== 7
-					img.post_image(src='/stuff/praktika/beta/t1.jpeg')
-				if i !== 5
-					.post_intro Что произойдет, если налить молоко в кофе и помешать ложечкой? Может показаться, что ничего особенного: молоко разобьется на хаотичные течения и постепенно растворится в кофе. Но если взглянуть на это с точки зрения физики (и, возможно, в медленной записи), то можно заметить интересную особенность: сперва молоко образует широкие (крупномасштабные) течения, которые затем будут распадаться на все более и более мелкие...
-	.journal_more еще посты...
+		.jounral_posts
+			- var arr = new Array(10)
+			each post, i in arr
+				a.post_item(class= i == 3 || i == 6  ? 'blank' : '', class= i == 0 || i == 1  ? 'double' : '', href='#')
+					.post_poster(style='background-image: url(/stuff/praktika/beta/t1.jpeg)')
+					.post_title Масштабы турбулентности
+					.post_hover
+						.post_date 22.07.2018
+						.post_intro Что произойдет, если налить молоко в кофе и помешать ложечкой? Может показаться, что ничего особенного: молоко разобьется на хаотичные течения и постепенно растворится в кофе.
+		.journal_more еще посты...

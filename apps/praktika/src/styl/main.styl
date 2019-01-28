@@ -111,82 +111,71 @@ html, body, .maket_block, .over_block
 	&:hover
 		opacity 0.7
 
-.journal_header
-	padding-top 40px
-	padding-bottom 60px
-	background-position center
-	background-repeat no-repeat
-	background-attachment fixed
-	background-size cover
-	&.invert
-		color white
-		background-color black
-		.c_item
-			color white!important
-	.journal_title
-		font 28pt/30pt 'PT Mono Bold'
-		margin-left 40px
-		margin-right 40px
-	.journal_categorys
-		margin-top 20px
-		margin-left 40px
-		margin-right 40px
-		font 14pt/16pt 'PT Mono'
-		.c_item
-			cursor pointer
-			margin-right 20px
-			color black
-			text-decoration none
-			display inline-block
-			margin-bottom 10px
-			&.active
-				font 14pt/16pt 'PT Mono Bold'
-			&:before
-				content '#'
-			&:hover
-				opacity 0.7
+
+.journal_block
+	padding-left 40px
+	padding-right 40px
+	overflow hidden
+
+.journal_title
+	font 22pt/24pt 'PT Mono Bold'
+	margin-top 40px
+	margin-bottom 80px
 
 .jounral_posts
+	margin-left -20px
 	.post_item
-		padding-top 60px
-		padding-bottom 60px
-		background-position center
-		background-repeat no-repeat
-		background-attachment fixed
-		background-size cover
-		&.invert
-			background-color black
-			.post_inner
-				color white
-		.post_inner
-			max-width 680px
-			margin 0 auto
-			padding-left 40px
-			padding-right 40px
-			color black
-			text-decoration none
-			display block
-			&:hover .post_title
+		display inline-block
+		vertical-align top
+		width 33.333333333%
+		font-size 0
+		color black
+		text-decoration none
+		padding-left 20px
+		margin-bottom 80px
+		box-sizing border-box
+		position relative
+		&:hover
+			.post_poster
+				transition .3s linear
 				opacity 0.7
+			.post_hover
+				transition .3s linear
+				opacity 1
+		&.double
+			width 50%
 		.post_title
 			text-transform lowercase
 			font 18pt/28pt 'PT Mono Bold'
+			margin-top 10px
 			margin-bottom 10px
-		.post_date
-			font 12pt/12pt 'PT Mono'
-			margin-bottom 20px
-		.post_image
-			display block
+		.post_poster
+			background-position center
+			background-repeat no-repeat
+			background-size cover
 			width 100%
-			margin-bottom 20px
-		.post_intro
-			font 14pt/20pt 'PT Serif'
-			hyphens auto
+			padding-bottom 75%
+			position relative
+			overflow hidden
+		.post_hover
+			transition .3s linear
+			opacity 0
+			position absolute
+			height 100%
+			top 20px
+			left 40px
+			right 40px
+			color white
+			.post_date
+				font 12pt/12pt 'PT Mono'
+				margin-bottom 20px
+			.post_intro
+				font 14pt/24pt 'PT Serif'
+				width 60%
 
 .journal_more
 	font 14pt/16pt 'PT Mono'
 	text-align center
-	margin-top 60px
 	margin-bottom 40px
 	cursor pointer
 	&:hover
