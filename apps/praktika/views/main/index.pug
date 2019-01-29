@@ -41,7 +41,7 @@ block content
 		.jounral_posts
 			- var arr = new Array(12)
 			each post, i in arr
-				a.post_item(class= i == 5 || i == 8  ? 'blank' : '', class= i == 0 || i == 1  ? 'double' : '', href='#'): .post_inner
+				a.post_item(class= i == 5 || i == 8  ? 'blank' : '', class= i == 0 || i == 1  ? 'double' : '', href='#')
 					.post_poster(style='background-image: url(/stuff/praktika/beta/' + (i % 2 == 0 ? 't1' : 't2') + '.jpeg)'): .poster_cover
 					.post_title Масштабы турбулентности
 					.post_hover
