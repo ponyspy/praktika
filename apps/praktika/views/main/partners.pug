@@ -10,9 +10,10 @@ block header_include
 
 
 block content
-	.partners_title= __('Партнеры')
-	.partners_list
-		each partner in partners
-			a.partner_item(href=partner.link, target='_blank', rel='nofollow')
-				.partner_title= partner.i18n.title.get(locale)
-				.partner_logo(style='background-image: url(' + partner.logo + ')')
+	each type in types
+		.partners_title= __n(type.type, 5) + ' ' + __('Партнеры').toLowerCase()
+		.partners_list
+			each partner in type.partners
+				a.partner_item(href=partner.link, target='_blank', rel='nofollow')
+					.partner_title= get_locale(partner.title, locale)
+					.partner_logo(style='background-image: url(' + partner.logo + ')')

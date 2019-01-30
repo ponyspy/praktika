@@ -23,6 +23,7 @@ module.exports = function(Model, Params) {
 
 		partner._short_id = shortid.generate();
 		partner.status = post.status;
+		partner.type = post.type;
 		partner.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 		partner.link = post.link;
 

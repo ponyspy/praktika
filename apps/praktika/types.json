@@ -4,6 +4,12 @@
 	"intickets_api_key": "Bearer 86fa5e31-ffed-e850-40fc-79f292ca247e",
 	"intickets_origin": "https://praktikatheatre.ru",
 
+	"partners_types": [
+		"general",
+		"information",
+		"technical"
+	],
+
 	"members_roles": {
 		"actor": { "male": "actor", "female": "actresse" },
 		"director": { "male": "director", "female": "director" },
