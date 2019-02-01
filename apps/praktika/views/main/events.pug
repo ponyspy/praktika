@@ -16,8 +16,7 @@ mixin event_item(event, style)
 			if event.poster_hover
 				.poster_hover(style='background-image: url(' + event.poster_hover + ')')
 		.event_title!= event.i18n.title.get(locale)
-		if style != 'half'
-			.event_description!= event.i18n.s_title.get(locale)
+		.event_description!= event.i18n.s_title.get(locale)
 
 block content
 	.events_block
