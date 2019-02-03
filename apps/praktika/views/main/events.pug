@@ -28,7 +28,7 @@ block content
 				each event in e_premieres
 					+event_item(event, 'double')
 
-		- var e_main = events.filter(function(event) { return event.schedule.some(function(item) { return item.date >= Date.now() && !item.premiere }) })
+		- var e_main = events.filter(function(event) { return event.schedule.some(function(item) { return item.date >= Date.now() }) })
 		if e_main.length > 0
 			.events_title= __('репертуар')
 			.events_list
