@@ -8,6 +8,7 @@ var main = {
 	team: require('./team.js')(Model),
 	docs: require('./docs.js')(Model),
 	about: require('./about.js')(Model),
+	partners: require('./partners.js')(Model),
 	contacts: require('./contacts.js')(),
 	options: require('./options.js')(Model),
 	tickets: require('./tickets.js')(),
@@ -46,6 +47,9 @@ module.exports = (function() {
 
 	router.route('/docs')
 		.get(main.docs.index);
+
+	router.route('/partners')
+		.get(main.partners.index);
 
 	router.route('/students')
 		.get(main.static.students);

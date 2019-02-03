@@ -134,6 +134,7 @@ documentSchema = new Schema({
 partnerSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	link: String,
+	type: String,
 	logo: String,
 	status: String,
 	_short_id: { type: String, unique: true, index: true, sparse: true },

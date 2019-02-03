@@ -1,0 +1,44 @@
+@media screen and (max-width: 840px)
+	@import 'mobile/_partners.styl'
+
+
+.content_block
+	max-width 960px
+	margin 20px auto
+	padding-left 40px
+	padding-right 40px
+	overflow hidden
+
+.partners_title
+	font 22pt/24pt 'PT Mono Bold'
+	margin-bottom 80px
+	text-transform lowercase
+	width 100%
+
+.partners_list
+	margin-bottom 80px
+	margin-left -100px
+	overflow hidden
+	.partner_item
+		display inline-block
+		vertical-align top
+		width 15%
+		padding-left 100px
+		font-size 0
+		margin-bottom 80px
+		text-decoration none
+		color black
+		.partner_title
+			margin-top 20px
+			font 12pt/18pt 'PT Mono'
+			text-align center
+		.partner_logo
+			width 100%
+			padding-bottom 75%
+			position relative
+			overflow hidden
+			background-position center
+			background-repeat no-repeat
+			background-size contain
+		&:hover
+			opacity 0.7

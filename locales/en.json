@@ -65,5 +65,18 @@
 	"choreographer": {
 		"one": "choreographer",
 		"other": "choreographers"
+	},
+	"Партнеры": "Partners",
+	"technical": {
+		"one": "technical",
+		"other": "technical"
+	},
+	"information": {
+		"one": "information",
+		"other": "information"
+	},
+	"general": {
+		"one": "general",
+		"other": "general"
 	}
 }
