@@ -29,7 +29,7 @@ block content
 			input(type='text', name='link')
 			.form_title Тип:
 			select(name='type')
-				each type in static_types.members_roles
+				each type in static_types.partners_types
 					option(value=type)= __n(type, 1)
 			.form_title Статус:
 			select(name='status')
