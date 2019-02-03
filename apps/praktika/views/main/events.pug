@@ -24,7 +24,7 @@ block content
 		- var e_premieres = events.filter(function(event) { return event.schedule.some(function(item) { return item.date >= Date.now() && item.premiere }) })
 		if e_premieres.length > 0
 			.events_title= 'премьеры'
-			.events_list.double
+			.events_list
 				each event in e_premieres
 					+event_item(event, 'double')
 
