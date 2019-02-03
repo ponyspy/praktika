@@ -9,53 +9,60 @@
 	padding-right 40px
 	overflow hidden
 
-.events_list
-	margin-left -20px
-
 .events_title
 	font 22pt/24pt 'PT Mono Bold'
 	margin-bottom 80px
 
-.event_item
-	display inline-block
-	vertical-align top
-	width 33.333333333%
-	font-size 0
-	color black
-	text-decoration none
-	padding-left 20px
-	margin-bottom 80px
-	box-sizing border-box
-	&:hover
-		.event_title
-			opacity 0.7
-	.event_poster
-		width 100%
-		padding-bottom 75%
-		position relative
-		overflow hidden
-		&.hover:hover
+.events_list
+	margin-left -20px
+	.event_item
+		display inline-block
+		vertical-align top
+		width 33.333333333%
+		font-size 0
+		color black
+		text-decoration none
+		padding-left 20px
+		margin-bottom 80px
+		box-sizing border-box
+		&.half
+			width 25%
+			.event_description
+				display none
+		&.double
+			width 50%
+			.event_description
+				width 65%
+		&:hover
+			.event_title
+				opacity 0.7
+		.event_poster
+			width 100%
+			padding-bottom 75%
+			position relative
+			overflow hidden
+			&.hover:hover
+				.poster_hover
+					opacity 1
 			.poster_hover
-				opacity 1
-		.poster_hover
-		.poster_main
-			top 0; left 0; right 0; bottom 0;
-			margin auto
-			position absolute
-			background-position center
-			background-repeat no-repeat
-			background-size cover
-			transition .3s linear
-		.poster_hover
-			opacity 0
-		.poster_main
-			&:hover
+			.poster_main
+				top 0; left 0; right 0; bottom 0;
+				margin auto
+				position absolute
+				background-position center
+				background-repeat no-repeat
+				background-size cover
 				transition .3s linear
-				top -20px; left -20px; right -20px; bottom -20px;
-	.event_title
-		text-transform lowercase
-		margin-top 20px
-		font 16pt/18pt 'PT Mono Bold'
-	.event_description
-		margin-top 20px
-		font 12pt/18pt 'PT Serif'
+			.poster_hover
+				opacity 0
+			.poster_main
+				&:hover
+					transition .3s linear
+					top -20px; left -20px; right -20px; bottom -20px;
+		.event_title
+			text-transform lowercase
+			margin-top 20px
+			font 16pt/18pt 'PT Mono Bold'
+		.event_description
+			margin-top 20px
+			font 12pt/18pt 'PT Serif'

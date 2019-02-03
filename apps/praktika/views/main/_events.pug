@@ -13,7 +13,7 @@ each event in events
 			.event_head
 				.event_date
 					.date= event_date.format('DD MMMM')
-					.time= event_date.format('HH:mm')
+					.time= event_date.format('dd, HH:mm')
 				if event.w_alias
 					.event_ticket(schedule-alias= event.w_alias, schedule-date=event_date.format('DD.MM.YYYY HH:mm'), soldout=__('билеты проданы'))= __('купить билет')
 			a.event_title(href='/events/' + (event.sym ? event.sym : event._short_id))!= get_locale(event.title, locale)

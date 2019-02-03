@@ -9,6 +9,8 @@
 		"director": { "male": "director", "female": "director" },
 		"artist": { "male": "artist", "female": "artist" },
 		"author": { "male": "author", "female": "author" },
+		"composer": { "male": "composer", "female": "composer" },
+		"choreographer": { "male": "choreographer", "female": "choreographer" },
 		"management": { "male": "management", "female": "management" },
 		"consul": { "male": "consul", "female": "consul"}
 	}
