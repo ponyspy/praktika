@@ -15,5 +15,5 @@ block content
 		.partners_list
 			each partner in type.partners
 				a.partner_item(href=partner.link, target='_blank', rel='nofollow')
-					.partner_title= get_locale(partner.title, locale)
 					.partner_logo(style='background-image: url(' + partner.logo + ')')
+					.partner_title= get_locale(partner.title, locale)
