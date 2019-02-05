@@ -28,9 +28,9 @@ block content
 				each event in e_premieres
 					+event_item(event, 'double')
 
-		- var e_main = events.filter(function(event) { return event.schedule.some(function(item) { return item.date >= Date.now() }) })
+		- var e_main = events.filter(function(event) { return !e_premieres.some(function(p_event) { return p_event._id.toString() == event._id.toString() }) && event.schedule.some(function(item) { return item.date >= Date.now() }) })
 		if e_main.length > 0
-			.events_title= __('репертуар')
+			.events_title= 'актуальные'
 			.events_list
 				each event in e_main
 					+event_item(event)
