@@ -68,47 +68,35 @@
 	},
 	"Партнеры": "Partners",
 	"lifestyle": {
-		"one": "lifestyle-партнер",
-		"other": "lifestyle-партнеры"
+		"one": "lifestyle partner",
+		"other": "lifestyle partners"
 	},
 	"info_support": {
-		"one": "благодарим за информационную поддержку",
-		"other": "благодарим за информационную поддержку"
+		"one": "We are grateful to",
+		"other": "We are grateful to"
 	},
 	"off_social": {
-		"one": "официальная социальная сеть театра",
-		"other": "официальные социальные сети театра"
+		"one": "official social network",
+		"other": "official social networks"
 	},
 	"off_radio": {
-		"one": "официальный радио-партнер",
-		"other": "официальные радио-партнеры"
+		"one": "official radio partner",
+		"other": "official radio partners"
 	},
 	"off_tv": {
-		"one": "официальный ТВ-канал",
-		"other": "официальные ТВ-каналы"
+		"one": "official TV-channel",
+		"other": "official TV-channels"
 	},
 	"st_information": {
-		"one": "стратегический информационный партнер",
-		"other": "стратегические информационные партнеры"
+		"one": "strategic information partner",
+		"other": "strategic information partners"
 	},
 	"gen_information": {
-		"one": "генеральный информационный партнер",
-		"other": "генеральные информационные партнеры"
+		"one": "general information partner",
+		"other": "general information partners"
 	},
 	"off_information": {
-		"one": "официальный информационный партнер",
-		"other": "официальные информационные партнеры"
-	},
-	"general": {
-		"one": "general",
-		"other": "general"
-	},
-	"information": {
-		"one": "information",
-		"other": "information"
-	},
-	"technical": {
-		"one": "technical",
-		"other": "technical"
+		"one": "official information partner",
+		"other": "official information partners"
 	}
 }
