@@ -15,36 +15,47 @@
 	text-transform lowercase
 	width 100%
 
-.partners_type
-	font 14pt/16pt 'PT Mono Bold'
-	text-transform lowercase
+.partners_types
 	margin-bottom 40px
-	width 100%
-
-.partners_list
-	margin-bottom 40px
-	margin-left -100px
 	overflow hidden
-	.partner_item
+	font-size 0
+	.partner_type
+		width 50%
 		display inline-block
 		vertical-align top
-		width 15%
-		padding-left 100px
-		font-size 0
-		margin-bottom 80px
-		text-decoration none
-		color black
-		.partner_title
-			margin-top 20px
-			font 12pt/18pt 'PT Mono'
-			text-align center
-		.partner_logo
+		&.double
 			width 100%
-			padding-bottom 75%
-			position relative
+			.partner_item
+				width 13.5%!important
+		.type_title
+			font 14pt/18pt 'PT Mono Bold'
+			text-transform lowercase
+			margin-bottom 40px
+			width 65%
+		.type_list
+			margin-bottom 80px
+			margin-left -40px
 			overflow hidden
-			background-position center
-			background-repeat no-repeat
-			background-size contain
-		&:hover
-			opacity 0.7
+			.partner_item
+				display inline-block
+				vertical-align top
+				padding-left 40px
+				width 25%
+				font-size 0
+				margin-bottom 40px
+				text-decoration none
+				color black
+				.partner_title
+					margin-top 20px
+					font 12pt/18pt 'PT Mono'
+					text-align center
+				.partner_logo
+					width 100%
+					padding-bottom 75%
+					position relative
+					overflow hidden
+					background-position center
+					background-repeat no-repeat
+					background-size contain
+				&:hover
+					opacity 0.7
