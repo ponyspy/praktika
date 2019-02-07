@@ -5,9 +5,14 @@
 	"intickets_origin": "https://praktikatheatre.ru",
 
 	"partners_types": [
-		"general",
-		"information",
-		"technical"
+		"gen_information",
+		"off_information",
+		"st_information",
+		"off_tv",
+		"off_radio",
+		"off_social",
+		"info_support",
+		"lifestyle"
 	],
 
 	"members_roles": {

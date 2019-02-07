@@ -67,16 +67,48 @@
 		"other": "choreographers"
 	},
 	"Партнеры": "Partners",
-	"technical": {
-		"one": "technical",
-		"other": "technical"
+	"lifestyle": {
+		"one": "lifestyle-партнер",
+		"other": "lifestyle-партнеры"
+	},
+	"info_support": {
+		"one": "благодарим за информационную поддержку",
+		"other": "благодарим за информационную поддержку"
+	},
+	"off_social": {
+		"one": "официальная социальная сеть театра",
+		"other": "официальные социальные сети театра"
+	},
+	"off_radio": {
+		"one": "официальный радио-партнер",
+		"other": "официальные радио-партнеры"
+	},
+	"off_tv": {
+		"one": "официальный ТВ-канал",
+		"other": "официальные ТВ-каналы"
+	},
+	"st_information": {
+		"one": "стратегический информационный партнер",
+		"other": "стратегические информационные партнеры"
+	},
+	"gen_information": {
+		"one": "генеральный информационный партнер",
+		"other": "генеральные информационные партнеры"
+	},
+	"off_information": {
+		"one": "официальный информационный партнер",
+		"other": "официальные информационные партнеры"
+	},
+	"general": {
+		"one": "general",
+		"other": "general"
 	},
 	"information": {
 		"one": "information",
 		"other": "information"
 	},
-	"general": {
-		"one": "general",
-		"other": "general"
+	"technical": {
+		"one": "technical",
+		"other": "technical"
 	}
 }
