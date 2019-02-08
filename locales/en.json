@@ -56,8 +56,7 @@
 	"руководитель пресс-службы": "head of PR",
 	"Егор Хлыстов": "Egor Hlystov",
 	"администрация": "administration",
-	"Студентам": "Студентам",
-	"Студенты могут бесплатно попасть на спектакль «Практики» при наличии такой возможности. Для этого необходимо минимум за 3 дня написать на": "Студенты могут бесплатно попасть на спектакль «Практики» при наличии такой возможности. Для этого необходимо минимум за 3 дня написать на",
+	"Студентам": "Students",
 	"composer": {
 		"one": "composer",
 		"other": "composers"
@@ -67,16 +66,38 @@
 		"other": "choreographers"
 	},
 	"Партнеры": "Partners",
-	"technical": {
-		"one": "technical",
-		"other": "technical"
+	"lifestyle": {
+		"one": "lifestyle partner",
+		"other": "lifestyle partners"
 	},
-	"information": {
-		"one": "information",
-		"other": "information"
+	"info_support": {
+		"one": "We are grateful to",
+		"other": "We are grateful to"
 	},
-	"general": {
-		"one": "general",
-		"other": "general"
-	}
+	"off_social": {
+		"one": "official social network",
+		"other": "official social networks"
+	},
+	"off_radio": {
+		"one": "official radio partner",
+		"other": "official radio partners"
+	},
+	"off_tv": {
+		"one": "official TV-channel",
+		"other": "official TV-channels"
+	},
+	"st_information": {
+		"one": "strategic information partner",
+		"other": "strategic information partners"
+	},
+	"gen_information": {
+		"one": "general information partner",
+		"other": "general information partners"
+	},
+	"off_information": {
+		"one": "official information partner",
+		"other": "official information partners"
+	},
+	"Студенты могут бесплатно попасть на спектакли «Практики» при наличии такой возможности. Для этого необходимо в день спектакля написать на": "Students may get free tickets for Praktika Theatre’s performances, if any tickets available. To get free tickets at the day of the show you need to write at",
+	"В течение короткого времени вам ответит администратор и сообщит о возможности посещения театра в этот день.": "We will respond as soon as possible and let you know about available free tickets."
 }
