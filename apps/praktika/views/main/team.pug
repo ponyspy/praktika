@@ -9,18 +9,15 @@ block header_include
 	- var include_libs_js = ['jquery.lazy.min.js']
 	- var include_js = ['team.js']
 
+block over
+	.members_title(data-title=__('команда'))= __('команда')
+	.members_roles
+		.select_role.selected(data-role='all')= __('все')
+		each role in roles
+			.select_role(data-role=role)= __n(static_types.members_roles[role].male, 5)
 
 block content
-	.roles_title.mobile(active-role='all')= __('все')
-	.members_header: .members_header_inner
-		.members_title(data-title=__('команда'))= __('команда')
-		.members_roles
-			.roles_title(active-role='all')= __('все')
-			.roles_list
-				.select_role.selected(data-role='all')= __('все')
-				each role in roles
-					.select_role(data-role=role)= __n(static_types.members_roles[role].male, 5)
-
 	.members_list
-		each member in members
-			.member_item(class=member.roles, member-id=member._short_id, data-name=member.i18n.name.get(locale)): .in(data-src=member.photo_preview)
+		each i in new Array(10)
+			each member in members
+				.member_item(class=member.roles, member-id=member._short_id, data-name=member.i18n.name.get(locale)): .in(data-src=member.photo_preview)

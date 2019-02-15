@@ -1,78 +1,69 @@
 @media screen and (max-width: 840px)
 	@import 'mobile/_team.styl'
 
-.content_block
-	max-width 960px
-	margin 0 auto
-	padding-left 40px
-	padding-right 40px
+
 
 .members_header
 	top 180px
 	left 0
-	width 100%
 	padding-top 20px
-	background-color white
 	position absolute
 	z-index 999
-	.members_header_inner
-		margin 0 auto
-		max-width 960px
-		padding-left 40px
-		padding-right 40px
+	padding-left 40px
+	padding-right 40px
+	background-color grey
 	&.fix
 		position fixed
 		top 0
 
 .members_title
 	font 22pt/24pt 'PT Mono Bold'
-	margin-bottom 10px
+	margin-bottom 40px
 	text-transform lowercase
-
-.roles_title
-	font 14pt/16pt 'PT Mono'
-	cursor pointer
-	&.mobile
-		display none
-	&:after
-		content ''
-		z-index 0
-		position relative
-		background-image url('/stuff/praktika/icons/arrow_list.svg')
-		width 8px
-		height 8px
-		margin-left 10px
-		display inline-block
-		transform rotate(90deg)
-		vertical-align middle
-		background-position top
-		background-size contain
-		background-repeat no-repeat
+	width 100%
+	background-color white
+	position absolute
+	top 280px
+	padding-left 40px
+	padding-right 40px
+	box-sizing border-box
 
 .members_roles
+	position absolute
+	top 340px
 	font 14pt/16pt 'PT Mono'
 	margin-bottom 20px
 	cursor pointer
 	display inline-block
-	.roles_list
-		display none
-		&.open
-			display block
-		.select_role
-			margin-top 10px
-			&.selected
-				display none
-			&:hover
-				opacity 0.7
+	padding-left 40px
+	padding-right 40px
+	box-sizing border-box
+	z-index 999
+	.select_role
+		margin-top 10px
+		&:hover
+			opacity 0.7
+
+
+
+
+.content_block
+	max-width 1040px
+	background-color green
+	margin 0 auto
+	padding-left 240px
+	padding-right calc((100% - 1240px) / 2);
+	// padding-right 40px
+
 
 .members_list
-	margin-top 100px
+	margin-top 140px
 	margin-bottom 60px
 	overflow hidden
-	padding 10px
+	padding 30px
 	box-sizing border-box
-	margin-left -20px
-	margin-right -20px
+	// margin-left -20px
+	// margin-right -20px
 
 .member_item
 	text-align center
