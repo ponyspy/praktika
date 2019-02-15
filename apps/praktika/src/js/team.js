@@ -35,7 +35,7 @@ $(window).on('load hashchange', function(e) {
 		$('title').text($('title').text().split(' : ').slice(0, 2).concat($current_block.attr('data-name').toLowerCase()).join(' : '));
 
 		$('html, body').animate({
-			'scrollTop': $current_block.offset().top - ($(window).width() >= 840 ? $('.members_header').height() : 0) - 10
+			'scrollTop': $current_block.offset().top - ($(window).width() >= 840 ? $('.members_header').height() : 0) - 80
 		}, 300);
 
 	});
