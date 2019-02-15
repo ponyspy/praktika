@@ -1,4 +1,11 @@
-.roles_title.mobile
+.content_block
+	min-height none!important
+	margin-top 0px!important
+	&:before
+	&:after
+		display none!important
+
+.roles_title
 	position absolute!important
 	top 20px
 	right 20px
@@ -7,26 +14,25 @@
 
 
 .members_header
-	background-color red
 	padding-top 0!important
 	top 60px!important
+	padding-left 20px!important
+	padding-right 20px!important
+	height auto!important
 	&.fix
 		position absolute!important
-	.members_header_inner
-		padding-left 20px!important
-		padding-right 20px!important
-	.roles_title
+	.members_roles
 		padding-top 0!important
-		display none
+		display none!important
+		&.open
+			display block!important
+		.select_role.selected
+			display none!important
 
 
 .members_title
 	display none!important
 
-.members_list
-	margin-left -40px!important
-	margin-right -40px!important
-	margin-top 0!important
 
 .member_item
 	width 33.333333333%!important
