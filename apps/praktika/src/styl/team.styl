@@ -48,22 +48,31 @@
 
 
 .content_block
-	max-width 1040px
-	background-color green
-	margin 0 auto
-	padding-left 240px
-	padding-right calc((100% - 1240px) / 2);
-	// padding-right 40px
-
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-top 155px
 
 .members_list
-	margin-top 140px
+	background-color green
+	max-width 1000px
+	width: 100%;
 	margin-bottom 60px
 	overflow hidden
-	padding 30px
+	padding 10px
 	box-sizing border-box
 	// margin-left -20px
 	// margin-right -20px
+
+.members_left
+	flex: 0 1 240px;
+	min-width 240px
+	background-color red
+
+.members_right
+	flex: 1 0 40px;
+	max-width: 240px;
+	background-color grey
 
 .member_item
 	text-align center
@@ -117,7 +126,7 @@
 		.panel_body
 			width 51%
 			float left
-			padding-left 60px
+			padding-left 20px
 			box-sizing border-box
 			.member_head
 				overflow hidden
@@ -148,22 +157,18 @@
 						margin-top 5px
 						color black
 						text-decoration none
-						display inline-block
+						display block
+						margin-top 6px
 						font 12pt/14pt 'PT Mono'
-						margin-right 10px
-						&:after
-							content ','
-						&:last-child:after
-							content ''
-						&:last-child
-							margin-right 0
 						&:hover
 							opacity 0.7
-			.member_description
-				hyphens auto
-				font 14pt/22pt 'PT Serif'
-				margin-bottom 35px
-				p
-					margin 0
-					padding 0
-					margin-bottom 20px
+	.panel_description
+		margin-top 20px
+		margin-bottom 20px
+		float left
+		hyphens auto
+		font 14pt/22pt 'PT Serif'
+		p
+			margin 0
+			padding 0
+			margin-bottom 20px

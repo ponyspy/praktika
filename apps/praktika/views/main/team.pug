@@ -17,7 +17,9 @@ block over
 			.select_role(data-role=role)= __n(static_types.members_roles[role].male, 5)
 
 block content
+	.members_left
 	.members_list
 		each i in new Array(10)
 			each member in members
 				.member_item(class=member.roles, member-id=member._short_id, data-name=member.i18n.name.get(locale)): .in(data-src=member.photo_preview)
+	.members_right
