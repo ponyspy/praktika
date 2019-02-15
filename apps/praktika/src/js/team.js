@@ -61,20 +61,20 @@ $(function() {
 		.on('mouseup touchend', function(e) {
 			if ($(e.target).closest('.members_roles').length) return;
 
-			$('.roles_list').removeClass('open');
+			$('.members_roles').removeClass('open');
 			$(window).trigger('scroll');
 
 			e.stopPropagation();
 		})
 		.on('click', '.roles_title', function(e) {
-			$('.roles_list').toggleClass('open');
+			$('.members_roles').toggleClass('open');
 		})
 		.on('click', '.select_role', function(e) {
 			var $this = $(this);
 			var select_role = $this.attr('data-role');
 			var select_role_name = $this.text();
 
-			$('.roles_list').removeClass('open');
+			$('.members_roles').removeClass('open');
 			$('.roles_title').attr('active-role', select_role).text(select_role_name);
 			$this.parent().children('.select_role').removeClass('selected').filter(this).addClass('selected');
 

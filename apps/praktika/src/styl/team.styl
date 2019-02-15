@@ -1,8 +1,6 @@
 @media screen and (max-width: 840px)
 	@import 'mobile/_team.styl'
 
-
-
 .members_header
 	top 180px
 	width 100%
@@ -12,7 +10,7 @@
 	padding-left 40px
 	padding-right 40px
 	box-sizing border-box
-	background-color grey
+	background-color white
 	z-index 999
 	&.fix
 		position fixed
@@ -43,6 +41,26 @@
 		&.selected
 		&:hover
 			opacity 0.7
+
+.roles_title
+	font 14pt/16pt 'PT Mono'
+	cursor pointer
+	&.mobile
+		display none
+	&:after
+		content ''
+		z-index 0
+		position relative
+		background-image url('/stuff/praktika/icons/arrow_list.svg')
+		width 8px
+		height 8px
+		margin-left 10px
+		display inline-block
+		transform rotate(90deg)
+		vertical-align middle
+		background-position top
+		background-size contain
+		background-repeat no-repeat
 
 .content_block
 	display: flex;

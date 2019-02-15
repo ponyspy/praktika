@@ -1,3 +1,9 @@
+.content_block
+	margin-top 0px!important
+	&:before
+	&:after
+		display none!important
+
 .roles_title.mobile
 	position absolute!important
 	top 20px
@@ -7,14 +13,23 @@
 
 
 .members_header
-	background-color red
 	padding-top 0!important
 	top 60px!important
+	padding-left 20px!important
+	padding-right 20px!important
+	height auto!important
 	&.fix
 		position absolute!important
-	.members_header_inner
-		padding-left 20px!important
-		padding-right 20px!important
+	.members_roles
+		display none!important
+		&.open
+			display block!important
+		.select_role
+			margin-top 10px!important
+			&.selected
+				display none!important
+			&:hover
+				opacity 0.7!important
 	.roles_title
 		padding-top 0!important
 		display none
