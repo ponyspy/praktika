@@ -10,7 +10,7 @@ block header_include
 	- var include_js = ['team.js']
 
 block over
-	.roles_title.mobile(active-role='all')= __('все')
+	.roles_title(active-role='all')= __('все')
 	.members_header
 		.members_title(data-title=__('команда'))= __('команда')
 		.members_roles

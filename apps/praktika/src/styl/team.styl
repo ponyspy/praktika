@@ -45,8 +45,7 @@
 .roles_title
 	font 14pt/16pt 'PT Mono'
 	cursor pointer
-	&.mobile
-		display none
+	display none
 	&:after
 		content ''
 		z-index 0
@@ -63,21 +62,21 @@
 		background-repeat no-repeat
 
 .content_block
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
+	display flex
+	flex-direction row
+	justify-content center
 	margin-top 112px
 	&:before
 		content ''
 		display block
-		flex: 0 1 240px;
+		flex: 0 1 240px
 		min-width 240px
 		// background-color red
 	&:after
 		content ''
 		display block
-		flex: 1 0 20px;
-		max-width: 240px;
+		flex 1 0 20px
+		max-width 240px
 		// background-color grey
 
 .members_list
