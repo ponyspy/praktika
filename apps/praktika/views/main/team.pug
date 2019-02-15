@@ -10,11 +10,12 @@ block header_include
 	- var include_js = ['team.js']
 
 block over
-	.members_title(data-title=__('команда'))= __('команда')
-	.members_roles
-		.select_role.selected(data-role='all')= __('все')
-		each role in roles
-			.select_role(data-role=role)= __n(static_types.members_roles[role].male, 5)
+	.members_header
+		.members_title(data-title=__('команда'))= __('команда')
+		.members_roles
+			.select_role.selected(data-role='all')= __('все')
+			each role in roles
+				.select_role(data-role=role)= __n(static_types.members_roles[role].male, 5)
 
 block content
 	.members_left
