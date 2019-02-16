@@ -20,5 +20,6 @@ block over
 
 block content
 	.members_list
-		each member in members
-			.member_item(class=member.roles, member-id=member._short_id, data-name=member.i18n.name.get(locale)): .in(data-src=member.photo_preview)
+		each item in new Array(10)
+			each member in members
+				.member_item(class=member.roles, member-id=member._short_id, data-name=member.i18n.name.get(locale)): .in(data-src=member.photo_preview)
