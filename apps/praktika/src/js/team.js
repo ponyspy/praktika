@@ -4,6 +4,8 @@ $(window).on('load hashchange', function(e) {
 	$.post('', { id: location.hash.replace('#', '') }).done(function(content) {
 		if (content == 'err') return false;
 
+		$content = $(content).find('.panel_description:empty').hide().end();
+
 		$('.panel').remove();
 
 		var $current_block = $members.filter('[member-id="' + location.hash.replace('#', '') + '"]').eq(0);
@@ -18,7 +20,7 @@ $(window).on('load hashchange', function(e) {
 				$members.removeClass('active');
 				$current_block.addClass('active');
 
-				$this.after(content);
+				$this.after($content);
 
 				return false;
 			} else if ($this.index('.member_item') + 1 == $members.length) {
@@ -26,7 +28,7 @@ $(window).on('load hashchange', function(e) {
 				$members.removeClass('active');
 				$current_block.addClass('active');
 
-				$set.last().after(content);
+				$set.last().after($content);
 
 				return false;
 			}
