@@ -12,6 +12,13 @@ block sub_menu
 	span.sub_item.toggle_rm Удалить
 	.sub_right_block
 
+		.sub_drop.type(style='z-index: 2;')
+			.drop_title Тип
+			.drop_inner
+				.drop_item(class='all').select Все
+				each type in static_types.partners_types
+					.drop_item(class=type)= __n(type, 5)
+
 		.sub_drop.status(style='z-index: 1;')
 			.drop_title Статус
 			.drop_inner
