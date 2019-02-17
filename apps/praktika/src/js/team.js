@@ -61,7 +61,7 @@ $(function() {
 			$('.search_close').trigger('click');
 		})
 		.on('mouseup touchend', function(e) {
-			if ($(e.target).closest('.members_roles').length) return;
+			if ($(e.target).closest('.select_role, .roles_title').length) return;
 
 			$('.members_roles').removeClass('open');
 			$(window).trigger('scroll');
