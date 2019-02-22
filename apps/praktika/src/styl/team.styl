@@ -150,20 +150,19 @@
 				.member_name
 					text-transform lowercase
 					font 26pt/28pt 'PT Mono Bold'
-					width 60%
-					float left
+					width 65%
 				.member_roles
-					width 40%
-					text-align right
-					float right
-					font 12pt/14pt 'PT Mono Bold'
+					margin-top 15px
+					font 12pt/14pt 'PT Mono'
 					.role
 						display inline-block
-						margin-left 10px
+						margin-right 10px
 						&:after
 							content ','
-						&:last-child:after
-							content ''
+						&:last-child
+							margin-right 0
+							&:after
+								content ''
 			.member_events
 				margin-bottom 40px
 				.events_title
