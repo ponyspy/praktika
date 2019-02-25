@@ -38,14 +38,12 @@ module.exports = function(Model, Params) {
 			checkNested(post, [locale, 's_title'])
 				&& post_item.setPropertyLocalised('s_title', post[locale].s_title, locale);
 
-			checkNested(post, [locale, 'description'])
-				&& post_item.setPropertyLocalised('description', post[locale].description, locale);
-
 		});
 
 		async.series([
 			async.apply(uploadImage, post_item, 'posts', 'poster', 800, files.poster && files.poster[0], null),
-			async.apply(uploadImagesContent, post_item, post, 'posts'),
+			async.apply(uploadImagesContent, post_item, post, 'posts', checkNested(post, ['ru', 'description']) ? 'ru' : false),
+			async.apply(uploadImagesContent, post_item, post, 'posts', checkNested(post, ['en', 'description']) ? 'en' : false),
 		], function(err, results) {
 			if (err) return next(err);
 

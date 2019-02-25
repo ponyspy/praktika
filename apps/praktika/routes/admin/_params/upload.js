@@ -35,11 +35,13 @@ module.exports.file = function(obj, base_path, field_name, file, del_file, callb
 	});
 };
 
-module.exports.image_content = function(article, post, name, callback) {
+module.exports.image_content = function(article, post, name, locale, callback) {
+	if (!locale) return callback(null, article);
+
 	var file_path = '/cdn/' + name + '/' + article._id.toString() + '/images/content';
 
 	rimraf(file_path, { glob: true }, function(rm_path) {
-		$ = cheerio.load(post.description);
+		$ = cheerio.load(post[locale].description);
 		var images = $('img').toArray();
 
 		async.each(images, function(image, callback) {
@@ -54,16 +56,16 @@ module.exports.image_content = function(article, post, name, callback) {
 				callback();
 			});
 		}, function() {
-				article.description = $.html();
+				article.setPropertyLocalised('description', $('body').html(), locale);
 				callback(null, article);
 		});
 	});
 };
 
-module.exports.image_content_preview = function(article, callback) {
-	if (!article.description) return callback(null, article);
+module.exports.image_content_preview = function(article, locale, callback) {
+	if (!article.i18n.description.get(locale)) return callback(null, article);
 
-	$ = cheerio.load(article.description);
+	$ = cheerio.load(article.i18n.description.get(locale));
 	var images = $('img').toArray();
 
 	async.each(images, function(image, callback) {
@@ -78,7 +80,7 @@ module.exports.image_content_preview = function(article, callback) {
 
 		callback();
 	}, function() {
-			article.description = $.html();
+			article.setPropertyLocalised('description', $('body').html(), locale);
 			callback(null, article);
 	});
 };

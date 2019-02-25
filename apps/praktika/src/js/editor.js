@@ -84,7 +84,7 @@ $(function() {
 				},
 				// placeholder: 'Type your text here...',
 				selectImage: 'Click or drop image',
-				placeholderUrl: 'youtube / vimeo url',
+				placeholderUrl: 'www.example.com',
 				placeholderEmbed: '<embed/>',
 				videoFromUrl: function( url ) {
 

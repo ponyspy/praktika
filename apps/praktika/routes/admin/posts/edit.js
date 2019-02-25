@@ -1,4 +1,5 @@
 var moment = require('moment');
+var async = require('async');
 
 module.exports = function(Model, Params) {
 	var module = {};
@@ -7,6 +8,8 @@ module.exports = function(Model, Params) {
 
 	var uploadImage = Params.upload.image;
 	var checkNested = Params.locale.checkNested;
+	var uploadImagesContent = Params.upload.image_content;
+	var uploadImagesContentPreview = Params.upload.image_content_preview;
 
 
 	module.index = function(req, res, next) {
@@ -15,7 +18,15 @@ module.exports = function(Model, Params) {
 		Post.findById(id).exec(function(err, post_item) {
 			if (err) return next(err);
 
-			res.render('admin/posts/edit.pug', { post_item: post_item });
+			uploadImagesContentPreview(post_item, 'ru', function(err, post_item) {
+				if (err) return next(err);
+
+				uploadImagesContentPreview(post_item, 'en', function(err, post_item) {
+					if (err) return next(err);
+
+					res.render('admin/posts/edit.pug', { post_item: post_item });
+				});
+			});
 		});
 
 	};
@@ -43,12 +54,13 @@ module.exports = function(Model, Params) {
 				checkNested(post, [locale, 's_title'])
 					&& post_item.setPropertyLocalised('s_title', post[locale].s_title, locale);
 
-				checkNested(post, [locale, 'description'])
-					&& post_item.setPropertyLocalised('description', post[locale].description, locale);
-
 			});
 
-			uploadImage(post_item, 'posts', 'poster', 1920, files.poster && files.poster[0], post.poster_del, function(err, post_item) {
+			async.series([
+				async.apply(uploadImage, post_item, 'posts', 'poster', 800, files.poster && files.poster[0], post.poster_del),
+				async.apply(uploadImagesContent, post_item, post, 'posts', checkNested(post, ['ru', 'description']) ? 'ru' : false),
+				async.apply(uploadImagesContent, post_item, post, 'posts', checkNested(post, ['en', 'description']) ? 'en' : false),
+			], function(err, results) {
 				if (err) return next(err);
 
 				post_item.save(function(err, post_item) {
