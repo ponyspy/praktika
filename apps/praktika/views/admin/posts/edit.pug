@@ -26,7 +26,7 @@ block content
 			.form_title Подзаголовок:
 			+form_text_single('s_title', post_item)
 			.form_title Описание:
-			+form_text_multi('description', post_item)
+			+form_text_multi('description', post_item)(classes=['image', 'video', 'header', 'order', 'unorder'])
 			.form_title Постер:
 			+form_single_file('poster', post_item)(accept='image/jpeg,image/png,image/gif')
 			.form_title Стиль:
