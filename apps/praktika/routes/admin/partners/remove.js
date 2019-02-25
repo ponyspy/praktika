@@ -15,7 +15,7 @@ module.exports = function(Model) {
 
 			Event.update({}, { $pull: { 'partners': id } }, { 'multi': true }).exec(function() {
 
-				rimraf(__glob_root + '/public/cdn/' + __app_name + '/medias/' + id, { glob: false }, function(err) {
+				rimraf(__glob_root + '/public/cdn/' + __app_name + '/partners/' + id, { glob: false }, function(err) {
 					if (err) return next(err);
 
 					res.send('ok');
