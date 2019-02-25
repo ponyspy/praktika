@@ -1,0 +1,36 @@
+extends ../layout
+include ../_forms.pug
+
+block header_meta
+	- var content_title= 'РЕДАКТИРОВАТЬ ЗАПИСЬ'
+
+block header_include
+	- var include_libs_css = ['pickmeup.min.css']
+	- var include_css = ['add.css']
+	- var include_libs_js = ['jquery.pickmeup.min.js']
+	- var include_js = ['add.js', 'a_events.js']
+
+block sub_menu
+	a.sub_item.back_link(href='/admin/posts') Назад
+	span.sub_item.toggle_eng Перевод
+	.sub_right_block
+		input.form_cancel(type='submit', value='Отменить')
+		input.form_submit(type='submit', value='Сохранить')
+
+block content
+	.form_block
+		.title= content_title
+		form(action="", method="post", enctype="multipart/form-data")
+			.form_title Название:
+			+form_text_single('title', post_item)
+			.form_title Подзаголовок:
+			+form_text_single('s_title', post_item)
+			.form_title Постер:
+			+form_single_file('poster', post_item)(accept='image/jpeg,image/png,image/gif')
+			.form_title Статус:
+			select(name='status')
+				option(value='base') Обычный
+				option(value='hidden', selected= post_item.status == 'hidden' && 'hidden') Скрытый
+			.form_title Дата публикации:
+			+form_date('date', post_item.date)
+

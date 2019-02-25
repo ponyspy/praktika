@@ -140,6 +140,16 @@ partnerSchema = new Schema({
 	date: { type: Date, default: Date.now },
 });
 
+postSchema = new Schema({
+	title: { type: String, trim: true, locale: true },
+	s_title: { type: String, trim: true, locale: true },
+	description: { type: String, trim: true, locale: true },
+	poster: String,
+	status: String,
+	_short_id: { type: String, unique: true, index: true, sparse: true },
+	date: { type: Date, default: Date.now },
+});
+
 
 // ------------------------
 // *** Index Block ***
@@ -155,6 +165,7 @@ mediaSchema.index({'title.value': 'text'}, {language_override: 'lg', default_lan
 slideSchema.index({'title.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 documentSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 partnerSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
+postSchema.index({'title.value': 'text', 's_title.value': 'text', 'description.value': 'text'}, { weights: {'description.value': 2, 's_title.value': 3, 'title.value': 5 }, language_override: 'lg', default_language: 'ru'});
 
 
 // ------------------------
@@ -171,6 +182,7 @@ mediaSchema.plugin(mongooseLocale);
 slideSchema.plugin(mongooseLocale);
 documentSchema.plugin(mongooseLocale);
 partnerSchema.plugin(mongooseLocale);
+postSchema.plugin(mongooseLocale);
 
 
 // ------------------------
@@ -186,3 +198,4 @@ module.exports.Media = mongoose.model('Media', mediaSchema);
 module.exports.Slide = mongoose.model('Slide', slideSchema);
 module.exports.Document = mongoose.model('Document', documentSchema);
 module.exports.Partner = mongoose.model('Partner', partnerSchema);
+module.exports.Post = mongoose.model('Post', postSchema);
