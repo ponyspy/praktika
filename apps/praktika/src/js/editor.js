@@ -51,6 +51,7 @@ $(function() {
 																		 .attr('unselectable','on');
 							$.each(list_headers, function(name, format) {
 									var $link = $('<a/>').attr('href','#')
+																			 .css({'display': 'block', 'padding': '3px'})
 																			 .css( 'font-family', format )
 																			 .html( name )
 																			 .click(function(event) {
