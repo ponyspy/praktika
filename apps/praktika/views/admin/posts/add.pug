@@ -5,10 +5,10 @@ block header_meta
 	- var content_title= 'ДОБАВИТЬ ЗАПИСЬ'
 
 block header_include
-	- var include_libs_css = ['pickmeup.min.css']
+	- var include_libs_css = ['pickmeup.min.css', 'font-awesome.css', 'wysiwyg-editor.min.css']
 	- var include_css = ['add.css']
-	- var include_libs_js = ['jquery.pickmeup.min.js']
-	- var include_js = ['add.js', 'a_events.js']
+	- var include_libs_js = ['jquery.pickmeup.min.js', 'wysiwyg.min.js', 'wysiwyg-editor.min.js']
+	- var include_js = ['editor.js', 'add.js', 'a_events.js']
 
 block sub_menu
 	a.sub_item.back_link(href='/admin/posts') Назад
@@ -25,6 +25,8 @@ block content
 			+form_text_single('title')
 			.form_title Подзаголовок:
 			+form_text_single('s_title')
+			.form_title Описание:
+			+form_text_multi('description')
 			.form_title Постер:
 			+form_single_file('poster')(accept='image/jpeg,image/png,image/gif')
 			.form_title Стиль:
