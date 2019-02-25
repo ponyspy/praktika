@@ -1,5 +1,6 @@
 var shortid = require('shortid');
 var moment = require('moment');
+var async = require('async');
 
 module.exports = function(Model, Params) {
 	var module = {};
@@ -8,6 +9,7 @@ module.exports = function(Model, Params) {
 
 	var uploadImage = Params.upload.image;
 	var checkNested = Params.locale.checkNested;
+	var uploadImagesContent = Params.upload.image_content;
 
 
 	module.index = function(req, res, next) {
@@ -41,7 +43,10 @@ module.exports = function(Model, Params) {
 
 		});
 
-		uploadImage(post_item, 'posts', 'poster', 200, files.poster && files.poster[0], null, function(err, post_item) {
+		async.series([
+			async.apply(uploadImage, post_item, 'posts', 'poster', 800, files.poster && files.poster[0], null),
+			async.apply(uploadImagesContent, post_item, post, 'posts'),
+		], function(err, results) {
 			if (err) return next(err);
 
 			post_item.save(function(err, post_item) {
