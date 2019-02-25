@@ -144,6 +144,8 @@ postSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	s_title: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
+	holder: Boolean,
+	style: String, // black / white
 	poster: String,
 	status: String,
 	_short_id: { type: String, unique: true, index: true, sparse: true },

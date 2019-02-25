@@ -27,6 +27,14 @@ block content
 			+form_text_single('s_title')
 			.form_title Постер:
 			+form_single_file('poster')(accept='image/jpeg,image/png,image/gif')
+			.form_title Стиль:
+			select(name='style')
+				option(value='white') Белый текст / черный фон
+				option(value='black') Черный текст / белый фон
+			.form_title Затенение фона:
+			select(name='holder')
+				option(value='true') Вкл.
+				option(value='false') Выкл.
 			.form_title Статус:
 			select(name='status')
 				option(value='base') Обычный
