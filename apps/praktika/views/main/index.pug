@@ -5,7 +5,7 @@ block header_meta
 	- var content_description= ''
 	- var content_images = [medias && medias.length && medias[0].poster]
 	- var content_banner = true
-	- var content_footer_hidden = true
+	- var content_footer_hidden = false
 
 block header_include
 	- var include_libs_css = ['swiper.min.css']
@@ -14,7 +14,7 @@ block header_include
 	- var include_js = ['main.js']
 
 
-block content
+block over
 	.slider_block.swiper-container
 		.swiper-wrapper
 			each media in medias
@@ -31,3 +31,20 @@ block content
 		if medias.length > 1
 			.swiper-pagination.swiper-pagination-white
 			.swiper-pagination.swiper-pagination-black
+
+		a.journal_open(href='#journal') журнал «Практики»
+
+
+block content
+	.journal_block(anchor='journal')
+		.journal_title журнал
+		.jounral_posts
+			- var arr = new Array(12)
+			each post, i in arr
+				a.post_item(class= i == 5 || i == 8  ? 'blank' : '', class= i == 0 || i == 1  ? 'double' : '', href='#')
+					.post_poster(style='background-image: url(/stuff/praktika/beta/' + (i % 2 == 0 ? 't1' : 't2') + '.jpeg)'): .poster_cover
+					.post_title Масштабы турбулентности
+					.post_hover
+						.post_date 22.07.2018
+						.post_intro= i % 2 == 0 ? 'Что произойдет, если налить молоко в кофе и помешать ложечкой?' : 'Может показаться, что ничего особенного: молоко разобьется на хаотичные течения и постепенно растворится в кофе.'
+		.journal_more еще посты...

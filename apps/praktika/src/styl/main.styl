@@ -1,11 +1,15 @@
 @media screen and (max-width: 840px)
 	@import 'mobile/_main.styl'
 
-html, body
-	height 100%
+.maket_block.banner
+	.over_block
+		padding-top 80px
+		box-sizing border-box
+	.title_block
+		height 260px
 
-.maket_block.banner .content_block
-	top 80px
+html, body, .maket_block, .over_block
+	height 100%
 
 .banner_block
 	width 100%
@@ -14,6 +18,7 @@ html, body
 	padding-right 40px
 	padding-top 20px
 	box-sizing border-box
+	background-color white
 	&.close
 		display none
 	&:hover .banner_close
@@ -37,12 +42,6 @@ html, body
 .title_block
 	position absolute
 	height 0
-
-.content_block
-	position absolute
-	width 100%
-	top 0
-	bottom 0
 
 .announcement_block
 	display block
@@ -99,7 +98,129 @@ html, body
 			&.swiper-pagination-bullet-active
 				background-color black!important
 
+.journal_open
+	position absolute
+	color white
+	bottom 40px
+	left 40px
+	z-index 99999
+	font 14pt/16pt 'PT Mono'
+	cursor pointer
+	display block
+	text-decoration none
+	&:hover
+		opacity 0.7
+
+
+.journal_block
+	padding-left 40px
+	padding-right 40px
+	overflow hidden
+	margin 0 auto
+	max-width 960px
+
+.journal_title
+	font 22pt/24pt 'PT Mono Bold'
+	margin-top 80px
+	margin-bottom 80px
+
+.jounral_posts
+	margin-left -20px
+	overflow hidden
+	.post_item
+		display inline-block
+		vertical-align top
+		width 33.333333333%
+		font-size 0
+		color black
+		text-decoration none
+		padding-left 20px
+		margin-bottom 80px
+		box-sizing border-box
+		position relative
+		.post_title
+			transition .3s linear
+			text-transform lowercase
+			font 16pt/18pt 'PT Mono Bold'
+			margin-top 10px
+			margin-bottom 10px
+		.post_poster
+			background-position center
+			background-repeat no-repeat
+			background-size cover
+			width 100%
+			padding-bottom 75%
+			position relative
+			overflow hidden
+			position relative
+			.poster_cover
+				transition .3s linear
+				opacity 0
+				width 100%
+				height 100%
+				position absolute
+				background-color rgba(0, 0, 0, 0.6)
+		.post_hover
+			transition .3s linear
+			.post_date
+				font 12pt/12pt 'PT Mono'
+				margin-bottom 20px
+			.post_intro
+				font 12pt/18pt 'PT Serif'
+				width 80%
+		&:hover
+			.post_title
+			.post_hover
+				transition .3s linear
+				opacity 0.7
+		&.blank
+			width 100%
+			border-top 2px solid black
+			border-bottom 2px solid black
+			padding-left 0
+			margin-left 20px
+			.post_intro
+				width 30%
+				margin-top 80px
+				margin-bottom 20px
+			.post_poster
+				display none
+		&.double
+			width 50%
+			.post_hover
+				transition .3s linear
+				opacity 0
+				position absolute
+				height 100%
+				top 20px
+				left 40px
+				right 40px
+				color white
+			&:hover
+				.poster_cover
+					transition .3s linear
+					opacity 1
+				.post_hover
+					transition .3s linear
+					opacity 1!important
+
+.journal_more
+	font 14pt/16pt 'PT Mono'
+	text-align center
+	margin-bottom 40px
+	cursor pointer
+	&:hover
+		opacity 0.7
+
+
 .maket_block.white
+	.footer_block
+		.footer_inner
+			border-color black!important
+		img
+			filter: none
+		a
+			color black!important
 	.announcement_block
 		color white
 		&:hover
@@ -113,7 +234,7 @@ html, body
 		display none!important
 	.slider_navigate
 		color white
-	.content_block
+	.over_block
 		background-color black
 	.slide_item
 		color white
