@@ -1,0 +1,27 @@
+extends layout
+
+block header_meta
+	- var content_title= __('практика') + (post_item.i18n.title.get(locale) ? ' : ' +  post_item.i18n.title.get(locale).toLowerCase() : '')
+	- var content_description = post_item.i18n.s_title.get(locale)
+	- var content_images = [post_item.poster]
+	- var content_style = post_item.style
+
+block header_include
+	- var include_css = ['post.css']
+	- var include_js = ['post.js']
+
+
+block over
+	.post_header(style='background-image: url(' + post_item.poster + ')')
+		.header_title= post_item.i18n.title.get(locale)
+		.header_s_title= post_item.i18n.s_title.get(locale)
+		.header_date= moment(post_item.date).locale(locale).format('DD.MM.YYYY')
+
+
+block content
+	.post_content
+		.content_description!= post_item.i18n.description.get(locale)
+		.content_share
+			.share.fb
+			.share.vk
+			.share.twitter

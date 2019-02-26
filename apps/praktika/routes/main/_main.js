@@ -5,6 +5,7 @@ var Model = require(__glob_root + '/models/main.js');
 var main = {
 	index: require('./index.js')(Model),
 	events: require('./events.js')(Model),
+	posts: require('./posts.js')(Model),
 	team: require('./team.js')(Model),
 	docs: require('./docs.js')(Model),
 	about: require('./about.js')(Model),
@@ -33,6 +34,12 @@ module.exports = (function() {
 
 	router.route('/events/:short_id')
 		.get(main.events.event);
+
+	router.route('/posts')
+		.get(main.posts.index);
+
+	router.route('/posts/:short_id')
+		.get(main.posts.post);
 
 	router.route('/team')
 		.get(main.team.index)
