@@ -217,6 +217,21 @@ input, textarea, select
 	border-radius 0px
 	img
 		max-width 100%
+		box-sizing border-box
+		&.double
+			width 100%
+			border-left 30px solid rgba(156, 74, 153, 1.000)
+			border-right 30px solid rgba(156, 74, 153, 1.000)
+		&.center
+			width 100%
+			border-left 10px solid red
+			border-right 10px solid red
+		&.left
+			width 100%
+			border-left 10px solid rgba(104, 214, 49, 1.000)
+		&.right
+			width 100%
+			border-right 10px solid rgba(55, 169, 251, 1.000)
 	.wysiwyg-editor a
 		text-decoration underline!important
 		cursor pointer!important

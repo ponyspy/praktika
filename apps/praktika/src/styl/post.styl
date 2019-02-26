@@ -1,3 +1,5 @@
+@import 'mobile/_post.styl'
+
 .title_block
 	position absolute
 	height 0
@@ -34,15 +36,35 @@
 
 .post_content
 	padding-bottom 100px
-	max-width 960px
+	max-width 800px
 	margin 0 auto
+	padding-left 40px
+	padding-right 40px
+	box-sizing border-box
 	.content_description
 		hyphens auto
 		font 14pt/22pt 'PT Serif'
+		img ~ br
+			display none
 		img
-			margin 0 auto
 			display block
 			max-width 100%
+			&.center
+				width 100%
+			&.double
+				margin-left: calc((100% - 1040px) / 2);
+				max-width 960px
+				padding 15px 40px 10px 40px
+			&.left
+				max-width 420px
+				float left
+				padding 15px 15px 10px 40px
+				margin-left: calc((100% - 1040px) / 2);
+			&.right
+				max-width 420px
+				float right
+				padding 15px 40px 10px 15px
+				margin-right: calc((100% - 1040px) / 2);
 	.content_share
 		margin-top 40px
 		.share_title

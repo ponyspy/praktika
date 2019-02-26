@@ -19,6 +19,59 @@ $(function() {
 						title: 'Insert image',
 						image: '\uf030'
 					},
+					image_position: $(element).hasClass('image_position') && {
+							title: 'Image position',
+							style: 'font-size: 16pt; line-height: 12pt;',
+							image: '↔',
+							popup: function( $popup, $button ) {
+								var list_headers = {
+												// Name : position
+												'<- img --' : 'left',
+												'-- img ->' : 'right',
+												'<- img ->' : 'center',
+												'>- img -<' : 'double',
+												'x- img -x' : 'clear',
+										};
+
+								var $list = $('<div/>').addClass('wysiwyg-plugin-list')
+																			 .attr('unselectable','on');
+
+								$.each( list_headers, function(name, format) {
+										var $link = $('<a/>').attr('href','#')
+																				 .css({'display': 'block', 'padding': '3px'})
+																				 .css('font-family', format)
+																				 .html( name )
+																				 .click(function(event) {
+																						var html = $(element).wysiwyg('shell').getSelectedHTML();
+
+																						if (/img/.test(html)) {
+																							$(element).wysiwyg('shell').fontSize(7).closePopup();
+
+																							if (format == 'clear') {
+																								$(element).wysiwyg('container')
+																												.find('font[size=7]')
+																												.removeAttr('size')
+																												.find('img').removeAttr('class')
+																												.unwrap();
+																							} else {
+																								$(element).wysiwyg('container')
+																												.find('font[size=7]')
+																												.removeAttr('size')
+																												.find('img').removeAttr('class').addClass(format)
+																												.unwrap();
+																							}
+																						}
+
+																						// prevent link-href-#
+																						event.stopPropagation();
+																						event.preventDefault();
+																						return false;
+																				});
+										$list.append( $link );
+								});
+								$popup.append( $list );
+							 }
+					},
 					insertvideo: $(element).hasClass('video') && {
 						title: 'Insert video',
 						image: '\uf03d',
