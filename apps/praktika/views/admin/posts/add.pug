@@ -27,6 +27,7 @@ block content
 			+form_text_single('s_title')
 			.form_title Синоним:
 			span= 'https://' + host + '/posts/'
+			input(type='text', name='sym')
 			.form_title Описание:
 			+form_text_multi('description')(classes=['image', 'video', 'header', 'order', 'unorder'])
 			.form_title Постер:
