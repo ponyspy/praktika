@@ -7,7 +7,7 @@ module.exports = function(Model) {
 
 	module.index = function(req, res) {
 		res.redirect('/');
-	}
+	};
 
 	module.post = function(req, res) {
 		var user_id = req.session.user_id;
