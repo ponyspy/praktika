@@ -39,12 +39,11 @@ block content
 	.journal_block(anchor='journal')
 		.journal_title журнал
 		.jounral_posts
-			- var arr = new Array(12)
-			each post, i in arr
-				a.post_item(class= i == 5 || i == 8  ? 'blank' : '', class= i == 0 || i == 1  ? 'double' : '', href='#')
-					.post_poster(style='background-image: url(/stuff/praktika/beta/' + (i % 2 == 0 ? 't1' : 't2') + '.jpeg)'): .poster_cover
-					.post_title Масштабы турбулентности
+			each post, i in posts
+				a.post_item(class=post.view, class= i == 0 || i == 1  ? 'double' : '', href='/posts/' + (post.sym ? post.sym : post._short_id))
+					.post_poster(style='background-image: url(' + post.poster + ')'): .poster_cover
+					.post_title= post.i18n.title.get(locale)
 					.post_hover
-						.post_date 22.07.2018
-						.post_intro= i % 2 == 0 ? 'Что произойдет, если налить молоко в кофе и помешать ложечкой?' : 'Может показаться, что ничего особенного: молоко разобьется на хаотичные течения и постепенно растворится в кофе.'
+						.post_date= moment(post.date).locale(locale).format('DD.MM.YYYY')
+						.post_intro= post.i18n.s_title.get(locale)
 		.journal_more еще посты...

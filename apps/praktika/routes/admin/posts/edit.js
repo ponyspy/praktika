@@ -44,6 +44,8 @@ module.exports = function(Model, Params) {
 			post_item.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 			post_item.style = post.style;
 			post_item.holder = post.holder;
+			post_item.view = post.view;
+			post_item.sym = post.sym ? post.sym : undefined;
 
 			var locales = post.en ? ['ru', 'en'] : ['ru'];
 

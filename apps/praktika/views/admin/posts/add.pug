@@ -25,10 +25,16 @@ block content
 			+form_text_single('title')
 			.form_title Подзаголовок:
 			+form_text_single('s_title')
+			.form_title Синоним:
+			span= 'https://' + host + '/posts/'
 			.form_title Описание:
 			+form_text_multi('description')(classes=['image', 'video', 'header', 'order', 'unorder'])
 			.form_title Постер:
 			+form_single_file('poster')(accept='image/jpeg,image/png,image/gif')
+			.form_title Вид в потоке:
+			select(name='view')
+				option(value='base') обычный
+				option(value='blank') отбивка
 			.form_title Стиль:
 			select(name='style')
 				option(value='white') Белый текст / черный фон
