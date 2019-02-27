@@ -56,6 +56,9 @@ module.exports = function(Model, Params) {
 				checkNested(post, [locale, 's_title'])
 					&& post_item.setPropertyLocalised('s_title', post[locale].s_title, locale);
 
+				checkNested(post, [locale, 'intro'])
+					&& post_item.setPropertyLocalised('intro', post[locale].intro, locale);
+
 			});
 
 			async.series([

@@ -42,6 +42,8 @@ block content
 			select(name='holder')
 				option(value='true') Вкл.
 				option(value='false') Выкл.
+			.form_title Интро:
+			+form_text_multi('intro')
 			.form_title Описание:
 			+form_text_multi('description')(classes=['image', 'image_position', 'video', 'header', 'order', 'unorder'])
 			.form_title Статус:
