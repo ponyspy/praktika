@@ -28,8 +28,6 @@ block content
 			.form_title Синоним:
 			span= 'https://' + host + '/posts/'
 			input(type='text', name='sym', value=post_item.sym, placeholder=post_item._short_id)
-			.form_title Описание:
-			+form_text_multi('description', post_item)(classes=['image', 'image_position', 'video', 'header', 'order', 'unorder'])
 			.form_title Постер:
 			+form_single_file('poster', post_item)(accept='image/jpeg,image/png,image/gif')
 			.form_title Вид в потоке:
@@ -44,6 +42,8 @@ block content
 			select(name='holder')
 				option(value='true', selected=post_item.holder == true) Вкл.
 				option(value='false', selected=post_item.holder == false) Выкл.
+			.form_title Описание:
+			+form_text_multi('description', post_item)(classes=['image', 'image_position', 'video', 'header', 'order', 'unorder'])
 			.form_title Статус:
 			select(name='status')
 				option(value='base') Обычный
