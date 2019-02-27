@@ -20,7 +20,8 @@ block over
 
 
 block content
-	.post_intro!= post_item.i18n.intro.get(locale)
+	if post_item.i18n.intro.get(locale) !== ''
+		.post_intro!= post_item.i18n.intro.get(locale)
 	.post_body
 		.post_description!= post_item.i18n.description.get(locale)
 		.post_share
