@@ -1,4 +1,21 @@
-@import 'mobile/_post.styl'
+@media screen and (max-width: 1040px) {
+	img.double {
+		max-width: 100vw!important
+		margin-left: calc((100% - 100vw) / 2)!important;
+		box-sizing border-box
+	}
+
+	img.left {
+		margin-left: calc((100% - 100vw) / 2)!important;
+	}
+
+	img.right {
+		margin-right: calc((100% - 100vw) / 2)!important;
+	}
+}
+
+@media screen and (max-width: 840px)
+	@import 'mobile/_post.styl'
 
 .title_block
 	position absolute
