@@ -30,6 +30,7 @@ $(function() {
 												'-- img ->' : 'right',
 												'<- img ->' : 'center',
 												'>- img -<' : 'double',
+												'>> img <<' : 'extra',
 												'x- img -x' : 'clear',
 										};
 
