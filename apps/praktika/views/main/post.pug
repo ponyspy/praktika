@@ -1,7 +1,7 @@
 extends layout
 
 block header_meta
-	- var content_title= __('практика') + ' : ' + __('журнал') + (post_item.i18n.title.get(locale) ? ' : ' +  post_item.i18n.title.get(locale).toLowerCase() : '')
+	- var content_title= __('практика') + ' : ' + (post_item.i18n.title.get(locale) ?  __('журнал') + ' : ' + post_item.i18n.title.get(locale).toLowerCase() : '')
 	- var content_description = post_item.i18n.s_title.get(locale)
 	- var content_images = [post_item.poster]
 	- var content_style = post_item.style
