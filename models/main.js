@@ -149,6 +149,7 @@ postSchema = new Schema({
 	view: String,
 	style: String, // black / white
 	poster: String,
+	cover: String,
 	sym: { type: String, trim: true, index: true, unique: true, sparse: true },
 	status: String,
 	_short_id: { type: String, unique: true, index: true, sparse: true },

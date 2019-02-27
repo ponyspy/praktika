@@ -30,6 +30,8 @@ block content
 			input(type='text', name='sym')
 			.form_title Постер:
 			+form_single_file('poster')(accept='image/jpeg,image/png,image/gif')
+			.form_title Обложка:
+			+form_single_file('cover')(accept='image/jpeg,image/png,image/gif')
 			.form_title Вид в потоке:
 			select(name='view')
 				option(value='base') обычный

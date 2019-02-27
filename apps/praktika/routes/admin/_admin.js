@@ -36,7 +36,7 @@ module.exports = (function() {
 	router.use('/announces', checkAuth, admin.announces);
 	router.use('/members', checkAuth, upload.fields([ { name: 'photo' } ]), admin.members);
 	router.use('/partners', checkAuth, upload.fields([ { name: 'logo' } ]), admin.partners);
-	router.use('/posts', checkAuth, upload.fields([ { name: 'poster' } ]), admin.posts);
+	router.use('/posts', checkAuth, upload.fields([ { name: 'poster' }, { name: 'cover' } ]), admin.posts);
 	router.use('/users', checkAuth, admin.users);
 
 	router.post('/schedule_event', checkAuth, admin.schedule.event);

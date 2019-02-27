@@ -62,6 +62,7 @@ module.exports = function(Model, Params) {
 			});
 
 			async.series([
+				async.apply(uploadImage, post_item, 'posts', 'cover', 1920, files.cover && files.cover[0], post.cover_del),
 				async.apply(uploadImage, post_item, 'posts', 'poster', 800, files.poster && files.poster[0], post.poster_del),
 				async.apply(uploadImagesContent, post_item, post, 'posts', checkNested(post, ['ru', 'description']) ? 'ru' : false),
 				async.apply(uploadImagesContent, post_item, post, 'posts', checkNested(post, ['en', 'description']) ? 'en' : false),
