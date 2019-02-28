@@ -15,6 +15,17 @@ html
 					.banner_block
 						a.banner_logo(href='https://www.mos.ru/kultura', target='_blank'): img(src='/stuff/praktika/logo/logo_depcult.svg')
 						.banner_close
+				.menu_bottom
+					.bottom_menu
+						a(href='/students')= __('Студентам')
+						//- a.menu_item(href='/partners')= __('Партнеры')
+						a(href='/docs')= __('Документы')
+					.bottom_social
+						a(href='https://www.facebook.com/Praktika', target='_blank'): img(src='/stuff/praktika/social/facebook.svg')
+						a(href='https://www.instagram.com/praktika_theatre', target='_blank'): img(src='/stuff/praktika/social/instagram.svg')
+						a(href='https://vk.com/praktika', target='_blank'): img(src='/stuff/praktika/social/vk.svg')
+						a(href='https://twitter.com/teatr_praktika', target='_blank'): img(src='/stuff/praktika/social/twitter.svg')
+						a(href='tg://resolve?domain=praktika_news', target='_blank'): img(src='/stuff/praktika/social/telegram.svg')
 				.title_inner
 					.panel_block
 						.menu_block
@@ -30,6 +41,7 @@ html
 									a.menu_item(href='/schedule')= __('билеты')
 									a.menu_item(href='/events')= __('репертуар')
 									a.menu_item(href='/contacts')= __('контакты')
+									a.menu_item(href='/#journal')= __('журнал')
 								.items_drop
 									a.menu_item(href='/about')= __('о театре')
 									a.menu_item(href='/team')= __('команда')
