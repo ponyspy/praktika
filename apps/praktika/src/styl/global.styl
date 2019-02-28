@@ -138,156 +138,94 @@ body
 				font 12pt/14pt 'PT Mono Bold'
 
 
+
+
+
+
+
+
+
 .title_block
 	width 100%
-	text-align center
+	// text-align center
 	height 180px
 	font 12pt/14pt 'PT Mono'
 	position relative
-	z-index 9999999
-	.menu_bottom
-		overflow hidden
-		display none
-		position absolute
-		bottom 40px
-		left 0
-		width 100%
-		.bottom_menu
-			float left
-			margin-left 50px
-			a
-				font-size 14pt
-				line-height 16pt
-				text-decoration none
-				text-transform lowercase
-				margin-right 20px
-				&:hover
-					opacity 0.7
-		.bottom_social
-			margin-right 40px
-			float right
-			a
-				filter: invert(100%)
-				margin-left 20px
-				&:hover
-					opacity 0.7
-	&.open
-		top 0
-		position absolute
-		.menu_bottom
-			display block
-		.menu_items
-			position absolute
-			left 0
-			top 175px
-		.menu_item
-			margin-left 0px!important
-			font-size 26pt
-			line-height 36pt
-		.stargazer_block
-			display block!important
-		height 100%!important
-		background-color black
-		a, span
-			color white!important
-		.search, .logo, .menu_open
-			filter: invert(100%)
+	z-index 9999999999
 	.title_inner
 		position relative
 		margin-left 40px
 		margin-right 40px
-		.stargazer_block
-			display none
-			position absolute
-			top 2px
-			left 40px
-			a
-				text-decoration none
-				margin 0!important
-				padding-left 10px
-				padding-right 10px
-				padding-top 10px
-				float none!important
-				margin-top 5px!important
-				font-size 16pt
-				line-height 16pt
-				display inline-block
-	.panel_block
-		display flex
-		justify-content center
-		align-items flex-start
-	.nav_block
-		flex-grow 5.8
-		padding-bottom 6px
 		overflow hidden
-		.search
-			margin-top 13px
-		.lang
-			margin-top 15px
-		a
-			font-weight bold
-			display block
-			float left
-			color black
-			text-decoration none
-			margin-right 20px
-			&:hover
-				opacity 0.7
-			&:last-child
-				margin-right 0
-	.menu_block
-		flex-grow 3
-		padding-top 5px
+		background-color red
 		display flex
-		flex-basis 380px
-		.menu_item
-			margin-top 5px
-			float left
-			display block
-			color black
-			text-decoration none
-			margin-left 40px
-			&:hover
-				opacity 0.7
-		.menu_open
-			width 42px
-			height 42px
-			background-image url('/stuff/praktika/icons/menu.svg')
-			background-size contain
-			background-position center
-			background-repeat no-repeat
-			cursor pointer
-			&:hover
-				opacity 0.7
-			&.open
-				background-size 50%
-				background-image url('/stuff/praktika/icons/x.svg')
-		.menu_items
-			margin-top 5px
-			float left
-			text-align left
-			.items_main
+		// justify-content space-between
+		.menu_block
+			background-color rgba(82, 127, 245, 1.000)
+			overflow hidden
+			.menu_open
+				width 42px
+				height 42px
+				background-image url('/stuff/praktika/icons/menu.svg')
+				background-size contain
+				background-position center
+				background-repeat no-repeat
+				cursor pointer
+				background-color green
 				float left
-			&.open
-				.menu_item
-					margin-bottom 14px
-					margin-right 0
-					float none
-				.items_drop
+				&:hover
+					opacity 0.7
+				&.open
+					background-size 50%
+					background-image url('/stuff/praktika/icons/x.svg')
+			.menu_items
+				float left
+				background-color rgba(231, 197, 123, 1.000)
+				a
+					text-decoration none
+					margin-left 30px
+				.items_main
 					display block
-			.items_drop
-				display none
-	.logo_spacer
-		width 140px
-	.logo
+				.items_drop
+					display none
+			.menu_bottom
+					display none
+// 				.bottom_main
+// 				.bottom_social
+
+		.logo_spacer
+			width 300px
+			height 20px
+			background-color green
+
+		.nav_block
+			margin-left auto
+			margin-right auto
+			// .search
+			// .lang
+
+	.logo_block
 		position absolute
 		top 0
-		right 0
-		padding-top 20px
-		padding-bottom 20px
-		width 140px
-		&:hover
-			opacity 0.7
+		right 40px
+		z-index 9999999999999999
+		display block
+		img
+			width 140px
+			&:hover
+				opacity 0.7
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .footer_block
