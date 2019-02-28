@@ -26,8 +26,8 @@ $(function() {
 							popup: function( $popup, $button ) {
 								var list_headers = {
 												// Name : position
-												'<- img --' : 'left',
-												'-- img ->' : 'right',
+												// '<- img --' : 'left',
+												// '-- img ->' : 'right',
 												'<- img ->' : 'center',
 												'>- img -<' : 'double',
 												'>> img <<' : 'extra',
