@@ -17,16 +17,28 @@ html
 						.banner_close
 				.title_inner
 					.menu_block
-						.menu_open
-						.menu_items
-							.items_main
-								a.menu_item(href='/schedule')= __('билеты')
-								a.menu_item(href='/events')= __('репертуар')
-								a.menu_item(href='/contacts')= __('контакты')
-							.items_drop
-								a.menu_item(href='/#journal')= __('журнал')
-								a.menu_item(href='/about')= __('о театре')
-								a.menu_item(href='/team')= __('команда')
+						.menu_top
+							.menu_open
+							.menu_items
+								a(href='/schedule')= __('билеты')
+								a(href='/events')= __('репертуар')
+								a(href='/contacts')= __('контакты')
+
+							.nav_block
+								a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
+								a.lang(class=locale, href='/lang/' + locale)= (locale == 'en' ? 'eng' : 'rus')
+
+							.logo_spacer
+							a.logo_block(href='/'): img(src='/stuff/praktika/logo/logo_praktika.svg')
+
+						.menu_main
+							a(href='/schedule')= __('билеты')
+							a(href='/events')= __('репертуар')
+							a(href='/contacts')= __('контакты')
+							a(href='/#journal')= __('журнал')
+							a(href='/about')= __('о театре')
+							a(href='/team')= __('команда')
+
 						.menu_bottom
 							.bottom_menu
 								a(href='/students')= __('Студентам')
@@ -38,17 +50,6 @@ html
 								a(href='https://vk.com/praktika', target='_blank'): img(src='/stuff/praktika/social/vk.svg')
 								a(href='https://twitter.com/teatr_praktika', target='_blank'): img(src='/stuff/praktika/social/twitter.svg')
 								a(href='tg://resolve?domain=praktika_news', target='_blank'): img(src='/stuff/praktika/social/telegram.svg')
-
-					.nav_block
-						a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
-						if locale == 'ru'
-							a.lang.en(href='/lang/en') eng
-						else
-							a.lang.ru(href='/lang/ru') rus
-
-					.logo_spacer
-
-				a.logo_block(href='/'): img(src='/stuff/praktika/logo/logo_praktika.svg')
 
 			.over_block
 				block over

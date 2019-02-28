@@ -147,73 +147,84 @@ body
 
 .title_block
 	width 100%
-	// text-align center
 	height 180px
 	font 12pt/14pt 'PT Mono'
 	position relative
 	z-index 9999999999
+	background-color red
+	&.open
+		height 100%!important
+		.menu_main
+		.menu_bottom
+			display block!important
 	.title_inner
 		position relative
 		margin-left 40px
 		margin-right 40px
 		overflow hidden
 		background-color red
-		display flex
-		// justify-content space-between
 		.menu_block
 			background-color rgba(82, 127, 245, 1.000)
 			overflow hidden
-			.menu_open
-				width 42px
-				height 42px
-				background-image url('/stuff/praktika/icons/menu.svg')
-				background-size contain
-				background-position center
-				background-repeat no-repeat
-				cursor pointer
-				background-color green
-				float left
-				&:hover
-					opacity 0.7
-				&.open
-					background-size 50%
-					background-image url('/stuff/praktika/icons/x.svg')
-			.menu_items
-				float left
-				background-color rgba(231, 197, 123, 1.000)
-				a
-					text-decoration none
-					margin-left 30px
-				.items_main
+			.menu_top
+				display flex
+				justify-content space-between
+				.menu_open
+					width 42px
+					height 42px
+					background-image url('/stuff/praktika/icons/menu.svg')
+					background-size contain
+					background-position center
+					background-repeat no-repeat
+					cursor pointer
+					background-color green
+					float left
+					&:hover
+						opacity 0.7
+					&.open
+						background-size 50%
+						background-image url('/stuff/praktika/icons/x.svg')
+
+				.menu_items
+					float left
+					background-color rgba(231, 197, 123, 1.000)
+					a
+						text-decoration none
+						margin-left 30px
+
+				.nav_block
+					margin-left auto
+					margin-right auto
+					// .search
+					// .lang
+
+				.logo_spacer
+					width 300px
+					height 20px
+					background-color green
+
+				.logo_block
+					position absolute
+					top 0
+					right 0
+					z-index 9999999999999999
 					display block
-				.items_drop
-					display none
+					img
+						width 140px
+						&:hover
+							opacity 0.7
+
+
+			.menu_main
+				display none
+
+
 			.menu_bottom
-					display none
-// 				.bottom_main
-// 				.bottom_social
-
-		.logo_spacer
-			width 300px
-			height 20px
-			background-color green
-
-		.nav_block
-			margin-left auto
-			margin-right auto
-			// .search
-			// .lang
-
-	.logo_block
-		position absolute
-		top 0
-		right 40px
-		z-index 9999999999999999
-		display block
-		img
-			width 140px
-			&:hover
-				opacity 0.7
+				display none
+				.bottom_main
+					float left
+				.bottom_social
+					float right
 
 
 
