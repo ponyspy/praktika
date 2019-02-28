@@ -146,9 +146,19 @@ body
 	position relative
 	z-index 9999999
 	&.open
+		top 0
+		position absolute
+		.menu_items
+			position absolute
+			left 0
+			top 160px
+		.menu_item
+			margin-left 10px!important
+			font-size 26pt
+			line-height 36pt
 		.stargazer_block
 			display block!important
-		height 180px
+		height 100%!important
 		background-color black
 		a, span
 			color white!important
@@ -161,18 +171,19 @@ body
 		.stargazer_block
 			display none
 			position absolute
-			top 42px
+			top 2px
+			left 40px
 			a
 				text-decoration none
 				margin 0!important
-				padding-left 11px
-				padding-right 11px
+				padding-left 10px
+				padding-right 10px
 				padding-top 10px
 				float none!important
 				margin-top 5px!important
 				font-size 16pt
 				line-height 16pt
-				display block
+				display inline-block
 	.panel_block
 		display flex
 		justify-content center
