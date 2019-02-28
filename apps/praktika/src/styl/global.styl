@@ -16,7 +16,7 @@ body
 	.title_block
 		a, span
 			color white!important
-		.search, .logo, .menu_open
+		img, .menu_open
 			filter: invert(100%)
 	.footer_block
 		.social_block
@@ -151,7 +151,6 @@ body
 	font 12pt/14pt 'PT Mono'
 	position relative
 	z-index 99999
-	background-color grey
 	a
 		color black
 		text-decoration none
@@ -159,6 +158,7 @@ body
 			opacity 0.7
 	&.open
 		height 100%!important
+		background-color black
 		.title_inner  // remove mobile
 			height 100%!important
 		.menu_items a
@@ -170,8 +170,8 @@ body
 		position relative
 		margin-left 40px
 		margin-right 40px
-		background-color grey
 		.menu_block
+			padding-top 4px
 			// background-color rgba(82, 127, 245, 1.000)
 			.menu_top
 				display flex
@@ -185,7 +185,7 @@ body
 					background-position center
 					background-repeat no-repeat
 					cursor pointer
-					background-color green
+					// background-color green
 					float left
 					&:hover
 						opacity 0.7
@@ -196,9 +196,9 @@ body
 				.menu_items
 					width 340px
 					float left
-					background-color rgba(231, 197, 123, 1.000)
+					// background-color rgba(231, 197, 123, 1.000)
 					a
-						margin-left 30px
+						margin-left 40px
 
 				.nav_block
 					margin-left auto
@@ -213,11 +213,10 @@ body
 				.logo_spacer
 					width 25%
 					height 20px
-					background-color green
 
 				.logo_block
 					position absolute
-					top 0
+					top 20px
 					right 0
 					z-index 9999999999999999
 					display block
@@ -227,6 +226,8 @@ body
 
 			.menu_main
 				display none
+				margin-top 160px
+				padding-left 10px
 				a
 					margin-bottom 20px
 					display block
@@ -238,7 +239,7 @@ body
 				display none
 				position absolute // remove mobile
 				width 100% // remove mobile
-				bottom 40px // remove mobile
+				bottom 35px // remove mobile
 				overflow hidden
 				a
 					font-size 14pt
@@ -246,6 +247,7 @@ body
 					&:last-child
 						margin 0
 				.bottom_main
+					padding-left 10px
 					display inline-block
 					float left
 				.bottom_social
