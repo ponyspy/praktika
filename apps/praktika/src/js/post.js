@@ -7,16 +7,23 @@ $(function() {
 		var y = window.top.outerHeight / 2 + window.top.screenY - (800 / 2);
 		var params = 'left=' + x + ',top=' + y + ',width=600,height=800';
 
-		if (type == 'fb') {
-			window.open('https://www.facebook.com/sharer.php' + '?' + $.param({ u: url, title: title }), '_blank', params);
+		var social_list = {
+			'fb': {
+				'url': 'https://www.facebook.com/sharer.php',
+				'params': { u: url, title: title }
+			},
+			'twitter': {
+				'url': 'https://twitter.com/intent/tweet',
+				'params': { text: url }
+			},
+			'vk': {
+				'url': 'https://vk.com/share.php',
+				'params': { url: url, title: title }
+			}
 		}
 
-		if (type == 'twitter') {
-			window.open('https://twitter.com/intent/tweet' + '?' + $.param({ text: url }), '_blank', params);
-		}
-
-		if (type == 'vk') {
-			window.open('https://vk.com/share.php' + '?' + $.param({ url: url, title: title }), '_blank', params);
+		if (/fb|twitter|vk/.test(type)) {
+			window.open(social_list[type].url + '?' + $.param(social_list[type].params), '_blank', params);
 		}
 	});
 });
