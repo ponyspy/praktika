@@ -220,6 +220,7 @@ body
 			.menu_main
 				display none
 				a
+					margin-bottom 20px
 					display block
 					font-size 26pt
 					line-height 28pt
@@ -229,10 +230,18 @@ body
 				display none
 				position absolute // remove mobile
 				width 100% // remove mobile
-				bottom 0 // remove mobile
+				bottom 40px // remove mobile
+				overflow hidden
+				a
+					font-size 14pt
+					margin-right 30px
+					&:last-child
+						margin 0
 				.bottom_main
+					display inline-block
 					float left
 				.bottom_social
+					display inline-block
 					float right
 
 
