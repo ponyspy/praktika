@@ -151,9 +151,14 @@ body
 	font 12pt/14pt 'PT Mono'
 	position relative
 	z-index 9999999999
-	background-color red
+	background-color grey
+	a
+		color black
+		text-decoration none
 	&.open
 		height 100%!important
+		.title_inner  // remove mobile
+			height 100%!important
 		.menu_main
 		.menu_bottom
 			display block!important
@@ -161,11 +166,9 @@ body
 		position relative
 		margin-left 40px
 		margin-right 40px
-		// overflow hidden
-		background-color red
+		background-color grey
 		.menu_block
-			background-color rgba(82, 127, 245, 1.000)
-			overflow hidden
+			// background-color rgba(82, 127, 245, 1.000)
 			.menu_top
 				display flex
 				justify-content space-between
@@ -189,7 +192,6 @@ body
 					float left
 					background-color rgba(231, 197, 123, 1.000)
 					a
-						text-decoration none
 						margin-left 30px
 
 				.nav_block
@@ -219,10 +221,15 @@ body
 				display none
 				a
 					display block
+					font-size 26pt
+					line-height 28pt
 
 
 			.menu_bottom
 				display none
+				position absolute // remove mobile
+				width 100% // remove mobile
+				bottom 0 // remove mobile
 				.bottom_main
 					float left
 				.bottom_social
