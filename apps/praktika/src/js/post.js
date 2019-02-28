@@ -20,7 +20,7 @@ $(function() {
 				'url': 'https://vk.com/share.php',
 				'params': { url: url, title: title }
 			}
-		}
+		};
 
 		if (/fb|twitter|vk/.test(type)) {
 			window.open(social_list[type].url + '?' + $.param(social_list[type].params), '_blank', params);
