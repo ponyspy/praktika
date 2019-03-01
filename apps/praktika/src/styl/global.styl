@@ -157,14 +157,16 @@ body
 		&:hover
 			opacity 0.7
 	&.open
+		height 100%!important
+		background-color black
 		a, span
 			color white!important
 		img, .menu_open
 			filter: invert(100%)
 		.menu_open
 			background-size 60%!important
-		height 100%!important
-		background-color black
+		.logo_block
+			display block!important
 		.title_inner  // remove mobile
 			height 100%!important
 		.menu_items a
@@ -225,7 +227,6 @@ body
 					top 20px
 					right 0
 					z-index 9999999999999999
-					display block
 					img
 						width 140px
 
