@@ -32,6 +32,10 @@ html
 							a.logo_block(href='/'): img(src='/stuff/praktika/logo/logo_praktika.svg')
 
 						.menu_main
+							if (session && session.user_id)
+								.stargazer_block
+									span: a(href='/auth') ✦ stargazer
+									span: a(href='/auth/logout') ⇤ выход
 							span: a(href='/schedule')= __('билеты')
 							span: a(href='/events')= __('репертуар')
 							span: a(href='/contacts')= __('контакты')
