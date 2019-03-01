@@ -6,7 +6,6 @@ module.exports = function(Model, Params) {
 	var Partner = Model.Partner;
 
 	var uploadImage = Params.upload.image;
-	var uploadFile = Params.upload.file;
 	var checkNested = Params.locale.checkNested;
 
 
@@ -31,6 +30,7 @@ module.exports = function(Model, Params) {
 			if (err) return next(err);
 
 			partner.status = post.status;
+			partner.type = post.type;
 			partner.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 			partner.link = post.link;
 

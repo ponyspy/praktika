@@ -1,0 +1,22 @@
+extends layout
+
+block header_meta
+	- var content_title= __('практика') + ' : ' + __('Партнеры').toLowerCase()
+	- var content_description= ''
+
+block header_include
+	- var include_css = ['partners.css']
+	//- - var include_js = ['partners.js']
+
+
+block content
+	.partners_title= __('Партнеры')
+	.partners_types
+		each type in types
+			.partner_type(class= type.partners.length > 3 ? 'double' : '')
+				.type_title= __n(type.type, type.partners.length == 1 ? 1 : 5)
+				.type_list
+					each partner in type.partners
+						a.partner_item(href=partner.link, target='_blank', rel='nofollow')
+							.partner_logo(style='background-image: url(' + partner.logo + ')')
+							.partner_title= get_locale(partner.title, locale)

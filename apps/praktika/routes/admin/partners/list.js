@@ -26,6 +26,10 @@ module.exports = function(Model) {
 			? Partner.find({ $text : { $search : post.context.text } } )
 			: Partner.find();
 
+		if (post.context.type && post.context.type != 'all') {
+			Query.where('type').equals(post.context.type);
+		}
+
 		if (post.context.status && post.context.status != 'all') {
 			Query.where('status').equals(post.context.status);
 		}
