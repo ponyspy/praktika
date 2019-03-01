@@ -2,9 +2,12 @@
 	display none
 
 .title_block
-	overflow-y scroll
-	-webkit-overflow-scrolling touch
 	background-color red
+	&.open
+		overflow-y scroll
+		-webkit-overflow-scrolling touch
+		// .menu_open
+		// 	margin-top 16px!important
 	.logo_spacer, .logo
 		width 120px!important
 	.title_inner
@@ -14,9 +17,14 @@
 			position absolute
 			left 0
 			top 120px
+		// .menu_top
+		// 	.menu_open
+		// 		margin-top 6px
+				// width 20px!important
+				// height 20px!important
+				// background-size 100%!important
 		.menu_main
 			padding 0!important
-
 		.menu_bottom
 			position relative!important
 			bottom auto!important
