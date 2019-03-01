@@ -26,7 +26,7 @@ html
 
 							.nav_block
 								a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
-								a.lang(class=locale, href='/lang/' + locale)= (locale == 'en' ? 'eng' : 'rus')
+								a.lang(href='/lang/' + (locale == 'en' ? 'ru' : 'en'))= (locale == 'en' ? 'rus' : 'eng')
 
 							.logo_spacer
 							a.logo_block(href='/'): img(src='/stuff/praktika/logo/logo_praktika.svg')
