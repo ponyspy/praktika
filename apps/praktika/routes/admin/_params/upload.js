@@ -1,6 +1,7 @@
 var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 var async = require('async');
+var cheerio = require('cheerio');
 var gm = require('gm').subClass({ imageMagick: true });
 var fs = require('fs');
 var path = require('path');
@@ -31,6 +32,56 @@ module.exports.file = function(obj, base_path, field_name, file, del_file, callb
 				});
 			});
 		});
+	});
+};
+
+module.exports.image_content = function(article, post, name, locale, callback) {
+	if (!locale) return callback(null, article);
+
+	var file_path = '/cdn/' + name + '/' + article._id.toString() + '/images/content';
+
+	rimraf(file_path, { glob: true }, function(rm_path) {
+		$ = cheerio.load(post[locale].description, { decodeEntities: false });
+		var images = $('img').toArray();
+
+		async.each(images, function(image, callback) {
+			var $this = $(image);
+			var file_name = path.basename($this.attr('src'));
+
+			$this.removeAttr('width').removeAttr('height').removeAttr('alt');
+			$this.attr('src', file_path + '/' + file_name);
+
+			mkdirp(public_path + file_path, function() {
+				fs.createReadStream(preview_path + file_name).pipe(fs.createWriteStream(public_path + file_path + '/' + file_name));
+				callback();
+			});
+		}, function() {
+				article.setPropertyLocalised('description', $('body').html(), locale);
+				callback(null, article);
+		});
+	});
+};
+
+module.exports.image_content_preview = function(article, locale, callback) {
+	if (!article.i18n.description.get(locale)) return callback(null, article);
+
+	$ = cheerio.load(article.i18n.description.get(locale), { decodeEntities: false });
+	var images = $('img').toArray();
+
+	async.each(images, function(image, callback) {
+		var $this = $(image);
+
+		var file_path = $this.attr('src');
+		var file_name = path.basename(file_path);
+
+		fs.createReadStream(public_path + file_path).pipe(fs.createWriteStream(preview_path + file_name));
+
+		$this.attr('src', '/preview/' + file_name);
+
+		callback();
+	}, function() {
+			article.setPropertyLocalised('description', $('body').html(), locale);
+			callback(null, article);
 	});
 };
 

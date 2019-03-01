@@ -215,6 +215,39 @@ input, textarea, select
 	margin-right 20px
 	margin-bottom 20px
 	border-radius 0px
+	.video_outer
+		width 100%
+		position relative
+		padding-bottom 56.25% /* 16:9 */
+		padding-top 0px
+		height 0
+		.video_embed
+			position absolute
+			top 0
+			left 0
+			width 100%
+			height 100%
+	img
+		max-width 100%
+		box-sizing border-box
+		&.extra
+			width 100%
+			border-left 90px solid rgba(231, 197, 123, 1.000)
+			border-right 90px solid rgba(231, 197, 123, 1.000)
+		&.double
+			width 100%
+			border-left 30px solid rgba(156, 74, 153, 1.000)
+			border-right 30px solid rgba(156, 74, 153, 1.000)
+		&.center
+			width 100%
+			border-left 10px solid red
+			border-right 10px solid red
+		// &.left
+		// 	width 100%
+		// 	border-left 10px solid rgba(104, 214, 49, 1.000)
+		// &.right
+		// 	width 100%
+		// 	border-right 10px solid rgba(55, 169, 251, 1.000)
 	.wysiwyg-editor a
 		text-decoration underline!important
 		cursor pointer!important
