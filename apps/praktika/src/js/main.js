@@ -1,8 +1,8 @@
 $(function() {
-	if (+Cookies.get('banner') >= 3) {
-		$('.maket_block').removeClass('banner');
-		$('.banner_block').remove();
-	}
+	// if (+Cookies.get('banner') >= 3) {
+	// 	$('.maket_block').removeClass('banner');
+	// 	$('.banner_block').remove();
+	// }
 
 	var swiper = new Swiper('.swiper-container', {
 		loop: true,
