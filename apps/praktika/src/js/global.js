@@ -1,5 +1,6 @@
 $(function() {
 	$('.menu_open').on('click', function(e) {
+		$('body').toggleClass('stop_scroll');
 		$('.menu_items, .title_block, .menu_open').toggleClass('open');
 	});
 

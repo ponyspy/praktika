@@ -1,0 +1,32 @@
+extends layout
+
+block header_meta
+	- var content_title= __('практика') + ' : ' + (post_item.i18n.title.get(locale) ?  __('журнал') + ' : ' + post_item.i18n.title.get(locale).toLowerCase() : '')
+	- var content_description = post_item.i18n.s_title.get(locale)
+	- var content_images = [post_item.poster]
+	- var content_style = post_item.style
+
+block header_include
+	- var include_css = ['post.css']
+	- var include_js = ['post.js']
+
+
+block over
+	.post_header(style='background-image: url(' + post_item.cover + ')')
+		.post_header_meta
+			.post_header_title= post_item.i18n.title.get(locale)
+			.post_header_s_title= post_item.i18n.s_title.get(locale)
+		.post_header_date= moment(post_item.date).locale(locale).format('DD.MM.YYYY')
+
+
+block content
+	if post_item.i18n.intro.get(locale) !== ''
+		.post_intro!= post_item.i18n.intro.get(locale)
+	.post_body
+		.post_description!= post_item.i18n.description.get(locale)
+		.post_share
+			.share_title= __('поделиться')
+			.share_buttons
+				img.s_button(social='fb', src='/stuff/praktika/social/facebook.svg')
+				img.s_button(social='twitter', src='/stuff/praktika/social/twitter.svg')
+				img.s_button(social='vk', src='/stuff/praktika/social/vk.svg')

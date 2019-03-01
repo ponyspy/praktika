@@ -1,0 +1,133 @@
+@media screen and (max-width: 1040px) {
+	img.double {
+		max-width: 100vw!important
+		margin-left: calc((100% - 100vw) / 2)!important;
+		box-sizing border-box
+	}
+
+	img.left {
+		margin-left: calc((100% - 100vw) / 2)!important;
+	}
+
+	img.right {
+		margin-right: calc((100% - 100vw) / 2)!important;
+	}
+}
+
+@media screen and (max-width: 840px)
+	@import 'mobile/_post.styl'
+
+.title_block
+	position absolute
+	height 0
+
+.post_header
+	min-height 400px
+	background-size cover
+	background-position center
+	background-repeat no-repeat
+	position relative
+	margin-bottom 40px
+	.post_header_meta
+		padding-top 200px
+		position relative
+		padding-left 40px
+		padding-right 40px
+		padding-bottom 120px
+		.post_header_title
+			max-width 500px
+			text-transform lowercase
+			font 28pt/30pt 'PT Mono Bold'
+		.post_header_s_title
+			font 12pt/18pt 'PT Mono'
+			margin-top 40px
+			max-width 400px
+	.post_header_date
+		font 12pt/18pt 'PT Mono'
+		position absolute
+		bottom 20px
+		left 40px
+
+.post_intro
+	font 18pt/28pt 'PT Serif'
+	padding-bottom 40px
+	padding-left 40px
+	padding-right 40px
+	max-width 960px
+	margin 0 auto
+
+.post_body
+	padding-bottom 100px
+	max-width 800px
+	margin 0 auto
+	padding-left 40px
+	padding-right 40px
+	box-sizing border-box
+	.post_description
+		hyphens auto
+		font 14pt/22pt 'PT Serif'
+		.video_outer
+			width 100%
+			position relative
+			padding-bottom 56.25% /* 16:9 */
+			padding-top 0px
+			height 0
+			.video_embed
+				position absolute
+				top 0
+				left 0
+				width 100%
+				height 100%
+		img ~ br
+			display none
+		img
+			display block
+			max-width 100%
+			&.center
+				width 100%
+			&.double
+				margin-left: calc((100% - 1040px) / 2);
+				max-width 960px
+				width 100vw
+				padding 0 40px 0 40px
+			&.extra
+				max-width none!important
+				width 100vw
+				margin-left: calc((100% - 100vw) / 2)
+			// &.left
+			// 	max-width 400px
+			// 	float left
+			// 	padding 15px 30px 10px 40px
+			// 	margin-left: calc((100% - 1040px) / 2);
+			// &.right
+			// 	max-width 400px
+			// 	float right
+			// 	padding 15px 40px 10px 30px
+			// 	margin-right: calc((100% - 1040px) / 2);
+	.post_share
+		margin-top 40px
+		.share_title
+			font 12pt/14pt 'PT Mono Bold'
+		.share_buttons
+			margin-top 20px
+			.s_button
+				display inline-block
+				margin-right 25px
+				cursor pointer
+				&:hover
+					opacity 0.7
+
+
+.maket_block.white
+	.post_header_meta
+	.post_header_date
+		color white
+	.over_block
+		background-color black
+	.footer_block
+		.footer_inner
+			border-color black!important
+		img
+			filter: none
+		a
+			color black!important

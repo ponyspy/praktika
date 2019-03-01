@@ -1,53 +1,50 @@
-.menu_items, .nav_block, .logo, .logo_spacer
-	display none
-
+.menu_items, .nav_block, .logo_block, .logo_spacer
+	display none!important
 
 .title_block
+	// background-color red
 	height 60px!important
-	overflow-y scroll
-	-webkit-overflow-scrolling touch
-	.logo_spacer
-		width 120px!important
-	.logo
+	&.open
+		overflow-y scroll
+		-webkit-overflow-scrolling touch
+		.nav_block
+			display flex!important
+		.menu_open
+			width 22px!important
+			height 22px!important
+			background-size 100%!important
+			margin-top 15px!important
+	.logo_block img
 		width 120px!important
 	.title_inner
 		margin-left 20px!important
 		margin-right 20px!important
-		.stargazer_block
-			height 0
-			overflow hidden
 		.nav_block
 			position absolute
 			left 0
-			bottom 5px
-		.menu_block
-			.menu_item
-				font 16pt/18pt 'PT Mono'
-				margin-bottom 30px!important
-				margin-left 0
-		.menu_open
-			margin-top 6px
-	&.open
-		z-index 999999999!important
-		top 0
-		height 100%!important
-		position fixed
-		.menu_open
-			margin-top 14px
-			width 20px!important
-			height 20px!important
-			background-size 100%!important
-		.title_inner
-			height 160px
-		.menu_items
-			position absolute
-			left 0
-			top 175px
-			display block
-		.nav_block
-			display block
-		.logo
-			display block
+			top 120px
+		.menu_top
+			.menu_open
+				margin-top 6px
+		.menu_main
+			padding 0!important
+		.menu_bottom
+			position relative!important
+			bottom auto!important
+			.bottom_main
+				margin-top 120px
+			.bottom_social
+				margin-top 40px
+				margin-bottom 20px
+			.bottom_main
+			.bottom_social
+				float none!important
+				padding 0!important
+				display flex!important
+				justify-content space-between
+				width 100%
+				a
+					margin 0!important
 
 
 .footer_block

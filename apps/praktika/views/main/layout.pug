@@ -4,42 +4,52 @@ html
 		include header
 	body
 		.maket_block(class=content_style, class=content_banner ? 'banner' : '')
-			if content_banner
-				.banner_block
-					a.banner_logo(href='https://www.mos.ru/kultura', target='_blank'): img(src='/stuff/praktika/logo/logo_depcult.svg')
-					.banner_close
 
 			.search_block
 				.search_close
 				input.search_input(type='text', placeholder= __('поиск') + '...')
 				.search_results
 
-			.title_block: .title_inner
-				.panel_block
+			.title_block
+				if content_banner
+					.banner_block
+						a.banner_logo(href='https://www.mos.ru/kultura', target='_blank'): img(src='/stuff/praktika/logo/logo_depcult.svg')
+						.banner_close
+				.title_inner
 					.menu_block
-						.menu_open
-						if (session && session.user_id)
-							span.stargazer_block
-								a(href='/auth') ✦
-								if content_event_id
-									a(href='/admin/events/edit/' + content_event_id, target='_blank') ✑
-								a(href='/auth/logout') ⇤
-						.menu_items
-							.items_main
-								a.menu_item(href='/schedule')= __('билеты')
-								a.menu_item(href='/events')= __('репертуар')
-								a.menu_item(href='/contacts')= __('контакты')
-							.items_drop
-								a.menu_item(href='/about')= __('о театре')
-								a.menu_item(href='/team')= __('команда')
-					.nav_block
-						a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
-						if locale == 'ru'
-							a.lang.en(href='/lang/en') eng
-						else
-							a.lang.ru(href='/lang/ru') rus
-					.logo_spacer
-				a(href='/'): img.logo(src='/stuff/praktika/logo/logo_praktika.svg')
+						.menu_top
+							.menu_open
+							.menu_items
+								a(href='/schedule')= __('билеты')
+								a(href='/events')= __('репертуар')
+								a(href='/contacts')= __('контакты')
+
+							.nav_block
+								a.search(href='#'): img(src='/stuff/praktika/icons/search.svg')
+								a.lang(href='/lang/' + (locale == 'en' ? 'ru' : 'en'))= (locale == 'en' ? 'rus' : 'eng')
+
+							.logo_spacer
+							a.logo_block(href='/'): img(src='/stuff/praktika/logo/logo_praktika.svg')
+
+						.menu_main
+							span: a(href='/schedule')= __('билеты')
+							span: a(href='/events')= __('репертуар')
+							span: a(href='/contacts')= __('контакты')
+							span: a(href='/about')= __('о театре')
+							span: a(href='/team')= __('команда')
+							span: a(href='/#journal')= __('журнал')
+
+						.menu_bottom
+							.bottom_main
+								a(href='/students')= __('Студентам')
+								a.menu_item(href='/partners')= __('Партнеры')
+								a(href='/docs')= __('Документы')
+							.bottom_social
+								a(href='https://www.facebook.com/Praktika', target='_blank'): img(src='/stuff/praktika/social/facebook.svg')
+								a(href='https://www.instagram.com/praktika_theatre', target='_blank'): img(src='/stuff/praktika/social/instagram.svg')
+								a(href='https://vk.com/praktika', target='_blank'): img(src='/stuff/praktika/social/vk.svg')
+								a(href='https://twitter.com/teatr_praktika', target='_blank'): img(src='/stuff/praktika/social/twitter.svg')
+								a(href='tg://resolve?domain=praktika_news', target='_blank'): img(src='/stuff/praktika/social/telegram.svg')
 
 			.over_block
 				block over
