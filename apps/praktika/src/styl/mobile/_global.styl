@@ -1,11 +1,13 @@
 .menu_items, .nav_block, .logo_block, .logo_spacer
-	display none
+	display none!important
 
 .title_block
-	background-color red
+	// background-color red
 	&.open
 		overflow-y scroll
 		-webkit-overflow-scrolling touch
+		.nav_block
+			display block!important
 		// .menu_open
 		// 	margin-top 16px!important
 	.logo_spacer, .logo
