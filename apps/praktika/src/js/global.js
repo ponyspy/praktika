@@ -1,7 +1,7 @@
 $(function() {
 	$('.menu_open').on('click', function(e) {
 		$('body').toggleClass('stop_scroll');
-		$('.menu_items, .title_block, .menu_open').toggleClass('open');
+		$('.title_block, .menu_open').toggleClass('open');
 	});
 
 	$(document)
@@ -10,7 +10,7 @@ $(function() {
 
 			if (e.which == 27) {
 				$('.search_block').removeClass('show');
-				$('.menu_items, .title_block, .menu_open').removeClass('open');
+				$('.title_block, .menu_open').removeClass('open');
 				$('body').removeClass('stop_scroll');
 				$('.widget_block').removeClass('open').children('.widget_inner').empty();
 			}
@@ -19,7 +19,7 @@ $(function() {
 		.on('mouseup touchend', function(e) {
 			if ($(e.target).closest('.title_block').length) return;
 
-			$('.menu_items, .title_block, .menu_open').removeClass('open');
+			$('.title_block, .menu_open').removeClass('open');
 
 			e.stopPropagation();
 		})
