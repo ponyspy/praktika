@@ -10,6 +10,16 @@ html
 				input.search_input(type='text', placeholder= __('поиск') + '...')
 				.search_results
 
+			.subs_block
+				.subs_close
+				input.subs_input.email(type='text', placeholder='email')
+				input.subs_input.name(type='text', placeholder='Как вас зовут?')
+				.sub_date
+					input.subs_input.date(type='text', placeholder='день')
+					input.subs_input.date(type='text', placeholder='месяц')
+					input.subs_input.date(type='text', placeholder='год')
+				.subs_submit отправить
+
 			.title_block
 				if content_banner
 					.banner_block

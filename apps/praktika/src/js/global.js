@@ -28,6 +28,12 @@ $(function() {
 			$(this).remove();
 		});
 
+	$('.banner_subscribe').on('click', function(e) {
+		$('.subs_block').toggleClass('show');
+		$('body').addClass('stop_scroll');
+		$('.subs_input').val('');
+		$('.subs_input.email').focus();
+	});
 
 	$('.search').on('click', function(e) {
 		$('.search_block').addClass('show');
@@ -35,9 +41,9 @@ $(function() {
 		$('.search_input').focus();
 	});
 
-	$('.search_close').on('click', function(e) {
+	$('.search_close, .subs_close').on('click', function(e) {
 		$('body').removeClass('stop_scroll');
-		$('.search_block').removeClass('show');
+		$('.search_block, .subs_block').removeClass('show');
 	});
 
 	var search = {
