@@ -26,6 +26,17 @@ html, body
 
 .contacts_block
 	background-color white
+	&:hover
+		.column
+			display block!important
+		.contacts_upper
+			border-color black
+	.contacts_upper
+		margin 0 auto
+		width 100px
+		height 30px
+		margin-bottom 20px
+		border-bottom 3px solid rgba(205, 205, 205, 1.000)
 	.contacts_inner
 		max-width 960px
 		padding-left 40px
@@ -44,6 +55,12 @@ html, body
 			width 100%
 			position relative
 			overflow hidden
+			display none
+			&:nth-child(1)
+			&:nth-child(2)
+			&:nth-child(3)
+			&:nth-child(4)
+				display block
 			.title
 				float left
 				// vertical-align top
