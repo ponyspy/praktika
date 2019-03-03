@@ -27,8 +27,9 @@ html, body
 .contacts_block
 	background-color white
 	&:hover
-		.column
-			display inline-block!important
+		.contacts_group.drop
+			transition: all .6s ease-in
+			max-height 1000px!important
 		.contacts_upper
 			border-color black
 	.contacts_upper
@@ -44,6 +45,11 @@ html, body
 		margin 0px auto
 		overflow hidden
 		font-size 0
+		.contacts_group.drop
+			transition: all .6s ease-out
+			height auto
+			max-height 0
+			overflow hidden
 		.column
 			vertical-align top
 			display inline-block
@@ -52,18 +58,12 @@ html, body
 			width 50%
 			position relative
 			overflow hidden
-			display none
 			font-size 0
 			box-sizing border-box
 			&:nth-child(1n)
 				padding-right 10px
 			&:nth-child(2n)
 				padding-left 10px
-			&:nth-child(1)
-			&:nth-child(2)
-			&:nth-child(3)
-			&:nth-child(4)
-				display inline-block
 			.title
 				vertical-align top
 				display inline-block
