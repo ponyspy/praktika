@@ -28,14 +28,13 @@ html, body
 	background-color white
 	&:hover
 		.column
-			display block!important
+			display inline-block!important
 		.contacts_upper
 			border-color black
 	.contacts_upper
 		margin 0 auto
 		width 100px
 		height 30px
-		margin-bottom 20px
 		border-bottom 3px solid rgba(205, 205, 205, 1.000)
 	.contacts_inner
 		max-width 960px
@@ -44,36 +43,38 @@ html, body
 		padding-top 20px
 		margin 0px auto
 		overflow hidden
-		column-width 340px
-		column-gap 20px
-		vertical-align top
+		font-size 0
 		.column
+			vertical-align top
 			display inline-block
-			break-inside avoid
 			margin-top 20px
 			margin-bottom 20px
-			width 100%
+			width 50%
 			position relative
 			overflow hidden
 			display none
+			font-size 0
+			box-sizing border-box
+			&:nth-child(1n)
+				padding-right 10px
+			&:nth-child(2n)
+				padding-left 10px
 			&:nth-child(1)
 			&:nth-child(2)
 			&:nth-child(3)
 			&:nth-child(4)
-				display block
+				display inline-block
 			.title
-				float left
-				// vertical-align top
-				// display inline-block
+				vertical-align top
+				display inline-block
 				width 40%
 				font 12pt/18pt 'PT Mono Bold'
 				min-width 120px
 				padding-right 40px
 				box-sizing border-box
 			.value
-				float left
-				// vertical-align top
-				// display inline-block
+				vertical-align top
+				display inline-block
 				width 60%
 				font 12pt/18pt 'PT Mono'
 				a
