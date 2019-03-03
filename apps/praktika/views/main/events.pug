@@ -23,21 +23,21 @@ block content
 
 		- var e_premieres = events.filter(function(event) { return event.schedule.some(function(item) { return item.date >= Date.now() && item.premiere }) })
 		if e_premieres.length > 0
-			.events_title= 'премьеры'
+			.events_title= __('премьеры')
 			.events_list
 				each event in e_premieres
 					+event_item(event, 'double')
 
 		- var e_main = events.filter(function(event) { return !e_premieres.some(function(p_event) { return p_event._id.toString() == event._id.toString() }) && event.schedule.some(function(item) { return item.date >= Date.now() }) })
 		if e_main.length > 0
-			.events_title= 'актуальные'
+			.events_title= __('актуальные')
 			.events_list
 				each event in e_main
 					+event_item(event)
 
 		- var e_archive = events.filter(function(event) { return event.schedule.every(function(item) { return item.date <= Date.now() }) })
 		if e_archive.length > 0
-			.events_title= 'архив'
+			.events_title= __('архив')
 			.events_list
 				each event in e_archive
 					+event_item(event, 'half')

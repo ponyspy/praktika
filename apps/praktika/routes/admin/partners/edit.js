@@ -6,7 +6,6 @@ module.exports = function(Model, Params) {
 	var Partner = Model.Partner;
 
 	var uploadImage = Params.upload.image;
-	var uploadFile = Params.upload.file;
 	var checkNested = Params.locale.checkNested;
 
 

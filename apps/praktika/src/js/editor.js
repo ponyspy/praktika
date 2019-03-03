@@ -6,6 +6,13 @@ $(function() {
 		window.document.execCommand('insertText', false, text);
 	});
 
+	$(document).on('click', '.editor img', function(e) {
+		var range = document.createRange();
+		range.selectNode($(this)[0]);
+		window.getSelection().removeAllRanges();
+		window.getSelection().addRange(range);
+	});
+
 	$('.editor').each( function(index, element) {
 		$(element).wysiwyg({
 				classes: 'editor' + ' ' + $(element).attr('class').split(' ')[0],

@@ -41,25 +41,13 @@ $(function() {
 		e.stopPropagation();
 	});
 
-
-	$('.journal_open').on('click', function(e) {
-		if (location.hash !== '') {
-			$(window).trigger('hashchange');
-		}
-	});
-
-	$('.c_item').on('click', function(e) {
-		if ($(this).hasClass('active')) {
-			$(this).removeClass('active');
-			return false;
-		}
-		$('.c_item').removeClass('active').filter(this).addClass('active');
-	});
-
 	$(window).on('load hashchange', function(e) {
-		$('body').animate({
+		$('.title_block, .menu_open').removeClass('open');
+		$('body').removeClass('stop_scroll').animate({
 			'scrollTop': $('[anchor="' + location.hash.replace('#', '') + '"]').offset().top
-		}, 400);
+		}, 400, function() {
+			location.hash = '#!';
+		});
 	});
 
 	$(document).on('keyup', function(e) {
