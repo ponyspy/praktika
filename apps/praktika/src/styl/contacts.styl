@@ -1,6 +1,15 @@
 @media screen and (max-width: 840px)
 	@import 'mobile/_contacts.styl'
 
+@keyframes changeWidth {
+  from {
+    width: 40px;
+  }
+  to {
+    width: 100px;
+  }
+}
+
 html, body
 	height 100%
 
@@ -32,8 +41,13 @@ html, body
 			max-height 500px!important
 		.contacts_upper
 			border-color black
+			animation-play-state paused
 	.contacts_upper
 		margin 0 auto
+		animation-duration 2s
+		animation-name changeWidth
+		animation-iteration-count infinite
+		animation-direction alternate
 		width 100px
 		height 30px
 		border-bottom 3px solid rgba(205, 205, 205, 1.000)
