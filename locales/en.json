@@ -54,7 +54,7 @@
 	"расписание": "schedule",
 	"Нет расписания": "No schedule",
 	"руководитель пресс-службы": "head of PR",
-	"Егор Хлыстов": "Egor Hlystov",
+	"Егор Хлыстов": "Yegor Khlystov",
 	"администрация": "administration",
 	"Студентам": "Students",
 	"composer": {
@@ -104,5 +104,13 @@
 	"поделиться": "share",
 	"актуальные": "actual",
 	"архив": "archive",
-	"премьеры": "premieres"
+	"премьеры": "premieres",
+	"пресс-атташе": "press officer",
+	"Мария Никитина": "Maria Nikitina",
+	"директор": "general director",
+	"Борис Мездрич": "Boris Mezdrich",
+	"художественный руководитель": "artistic director",
+	"Марина Брусникина": "Marina Brusnikina",
+	"главный администратор": "chief administrator",
+	"Александр Ольшанский": "Aleksandr Olshanskiy"
 }
