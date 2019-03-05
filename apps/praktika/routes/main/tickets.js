@@ -71,5 +71,47 @@ module.exports = function() {
 	};
 
 
+	module.mailer = function(req, res, next) {
+		console.log(req.body.email);
+		return res.send('cool');
+
+		var options_auth = {
+			url: req.app.locals.static_types.sendpulse_api_uri + '/oauth/access_token',
+			form: {
+				'grant_type': 'client_credentials',
+				'client_id': req.app.locals.static_types.intickets_api_key,
+				'client_secret': req.app.locals.static_types.intickets_origin
+			},
+			timeout: 6000,
+			json: true
+		};
+
+		var options_email = {
+			url: req.app.locals.static_types.sendpulse_api_uri + '/addressbooks/' + req.app.locals.static_types.sendpulse_adressbook_id + '/emails',
+			form: [{
+				"email": req.body.email,
+				"variables": {
+					'Name': req.body.name,
+					'Birth': moment().year(req.body.year).month(req.body.month).date(req.body.date).format('YYYY-MM-DD')
+				}
+			}],
+			timeout: 6000,
+			json: true
+		};
+
+		request.post(options_auth, function(err, resp, body) {
+			if (err || body.code) return res.send('err');
+
+			options_email['headers'] = { 'Authorization': 'Bearer ' + body.access_token };
+
+			request.post(options_email, function(err, resp, body) {
+				if (err || body.code) return res.send('err');
+
+				console.log('cool');
+			});
+		});
+	}
+
+
 	return module;
 };
