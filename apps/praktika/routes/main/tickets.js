@@ -72,6 +72,8 @@ module.exports = function() {
 
 
 	module.mailer = function(req, res, next) {
+		console.log(moment().year(+req.body.year).month(+req.body.month).date(+req.body.date).format('YYYY-MM-DD'))
+
 		var options_auth = {
 			url: req.app.locals.static_types.sendpulse_api_uri + '/oauth/access_token',
 			form: {
@@ -104,7 +106,6 @@ module.exports = function() {
 			options_email['headers'] = { 'Authorization': 'Bearer ' + body.access_token };
 
 			request.post(options_email, function(err, resp, body) {
-				console.log(body);
 				if (err || body.error_code) return res.send('err');
 
 				res.send('cool');
