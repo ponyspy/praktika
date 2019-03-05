@@ -50,12 +50,6 @@ $(function() {
 		});
 	});
 
-	$(document).on('keyup', function(e) {
-		if (e.which == 27) {
-			$('.banner_close').trigger('click');
-		}
-	});
-
 	$('.banner_close').on('click', function(e) {
 		$('.maket_block').removeClass('banner');
 		$('.banner_block').addClass('close');

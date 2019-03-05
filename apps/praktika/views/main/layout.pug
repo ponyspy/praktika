@@ -10,11 +10,24 @@ html
 				input.search_input(type='text', placeholder= __('поиск') + '...')
 				.search_results
 
+			.subs_block
+				.subs_close
+				input.subs_input.email(type='email', placeholder='email')
+				input.subs_input.name(type='text', placeholder='ваше имя')
+				.sub_date
+					input.subs_input.date(type='text', placeholder='день', pattern='[0-9]*')
+					input.subs_input.date(type='text', placeholder='месяц', pattern='[0-9]*')
+					input.subs_input.date(type='text', placeholder='год', pattern='[0-9]*')
+				.subs_submit отправить
+
 			.title_block
 				if content_banner
 					.banner_block
-						a.banner_logo(href='https://www.mos.ru/kultura', target='_blank'): img(src='/stuff/praktika/logo/logo_depcult.svg')
+						.banner_inner
+							a.banner_logo(href='https://www.mos.ru/kultura', target='_blank'): img(src='/stuff/praktika/logo/logo_depcult.svg')
+							.banner_subscribe: span подписаться на рассылку
 						.banner_close
+
 				.title_inner
 					.menu_block
 						.menu_top
