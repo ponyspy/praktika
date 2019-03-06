@@ -10,25 +10,21 @@ html
 				input.search_input(type='text', placeholder= __('поиск') + '...')
 				.search_results
 
-			.subs_block
-				.subs_close
-				input.subs_input.email(type='email', placeholder='email')
-				input.subs_input.name(type='text', placeholder='ваше имя')
-				.subs_date
-					input.subs_input.date.dd(type='text', placeholder='день', pattern='[0-9]*')
-					input.subs_input.date.mm(type='text', placeholder='месяц', pattern='[0-9]*')
-					input.subs_input.date.yy(type='text', placeholder='год', pattern='[0-9]*')
-				.subs_controls
-					- var await = 'ждем ответа...'
-					- var input = 'отправить'
-					- var val_email = 'Некорректный email.'
-					- var val_ok = 'Спасибо за подписку!'
-					- var val_else = 'Ошибка!'
-					.subs_submit.active(send_await= await, send_input=input)= input
-					.subs_status(val_email=val_email, val_ok=val_ok, val_else=val_else)
-					.subs_personal
-						span= 'Отправляя форму, вы даете свое согласие на обработку персональных данных! '
-						a(href='#', target='_blank')= 'Подробнее...'
+			if content_subs
+				.subs_block
+					.subs_close
+					input.subs_input.email(type='email', placeholder='email')
+					input.subs_input.name(type='text', placeholder='ваше имя')
+					.subs_date
+						input.subs_input.date.dd(type='text', placeholder='день', pattern='[0-9]*')
+						input.subs_input.date.mm(type='text', placeholder='месяц', pattern='[0-9]*')
+						input.subs_input.date.yy(type='text', placeholder='год', pattern='[0-9]*')
+					.subs_controls
+						.subs_submit.active(send_await= 'ждем ответа...', send_input='отправить')= 'отправить'
+						.subs_status(val_email='Некорректный email.', val_ok='Спасибо за подписку!', val_else='Ошибка!')
+						.subs_personal
+							span= 'Отправляя форму, вы даете свое согласие на обработку персональных данных! '
+							a(href='#', target='_blank')= 'Подробнее...'
 
 			.title_block
 				if content_banner
