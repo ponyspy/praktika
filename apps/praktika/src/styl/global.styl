@@ -53,7 +53,7 @@ body
 		background-image url('/stuff/praktika/icons/x.svg')
 		&:hover
 			opacity 0.7
-	.sub_date
+	.subs_date
 		display flex
 		flex-wrap wrap
 		justify-content space-between
@@ -78,13 +78,30 @@ body
 		&.date
 			width 30%
 			margin 0
-	.subs_submit
-		margin-top 80px
-		cursor pointer
+	.subs_controls
 		text-align center
-		font 14pt/16pt 'PT Mono'
-		&:hover
-			opacity 0.7
+		margin 0 auto
+		max-width 400px
+		.subs_submit
+			display inline-block
+			margin-top 80px
+			cursor pointer
+			font 14pt/16pt 'PT Mono'
+			&:hover
+				opacity 0.7
+		.subs_status
+			font 14pt/16pt 'PT Mono Bold'
+			margin-top 20px
+		.subs_personal
+			margin-top 60px
+			font 10pt/12pt 'PT Serif'
+			a
+				color black
+				text-decoration none
+				font-weight bold
+				&:hover
+					opacity 0.7
+
 
 
 .search_block

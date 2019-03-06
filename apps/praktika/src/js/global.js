@@ -28,17 +28,6 @@ $(function() {
 			$(this).remove();
 		});
 
-	$('.subs_input.date').on('input keydown keyup mousedown mouseup select contextmenu drop', function(e) {
-		this.value = this.value.replace(/\D/g, '');
-	});
-
-	$('.banner_subscribe').on('click', function(e) {
-		$('.subs_block').toggleClass('show');
-		$('body').addClass('stop_scroll');
-		$('.subs_input').val('');
-		$('.subs_input.email').focus();
-	});
-
 	$('.search').on('click', function(e) {
 		$('.search_block').addClass('show');
 		$('body').addClass('stop_scroll');
