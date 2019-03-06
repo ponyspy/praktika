@@ -41,14 +41,17 @@ $(function() {
 		e.stopPropagation();
 	});
 
-	// $(window).on('load hashchange', function(e) {
-	// 	$('.title_block, .menu_open').removeClass('open');
-	// 	$('body').removeClass('stop_scroll').animate({
-	// 		'scrollTop': $('[anchor="' + location.hash.replace('#', '') + '"]').offset().top
-	// 	}, 400, function() {
-	// 		location.hash = '#!';
-	// 	});
-	// });
+	$(window).on('load hashchange', function(e) {
+		if (!location.hash || location.hash == '#!') return false;
+
+		$('.title_block, .menu_open').removeClass('open');
+
+		$('body').removeClass('stop_scroll').animate({
+			'scrollTop': $('[anchor="' + location.hash.replace('#', '') + '"]').offset().top
+		}, 400, function() {
+			location.hash = '#!';
+		});
+	});
 
 	$(document).on('keyup', function(e) {
 		if (e.which == 13 && $('.subs_block').hasClass('show')) {
