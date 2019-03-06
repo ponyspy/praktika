@@ -72,8 +72,7 @@ module.exports = function() {
 
 
 	module.mailer = function(req, res, next) {
-		console.log(moment().year(+req.body.year).month(+req.body.month).date(+req.body.date).format('YYYY-MM-DD'));
-		// return res.send('cool');
+		var date = moment(req.body.year + '-' + req.body.month + '-' + req.body.date, 'YYYY-MM-DD', true);
 
 		var options_auth = {
 			url: req.app.locals.static_types.sendpulse_api_uri + '/oauth/access_token',
@@ -92,8 +91,8 @@ module.exports = function() {
 				'emails': [{
 					"email": req.body.email,
 					"variables": {
-						'Имя': req.body.name,
-						'Дата рождения': moment().year(+req.body.year).month(+req.body.month).date(+req.body.date).format('YYYY-MM-DD')
+						'name': req.body.name,
+						'birthday': date.isValid() ? date.format('YYYY-MM-DD') : undefined
 					}
 				}]
 			},
