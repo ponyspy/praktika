@@ -60,7 +60,9 @@ $(function() {
 		this.value = this.value.replace(/\D/g, '');
 	});
 
-	$('.subs_submit').on('click', function(e) {
+	$(document).on('click', '.subs_submit.active', function(e) {
+		$('.subs_submit').removeClass('active').text('ждем...');
+
 		var params = {
 			email: $('.subs_input.email').val(),
 			name: $('.subs_input.name').val(),
@@ -70,8 +72,11 @@ $(function() {
 		};
 
 		$.post('/mailer', params).done(function(data) {
+			$('.subs_submit').addClass('active').text('отправить');
+
 			if (data == 'ok') {
 				$('.subs_status').text('Спасибо за подписку!');
+				$('.subs_input').val('');
 			} else {
 				$('.subs_status').text('Ошибка!');
 			}
