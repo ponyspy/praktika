@@ -92,7 +92,7 @@ $(function() {
 		});
 	});
 
-	$('.banner_subscribe').on('click', function(e) {
+	$('.banner_subs').on('click', function(e) {
 		$('.subs_block').toggleClass('show');
 		$('body').addClass('stop_scroll');
 		$('.subs_input').val('');
