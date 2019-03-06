@@ -72,10 +72,13 @@ $(function() {
 		$.post('/mailer', params).done(function(data) {
 			if (data == 'ok') {
 				$('.subs_status').text('Спасибо за подписку!');
-				setTimeout(function() {
-					$('.subs_status').text('');
-				}, 4000)
+			} else {
+				$('.subs_status').text('Ошибка!');
 			}
+
+			setTimeout(function() {
+				$('.subs_status').text('');
+			}, 4000);
 		});
 	});
 

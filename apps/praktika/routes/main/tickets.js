@@ -6,6 +6,10 @@ var moment = require('moment');
 module.exports = function() {
 	var module = {};
 
+	var validateEmail = function(email) {
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(email);
+	};
 
 	module.event = function(req, res, next) {
 		var query = querystring.stringify({
@@ -73,6 +77,7 @@ module.exports = function() {
 
 	module.mailer = function(req, res, next) {
 		var date = moment(req.body.year + '-' + req.body.month + '-' + req.body.date, 'YYYY-MM-DD', true);
+		if (!validateEmail(req.body.email)) return res.send('err');
 
 		var options_auth = {
 			url: req.app.locals.static_types.sendpulse_api_uri + '/oauth/access_token',
