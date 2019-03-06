@@ -26,6 +26,9 @@ html
 					- var val_else = 'Ошибка!'
 					.subs_submit.active(send_await= await, send_input=input)= input
 					.subs_status(val_email=val_email, val_ok=val_ok, val_else=val_else)
+					.subs_personal
+						span= 'Отправляя форму, вы даете свое согласие на обработку персональных данных! '
+						a(href='#', target='_blank') Подробнее...
 
 			.title_block
 				if content_banner
