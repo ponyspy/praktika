@@ -76,7 +76,7 @@ module.exports = function() {
 
 
 	module.mailer = function(req, res, next) {
-		var date = moment(req.body.year + '-' + req.body.month + '-' + req.body.date, 'YYYY-MM-DD', true);
+		var date = moment(req.body.year + '-' + ('0' + req.body.month).slice(-2) + '-' + ('0' + req.body.date).slice(-2), 'YYYY-MM-DD', true);
 		if (!validateEmail(req.body.email)) return res.send('email');
 
 		var options_auth = {
