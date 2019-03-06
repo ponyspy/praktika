@@ -108,7 +108,7 @@ module.exports = function() {
 			request.post(options_email, function(err, resp, body) {
 				if (err || body.error_code) return res.send('err');
 
-				res.send('cool');
+				res.send('ok');
 			});
 		});
 	};

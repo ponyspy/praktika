@@ -50,6 +50,12 @@ $(function() {
 	// 	});
 	// });
 
+	$(document).on('keyup', function(e) {
+		if (e.which == 13 && $('.subs_block').hasClass('show')) {
+			$('.subs_submit').trigger('click');
+		}
+	});
+
 	$('.subs_input.date').on('input keydown keyup mousedown mouseup select contextmenu drop', function(e) {
 		this.value = this.value.replace(/\D/g, '');
 	});
@@ -64,7 +70,12 @@ $(function() {
 		};
 
 		$.post('/mailer', params).done(function(data) {
-			alert(data);
+			if (data == 'ok') {
+				$('.subs_status').text('Спасибо за подписку!');
+				setTimeout(function() {
+					$('.subs_status').text('');
+				}, 4000)
+			}
 		});
 	});
 
