@@ -64,7 +64,7 @@ $(function() {
 	});
 
 	$(document).on('click', '.subs_submit.active', function(e) {
-		$('.subs_submit').removeClass('active').text('ждем...');
+		$('.subs_submit').removeClass('active').text($('.subs_submit').attr('send_await'));
 
 		var params = {
 			email: $('.subs_input.email').val(),
@@ -75,18 +75,20 @@ $(function() {
 		};
 
 		$.post('/mailer', params).done(function(data) {
-			$('.subs_submit').addClass('active').text('отправить');
+			$('.subs_submit').addClass('active').text($('.subs_submit').attr('send_input'));
 
 			if (data == 'ok') {
-				$('.subs_status').text('Спасибо за подписку!');
+				$('.subs_status').text($('.subs_status').attr('val_ok'));
 				$('.subs_input').val('');
+			} else if (data == 'email') {
+				$('.subs_status').text($('.subs_status').attr('val_email'));
 			} else {
-				$('.subs_status').text('Ошибка!');
+				$('.subs_status').text($('.subs_status').attr('val_else'));
 			}
 
 			setTimeout(function() {
 				$('.subs_status').text('');
-			}, 2500);
+			}, 2200);
 		});
 	});
 

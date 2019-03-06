@@ -19,8 +19,13 @@ html
 					input.subs_input.date.mm(type='text', placeholder='месяц', pattern='[0-9]*')
 					input.subs_input.date.yy(type='text', placeholder='год', pattern='[0-9]*')
 				.subs_controls
-					.subs_submit.active отправить
-					.subs_status
+					- var await = 'ждем ответа...'
+					- var input = 'отправить'
+					- var val_email = 'Некорректный email'
+					- var val_ok = 'Спасибо за подписку!'
+					- var val_else = 'Ошибка!'
+					.subs_submit.active(send_await= await, send_input=input)= input
+					.subs_status(val_email=val_email, val_ok=val_ok, val_else=val_else)
 
 			.title_block
 				if content_banner

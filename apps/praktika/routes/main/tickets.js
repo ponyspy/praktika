@@ -77,7 +77,7 @@ module.exports = function() {
 
 	module.mailer = function(req, res, next) {
 		var date = moment(req.body.year + '-' + req.body.month + '-' + req.body.date, 'YYYY-MM-DD', true);
-		if (!validateEmail(req.body.email)) return res.send('err');
+		if (!validateEmail(req.body.email)) return res.send('email');
 
 		var options_auth = {
 			url: req.app.locals.static_types.sendpulse_api_uri + '/oauth/access_token',
