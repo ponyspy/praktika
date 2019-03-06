@@ -28,14 +28,14 @@ html
 					.subs_status(val_email=val_email, val_ok=val_ok, val_else=val_else)
 					.subs_personal
 						span= 'Отправляя форму, вы даете свое согласие на обработку персональных данных! '
-						a(href='#', target='_blank') Подробнее...
+						a(href='#', target='_blank')= 'Подробнее...'
 
 			.title_block
 				if content_banner
 					.banner_block
 						.banner_inner
 							a.banner_logo(href='https://www.mos.ru/kultura', target='_blank'): img(src='/stuff/praktika/logo/logo_depcult.svg')
-							.banner_subscribe: span подписаться на рассылку
+							.banner_subscribe: span= 'подписаться на рассылку'
 						.banner_close
 
 				.title_inner
