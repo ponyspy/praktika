@@ -86,7 +86,7 @@ $(function() {
 
 			setTimeout(function() {
 				$('.subs_status').text('');
-			}, 4000);
+			}, 2500);
 		});
 	});
 
