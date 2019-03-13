@@ -47,7 +47,7 @@ module.exports = function(Model) {
 				res.send('end');
 			}
 		});
-	}
+	};
 
 	return module;
 };
