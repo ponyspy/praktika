@@ -1,3 +1,38 @@
+var $window = $(window);
+var $document = $(document);
+var context = {
+	skip: 5,
+	limit: 10
+};
+
+$window.on('load hashchange', function(e) {
+	$('.title_block, .menu_open').removeClass('open');
+
+	$('body').removeClass('stop_scroll').animate({
+		'scrollTop': $('[anchor="' + location.hash.replace('#', '') + '"]').offset().top
+	}, 400, function() {
+		location.hash = '#!';
+	});
+});
+
+$window.on('scroll', function(e) {
+	if ($window.scrollTop() + $window.height() + 240 >= $document.height()) {
+		$window.off('scroll');
+
+		$.ajax({url: '', method: 'POST', data: { context: context }, async: false }).done(function(data) {
+			if (data !== 'end') {
+
+				$('.jounral_posts').append(data);
+
+				context.skip += 5;
+				$window.on('scroll', scrollLoader);
+			} else {
+				$('.journal_more').addClass('hide');
+			}
+		});
+	}
+});
+
 $(function() {
 	if (+Cookies.get('banner') >= 3) {
 		$('.maket_block').removeClass('banner');
@@ -41,19 +76,8 @@ $(function() {
 		e.stopPropagation();
 	});
 
-	$(window).on('load hashchange', function(e) {
-		$('.title_block, .menu_open').removeClass('open');
-		$('body').removeClass('stop_scroll').animate({
-			'scrollTop': $('[anchor="' + location.hash.replace('#', '') + '"]').offset().top
-		}, 400, function() {
-			location.hash = '#!';
-		});
-	});
-
-	$(document).on('keyup', function(e) {
-		if (e.which == 27) {
-			$('.banner_close').trigger('click');
-		}
+	$('.journal_more').children('span').on('click', function(e) {
+		$window.trigger('scroll', true);
 	});
 
 	$('.banner_close').on('click', function(e) {
