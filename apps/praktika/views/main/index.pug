@@ -35,7 +35,7 @@ block over
 
 block content
 	.journal_block(anchor='journal')
-		.journal_title журнал
+		.journal_title= __('журнал')
 		.jounral_posts
 			include _posts
-		.journal_more: span еще посты...
+		.journal_more: span= __('еще посты') + '...'

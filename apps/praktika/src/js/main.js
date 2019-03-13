@@ -20,8 +20,6 @@ var scrollLoader = function(e) {
 	}
 };
 
-$window.on('scroll', scrollLoader);
-
 $window.on('load hashchange', function(e) {
 	if (!location.hash || location.hash == '#!') return false;
 
@@ -78,7 +76,7 @@ $(function() {
 	});
 
 	$('.journal_more').children('span').on('click', function(e) {
-		$window.trigger('scroll', true);
+		$window.on('scroll', scrollLoader).trigger('scroll');
 	});
 
 	$('.banner_close').on('click', function(e) {
