@@ -79,6 +79,52 @@ $(function() {
 		$window.on('scroll', scrollLoader).trigger('scroll');
 	});
 
+	$(document).on('keyup', function(e) {
+		if (e.which == 13 && $('.subs_block').hasClass('show')) {
+			$('.subs_submit').trigger('click');
+		}
+	});
+
+	$('.subs_input.date').on('input keydown keyup mousedown mouseup select contextmenu drop', function(e) {
+		this.value = this.value.replace(/\D/g, '');
+	});
+
+	$(document).on('click', '.subs_submit.active', function(e) {
+		$('.subs_submit').removeClass('active').text($('.subs_submit').attr('send_await'));
+
+		var params = {
+			email: $('.subs_input.email').val(),
+			name: $('.subs_input.name').val(),
+			date: $('.subs_input.date.dd').val(),
+			month: $('.subs_input.date.mm').val(),
+			year: $('.subs_input.date.yy').val()
+		};
+
+		$.post('/mailer', params).done(function(data) {
+			$('.subs_submit').addClass('active').text($('.subs_submit').attr('send_input'));
+
+			if (data == 'ok') {
+				$('.subs_status').text($('.subs_status').attr('val_ok'));
+				$('.subs_input').val('');
+			} else if (data == 'email') {
+				$('.subs_status').text($('.subs_status').attr('val_email'));
+			} else {
+				$('.subs_status').text($('.subs_status').attr('val_else'));
+			}
+
+			setTimeout(function() {
+				$('.subs_status').text('');
+			}, 2200);
+		});
+	});
+
+	$('.banner_subs').on('click', function(e) {
+		$('.subs_block').toggleClass('show');
+		$('body').addClass('stop_scroll');
+		$('.subs_input').val('');
+		$('.subs_input.email').focus();
+	});
+
 	$('.banner_close').on('click', function(e) {
 		$('.maket_block').removeClass('banner');
 		$('.banner_block').addClass('close');

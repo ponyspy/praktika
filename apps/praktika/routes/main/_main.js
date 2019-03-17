@@ -76,6 +76,9 @@ module.exports = (function() {
 	router.route('/ticket_event')
 		.post(main.tickets.event);
 
+	router.route('/mailer')
+		.post(main.tickets.mailer);
+
 	router.route('/search')
 		.post(main.options.search);
 

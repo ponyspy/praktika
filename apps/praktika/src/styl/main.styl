@@ -38,12 +38,25 @@ html, body, .maket_block, .over_block
 		cursor pointer
 		&:hover
 			opacity 0.7
-	.banner_logo
-		img
-			filter: none!important
-		display block
-		width 120px
+	.banner_inner
 		float left
+		.banner_subs
+			display inline-block
+			vertical-align top
+			max-width 120px
+			border-left 1px solid black
+			margin-left 10px
+			padding-left 20px
+			span
+				cursor pointer
+				color black!important
+				&:hover
+					opacity 0.7
+		.banner_logo
+			display inline-block
+			width 120px
+			img
+				filter: none!important
 
 .title_block
 	position absolute

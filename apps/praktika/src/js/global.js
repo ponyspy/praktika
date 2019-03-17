@@ -9,7 +9,7 @@ $(function() {
 		.on('keyup', function(e) {
 
 			if (e.which == 27) {
-				$('.search_block').removeClass('show');
+				$('.search_block, .subs_block').removeClass('show');
 				$('.title_block, .menu_open').removeClass('open');
 				$('body').removeClass('stop_scroll');
 				$('.widget_block').removeClass('open').children('.widget_inner').empty();
@@ -28,16 +28,15 @@ $(function() {
 			$(this).remove();
 		});
 
-
 	$('.search').on('click', function(e) {
 		$('.search_block').addClass('show');
 		$('body').addClass('stop_scroll');
 		$('.search_input').focus();
 	});
 
-	$('.search_close').on('click', function(e) {
+	$('.search_close, .subs_close').on('click', function(e) {
 		$('body').removeClass('stop_scroll');
-		$('.search_block').removeClass('show');
+		$('.search_block, .subs_block').removeClass('show');
 	});
 
 	var search = {

@@ -113,5 +113,17 @@
 	"Марина Брусникина": "Marina Brusnikina",
 	"главный администратор": "chief administrator",
 	"Александр Ольшанский": "Aleksandr Olshanskiy",
-	"еще посты": "more posts"
+	"еще посты": "more posts",
+	"ваше имя": "your name",
+	"день": "day",
+	"месяц": "month",
+	"год": "year",
+	"ждем ответа...": "pending...",
+	"отправить": "send",
+	"некорректный email": "invalid email",
+	"спасибо за подписку": "thank you for subscription",
+	"ошибка": "error",
+	"Отправляя форму, вы даете свое согласие на обработку персональных данных! ": "By submitting this form, you admit to the processing of your personal data! ",
+	"Подробнее...": "Read more...",
+	"подписаться на рассылку": "subscribe to newsletter"
 }
