@@ -36,13 +36,7 @@ block over
 
 block content
 	.journal_block(anchor='journal')
-		.journal_title журнал
+		.journal_title= __('журнал')
 		.jounral_posts
-			each post, i in posts
-				a.post_item(class=post.view, class= i == 0 || i == 1  ? 'double' : '', href='/posts/' + (post.sym ? post.sym : post._short_id))
-					.post_poster(style='background-image: url(' + post.poster + ')'): .poster_cover
-					.post_title= post.i18n.title.get(locale)
-					.post_hover
-						.post_date= moment(post.date).locale(locale).format('DD.MM.YYYY')
-						.post_intro= post.i18n.s_title.get(locale)
-		.journal_more еще посты...
+			include _posts
+		.journal_more: span= __('еще посты') + '...'

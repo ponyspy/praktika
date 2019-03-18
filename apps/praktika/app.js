@@ -51,6 +51,7 @@ app.use(session({
 }));
 
 app.locals.static_types = require(__app_root + '/types.json');
+app.locals.static_keys = require(__glob_root + '/keys.json');
 
 app.use(function(req, res, next) {
 	res.locals.__app_name = __app_name;

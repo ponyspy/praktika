@@ -6,6 +6,7 @@ module.exports = function(Model) {
 
 	var Event = Model.Event;
 	var Member = Model.Member;
+	var Post = Model.Post;
 
 	var get_locale = function(option, lg) {
 		return ((option.filter(function(locale) {
@@ -25,18 +26,22 @@ module.exports = function(Model) {
 
 			Event.find(query, { score: { $meta: 'textScore' } }).where('status').ne('hidden').sort( { score: { $meta: 'textScore' } } ).exec(function(err, events) {
 
-				var opts = {
-					__: function() { return res.locals.__.apply(null, arguments); },
-					__n: function() { return res.locals.__n.apply(null, arguments); },
-					get_locale: get_locale,
-					members: members,
-					events: events,
-					static_types: req.app.locals.static_types,
-					locale: req.locale,
-					compileDebug: false, debug: false, cache: false, pretty: false
-				};
+				Post.find({ $text: { $search: req.body.text } }).exec(function(err, posts) {
 
-				res.send(pug.renderFile(__app_root + '/views/main/_search.pug', opts));
+					var opts = {
+						__: function() { return res.locals.__.apply(null, arguments); },
+						__n: function() { return res.locals.__n.apply(null, arguments); },
+						get_locale: get_locale,
+						members: members,
+						events: events,
+						posts: posts,
+						static_types: req.app.locals.static_types,
+						locale: req.locale,
+						compileDebug: false, debug: false, cache: false, pretty: false
+					};
+
+					res.send(pug.renderFile(__app_root + '/views/main/_search.pug', opts));
+				});
 			});
 		});
 	};

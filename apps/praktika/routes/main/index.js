@@ -7,7 +7,7 @@ module.exports = function(Model) {
 	var Post = Model.Post;
 
 	module.index = function(req, res) {
-		Post.find().sort('-date').where('status').ne('hidden').limit(10).exec(function(err, posts) {
+		Post.find().sort('-date').where('status').ne('hidden').limit(5).exec(function(err, posts) {
 			Media.find().sort('date').where('status').ne('hidden').populate({
 				path: 'announce',
 				match: { 'status': { $ne: 'hidden' },

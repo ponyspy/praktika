@@ -17,10 +17,10 @@ module.exports = function() {
 		});
 
 		var options = {
-			url: req.app.locals.static_types.intickets_api_uri + '?' + query,
+			url: req.app.locals.static_keys.intickets_api_uri + '?' + query,
 			headers: {
-				'Authorization': req.app.locals.static_types.intickets_api_key,
-				'Origin': req.app.locals.static_types.intickets_origin
+				'Authorization': req.app.locals.static_keys.intickets_api_key,
+				'Origin': req.app.locals.static_keys.intickets_origin
 			},
 			timeout: 6000,
 			json: true
@@ -40,10 +40,10 @@ module.exports = function() {
 
 	module.schedule = function(req, res, next) {
 		var options = {
-			url: req.app.locals.static_types.intickets_api_uri,
+			url: req.app.locals.static_keys.intickets_api_uri,
 			headers: {
-				'Authorization': req.app.locals.static_types.intickets_api_key,
-				'Origin': req.app.locals.static_types.intickets_origin
+				'Authorization': req.app.locals.static_keys.intickets_api_key,
+				'Origin': req.app.locals.static_keys.intickets_origin
 			},
 			timeout: 6000,
 			json: true
@@ -69,29 +69,29 @@ module.exports = function() {
 
 
 	module.widget = function(req, res, next) {
-		var uri = req.app.locals.static_types.intickets_widget_uri;
+		var uri = req.app.locals.static_keys.intickets_widget_uri;
 
 		res.redirect(uri + '/node/' + req.query.show_id);
 	};
 
 
 	module.mailer = function(req, res, next) {
-		var date = moment(req.body.year + '-' + req.body.month + '-' + req.body.date, 'YYYY-MM-DD', true);
+		var date = moment(req.body.year + '-' + ('0' + req.body.month).slice(-2) + '-' + ('0' + req.body.date).slice(-2), 'YYYY-MM-DD', true);
 		if (!validateEmail(req.body.email)) return res.send('email');
 
 		var options_auth = {
-			url: req.app.locals.static_types.sendpulse_api_uri + '/oauth/access_token',
+			url: req.app.locals.static_keys.sendpulse_api_uri + '/oauth/access_token',
 			form: {
 				'grant_type': 'client_credentials',
-				'client_id': req.app.locals.static_types.sendpulse_id,
-				'client_secret': req.app.locals.static_types.sendpulse_secret
+				'client_id': req.app.locals.static_keys.sendpulse_id,
+				'client_secret': req.app.locals.static_keys.sendpulse_secret
 			},
 			timeout: 6000,
 			json: true
 		};
 
 		var options_email = {
-			url: req.app.locals.static_types.sendpulse_api_uri + '/addressbooks/' + req.app.locals.static_types.sendpulse_adressbook_id + '/emails',
+			url: req.app.locals.static_keys.sendpulse_api_uri + '/addressbooks/' + req.app.locals.static_keys.sendpulse_adressbook_id + '/emails',
 			form: {
 				'emails': [{
 					"email": req.body.email,

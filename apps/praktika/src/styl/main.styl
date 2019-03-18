@@ -45,7 +45,7 @@ html, body, .maket_block, .over_block
 			vertical-align top
 			max-width 120px
 			border-left 1px solid black
-			margin-left 15px
+			margin-left 10px
 			padding-left 20px
 			span
 				cursor pointer
@@ -179,14 +179,14 @@ html, body, .maket_block, .over_block
 			.post_hover
 				transition .3s linear
 				opacity 0.7
-		&.blank
+		&.blank:not(.double)
 			width 100%
 			border-top 2px solid black
 			border-bottom 2px solid black
 			padding-left 0
 			margin-left 20px
 			.post_title
-				width 65%
+				width 30%
 			.post_intro
 				width 30%
 				margin-top 80px
@@ -218,9 +218,12 @@ html, body, .maket_block, .over_block
 	font 14pt/16pt 'PT Mono'
 	text-align center
 	margin-bottom 40px
-	cursor pointer
-	&:hover
-		opacity 0.7
+	&.hide
+		display none
+	span
+		cursor pointer
+		&:hover
+			opacity 0.7
 
 
 .maket_block.white

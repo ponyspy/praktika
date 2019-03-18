@@ -43,7 +43,7 @@ block content
 			.form_title Intickets:
 			input(type='text', name='w_alias', value=event.w_alias)
 			if event.w_alias && event.w_alias != ''
-				input(type='button', onclick='window.open("' + static_types.intickets_widget_uri + '/node/' + event.w_alias + '", "_blank")', value='>')
+				input(type='button', onclick='window.open("' + static_keys.intickets_widget_uri + '/node/' + event.w_alias + '", "_blank")', value='>')
 			.form_title Расписание:
 			+form_schedule(event.schedule)
 			.form_title Партнеры:

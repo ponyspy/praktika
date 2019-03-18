@@ -7,4 +7,5 @@
 /public/cdn*
 /public/robots.txt
 /dump.tar
+/keys.json
 .DS_Store

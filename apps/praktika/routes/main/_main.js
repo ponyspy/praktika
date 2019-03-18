@@ -20,7 +20,8 @@ module.exports = (function() {
 	var router = express.Router();
 
 	router.route('/')
-		.get(main.index.index);
+		.get(main.index.index)
+		.post(main.posts.get_posts);
 
 	router.route('/schedule')
 		.get(main.events.schedule)
