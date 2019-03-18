@@ -13,10 +13,10 @@ module.exports.event = function(req, res) {
 	});
 
 	var options = {
-		url: req.app.locals.static_types.intickets_api_uri + '?' + query,
+		url: req.app.locals.static_keys.intickets_api_uri + '?' + query,
 		headers: {
-			'Authorization': req.app.locals.static_types.intickets_api_key,
-			'Origin': req.app.locals.static_types.intickets_origin
+			'Authorization': req.app.locals.static_keys.intickets_api_key,
+			'Origin': req.app.locals.static_keys.intickets_origin
 		},
 		timeout: 6000,
 		json: true
