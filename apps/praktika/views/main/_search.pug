@@ -1,7 +1,7 @@
 if events && events.length > 0
 	.context_column.events
 		.context_title= __('спектакли')
-		.context_results
+		.context_results: .results_inner
 			each event, i in events
 				a.result_item(class= i > 1 ? 'hidden' : '', href='/events/' + (event.sym ? event.sym : event._short_id))
 					.item_poster(style='background-image: url(' + event.poster + ')')
@@ -12,7 +12,7 @@ if events && events.length > 0
 if members && members.length > 0
 	.context_column.members
 		.context_title= __('команда')
-		.context_results
+		.context_results: .results_inner
 			each member, i in members
 				a.result_item(class= i > 3 ? 'hidden' : '', href='/team#' + member._short_id)
 					.item_photo(style='background-image: url(' + member.photo_preview + ')')
@@ -22,3 +22,14 @@ if members && members.length > 0
 					.item_name!= member.i18n.name.get(locale)
 			if members.length > 4
 				.results_holder= __('еще') + ' ' + (members.length - 4) + '...'
+
+if posts && posts.length > 0
+	.context_column.posts
+		.context_title= __('журнал')
+		.context_results: .results_inner
+			each post, i in posts
+				a.result_item(class= i > 2 ? 'hidden' : '', href='/posts/' + (post.sym ? post.sym : post._short_id))
+					.item_poster(style='background-image: url(' + post.poster + ')')
+					.item_title!= post.i18n.title.get(locale)
+			if posts.length > 3
+				.results_holder= __('еще') + ' ' + (posts.length - 3) + '...'

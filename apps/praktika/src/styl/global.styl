@@ -108,7 +108,7 @@ body
 
 
 .search_block
-	display none
+	display block
 	z-index 999999999999
 	position fixed
 	top 0
@@ -151,18 +151,22 @@ body
 		border-bottom 1px solid black
 	.context_column
 		overflow hidden
-		margin-bottom 80px
+		// margin-bottom 40px
 		position relative
 		.context_title
 			font 12pt/14pt 'PT Mono'
-			padding-bottom 40px
 			max-width 960px
 			margin 0 auto
 		.context_results
 			max-width 960px
 			margin 0 auto
 			overflow hidden
+			.results_inner
+				margin-left -20px
+				font-size 0
 			.results_holder
+				margin-left 20px
+				// margin-bottom 40px
 				cursor pointer
 				font 12pt/14pt 'PT Mono'
 				&:hover
@@ -172,19 +176,23 @@ body
 				vertical-align top
 				color black
 				text-decoration none
-				margin-right -4px
-				margin-bottom 40px
+				// margin-top 40px
+				// margin-bottom 40px
 				box-sizing border-box
 				width 50%
 				overflow hidden
-				padding-right 20px
+				padding-left 20px
 				&.hidden
 					display none
 				&:hover
 					opacity 0.7
-				&:nth-child(2n)
-					padding-left 20px
-					padding-right 0
+		&.posts
+			// margin-top 80px
+			.result_item
+				width 33.333333333%
+		&.events .item_title
+				width 65%
+		&.posts
 		&.events
 			.item_poster
 				width 100%
@@ -195,8 +203,13 @@ body
 			.item_title
 				text-transform lowercase
 				margin-top 10px
-				font 22pt/24pt 'PT Mono Bold'
+				font 16pt/18pt 'PT Mono Bold'
 		&.members
+			// .results_holder
+			// 	margin-top 40px
+			// 	margin-bottom 0
+			// .result_item
+			// 	margin-bottom 0
 			.item_photo
 				width 100px
 				height 100px
