@@ -25,6 +25,16 @@ $(function() {
 										.attr('value', $(schedule).find('.premiere').is(':checked'))
 										.appendTo('form');
 
+			$('<input />').attr('type', 'hidden')
+										.attr('name', 'schedule' + '[' + i + ']' + '[link]')
+										.attr('value', $(schedule).find('.ext_link').val())
+										.appendTo('form');
+
+			$('<input />').attr('type', 'hidden')
+										.attr('name', 'schedule' + '[' + i + ']' + '[options]')
+										.attr('value', $(schedule).find('.date_options').val())
+										.appendTo('form');
+
 		});
 
 		// -- Members

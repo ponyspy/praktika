@@ -59,6 +59,8 @@ module.exports = function(Model, Params) {
 				if (schedule.date != '') {
 					arr.push({
 						date: moment(schedule.date + 'T' + schedule.time.hours + ':' + schedule.time.minutes),
+						link: schedule.link == '' ? undefined : schedule.link,
+						options: schedule.options == '' ? undefined : schedule.options,
 						premiere: schedule.premiere
 					});
 				}

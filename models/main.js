@@ -42,6 +42,8 @@ var eventSchema = new Schema({
 	},
 	schedule: [{
 		date: Date,
+		link: String,
+		options: String,
 		premiere: Boolean
 	}],
 	comments: [{

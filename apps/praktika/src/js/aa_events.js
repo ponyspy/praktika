@@ -119,6 +119,7 @@ $(function() {
 					.find('input[type=text]').val('').end()
 					.find('input[type=checkbox]').prop('checked', false).end()
 					.find('.date').val('').pickmeup(date_config).end()
+					.find('.ext_block').hide().end()
 					.show();
 			} else {
 				var $editor = ['ru', 'en'].map(function(locale) {
@@ -137,6 +138,7 @@ $(function() {
 					.find('input[type=text]').val('').end()
 					.find('input[type=checkbox]').prop('checked', false).end()
 					.find('.date').val('').pickmeup(date_config).end()
+					.find('.ext_block').hide().end()
 					.insertAfter($block.last());
 			}
 		})
@@ -163,5 +165,14 @@ $(function() {
 
 			if ($list.length == 1) return false;
 			$(this).parent('.list_item').remove();
+		})
+		.on('change', '.date_options', function(e) {
+			var $block = $(this).closest('.block_item');
+
+			if ($(this).val() !== '') {
+				$block.find('.ext_block').show();
+			} else {
+				$block.find('.ext_block').hide().find('.ext_link').val('');
+			}
 		});
 });
