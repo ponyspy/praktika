@@ -110,12 +110,18 @@ $(function() {
 
 			e.stopPropagation();
 		})
-		.on('click', '.event_ticket.active', function(e) {
+		.on('click', '.event_ticket.active, .event_ext.widget', function(e) {
 			var $this = $(this);
-			var schedule_date = $this.attr('schedule-date').split(' ');
-			var query = $.param({
-				show_id: $this.attr('schedule-show'),
-			});
+
+			if ($this.hasClass('widget')) {
+				var query = $.param({
+					link_src: $this.attr('data-src'),
+				});
+			} else {
+				var query = $.param({
+					show_id: $this.attr('schedule-show'),
+				});
+			}
 
 			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 				window.open('/widget?' + query, '_blank');

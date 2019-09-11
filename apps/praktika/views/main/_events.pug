@@ -14,7 +14,11 @@ each event in events
 				.event_date
 					.date= event_date.format('DD MMMM')
 					.time= event_date.format('dd, HH:mm')
-				if event.w_alias
+				if event.schedule.options == 'link'
+					a.event_ext.link(href=event.schedule.link, target='_blank', rel='nofollow')= __('купить билет')
+				else if event.schedule.options == 'widget'
+					.event_ext.widget(data-src=event.schedule.link)= __('купить билет')
+				else if event.w_alias
 					.event_ticket(schedule-alias= event.w_alias, schedule-date=event_date.format('DD.MM.YYYY HH:mm'), soldout=__('билеты проданы'))= __('купить билет')
 			a.event_title(href='/events/' + (event.sym ? event.sym : event._short_id))!= get_locale(event.title, locale)
 			.event_content

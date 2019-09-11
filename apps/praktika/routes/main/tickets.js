@@ -69,9 +69,13 @@ module.exports = function() {
 
 
 	module.widget = function(req, res, next) {
-		var uri = req.app.locals.static_keys.intickets_widget_uri;
+		if (req.query.show_id) {
+			var uri = req.app.locals.static_keys.intickets_widget_uri;
 
-		res.redirect(uri + '/node/' + req.query.show_id);
+			res.redirect(uri + '/node/' + req.query.show_id);
+		} else if (req.query.link_src) {
+			res.redirect(req.query.link_src);
+		}
 	};
 
 
