@@ -36,7 +36,11 @@ block content
 
 	if check_schedule
 		.event_schedule: .schedule_outer: .schedule_inner
-			.schedule_item.all(schedule-alias= event.w_alias, soldout=__('все') + ' ' + __('билеты проданы')): .item_ticket= __('купить билет')
+			if (event.schedule.every(function(item) { return item.link; }))
+				.schedule_ext.all: .item_ticket= __('купить билет')
+			else
+				.schedule_item.all(schedule-alias= event.w_alias, soldout=__('все') + ' ' + __('билеты проданы')): .item_ticket= __('купить билет')
+
 			each item in event.schedule
 				- var schedule_item = moment(item.date).locale(locale)
 
