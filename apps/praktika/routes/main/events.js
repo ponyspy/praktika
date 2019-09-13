@@ -38,7 +38,7 @@ module.exports = function(Model) {
 
 			event.schedule.sort(function(a, b) { return a.date - b.date; });
 
-			var check_schedule = event.w_alias && event.schedule.length > 0 && event.schedule.some(function(item) {
+			var check_schedule = event.schedule.length > 0 && event.schedule.some(function(item) {
 				return moment(item.date).isAfter();
 			});
 

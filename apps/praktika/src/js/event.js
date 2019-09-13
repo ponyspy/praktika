@@ -46,12 +46,18 @@ $(function() {
 
 	});
 
-	$(document).on('click', '.schedule_item.active', function(e) {
+	$(document).on('click', '.schedule_item.active, .schedule_ext.widget', function(e) {
 		var $this = $(this);
-		var schedule_show = $this.attr('schedule-show');
-		var query = $.param({
-			show_id: schedule_show,
-		});
+
+		if ($this.hasClass('widget')) {
+			var query = $.param({
+				link_src: $this.attr('data-src'),
+			});
+		} else {
+			var query = $.param({
+				show_id: $this.attr('schedule-show'),
+			});
+		}
 
 		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 			window.open('/widget?' + query, '_blank');
