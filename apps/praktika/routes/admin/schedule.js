@@ -32,6 +32,10 @@ module.exports.event = function(req, res) {
 		Event.findById(req.body.event_id).exec(function(err, event) {
 			if (err) return res.send('err');
 
+			var ext = event.schedule.filter(function(e_item) {
+				return e_item.link;
+			});
+
 			event.schedule = out.map(function(item) {
 				var event_date = event.schedule.filter(function(e_item) {
 					return moment(e_item.date).format('DD.MM.YYYY HH:mm') == item;
@@ -41,6 +45,10 @@ module.exports.event = function(req, res) {
 					date: moment(item, 'DD.MM.YYYY HH:mm').toDate(),
 					premiere: event_date ? event_date.premiere : false
 				};
+			});
+
+			event.schedule = ext.concat(event.schedule).sort(function(a, b) {
+				return a.date - b.date;
 			});
 
 			event.save(function(err) {

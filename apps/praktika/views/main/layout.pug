@@ -23,8 +23,8 @@ html
 						.subs_submit.active(send_await=__('ждем ответа...'), send_input=__('отправить'))= __('отправить')
 						.subs_status(val_email=__('некорректный email'), val_ok=__('спасибо за подписку'), val_else=__('ошибка'))
 						.subs_personal
-							span=__('Отправляя форму, вы даете свое согласие на обработку персональных данных! ')
-							a(href='#', target='_blank')= __('Подробнее...')
+							span=__('Отправляя форму, вы даете свое согласие на обработку персональных данных. ')
+							a(href='/ppa_' + locale + '.pdf', target='_blank')= __('Подробнее...')
 
 			.title_block
 				if content_banner

@@ -128,7 +128,7 @@ mixin form_schedule(schedule)
 			- var mm = date && (date.getMinutes())
 			.block_item.schedule(class= item.hidden ? 'hidden' : '', style=item.hidden ? 'display: none;': '')
 				input.rm_block(type='button', value='−')
-				input.date(type='text', value=dd, readonly=true)
+				input.date(type='text', value=dd, placeholder='дата', readonly=true)
 				span= ' -- '
 				select.hours
 					each hours, i in new Array(24)
@@ -143,6 +143,14 @@ mixin form_schedule(schedule)
 				label
 					input.premiere(type='checkbox', checked=item.premiere, )
 					!= ' премьера'
+				span= ' -- '
+				select.date_options
+					option(value='') intickets
+					option(value='link', selected=item.options == 'link') ссылка
+					option(value='widget', selected=item.options == 'widget') виджет
+				span.ext_block(style=!item.options ? 'display: none;' : '')
+					span= ' --> '
+					input.ext_link(type='text', value=item.link, placeholder='внешняя ссылка')
 				br
 				br
 		input.add_date(type='button', value='+ Добавить дату')

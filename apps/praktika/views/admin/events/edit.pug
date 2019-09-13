@@ -40,7 +40,7 @@ block content
 			select(name='age')
 				each age, i in new Array(22)
 					option(value=i, selected=(event.age == i))= i + '+'
-			.form_title Intickets:
+			.form_title Идентификатор intickets:
 			input(type='text', name='w_alias', value=event.w_alias)
 			if event.w_alias && event.w_alias != ''
 				input(type='button', onclick='window.open("' + static_keys.intickets_widget_uri + '/node/' + event.w_alias + '", "_blank")', value='>')

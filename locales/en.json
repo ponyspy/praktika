@@ -53,8 +53,6 @@
 	"билеты": "tickets",
 	"расписание": "schedule",
 	"Нет расписания": "No schedule",
-	"руководитель пресс-службы": "head of PR",
-	"Егор Хлыстов": "Yegor Khlystov",
 	"администрация": "administration",
 	"Студентам": "Students",
 	"composer": {
@@ -123,7 +121,9 @@
 	"некорректный email": "invalid email",
 	"спасибо за подписку": "thank you for subscription",
 	"ошибка": "error",
-	"Отправляя форму, вы даете свое согласие на обработку персональных данных! ": "By submitting this form, you admit to the processing of your personal data! ",
+	"Отправляя форму, вы даете свое согласие на обработку персональных данных. ": "By submitting this form, you admit to the processing of your personal data. ",
 	"Подробнее...": "Read more...",
-	"подписаться на рассылку": "subscribe to newsletter"
+	"подписаться на рассылку": "subscribe to newsletter",
+	"заведующая литературной частью": "head of the literary part of the theatere",
+	"Анна Банасюкевич": "Anna Banasyukevich"
 }

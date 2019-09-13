@@ -14,6 +14,7 @@ module.exports = function(Model) {
 			{ $match: { 'status': {
 				$nin: ['hidden', 'special']
 			}}},
+			{ $sort: { 'date': -1 } },
 			{ $group: {
 				_id: '$type',
 				partners: {

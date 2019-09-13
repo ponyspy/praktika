@@ -1,6 +1,6 @@
 var $window = $(window);
 var $document = $(document);
-var context = { skip: 5, limit: 10 };
+var context = { skip: 5, limit: 5 };
 
 var scrollLoader = function(e) {
 	if ($window.scrollTop() + $window.height() + 240 >= $document.height()) {

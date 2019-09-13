@@ -6,7 +6,10 @@ var Schema = mongoose.Schema,
 		ObjectId = Schema.ObjectId;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/' +  __app_name, { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/' +  __app_name, {
+	useCreateIndex: true,
+	useNewUrlParser: true
+});
 
 
 // ------------------------
@@ -39,6 +42,8 @@ var eventSchema = new Schema({
 	},
 	schedule: [{
 		date: Date,
+		link: String,
+		options: String,
 		premiere: Boolean
 	}],
 	comments: [{

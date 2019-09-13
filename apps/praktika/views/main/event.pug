@@ -36,14 +36,29 @@ block content
 
 	if check_schedule
 		.event_schedule: .schedule_outer: .schedule_inner
-			.schedule_item.all(schedule-alias= event.w_alias, soldout=__('все') + ' ' + __('билеты проданы')): .item_ticket= __('купить билет')
+			if (event.schedule.every(function(item) { return item.link; }))
+				.schedule_ext.all: .item_ticket= __('купить билет')
+			else
+				.schedule_item.all(schedule-alias= event.w_alias, soldout=__('все') + ' ' + __('билеты проданы')): .item_ticket= __('купить билет')
+
 			each item in event.schedule
 				- var schedule_item = moment(item.date).locale(locale)
 
-				if schedule_item.isAfter()
-					.schedule_item(schedule-alias= event.w_alias, schedule-date=schedule_item.format('DD.MM.YYYY HH:mm'), soldout=__('билеты проданы'))
+				if item.link && item.options == 'link'
+					a.schedule_ext.link(href=item.link, rel='nofollow', target='_blank')
 						.item_date= schedule_item.format('DD MMMM')
 						.item_time= schedule_item.format('dd HH:mm')
+
+				else if item.link && item.options == 'widget'
+					.schedule_ext.widget(data-src=item.link)
+						.item_date= schedule_item.format('DD MMMM')
+						.item_time= schedule_item.format('dd HH:mm')
+
+				else
+					if schedule_item.isAfter()
+						.schedule_item(schedule-alias= event.w_alias, schedule-date=schedule_item.format('DD.MM.YYYY HH:mm'), soldout=__('билеты проданы'))
+							.item_date= schedule_item.format('DD MMMM')
+							.item_time= schedule_item.format('dd HH:mm')
 
 	.event_body
 		.event_title!= event.i18n.title.get(locale)

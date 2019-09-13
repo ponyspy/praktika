@@ -13,6 +13,8 @@ block header_include
 
 block over
 	.post_header(style='background-image: url(' + post_item.cover + ')')
+		if post_item.holder
+			.post_holder
 		.post_header_meta
 			.post_header_title= post_item.i18n.title.get(locale)
 			.post_header_s_title= post_item.i18n.s_title.get(locale)
