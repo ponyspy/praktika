@@ -36,13 +36,13 @@ module.exports = function(Model) {
 			.exec(function(err, event) {
 			if (!event || err) return next(err);
 
-			event.schedule.sort(function(a, b) { return a.date - b.date; });
-
-			var check_schedule = event.schedule.length > 0 && event.schedule.some(function(item) {
+			var schedule = event.schedule.length > 0 && event.schedule.filter(function(item) {
 				return moment(item.date).isAfter();
-			});
+			}) || [];
 
-			res.render('main/event.pug', { event: event, check_schedule: check_schedule, moment: moment, get_locale: get_locale });
+			schedule.sort(function(a, b) { return a.date - b.date; });
+
+			res.render('main/event.pug', { event: event, schedule: schedule, moment: moment, get_locale: get_locale });
 		});
 	};
 

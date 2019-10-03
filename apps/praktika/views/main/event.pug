@@ -28,20 +28,20 @@ block over
 							.slide_holder
 
 			if event.images && event.images.length > 1
-				.swiper-pagination(class= !check_schedule ? 'no_schedule': '').swiper-pagination-white
-				.swiper-pagination(class= !check_schedule ? 'no_schedule': '').swiper-pagination-black
+				.swiper-pagination(class= !schedule.length ? 'no_schedule': '').swiper-pagination-white
+				.swiper-pagination(class= !schedule.length ? 'no_schedule': '').swiper-pagination-black
 
 block content
 	.widget_block: .widget_inner
 
-	if check_schedule
+	if schedule.length
 		.event_schedule: .schedule_outer: .schedule_inner
-			if (event.schedule.every(function(item) { return item.link; }))
+			if (schedule.some(function(item) { return item.link; }))
 				.schedule_ext.all: .item_ticket= __('купить билет')
 			else
 				.schedule_item.all(schedule-alias= event.w_alias, soldout=__('все') + ' ' + __('билеты проданы')): .item_ticket= __('купить билет')
 
-			each item in event.schedule
+			each item in schedule
 				- var schedule_item = moment(item.date).locale(locale)
 
 				if item.link && item.options == 'link'
