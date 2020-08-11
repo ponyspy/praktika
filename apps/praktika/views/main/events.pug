@@ -37,7 +37,7 @@ block content
 
 		- var e_archive = events.filter(function(event) { return event.schedule.every(function(item) { return item.date <= Date.now() }) })
 		if e_archive.length > 0
-			.events_title= __('архив')
+			.events_title= __('скоро')
 			.events_list
 				each event in e_archive
 					+event_item(event, 'half')
