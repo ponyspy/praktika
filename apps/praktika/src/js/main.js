@@ -60,7 +60,9 @@ $(function() {
 		var style = $current_slide.attr('data-style');
 
 		$('video').trigger('pause');
-		$current_slide.children('video').trigger('play');
+		if ($current_slide.children('video').attr('src')) {
+			$current_slide.children('video').trigger('play');
+		}
 
 		$('.maket_block').removeClass('white black').addClass(style);
 	});
