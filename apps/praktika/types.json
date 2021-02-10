@@ -17,6 +17,7 @@
 		"author": { "male": "author", "female": "author" },
 		"composer": { "male": "composer", "female": "composer" },
 		"choreographer": { "male": "choreographer", "female": "choreographer" },
+		"ensemble": { "male": "ensemble", "female": "ensemble" },
 		"management": { "male": "management", "female": "management" },
 		"consul": { "male": "consul", "female": "consul"}
 	}

@@ -124,5 +124,9 @@
 	"Подробнее...": "Read more...",
 	"подписаться на рассылку": "subscribe to newsletter",
 	"заведующая литературной частью": "head of the literary part of the theatere",
-	"Анна Банасюкевич": "Anna Banasyukevich"
+	"Анна Банасюкевич": "Anna Banasyukevich",
+	"ensemble": {
+		"one": "ensemble ",
+		"other": "ensembles "
+	}
 }
