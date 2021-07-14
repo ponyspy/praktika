@@ -12,7 +12,8 @@ block header_include
 
 
 block content
-	.map_block#map-canvas(data-placeholder= __('Большой Козихинский<br>переулок 30').replace('<br>', ' '))
+	//- .map_block#map-canvas(data-placeholder= __('Большой Козихинский<br>переулок 30').replace('<br>', ' '))
+	.map_block#map-canvas(data-placeholder= __('Зубовский бульвар 2, Лекторий&nbsp;Музея&nbsp;Москвы'))
 
 block under
 	.contacts_block
@@ -23,8 +24,9 @@ block under
 				.column
 					.title= __('адрес')
 					.value
-						span!= __('Большой Козихинский<br>переулок 30') + ', ' + __('метро') + ': '
-						span= __('«Маяковская»') + ', ' + __('«Пушкинская»')
+						//- span!= __('Большой Козихинский<br>переулок 30') + ', ' + __('метро') + ': '
+						//- span= __('«Маяковская»') + ', ' + __('«Пушкинская»')
+						span!= __('Зубовский бульвар 2, Лекторий&nbsp;Музея&nbsp;Москвы') + ', ' +  __('метро') + ':' + '&nbsp;' +__('«Парк&nbsp;культуры»')
 				.column
 					.title= __('заведующая литературной частью')
 					.value
@@ -35,7 +37,8 @@ block under
 				.column
 					.title!= __('билеты') + '<br>' + '11:00 – 18:00'
 					.value
-						div: a(href='tel:+7 (985) 529-86-54') +7 985 529-86-54
+						//- div: a(href='tel:+7 (985) 529-86-54') +7 985 529-86-54
+						div: a(href='tel:+7 (915) 030-04-41') +7 915 030-04-41
 						div: a(href='mailto:tgpraktika@gmail.com') tgpraktika@gmail.com
 				.column
 					.title= __('администрация') + ' ' + '10:00 – 18:00'

@@ -5,8 +5,15 @@ var style_array =
 
 function initialize() {
 	var map_canvas = document.getElementById('map-canvas');
-	var map_position = new google.maps.LatLng(55.7648875,37.5943699);
-	var marker_position = new google.maps.LatLng(55.765531,37.594230);
+
+	// Old
+	// var map_position = new google.maps.LatLng(55.7648875,37.5943699);
+	// var marker_position = new google.maps.LatLng(55.765531,37.594230);
+
+	// New
+	var map_position = new google.maps.LatLng(55.735541,37.5931587);
+	var marker_position = new google.maps.LatLng(55.736451300497365, 37.59295314924161);
+
 
 	var map_options = {
 		zoom: 17,
