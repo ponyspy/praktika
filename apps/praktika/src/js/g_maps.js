@@ -11,8 +11,8 @@ function initialize() {
 	// var marker_position = new google.maps.LatLng(55.765531,37.594230);
 
 	// New
-	var map_position = new google.maps.LatLng(55.735541,37.5931587);
-	var marker_position = new google.maps.LatLng(55.736451300497365, 37.59295314924161);
+	var map_position = new google.maps.LatLng(55.7353166,37.5942356);
+	var marker_position = new google.maps.LatLng(55.73651011296125, 37.59417046479063);
 
 
 	var map_options = {
