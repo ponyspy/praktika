@@ -105,7 +105,7 @@ $(function() {
 
 			if ($('.widget_block').hasClass('open')) {
 				$('body').removeClass('stop_scroll');
-				$('.widget_block').removeClass('open').children('.widget_inner').empty();
+				$('.widget_block').removeClass('open').find('.widget_inner').empty();
 			}
 
 			e.stopPropagation();
@@ -139,7 +139,7 @@ $(function() {
 				$('#pn_widget').addClass('show');
 			});
 
-			$('.widget_block').children('.widget_inner').empty().append($frame).end().addClass('open');
+			$('.widget_block').find('.widget_inner').empty().append($frame).end().addClass('open');
 		});
 
 

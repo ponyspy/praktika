@@ -75,7 +75,7 @@ $(function() {
 			$('#pn_widget').addClass('show');
 		});
 
-		$('.widget_block').children('.widget_inner').empty().append($frame).end().addClass('open');
+		$('.widget_block').find('.widget_inner').empty().append($frame).end().addClass('open');
 	});
 
 	if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {

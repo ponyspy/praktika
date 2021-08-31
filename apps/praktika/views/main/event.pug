@@ -32,7 +32,7 @@ block over
 				.swiper-pagination(class= !schedule.length ? 'no_schedule': '').swiper-pagination-black
 
 block content
-	.widget_block: .widget_inner
+	.widget_block: .widget_outer: .widget_inner
 
 	if schedule.length
 		.event_schedule: .schedule_outer: .schedule_inner
