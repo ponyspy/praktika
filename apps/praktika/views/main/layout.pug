@@ -1,8 +1,13 @@
+include counters
+
 doctype html
 html
 	head
+		+counters_head()
 		include header
 	body
+		+counters_body_top()
+
 		.maket_block(class=content_style, class=content_banner ? 'banner' : '')
 
 			.search_block
@@ -109,4 +114,5 @@ html
 								a.docs(href='/students')= __('Студентам')
 								a.students(href='/docs')= __('Документы')
 
-		include counters
+		+counters_body_bottom()
+
