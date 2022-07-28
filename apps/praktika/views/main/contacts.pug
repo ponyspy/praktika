@@ -6,7 +6,7 @@ block header_meta
 
 block header_include
 	- var include_css = ['contacts.css']
-	- var include_ext_js = ['https://maps.googleapis.com/maps/api/js?key=AIzaSyDkr2WFD1js1vOwpY8nc58N6jNkjzUv2aA&language=' + locale]
+	- var include_ext_js = ['https://maps.googleapis.com/maps/api/js?key=' + static_types.google_api_key + '&language=' + locale]
 	//- - var include_ext_js = ['https://maps.googleapis.com/maps/api/js?key=AIzaSyC7n_pR2zuaOwELGCsE8QVkq-trzPnWb10&language=' + locale]
 	- var include_js = ['contacts.js', 'g_maps.js']
 
