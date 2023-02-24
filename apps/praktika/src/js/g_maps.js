@@ -7,12 +7,12 @@ function initialize() {
 	var map_canvas = document.getElementById('map-canvas');
 
 	// Old
-	// var map_position = new google.maps.LatLng(55.7648875,37.5943699);
-	// var marker_position = new google.maps.LatLng(55.765531,37.594230);
+	var map_position = new google.maps.LatLng(55.7648875,37.5943699);
+	var marker_position = new google.maps.LatLng(55.765531,37.594230);
 
 	// New
-	var map_position = new google.maps.LatLng(55.7353166,37.5942356);
-	var marker_position = new google.maps.LatLng(55.73651011296125, 37.59417046479063);
+	// var map_position = new google.maps.LatLng(55.7353166,37.5942356);
+	// var marker_position = new google.maps.LatLng(55.73651011296125, 37.59417046479063);
 
 
 	var map_options = {
