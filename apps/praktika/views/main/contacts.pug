@@ -6,14 +6,14 @@ block header_meta
 
 block header_include
 	- var include_css = ['contacts.css']
-	- var include_ext_js = ['https://maps.googleapis.com/maps/api/js?key=' + static_keys.google_api_key + '&language=' + locale]
-	//- - var include_ext_js = ['https://maps.googleapis.com/maps/api/js?key=AIzaSyC7n_pR2zuaOwELGCsE8QVkq-trzPnWb10&language=' + locale]
+	//- - var include_ext_js = ['https://maps.googleapis.com/maps/api/js?key=' + static_keys.google_api_key + '&language=' + locale]
+	- var include_ext_js = ['https://maps.googleapis.com/maps/api/js?key=AIzaSyC7n_pR2zuaOwELGCsE8QVkq-trzPnWb10&language=' + locale]
 	- var include_js = ['contacts.js', 'g_maps.js']
 
 
 block content
-	//- .map_block#map-canvas(data-placeholder= __('Большой Козихинский<br>переулок 30').replace('<br>', ' '))
-	.map_block#map-canvas(data-placeholder= __('Зубовский бульвар, дом 2, корпус 3, Аудитория Музея&nbsp;Москвы'))
+	.map_block#map-canvas(data-placeholder= __('Большой Козихинский<br>переулок 30').replace('<br>', ' '))
+	//- .map_block#map-canvas(data-placeholder= __('Зубовский бульвар, дом 2, корпус 3, Аудитория Музея&nbsp;Москвы'))
 
 block under
 	.contacts_block
@@ -24,8 +24,8 @@ block under
 				.column
 					.title= __('адрес')
 					.value
-						//- span!= __('Большой Козихинский<br>переулок 30') + ', ' + __('метро') + ': '
-						//- span= __('«Маяковская»') + ', ' + __('«Пушкинская»')
+						span!= __('Большой Козихинский<br>переулок 30') + ', ' + __('метро') + ': '
+						span= __('«Маяковская»') + ', ' + __('«Пушкинская»')
 						span!= __('Зубовский бульвар, дом 2, корпус 3, Аудитория Музея&nbsp;Москвы') + ',&nbsp;' +  __('метро') + ':<br>' + __('«Парк&nbsp;культуры»')
 				.column
 					.title= __('заведующая литературной частью')
