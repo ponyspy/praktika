@@ -6,9 +6,11 @@ var Schema = mongoose.Schema,
 		ObjectId = Schema.ObjectId;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/' +  __app_name, {
-	useCreateIndex: true,
-	useNewUrlParser: true
+mongoose.connect('mongodb://127.0.0.1/' +  __app_name, {
+	// useCreateIndex: true,
+	// useFindAndModify: false,
+	useNewUrlParser: true,
+	useUnifiedTopology: true
 });
 
 

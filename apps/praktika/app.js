@@ -8,7 +8,7 @@ var express = require('express'),
 		session = require('express-session'),
 			app = express();
 
-var MongoStore = require('connect-mongo')(session);
+var MongoStore = require('connect-mongo');
 var i18n = require('i18n');
 
 i18n.configure({
@@ -42,7 +42,7 @@ app.use(session({
 	resave: false,
 	saveUninitialized: false,
 	secret: 'keyboard cat',
-	store: new MongoStore({ url: 'mongodb://localhost/' + __app_name }),
+	store: MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1/' + __app_name }),
 	cookie: {
 		path: '/',
 		maxAge: 1000 * 60 * 60 * 12 // 12 hours
