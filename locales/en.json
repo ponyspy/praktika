@@ -87,6 +87,10 @@
 		"one": "strategic information partner",
 		"other": "strategic information partners"
 	},
+	"strategic": {
+		"one": "strategic partner",
+		"other": "strategic partners"
+	},
 	"gen_information": {
 		"one": "general information partner",
 		"other": "general information partners"
