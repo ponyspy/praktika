@@ -1,5 +1,6 @@
 {
 	"partners_types": [
+		"residents",
 		"off_theater",
 		"gen_information",
 		"off_information",

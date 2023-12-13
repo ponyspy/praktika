@@ -75,6 +75,10 @@
 		"one": "official social network",
 		"other": "official social networks"
 	},
+	"residents": {
+		"one": "resident",
+		"other": "residents"
+	},
 	"off_radio": {
 		"one": "official radio partner",
 		"other": "official radio partners"
