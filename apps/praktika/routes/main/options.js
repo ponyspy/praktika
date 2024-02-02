@@ -26,7 +26,7 @@ module.exports = function(Model) {
 
 			Event.find(query, { score: { $meta: 'textScore' } }).where('status').ne('hidden').sort( { score: { $meta: 'textScore' } } ).exec(function(err, events) {
 
-				Post.find({ $text: { $search: req.body.text } }).exec(function(err, posts) {
+				Post.find({ $text: { $search: req.body.text } }).where('status').ne('hidden').exec(function(err, posts) {
 
 					var opts = {
 						__: function() { return res.locals.__.apply(null, arguments); },
