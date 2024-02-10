@@ -135,8 +135,8 @@
 	"Анна Банасюкевич": "Anna Banasyukevich",
 	"Анна Юсина": "Anna Yusina",
 	"ensemble": {
-		"one": "ensemble ",
-		"other": "ensembles "
+		"one": "musician",
+		"other": "musicians"
 	},
 	"Зубовский бульвар 2, Лекторий&nbsp;Музея&nbsp;Москвы": "2 Zubovsky&nbsp;Boulevard, Lecture&nbsp;Hall",
 	"«Парк&nbsp;культуры»": "«Park&nbsp;Kultury»",
