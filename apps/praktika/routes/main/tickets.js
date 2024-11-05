@@ -27,7 +27,7 @@ module.exports = function() {
 		};
 
 		request.get(options, function(err, resp, body) {
-			if (body || err || body.message) return res.send('err');
+			if (body || err || body.message) return res.send('err'); // remove 'body' from condition !!!
 
 			var out = body.map(function(event) {
 				return {'soldout': event.sold_out, 'cost': event.cost, 'show_id': event.show_id,  'date': moment(event.show_start).format('DD.MM.YYYY HH:mm')};
@@ -50,7 +50,7 @@ module.exports = function() {
 		};
 
 		request.get(options, function(err, resp, body) {
-			if (body || err || body.message) return res.send('err');
+			if (body || err || body.message) return res.send('err'); // remove 'body' from condition !!!
 
 			var out = body.reduce(function(arr, event) {
 				var event_date = moment(event.show_start);
