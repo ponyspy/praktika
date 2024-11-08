@@ -27,7 +27,6 @@ module.exports = function() {
 		};
 
 		request.get(options, function(err, resp, body) {
-			console.log(body)
 			if (body || err || body.message) return res.send('err'); // remove 'body' from condition !!!
 
 			var out = body.map(function(event) {
@@ -51,7 +50,6 @@ module.exports = function() {
 		};
 
 		request.get(options, function(err, resp, body) {
-			console.log(body)
 			if (body || err || body.message) return res.send('err'); // remove 'body' from condition !!!
 
 			var out = body.reduce(function(arr, event) {
