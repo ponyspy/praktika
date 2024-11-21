@@ -21,7 +21,7 @@
     "mongoose-bcrypt": "^1.6.0",
     "mongoose-locale": "github:ponyspy/mongoose-locale",
     "multer": "^1.4.2",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "request": "^2.88.0",
     "rimraf": "^3.0.0",
     "shortid": "^2.2.15",
