@@ -28,10 +28,13 @@ block under
 						span!= __('«Маяковская»') + ', ' + __('«Пушкинская»') + ' '
 						span!= __('Зубовский бульвар, дом 2, корпус 3, Аудитория Музея&nbsp;Москвы') + ',&nbsp;' +  __('метро') + ':<br>' + __('«Парк&nbsp;культуры»')
 				.column
-					.title= __('литературная часть')
+					//- .title= __('пресс-служба')
+					.title= __('PR-директор')
 					.value
-						div= __('Анна Юсина')
-						div: a(href='mailto:TSRY-zavlit.praktika@culture.mos.ru') TSRY-zavlit.praktika@culture.mos.ru
+						div= __('Елена Шапкина')
+						//- div: a(href='mailto:pr.praktika@culture.mos.ru') pr.praktika@culture.mos.ru
+						div: a(href='mailto:ShapkinaEA@culture.mos.ru') ShapkinaEA@culture.mos.ru
+						//- div: a(href='tel:+7 (926) 231-10-60') +7 926 231-10-60
 				.column
 					.title!= __('билеты') + '<br>' + '11:00 – 18:00'
 					.value
@@ -40,12 +43,10 @@ block under
 						//- div: a(href='tel:+7 (495) 609-09-10') +7 495 609-09-10
 						div: a(href='mailto:tickets.praktika@culture.mos.ru') tickets.praktika@culture.mos.ru
 				.column
-					//- .title= __('пресс-служба')
-					.title= __('PR-директор')
+					.title= __('литературная часть')
 					.value
-						div= __('Елена Шапкина')
-						div: a(href='mailto:pr.praktika@culture.mos.ru') pr.praktika@culture.mos.ru
-						//- div: a(href='tel:+7 (926) 231-10-60') +7 926 231-10-60
+						div= __('Анна Юсина')
+						div: a(href='mailto:TSRY-zavlit.praktika@culture.mos.ru') TSRY-zavlit.praktika@culture.mos.ru
 				.column
 					//- .title= __('администрация') + ' ' + '10:00 – 18:00'
 					.title= __('администрация')
